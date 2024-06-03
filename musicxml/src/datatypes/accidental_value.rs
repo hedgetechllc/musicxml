@@ -153,9 +153,9 @@ mod accidental_value_tests {
 
   #[test]
   fn deserialize_valid2() {
-    let result = AccidentalValue::deserialize("sharp-sharp-up");
+    let result = AccidentalValue::deserialize("flat-flat-up");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), AccidentalValue::DoubleSharpUp);
+    assert_eq!(result.unwrap(), AccidentalValue::FlatFlatUp);
   }
 
   #[test]

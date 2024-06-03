@@ -30,7 +30,7 @@ test_mxl_serializer:
 	cargo run --release --features debug --example write_mxl_score
 
 test_conversion:
-	cargo run --release --features debug --example convert_score_types.rs
+	cargo run --release --features debug --example convert_score_types
 
 testfull:
 	cargo run --release --features debug --example read_convert_write
