@@ -35,7 +35,7 @@ pub struct CreditTextSubcontents {
   pub credit_symbol: Option<CreditSymbol>,
 }
 
-/// Contents of the [CreditText] element.
+/// Contents of the [CreditTextContents] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct CreditTextContents {
   /// The [CreditWords] element specifies the text of a credit.

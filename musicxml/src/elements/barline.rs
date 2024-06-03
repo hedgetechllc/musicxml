@@ -46,7 +46,7 @@ pub struct BarlineContents {
   pub fermata: Vec<Fermata>,
   /// The [Ending] element indicates a multiple ending.
   pub ending: Option<Ending>,
-  /// The [repeat] element specifies a repeat barline.
+  /// The [Repeat] element specifies a repeat barline.
   pub repeat: Option<Repeat>,
 }
 
