@@ -15,7 +15,7 @@ publish.workspace = true
 
 [dependencies]
 regex = { version = "1.10", default-features = false, features = ["std", "perf"] }
-flate2 = { version = "1.0", default-features = false, features = ["zlib-ng-compat"] }
+zip = { version = "2.1", default-features = false, features = ["deflate"] }
 musicxml_internal.workspace = true
 musicxml_macros.workspace = true
 

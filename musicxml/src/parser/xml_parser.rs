@@ -119,12 +119,12 @@ pub fn write_xml_to_file(path: &str, xml: &XmlElement, pretty_print: bool) -> Re
     .open(path)
     .map_err(|e| e.to_string())?;
   file
-    .write_all("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".as_ref())
+    .write_all(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
     .map_err(|e| e.to_string())?;
   if xml.name == "score-partwise" {
-    file.write_all("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n".as_ref()).map_err(|e| e.to_string())?;
+    file.write_all(b"<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n").map_err(|e| e.to_string())?;
   } else if xml.name == "score-timewise" {
-    file.write_all("<!DOCTYPE score-timewise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Timewise//EN\" \"http://www.musicxml.org/dtds/timewise.dtd\">\n".as_ref()).map_err(|e| e.to_string())?;
+    file.write_all(b"<!DOCTYPE score-timewise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Timewise//EN\" \"http://www.musicxml.org/dtds/timewise.dtd\">\n").map_err(|e| e.to_string())?;
   }
   file
     .write_all(write_xml_to_str(xml, if pretty_print { 0 } else { -1 }).as_ref())

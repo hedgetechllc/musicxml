@@ -51,12 +51,12 @@ pub fn read_score_timewise(path: &str) -> Result<ScoreTimewise, String> {
   // TODO: Auto-convert if wrong type
 }
 
-pub fn write_score_partwise(score: &ScorePartwise, path: &str) -> Result<(), String> {
-  parser::parse_to_xml_file(path, score, true)
+pub fn write_score_partwise(score: &ScorePartwise, path: &str, compressed: bool) -> Result<(), String> {
+  parser::parse_to_xml_file(path, score, compressed, true)
   // TODO: Auto-convert if wrong type
 }
 
-pub fn write_score_timewise(score: &ScoreTimewise, path: &str) -> Result<(), String> {
-  parser::parse_to_xml_file(path, score, true)
+pub fn write_score_timewise(score: &ScoreTimewise, path: &str, compressed: bool) -> Result<(), String> {
+  parser::parse_to_xml_file(path, score, compressed, true)
   // TODO: Auto-convert if wrong type
 }

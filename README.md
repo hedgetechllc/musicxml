@@ -2,7 +2,6 @@
 
 MusicXML Parsing, Manipulation, and Export Library
 
-TODO: Read/write MXL files: https://www.w3.org/2021/06/musicxml40/tutorial/compressed-mxl-files/
 TODO: Auto-convert between partwise/timewise score types
 TODO: Finish documentation
 TODO: Verify production settings, generate crate, upload to crates.io
