@@ -39,8 +39,10 @@ pub struct HarmonMuteAttributes {
   pub relative_y: Option<Tenths>,
 }
 
+/// Contents of the [HarmonMute] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct HarmonMuteContents {
+  /// The [HarmonClosed] element represents the symbols used for harmon mutes in brass notation.
   pub harmon_closed: HarmonClosed,
 }
 

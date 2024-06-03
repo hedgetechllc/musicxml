@@ -10,10 +10,14 @@ pub struct AccordAttributes {
   pub string: Option<StringNumber>,
 }
 
+/// Contents of the [Accord] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct AccordContents {
+  /// Step on a diatonic scale, represented using the English letters A through G.
   pub tuning_step: TuningStep,
+  /// Number of semitones to alter the pitch from the tuning step.
   pub tuning_alter: Option<TuningAlter>,
+  /// Octave number for the tuning of the string.
   pub tuning_octave: TuningOctave,
 }
 

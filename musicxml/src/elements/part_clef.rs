@@ -2,10 +2,14 @@ use super::{ClefOctaveChange, Line, Sign};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [PartClef] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PartClefContents {
+  /// The [Sign] element represents the clef symbol.
   pub sign: Sign,
+  /// The [Line] element represents the clef line.
   pub line: Option<Line>,
+  /// The [ClefOctaveChange] element indicates the octave transposition of the clef.
   pub clef_octave_change: Option<ClefOctaveChange>,
 }
 

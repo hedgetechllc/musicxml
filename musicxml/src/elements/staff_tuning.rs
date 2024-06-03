@@ -10,10 +10,14 @@ pub struct StaffTuningAttributes {
   pub line: StaffLine,
 }
 
+/// Contents of the [StaffTuning] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct StaffTuningContents {
+  /// The [TuningStep] element specifies the step of the tuning.
   pub tuning_step: TuningStep,
+  /// The [TuningAlter] element specifies the alteration of the tuning.
   pub tuning_alter: Option<TuningAlter>,
+  /// The [TuningOctave] element specifies the octave of the tuning.
   pub tuning_octave: TuningOctave,
 }
 

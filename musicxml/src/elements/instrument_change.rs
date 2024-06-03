@@ -10,11 +10,16 @@ pub struct InstrumentChangeAttributes {
   pub id: IdRef,
 }
 
+/// Contents of the [InstrumentChange] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct InstrumentChangeContents {
+  /// The [InstrumentSound] element specifies the virtual instrument sound to use for a given [ScoreInstrument][super::ScoreInstrument].
   pub instrument_sound: Option<InstrumentSound>,
+  /// The [Solo] element specifies the solo virtual instrument sound to use for a given [ScoreInstrument][super::ScoreInstrument].
   pub solo: Option<Solo>,
+  /// The [Ensemble] element specifies the ensemble virtual instrument sound to use for a given [ScoreInstrument][super::ScoreInstrument].
   pub ensemble: Option<Ensemble>,
+  /// The [VirtualInstrument] element specifies the virtual instrument to use for a given [ScoreInstrument][super::ScoreInstrument].
   pub virtual_instrument: Option<VirtualInstrument>,
 }
 

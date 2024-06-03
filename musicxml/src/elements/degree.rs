@@ -10,10 +10,14 @@ pub struct DegreeAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// Contents of the [Degree] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct DegreeContents {
+  /// The [DegreeValue] element specifies the degree value for the degree element.
   pub degree_value: DegreeValue,
+  /// The [DegreeAlter] element specifies the alteration for the degree value.
   pub degree_alter: DegreeAlter,
+  /// The [DegreeType] element specifies the type of the degree element.
   pub degree_type: DegreeType,
 }
 

@@ -58,18 +58,30 @@ pub struct PercussionAttributes {
   pub valign: Option<Valign>,
 }
 
+/// The [PercussionContents] element specifies all possible options for use in a [Percussion] element.
 #[derive(Debug, PartialEq, Eq)]
 pub enum PercussionContents {
+  /// The [Glass] element is used to define glass pictogram symbols.
   Glass(Glass),
+  /// The [Metal] element is used to define metal pictogram symbols.
   Metal(Metal),
+  /// The [Wood] element is used to define wood pictogram symbols.
   Wood(Wood),
+  /// The [Pitched] element is used to define pitched percussion pictogram symbols.
   Pitched(Pitched),
+  /// The [Membrane] element is used to define membrane pictogram symbols.
   Membrane(Membrane),
+  /// The [Effect] element is used to define effect pictogram symbols.
   Effect(Effect),
+  /// The [Timpani] element is used to define timpani pictogram symbols.
   Timpani(Timpani),
+  /// The [Beater] element is used to define beater pictogram symbols.
   Beater(Beater),
+  /// The [Stick] element is used to define stick pictogram symbols.
   Stick(Stick),
+  /// The [StickLocation] element is used to define stick location pictogram symbols.
   StickLocation(StickLocation),
+  /// The [OtherPercussion] element is used to define other percussion pictogram symbols.
   OtherPercussion(OtherPercussion),
 }
 

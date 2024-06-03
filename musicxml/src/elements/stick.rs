@@ -14,9 +14,12 @@ pub struct StickAttributes {
   pub tip: Option<TipDirection>,
 }
 
+/// Contents of the [Stick] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct StickContents {
+  /// The [StickType] element indicates the pictogram type of the stick, mallet, or beater.
   pub stick_type: StickType,
+  /// The [StickMaterial] element indicates the material of the stick, mallet, or beater.
   pub stick_material: StickMaterial,
 }
 

@@ -26,9 +26,12 @@ pub struct PartLinkAttributes {
   pub xlink_type: Option<XlinkType>,
 }
 
+/// Contents of the [PartLink] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PartLinkContents {
+  /// The [InstrumentLink] element allows MusicXML data for a single instrument to be defined within a part.
   pub instrument_link: Vec<InstrumentLink>,
+  /// The [GroupLink] element allows MusicXML data for a group of instruments to be defined within a part.
   pub group_link: Vec<GroupLink>,
 }
 

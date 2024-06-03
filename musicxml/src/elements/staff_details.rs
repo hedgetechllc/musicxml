@@ -16,13 +16,20 @@ pub struct StaffDetailsAttributes {
   pub show_frets: Option<ShowFrets>,
 }
 
+/// Contents of the [StaffDetails] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct StaffDetailsContents {
+  /// The [StaffType] element indicates the type of staff.
   pub staff_type: Option<StaffType>,
+  /// The [StaffLines] element indicates the number of lines in the staff.
   pub staff_lines: Option<StaffLines>,
+  /// The [LineDetail] element indicates the line type of the staff.
   pub line_detail: Vec<LineDetail>,
+  /// The [StaffTuning] element indicates the tuning of a single string on a tablature staff.
   pub staff_tuning: Vec<StaffTuning>,
+  /// The [Capo] element indicates the fret at which a capo should be placed.
   pub capo: Option<Capo>,
+  /// The [StaffSize] element indicates the size of the staff in tenths.
   pub staff_size: Option<StaffSize>,
 }
 

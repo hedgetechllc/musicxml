@@ -59,13 +59,20 @@ pub struct SoundAttributes {
   pub tocoda: Option<Token>,
 }
 
+/// Contents of the [Sound] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct SoundContents {
+  /// The [InstrumentChange] element is used to change instruments mid-score.
   pub instrument_change: Vec<InstrumentChange>,
+  /// The [MidiDevice] element defines MIDI 1.0 device settings.
   pub midi_device: Vec<MidiDevice>,
+  /// The [MidiInstrument] element defines MIDI 1.0 instrument playback.
   pub midi_instrument: Vec<MidiInstrument>,
+  /// The [Play] element specifies playback techniques to be used in conjunction with the instrument sound specified by the [MidiInstrument] element.
   pub play: Vec<Play>,
+  /// The [Swing] element specifies swing and shuffle playback.
   pub swing: Option<Swing>,
+  /// The [Offset] element is used to indicate that the sound takes place offset from the current score position.
   pub offset: Option<Offset>,
 }
 

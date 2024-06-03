@@ -10,8 +10,10 @@ pub struct StaffLayoutAttributes {
   pub number: Option<StaffNumber>,
 }
 
+/// Contents of the [StaffLayout] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct StaffLayoutContents {
+  /// The [StaffDistance] element specifies the vertical distance from the bottom line of the previous staff in this system to the top line of the staff specified by the `number` attribute.
   pub staff_distance: Option<StaffDistance>,
 }
 

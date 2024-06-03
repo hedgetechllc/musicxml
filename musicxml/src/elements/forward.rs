@@ -2,12 +2,18 @@ use super::{Duration, Footnote, Level, Staff, Voice};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Forward] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ForwardContents {
+  /// The [Duration] element specifies the duration of the forward element.
   pub duration: Duration,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
+  /// The [Voice] element specifies the playback voice.
   pub voice: Option<Voice>,
+  /// The [Staff] element specifies the staff for a forward element.
   pub staff: Option<Staff>,
 }
 

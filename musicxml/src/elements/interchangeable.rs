@@ -12,15 +12,21 @@ pub struct InterchangeableAttributes {
   pub symbol: Option<TimeSymbol>,
 }
 
+/// Contents of the [InterchangeableBeatData] element.
 #[derive(Debug, PartialEq, Eq)]
 pub struct InterchangeableBeatData {
+  /// The number of beats in the second of the dual time signatures.
   pub beats: Beats,
+  /// The beat type of the second of the dual time signatures.
   pub beat_type: BeatType,
 }
 
+/// Contents of the [Interchangeable] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct InterchangeableContents {
+  /// The time relation between the two dual time signatures.
   pub time_relation: Option<TimeRelation>,
+  /// The beat data for the second of the dual time signatures.
   pub beat_data: Vec<InterchangeableBeatData>,
 }
 

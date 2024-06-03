@@ -15,10 +15,14 @@ pub struct BeatRepeatAttributes {
   pub use_dots: Option<YesNo>,
 }
 
+/// Contents of the [BeatRepeat] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct BeatRepeatContents {
+  /// The [SlashType] element is used to indicate the notation style for the slashes.
   pub slash_type: Option<SlashType>,
+  /// The [SlashDot] element is used to indicate the presence of a dot in the beat repeat notation.
   pub slash_dot: Vec<SlashDot>,
+  /// The [ExceptVoice] element is used to indicate that a voice is not to participate in a repeated section.
   pub except_voice: Vec<ExceptVoice>,
 }
 

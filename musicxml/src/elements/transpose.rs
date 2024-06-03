@@ -13,11 +13,16 @@ pub struct TransposeAttributes {
   pub number: Option<StaffNumber>,
 }
 
+/// Contents of the [Transpose] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct TransposeContents {
+  /// The [Diatonic] element specifies the number of diatonic steps to transpose.
   pub diatonic: Option<Diatonic>,
+  /// The [Chromatic] element specifies the number of chromatic steps to transpose.
   pub chromatic: Chromatic,
+  /// The [OctaveChange] element specifies the number of octaves to transpose.
   pub octave_change: Option<OctaveChange>,
+  /// The [Double] element specifies the number of double-accidentals to transpose.
   pub double: Option<Double>,
 }
 

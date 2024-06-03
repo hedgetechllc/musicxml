@@ -54,11 +54,16 @@ pub struct FrameAttributes {
   pub width: Option<Tenths>,
 }
 
+/// Contents of the [Frame] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct FrameContents {
+  /// The [FrameStrings] element specifies the number of strings on the frame.
   pub frame_strings: FrameStrings,
+  /// The [FrameFrets] element specifies the number of frets on the frame.
   pub frame_frets: FrameFrets,
+  /// The [FirstFret] element specifies the number of the first fret on the frame.
   pub first_fret: Option<FirstFret>,
+  /// The [FrameNote] element specifies the note on a string in the frame.
   pub frame_note: Vec<FrameNote>,
 }
 

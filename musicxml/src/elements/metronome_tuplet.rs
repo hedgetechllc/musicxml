@@ -14,11 +14,16 @@ pub struct MetronomeTupletAttributes {
   pub show_number: Option<ShowTuplet>,
 }
 
+/// Contents of the [MetronomeTuplet] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct MetronomeTupletContents {
+  /// The [ActualNotes] element specifies the number of notes in the tuplet.
   pub actual_notes: ActualNotes,
+  /// The [NormalNotes] element specifies the normal number of notes in the tuplet.
   pub normal_notes: NormalNotes,
+  /// The [NormalType] element specifies the normal type of the tuplet.
   pub normal_type: Option<NormalType>,
+  /// The [NormalDot] element specifies the presence of a dot in the tuplet.
   pub normal_dot: Vec<NormalDot>,
 }
 

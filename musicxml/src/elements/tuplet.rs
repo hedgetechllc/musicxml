@@ -43,9 +43,12 @@ pub struct TupletAttributes {
   pub show_type: Option<ShowTuplet>,
 }
 
+/// Contents of the [Tuplet] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct TupletContents {
+  /// The [TupletActual] element specifies the number of notes in the tuplet.
   pub tuplet_actual: Option<TupletActual>,
+  /// The [TupletNormal] element specifies the number of notes in the tuplet as represented by the normal, i.e. not tuplet, note type.
   pub tuplet_normal: Option<TupletNormal>,
 }
 

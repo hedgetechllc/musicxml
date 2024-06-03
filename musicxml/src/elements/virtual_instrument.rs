@@ -2,9 +2,12 @@ use super::{VirtualLibrary, VirtualName};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [VirtualInstrument] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct VirtualInstrumentContents {
+  /// The [VirtualLibrary] element specifies the virtual library used for the virtual instrument.
   pub virtual_library: Option<VirtualLibrary>,
+  /// The [VirtualName] element specifies the virtual instrument used for the instrument sound.
   pub virtual_name: Option<VirtualName>,
 }
 

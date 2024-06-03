@@ -13,23 +13,39 @@ pub struct PartAttributes {
   pub id: IdRef,
 }
 
+/// The [PartElement] specifies all possible elements available for use in a [Part] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub enum PartElement {
+  /// The [Measure] element includes the basic musical data containers within a document.
   Measure(Measure),
+  /// The [Note] element includes the basic musical data such as pitch, duration, and instrument.
   Note(Note),
+  /// The [Backup] element is used to indicate that the music following it is a repetition of music that already appeared earlier in the score.
   Backup(Backup),
+  /// The [Forward] element is used to indicate that the music following it is not a repetition of music that already appeared earlier in the score.
   Forward(Forward),
+  /// The [Direction] element is a musical indication that is not necessarily attached to a specific note.
   Direction(Direction),
+  /// The [Attributes] element contains all the musical information that is not pitch-related.
   Attributes(Attributes),
+  /// The [Harmony] element is used to represent harmony symbols.
   Harmony(Harmony),
+  /// The [FiguredBass] element is used to specify figured bass symbols.
   #[rename("figured-bass")]
   FiguredBass(FiguredBass),
+  /// The [Print] element contains score layout information.
   Print(Print),
+  /// The [Sound] element contains MIDI instrument information.
   Sound(Sound),
+  /// The [Listening] element specifies the MIDI device that should be used for playback.
   Listening(Listening),
+  /// The [Barline] element is used to set barline information.
   Barline(Barline),
+  /// The [Grouping] element is used to indicate editorial information about how to group parts of a score.
   Grouping(Grouping),
+  /// The [Link] element is used to establish a link to a URL.
   Link(Link),
+  /// The [Bookmark] element is used to establish a bookmark for the current score location.
   Bookmark(Bookmark),
 }
 

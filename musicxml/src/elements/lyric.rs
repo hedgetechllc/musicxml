@@ -46,22 +46,35 @@ pub struct LyricAttributes {
   pub time_only: Option<TimeOnly>,
 }
 
+/// Contents of the [AdditionalTextLyric] element.
 #[derive(Debug, PartialEq, Eq)]
 pub struct AdditionalTextLyric {
+  /// The [Elision] element represents an elision in a lyric.
   pub elision: Option<Elision>,
+  /// The [Syllabic] element represents the type of syllable for a lyric.
   pub syllabic: Option<Syllabic>,
+  /// The [Text] element represents the text of a lyric.
   pub text: Text,
 }
 
+/// The [TextLyric] element represents the text of a lyric.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct TextLyric {
+  /// The [Syllabic] element represents the type of syllable for a lyric.
   pub syllabic: Option<Syllabic>,
+  /// The [Text] element represents the text of a lyric.
   pub text: Text,
+  /// Additional text elements that are part of the same syllable.
   pub additional: Vec<AdditionalTextLyric>,
+  /// The [Extend] element represents an extension of a lyric.
   pub extend: Option<Extend>,
+  /// The [EndLine] element specifies the end of a line of lyrics.
   pub end_line: Option<EndLine>,
+  /// The [EndParagraph] element specifies the end of a paragraph of lyrics.
   pub end_paragraph: Option<EndParagraph>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
 }
 
@@ -148,38 +161,63 @@ impl ContentSerializer for TextLyric {
   }
 }
 
+/// The [ExtendLyric] element represents an extension of a lyric.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ExtendLyric {
+  /// The [Extend] element represents an extension of a lyric.
   pub extend: Extend,
+  /// The [EndLine] element specifies the end of a line of lyrics.
   pub end_line: Option<EndLine>,
+  /// The [EndParagraph] element specifies the end of a paragraph of lyrics.
   pub end_paragraph: Option<EndParagraph>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
 }
 
+/// The [LaughingLyric] element represents a laughing lyric.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct LaughingLyric {
+  /// The [Laughing] element represents a laughing lyric.
   pub laughing: Laughing,
+  /// The [EndLine] element specifies the end of a line of lyrics.
   pub end_line: Option<EndLine>,
+  /// The [EndParagraph] element specifies the end of a paragraph of lyrics.
   pub end_paragraph: Option<EndParagraph>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
 }
 
+/// The [HummingLyric] element represents a humming lyric.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct HummingLyric {
+  /// The [Humming] element represents a humming lyric.
   pub humming: Humming,
+  /// The [EndLine] element specifies the end of a line of lyrics.
   pub end_line: Option<EndLine>,
+  /// The [EndParagraph] element specifies the end of a paragraph of lyrics.
   pub end_paragraph: Option<EndParagraph>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
 }
 
+/// Contents of the [Lyric] element.
+/// 
+/// The [Lyric] element may contain either a [TextLyric], [ExtendLyric], [LaughingLyric], or [HummingLyric].
 #[derive(Debug, PartialEq, Eq)]
 pub enum LyricContents {
+  /// The [TextLyric] element represents the text of a lyric.
   Text(TextLyric),
+  /// The [ExtendLyric] element represents an extension of a lyric.
   Extend(ExtendLyric),
+  /// The [LaughingLyric] element represents a laughing lyric.
   Laughing(LaughingLyric),
+  /// The [HummingLyric] element represents a humming lyric.
   Humming(HummingLyric),
 }
 

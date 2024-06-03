@@ -54,8 +54,10 @@ pub struct HarpPedalsAttributes {
   pub valign: Option<Valign>,
 }
 
+/// Contents of the [HarpPedals] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct HarpPedalsContents {
+  /// The [PedalTuning] element specifies the tuning of a single harp pedal.
   pub pedal_tuning: Vec<PedalTuning>,
 }
 

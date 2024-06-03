@@ -10,15 +10,24 @@ pub struct MidiInstrumentAttributes {
   pub id: IdRef,
 }
 
+/// Contents of the [MidiInstrument] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct MidiInstrumentContents {
+  /// The [MidiChannel] element specifies the MIDI 1.0 channel number.
   pub midi_channel: Option<MidiChannel>,
+  /// The [MidiName] element specifies the MIDI 1.0 instrument name.
   pub midi_name: Option<MidiName>,
+  /// The [MidiBank] element specifies the MIDI 1.0 bank number.
   pub midi_bank: Option<MidiBank>,
+  /// The [MidiProgram] element specifies the MIDI 1.0 program number.
   pub midi_program: Option<MidiProgram>,
+  /// The [MidiUnpitched] element specifies the MIDI 1.0 unpitched percussion MIDI key.
   pub midi_unpitched: Option<MidiUnpitched>,
+  /// The [Volume] element specifies the MIDI 1.0 volume.
   pub volume: Option<Volume>,
+  /// The [Pan] element specifies the MIDI 1.0 pan.
   pub pan: Option<Pan>,
+  /// The [Elevation] element specifies the MIDI 1.0 elevation.
   pub elevation: Option<Elevation>,
 }
 

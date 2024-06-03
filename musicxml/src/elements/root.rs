@@ -2,9 +2,12 @@ use super::{RootAlter, RootStep};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Root] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct RootContents {
+  /// The [RootStep] element specifies the pitch like C, D, E vs. a scale degree like 1, 2, 3.
   pub root_step: RootStep,
+  /// The [RootAlter] element specifies the chromatic alteration of the root of the chord.
   pub root_alter: Option<RootAlter>,
 }
 

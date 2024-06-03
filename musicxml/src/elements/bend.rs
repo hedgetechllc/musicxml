@@ -49,11 +49,16 @@ pub struct BendAttributes {
   pub shape: Option<BendShape>,
 }
 
+/// Contents of the [Bend] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct BendContents {
+  /// The [BendAlter] element specifies the alteration of the bend.
   pub bend_alter: BendAlter,
+  /// The [PreBend] element is used in guitar notation and tablature.
   pub pre_bend: Option<PreBend>,
+  /// The [Release] element is used in guitar notation and tablature.
   pub release: Option<Release>,
+  /// The [WithBar] element is used in guitar notation and tablature.
   pub with_bar: Option<WithBar>,
 }
 

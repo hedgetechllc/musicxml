@@ -16,8 +16,10 @@ pub struct GroupingAttributes {
   pub number: Option<Token>,
 }
 
+/// Contents of the [Grouping] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct GroupingContents {
+  /// The [Feature] element is used for musical analysis.
   pub feature: Vec<Feature>,
 }
 

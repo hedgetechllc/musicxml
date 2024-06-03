@@ -2,11 +2,16 @@ use super::{Barre, Fingering, Fret, StringNumber};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [FrameNote] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct FrameNoteContents {
+  /// The [StringNumber] element specifies the string number of the note.
   pub string: StringNumber,
+  /// The [Fret] element specifies the fret number of the note.
   pub fret: Fret,
+  /// The [Fingering] element specifies the fingering of the note.
   pub fingering: Option<Fingering>,
+  /// The [Barre] element specifies the barre of the note.
   pub barre: Option<Barre>,
 }
 

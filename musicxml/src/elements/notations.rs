@@ -15,28 +15,47 @@ pub struct NotationsAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// The [NotationContentTypes] contains the various notations that can be applied to a note or chord.
 #[derive(Debug, PartialEq, Eq)]
 pub enum NotationContentTypes {
+  /// The [Tied] element indicates that a tie begins or ends with this note.
   Tied(Tied),
+  /// The [Slur] element indicates that a slur begins or ends with this note.
   Slur(Slur),
+  /// The [Tuplet] element indicates that this note is part of a tuplet.
   Tuplet(Tuplet),
+  /// The [Glissando] element indicates that a glissando line is to be drawn.
   Glissando(Glissando),
+  /// The [Slide] element indicates that a slide element is to be drawn.
   Slide(Slide),
+  /// The [Ornaments] element indicates that an ornament is to be performed.
   Ornaments(Ornaments),
+  /// The [Technical] element indicates a technical instruction.
   Technical(Technical),
+  /// The [Articulations] element indicates that an articulation is to be performed.
   Articulations(Articulations),
+  /// The [Dynamics] element indicates a dynamic marking.
   Dynamics(Dynamics),
+  /// The [Fermata] element indicates that a fermata is to be performed.
   Fermata(Fermata),
+  /// The [Arpeggiate] element indicates that an arpeggiation is to be performed.
   Arpeggiate(Arpeggiate),
+  /// The [NonArpeggiate] element indicates that a non-arpeggiation is to be performed.
   NonArpeggiate(NonArpeggiate),
+  /// The [AccidentalMark] element indicates an accidental mark.
   AccidentalMark(AccidentalMark),
+  /// The [OtherNotation] element is used to define any notations not yet in the MusicXML format.
   OtherNotation(OtherNotation),
 }
 
+/// Contents of the [Notations] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct NotationsContents {
+  /// The [Footnote] element is used to specify editorial information or analysis.
   pub footnote: Option<Footnote>,
+  /// The [Level] element is used to specify editorial information or analysis.
   pub level: Option<Level>,
+  /// The [NotationContentTypes] contains the various notations that can be applied to a note or chord.
   pub notations: Vec<NotationContentTypes>,
 }
 
@@ -201,11 +220,11 @@ mod notations_tests {
             NotationContentTypes::Dynamics(Dynamics {
               attributes: DynamicsAttributes::default(),
               content: vec![
-                DynamicsContents::F(F {
+                DynamicsType::F(F {
                   attributes: (),
                   content: ()
                 }),
-                DynamicsContents::F(F {
+                DynamicsType::F(F {
                   attributes: (),
                   content: ()
                 })

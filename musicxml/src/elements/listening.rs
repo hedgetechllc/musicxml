@@ -2,10 +2,14 @@ use super::{Offset, OtherListening, Sync};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Listening] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ListeningContents {
+  /// The [Sync] element specifies the synchronization of the score-following or machine-listening data with the music.
   pub sync: Option<Sync>,
+  /// The [OtherListening] element specifies other types of listening.
   pub other_listening: Option<OtherListening>,
+  /// The [Offset] element is used to indicate that the listening change takes place offset from the current score position.
   pub offset: Option<Offset>,
 }
 

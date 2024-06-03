@@ -13,37 +13,56 @@ pub struct OrnamentsAttributes {
   pub id: Option<Id>,
 }
 
+/// The [OrnamentType] element specifies the ornaments available to be performed.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub enum OrnamentType {
+  /// The [TrillMark] element represents the trill-mark symbol.
   #[rename("trill-mark")]
   TrillMark(TrillMark),
+  /// The [Turn] element represents the turn symbol.
   Turn(Turn),
+  /// The [DelayedTurn] element represents the delayed-turn symbol.
   #[rename("delayed-turn")]
   DelayedTurn(DelayedTurn),
+  /// The [InvertedTurn] element represents the inverted-turn symbol.
   #[rename("inverted-turn")]
   InvertedTurn(InvertedTurn),
+  /// The [DelayedInvertedTurn] element represents the delayed-inverted-turn symbol.
   #[rename("delayed-inverted-turn")]
   DelayedInvertedTurn(DelayedInvertedTurn),
+  /// The [VerticalTurn] element represents the vertical-turn symbol.
   #[rename("vertical-turn")]
   VerticalTurn(VerticalTurn),
+  /// The [InvertedVerticalTurn] element represents the inverted-vertical-turn symbol.
   #[rename("inverted-vertical-turn")]
   InvertedVerticalTurn(InvertedVerticalTurn),
+  /// The [Shake] element represents the shake symbol.
   Shake(Shake),
+  /// The [WavyLine] element represents the wavy-line symbol.
   #[rename("wavy-line")]
   WavyLine(WavyLine),
+  /// The [Mordent] element represents the mordent symbol.
   Mordent(Mordent),
+  /// The [InvertedMordent] element represents the inverted-mordent symbol.
   #[rename("inverted-mordent")]
   InvertedMordent(InvertedMordent),
+  /// The [Schleifer] element represents the schleifer symbol.
   Schleifer(Schleifer),
+  /// The [Tremolo] element represents the tremolo symbol.
   Tremolo(Tremolo),
+  /// The [Haydn] element represents the Haydn symbol.
   Haydn(Haydn),
+  /// The [OtherOrnament] element represents an ornament not covered by other elements.
   #[rename("other-ornament")]
   OtherOrnament(OtherOrnament),
 }
 
+/// Contents of the [Ornaments] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentSerialize)]
 pub struct OrnamentContents {
+  /// The [OrnamentType] elements specify the ornaments to be performed.
   pub ornaments: Vec<OrnamentType>,
+  /// The [AccidentalMark] elements specify the accidentals to be performed.
   pub accidental_mark: Vec<AccidentalMark>,
 }
 

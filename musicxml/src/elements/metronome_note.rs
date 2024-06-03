@@ -2,12 +2,18 @@ use super::{MetronomeBeam, MetronomeDot, MetronomeTied, MetronomeTuplet, Metrono
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [MetronomeNote] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct MetronomeNoteContents {
+  /// The [MetronomeType] element specifies the note type for the metronome mark.
   pub metronome_type: MetronomeType,
+  /// The [MetronomeDot] element specifies the presence of a dot in the metronome mark.
   pub metronome_dot: Vec<MetronomeDot>,
+  /// The [MetronomeBeam] element specifies the presence of a beam in the metronome mark.
   pub metronome_beam: Vec<MetronomeBeam>,
+  /// The [MetronomeTied] element specifies the presence of a tie in the metronome mark.
   pub metronome_tied: Option<MetronomeTied>,
+  /// The [MetronomeTuplet] element specifies the presence of a tuplet in the metronome mark.
   pub metronome_tuplet: Option<MetronomeTuplet>,
 }
 

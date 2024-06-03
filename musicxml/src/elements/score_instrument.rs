@@ -10,13 +10,20 @@ pub struct ScoreInstrumentAttributes {
   pub id: Id,
 }
 
+/// Contents of the [ScoreInstrument] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ScoreInstrumentContents {
+  /// The [InstrumentName] element specifies the name of the instrument.
   pub instrument_name: InstrumentName,
+  /// The [InstrumentAbbreviation] element specifies the abbreviation for the instrument name.
   pub instrument_abbreviation: Option<InstrumentAbbreviation>,
+  /// The [InstrumentSound] element specifies the sound of the instrument.
   pub instrument_sound: Option<InstrumentSound>,
+  /// The [Solo] element specifies the solo instrument.
   pub solo: Option<Solo>,
+  /// The [Ensemble] element specifies the ensemble instrument.
   pub ensemble: Option<Ensemble>,
+  /// The [VirtualInstrument] element specifies the virtual instrument.
   pub virtual_instrument: Option<VirtualInstrument>,
 }
 

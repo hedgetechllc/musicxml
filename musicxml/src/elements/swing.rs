@@ -2,12 +2,18 @@ use super::{First, Second, Straight, SwingStyle, SwingType};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Swing] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct SwingContents {
+  /// The [Straight] element specifies whether or not to use straight playback.
   pub straight: Option<Straight>,
+  /// The [First] and [Second] elements specify the ratio between durations of consecutive notes.
   pub first: Option<First>,
+  /// The [First] and [Second] elements specify the ratio between durations of consecutive notes.
   pub second: Option<Second>,
+  /// The [SwingType] element specifies the type of swing to use.
   pub swing_type: Option<SwingType>,
+  /// The [SwingStyle] element specifies the style of swing to use.
   pub swing_style: Option<SwingStyle>,
 }
 

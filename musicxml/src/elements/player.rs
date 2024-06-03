@@ -10,8 +10,10 @@ pub struct PlayerAttributes {
   pub id: Id,
 }
 
+/// Contents of the [Player] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PlayerContents {
+  /// The [PlayerName] element specifies the name of the player.
   pub player_name: PlayerName,
 }
 

@@ -12,11 +12,16 @@ pub struct PageMarginsAttributes {
   pub r#type: Option<MarginType>,
 }
 
+/// Contents of the [PageMargins] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PageMarginsContents {
+  /// The [LeftMargin] element specifies the left margin in tenths.
   pub left_margin: LeftMargin,
+  /// The [RightMargin] element specifies the right margin in tenths.
   pub right_margin: RightMargin,
+  /// The [TopMargin] element specifies the top margin in tenths.
   pub top_margin: TopMargin,
+  /// The [BottomMargin] element specifies the bottom margin in tenths.
   pub bottom_margin: BottomMargin,
 }
 

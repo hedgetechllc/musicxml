@@ -2,9 +2,12 @@ use super::{AccidentalText, DisplayText};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [NoteheadText] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct NoteheadTextContents {
+  /// The [DisplayText] element specifies the text that is displayed inside a notehead.
   pub display_text: Option<DisplayText>,
+  /// The [AccidentalText] element specifies the accidental that is displayed inside a notehead.
   pub accidental_text: Option<AccidentalText>,
 }
 

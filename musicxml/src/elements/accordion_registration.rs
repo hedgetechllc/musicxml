@@ -54,10 +54,14 @@ pub struct AccordionRegistrationAttributes {
   pub valign: Option<Valign>,
 }
 
+/// Contents of the [AccordionRegistration] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct AccordionRegistrationContents {
+  /// The [AccordionHigh] element represents the presence of one or more dots in the high section of the registration symbol.
   pub accordion_high: Option<AccordionHigh>,
+  /// The [AccordionMiddle] element represents the presence of one or more dots in the middle section of the registration symbol.
   pub accordion_middle: Option<AccordionMiddle>,
+  /// The [AccordionLow] element represents the presence of one or more dots in the low section of the registration symbol.
   pub accordion_low: Option<AccordionLow>,
 }
 

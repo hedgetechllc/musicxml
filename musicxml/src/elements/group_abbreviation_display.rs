@@ -10,9 +10,12 @@ pub struct GroupAbbreviationDisplayAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// Contents of the [GroupAbbreviationDisplay] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct GroupAbbreviationDisplayContents {
+  /// The [DisplayText] element specifies the text of the group abbreviation.
   pub display_text: Vec<DisplayText>,
+  /// The [AccidentalText] element specifies the accidental of the group abbreviation.
   pub accidental_text: Vec<AccidentalText>,
 }
 

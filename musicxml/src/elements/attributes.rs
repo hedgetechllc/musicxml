@@ -5,21 +5,36 @@ use super::{
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Attributes] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct AttributesContents {
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
+  /// The [Divisions] element indicates how many divisions per quarter note are used to indicate a note's duration.
   pub divisions: Option<Divisions>,
+  /// The [Key] element indicates the key signature.
   pub key: Vec<Key>,
+  /// The [Time] element indicates the time signature.
   pub time: Vec<Time>,
+  /// The [Staves] element specifies the number of staves in a part.
   pub staves: Option<Staves>,
+  /// The [PartSymbol] element specifies the symbol used to indicate a part.
   pub part_symbol: Option<PartSymbol>,
+  /// The [Instruments] element specifies the number of instruments used in a part.
   pub instruments: Option<Instruments>,
+  /// The [Clef] element specifies the clef used in a part.
   pub clef: Vec<Clef>,
+  /// The [StaffDetails] element specifies the staff type and tuning for a part.
   pub staff_details: Vec<StaffDetails>,
+  /// The [Transpose] element specifies the transposition of a part.
   pub transpose: Vec<Transpose>,
+  /// The [ForPart] element specifies the part to which a direction applies.
   pub for_part: Vec<ForPart>,
+  /// The [Directive] element specifies editorial information or lyrics content.
   pub directive: Vec<Directive>,
+  /// The [MeasureStyle] element specifies the appearance of a measure.
   pub measure_style: Vec<MeasureStyle>,
 }
 

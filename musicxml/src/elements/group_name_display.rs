@@ -10,9 +10,12 @@ pub struct GroupNameDisplayAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// Contents of the [GroupNameDisplay] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct GroupNameDisplayContents {
+  /// The [DisplayText] element specifies the text to display for the group name.
   pub display_text: DisplayText,
+  /// The [AccidentalText] element specifies the accidental to display for the group name.
   pub accidental_text: AccidentalText,
 }
 

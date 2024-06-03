@@ -10,9 +10,12 @@ pub struct NumeralKeyAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// Contents of the [NumeralKey] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct NumeralKeyContents {
+  /// The [NumeralFifths] element specifies the number of fifths in the key signature of the numeral.
   pub numeral_fifths: NumeralFifths,
+  /// The [NumeralMode] element specifies the mode of the key signature of the numeral.
   pub numeral_mode: NumeralMode,
 }
 

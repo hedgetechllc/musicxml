@@ -2,9 +2,12 @@ use super::{LeftMargin, RightMargin};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [SystemMargins] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct SystemMarginsContents {
+  /// The [LeftMargin] element specifies the left system margin.
   pub left_margin: LeftMargin,
+  /// The [RightMargin] element specifies the right system margin.
   pub right_margin: RightMargin,
 }
 

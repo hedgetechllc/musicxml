@@ -13,15 +13,24 @@ pub struct ScorePartwiseAttributes {
   pub version: Option<Token>,
 }
 
+/// Contents of the [ScorePartwise] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ScorePartwiseContents {
+  /// The [Work] element specifies the work title and opus number for the score.
   pub work: Option<Work>,
+  /// The [MovementNumber] element specifies the movement number for the score.
   pub movement_number: Option<MovementNumber>,
+  /// The [MovementTitle] element specifies the movement title for the score.
   pub movement_title: Option<MovementTitle>,
+  /// The [Identification] element specifies the creators of the score.
   pub identification: Option<Identification>,
+  /// The [Defaults] element specifies the default values for the score.
   pub defaults: Option<Defaults>,
+  /// The [Credit] element specifies the credit for the score.
   pub credit: Vec<Credit>,
+  /// The [PartList] element specifies the part list for the score.
   pub part_list: PartList,
+  /// The [Part] element contains the parts for the score.
   pub part: Vec<Part>,
 }
 

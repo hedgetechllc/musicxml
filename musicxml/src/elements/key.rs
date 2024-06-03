@@ -43,25 +43,40 @@ pub struct KeyAttributes {
   pub relative_y: Option<Tenths>,
 }
 
+/// Contents of the [ExplicitKeyContents] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ExplicitKeyContents {
+  /// The [Cancel] element indicates the cancellation of a previous key signature.
   pub cancel: Option<Cancel>,
+  /// The [Fifths] element represents the number of flats or sharps in the key signature.
   pub fifths: Fifths,
+  /// The [Mode] element represents the mode of the key signature.
   pub mode: Option<Mode>,
+  /// The [KeyOctave] element represents the octave of the key signature.
   pub key_octave: Vec<KeyOctave>,
 }
 
+/// Contents of the [RelativeKeyContents] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct RelativeKeyContents {
+  /// The [KeyStep] element represents the pitch step of the key signature.
   pub key_step: KeyStep,
+  /// The [KeyAlter] element represents the alteration of the key signature.
   pub key_alter: KeyAlter,
+  /// The [KeyAccidental] element represents the accidental of the key signature.
   pub key_accidental: Option<KeyAccidental>,
+  /// The [KeyOctave] element represents the octave of the key signature.
   pub key_octave: Vec<KeyOctave>,
 }
 
+/// Contents of the [Key] element.
+/// 
+/// The [Key] element may contain either [ExplicitKeyContents] or [RelativeKeyContents].
 #[derive(Debug, PartialEq, Eq)]
 pub enum KeyContents {
+  /// The [ExplicitKeyContents] element represents a key signature with a specified number of flats or sharps.
   Explicit(ExplicitKeyContents),
+  /// The [RelativeKeyContents] element represents a key signature with a specified pitch step and alteration.
   Relative(RelativeKeyContents),
 }
 

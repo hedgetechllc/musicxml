@@ -2,10 +2,14 @@ use super::{NumeralAlter, NumeralKey, NumeralRoot};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Numeral] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct NumeralContents {
+  /// The [NumeralRoot] element specifies the root of the Roman numeral or Nashville number.
   pub numeral_root: NumeralRoot,
+  /// The [NumeralAlter] element specifies the alteration of the Roman numeral or Nashville number.
   pub numeral_alter: Option<NumeralAlter>,
+  /// The [NumeralKey] element specifies the key of the Roman numeral or Nashville number.
   pub numeral_key: Option<NumeralKey>,
 }
 

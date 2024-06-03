@@ -10,9 +10,12 @@ pub struct PartNameDisplayAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// Contents of the [PartNameDisplay] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PartNameDisplayContents {
+  /// The [DisplayText] element specifies the text to display for the part name.
   pub display_text: Option<DisplayText>,
+  /// The [AccidentalText] element specifies the accidental to display for the part name.
   pub accidental_text: Option<AccidentalText>,
 }
 

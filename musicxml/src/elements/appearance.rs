@@ -2,12 +2,18 @@ use super::{Distance, Glyph, LineWidth, NoteSize, OtherAppearance};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Appearance] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct AppearanceContents {
+  /// The [LineWidth] element specifies the width of a line type in tenths.
   pub line_width: Vec<LineWidth>,
+  /// The [NoteSize] element specifies the size of notes in a score.
   pub note_size: Vec<NoteSize>,
+  /// The [Distance] element specifies the distance between two elements in tenths.
   pub distance: Vec<Distance>,
+  /// The [Glyph] element specifies the SMuFL glyph name for a character in a music font.
   pub glyph: Vec<Glyph>,
+  /// The [OtherAppearance] element is used to define any appearance attributes not yet supported in the MusicXML format.
   pub other_appearance: Vec<OtherAppearance>,
 }
 

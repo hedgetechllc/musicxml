@@ -2,8 +2,10 @@ use super::MeasureDistance;
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [MeasureLayout] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct MeasureLayoutContents {
+  /// The [MeasureDistance] element includes the horizontal distance from the previous measure.
   pub measure_distance: Option<MeasureDistance>,
 }
 

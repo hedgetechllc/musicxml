@@ -2,8 +2,10 @@ use super::MiscellaneousField;
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Miscellaneous] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct MiscellaneousContents {
+  /// The [MiscellaneousField] element specifies a part of the metadata.
   pub miscellaneous_field: Vec<MiscellaneousField>,
 }
 

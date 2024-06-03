@@ -23,11 +23,18 @@ pub struct MeasureStyleAttributes {
   pub number: Option<StaffNumber>,
 }
 
+/// Contents of the [MeasureStyle] element.
+/// 
+/// The [MeasureStyle] element may contain either a [MultipleRest], [MeasureRepeat], [BeatRepeat], or [Slash].
 #[derive(Debug, PartialEq, Eq)]
 pub enum MeasureStyleContents {
+  /// The [MultipleRest] element indicates a rest that spans multiple measures.
   MultipleRest(MultipleRest),
+  /// The [MeasureRepeat] element indicates a measure that is repeated multiple times.
   MeasureRepeat(MeasureRepeat),
+  /// The [BeatRepeat] element indicates a single repeated beat.
   BeatRepeat(BeatRepeat),
+  /// The [Slash] element indicates that a slash notation should be used.
   Slash(Slash),
 }
 

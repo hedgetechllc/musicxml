@@ -70,34 +70,62 @@ pub struct DynamicsAttributes {
   pub valign: Option<Valign>,
 }
 
+/// The [DynamicsType] element specifies all possible dynamics available for use in a [Dynamics] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
-pub enum DynamicsContents {
+pub enum DynamicsType {
+  /// The [P] element represents the piano dynamic.
   P(P),
+  /// The [Pp] element represents the pianissimo dynamic.
   Pp(Pp),
+  /// The [Ppp] element represents the pianississimo dynamic.
   Ppp(Ppp),
+  /// The [Pppp] element represents the pianissississimo dynamic.
   Pppp(Pppp),
+  /// The [Ppppp] element represents the pianississississimo dynamic.
   Ppppp(Ppppp),
+  /// The [Pppppp] element represents the pianissississississimo dynamic.
   Pppppp(Pppppp),
+  /// The [F] element represents the forte dynamic.
   F(F),
+  /// The [Ff] element represents the fortissimo dynamic.
   Ff(Ff),
+  /// The [Fff] element represents the fortississimo dynamic.
   Fff(Fff),
+  /// The [Ffff] element represents the fortissississimo dynamic.
   Ffff(Ffff),
+  /// The [Fffff] element represents the fortississississimo dynamic.
   Fffff(Fffff),
+  /// The [Ffffff] element represents the fortissississississimo dynamic.
   Ffffff(Ffffff),
+  /// The [Mp] element represents the mezzo-piano dynamic.
   Mp(Mp),
+  /// The [Mf] element represents the mezzo-forte dynamic.
   Mf(Mf),
+  /// The [Sf] element represents the sforzando dynamic.
   Sf(Sf),
+  /// The [Sfp] element represents the sforzando-piano dynamic.
   Sfp(Sfp),
+  /// The [Sfpp] element represents the sforzando-pianissimo dynamic.
   Sfpp(Sfpp),
+  /// The [Fz] element represents the fortepiano dynamic.
   Fp(Fp),
+  /// The [Rf] element represents the rinforzando dynamic.
   Rf(Rf),
+  /// The [Rfz] element represents the rinforzando dynamic.
   Rfz(Rfz),
+  /// The [Sfz] element represents the sforzato dynamic.
   Sfz(Sfz),
+  /// The [Sffz] element represents the sforzatissimo dynamic.
   Sffz(Sffz),
+  /// The [Fz] element represents the forzando dynamic.
   Fz(Fz),
+  /// The [N] element represents the niente dynamic.
   N(N),
+  /// The [Pf] element represents the pianoforte dynamic.
   Pf(Pf),
+  /// The [Sfzp] element represents the sforzando-pianissimo dynamic.
   Sfzp(Sfzp),
+  /// The [OtherDynamics] element allows other dynamic marks that are not covered here.
   #[rename("other-dynamics")]
   OtherDynamics(OtherDynamics),
 }
@@ -122,5 +150,5 @@ pub struct Dynamics {
   /// Element-specific attributes
   pub attributes: DynamicsAttributes,
   /// Element-specific content
-  pub content: Vec<DynamicsContents>,
+  pub content: Vec<DynamicsType>,
 }

@@ -2,11 +2,16 @@ use super::{ActualNotes, NormalDot, NormalNotes, NormalType};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [TimeModification] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct TimeModificationContents {
+  /// The [ActualNotes] element specifies the number of notes in the tuplet.
   pub actual_notes: ActualNotes,
+  /// The [NormalNotes] element specifies the number of notes in the normal, in-effect duration.
   pub normal_notes: NormalNotes,
+  /// The [NormalType] element specifies the normal, in-effect note type.
   pub normal_type: Option<NormalType>,
+  /// The [NormalDot] element specifies the normal, in-effect dot.
   pub normal_dot: Vec<NormalDot>,
 }
 

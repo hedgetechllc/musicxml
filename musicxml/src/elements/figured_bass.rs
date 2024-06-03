@@ -73,11 +73,16 @@ pub struct FiguredBassAttributes {
   pub valign: Option<Valign>,
 }
 
+/// Contents of the [FiguredBass] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct FiguredBassContents {
+  /// The [Figure] element represents a single figured bass figure.
   pub figure: Vec<Figure>,
+  /// The [Duration] element is used to indicate changes of figures under a note. Figures are ordered from top to bottom.
   pub duration: Option<Duration>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
 }
 

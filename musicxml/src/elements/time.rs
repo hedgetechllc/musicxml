@@ -65,16 +65,23 @@ pub struct TimeAttributes {
   pub valign: Option<Valign>,
 }
 
+/// The [TimeBeatContents] element specifies the number of beats in a measure and the beat unit.
 #[derive(Debug, PartialEq, Eq)]
 pub struct TimeBeatContents {
+  /// The [Beats] element specifies the number of beats in a measure.
   pub beats: Beats,
+  /// The [BeatType] element specifies the beat unit, as found in the denominator of a time signature.
   pub beat_type: BeatType,
 }
 
+/// Contents of the [Time] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct TimeContents {
+  /// The [TimeBeatContents] element specifies the number of beats in a measure and the beat unit.
   pub beats: Vec<TimeBeatContents>,
+  /// The [Interchangeable] element allows the time signature to be specified but not printed.
   pub interchangeable: Option<Interchangeable>,
+  /// The [SenzaMisura] element specifies that the music is without a time signature.
   pub senza_misura: Option<SenzaMisura>,
 }
 

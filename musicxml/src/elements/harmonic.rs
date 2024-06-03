@@ -41,12 +41,18 @@ pub struct HarmonicAttributes {
   pub relative_y: Option<Tenths>,
 }
 
+/// Contents of the [Harmonic] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct HarmonicContents {
+  /// The [Natural] element indicates natural harmonics.
   pub natural: Option<Natural>,
+  /// The [Artificial] element indicates artificial harmonics.
   pub artificial: Option<Artificial>,
+  /// The [BasePitch] element specifies the pitch of the note without any harmonics.
   pub base_pitch: Option<BasePitch>,
+  /// The [TouchingPitch] element specifies the pitch of the touching note for the harmonic.
   pub touching_pitch: Option<TouchingPitch>,
+  /// The [SoundingPitch] element specifies the pitch of the sounding note for the harmonic.
   pub sounding_pitch: Option<SoundingPitch>,
 }
 

@@ -2,9 +2,12 @@ use super::{PedalAlter, PedalStep};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [PedalTuning] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PedalTuningContents {
+  /// The [PedalStep] element specifies the step of the tuning.
   pub pedal_step: PedalStep,
+  /// The [PedalAlter] element specifies the alteration of the tuning.
   pub pedal_alter: PedalAlter,
 }
 

@@ -14,10 +14,14 @@ pub struct SlashAttributes {
   pub use_stems: Option<YesNo>,
 }
 
+/// Contents of the [Slash] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct SlashContents {
+  /// The [SlashType] element indicates the notation style for the slash notation.
   pub slash_type: Option<SlashType>,
+  /// The [SlashDot] element indicates the presence of a dot in the slash notation.
   pub slash_dot: Vec<SlashDot>,
+  /// The [ExceptVoice] element indicates that the slash notation is for a different voice.
   pub except_voice: Vec<ExceptVoice>,
 }
 

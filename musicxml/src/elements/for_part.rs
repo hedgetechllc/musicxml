@@ -14,9 +14,12 @@ pub struct ForPartAttributes {
   pub number: Option<StaffNumber>,
 }
 
+/// Contents of the [ForPart] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ForPartContents {
+  /// The [PartClef] element is used to specify the clef used in a part.
   pub part_clef: Option<PartClef>,
+  /// The [PartTranspose] element is used to specify the transposition of a part.
   pub part_transpose: PartTranspose,
 }
 

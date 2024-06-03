@@ -13,28 +13,46 @@ pub struct ArticulationsAttributes {
   pub id: Option<Id>,
 }
 
+/// The [ArticulationsType] element specifies all possible articulations and accents available for use in an [Articulations] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub enum ArticulationsType {
+  /// The [Accent] element indicates a regular accent mark.
   Accent(Accent),
+  /// The [StrongAccent] element indicates a strong accent mark.
   #[rename("strong-accent")]
   StrongAccent(StrongAccent),
+  /// The [Staccato] element indicates a staccato articulation mark.
   Staccato(Staccato),
+  /// The [Tenuto] element indicates a tenuto articulation mark.
   Tenuto(Tenuto),
+  /// The [DetachedLegato] element indicates a detached legato articulation mark.
   #[rename("detached-legato")]
   DetachedLegato(DetachedLegato),
+  /// The [Staccatissimo] element indicates a staccatissimo articulation mark.
   Staccatissimo(Staccatissimo),
+  /// The [Spiccato] element indicates a spiccato articulation
   Spiccato(Spiccato),
+  /// The [Scoop] element indicates a scoop articulation.
   Scoop(Scoop),
+  /// The [Plop] element indicates a plop articulation.
   Plop(Plop),
+  /// The [Doit] element indicates a doit articulation.
   Doit(Doit),
+  /// The [Falloff] element indicates a falloff articulation.
   Falloff(Falloff),
+  /// The [BreathMark] element indicates a breath mark.
   #[rename("breath-mark")]
   BreathMark(BreathMark),
+  /// The [Caesura] element indicates a caesura.
   Caesura(Caesura),
+  /// The [Stress] element indicates a stress articulation.
   Stress(Stress),
+  /// The [Unstress] element indicates an unstress articulation.
   Unstress(Unstress),
+  /// The [SoftAccent] element indicates a soft accent mark.
   #[rename("soft-accent")]
   SoftAccent(SoftAccent),
+  /// The [OtherArticulation] element indicates an articulation not yet supported in the MusicXML format.
   #[rename("other-articulation")]
   OtherArticulation(OtherArticulation),
 }

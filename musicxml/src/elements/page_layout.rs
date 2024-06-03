@@ -2,10 +2,14 @@ use super::{PageHeight, PageMargins, PageWidth};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [PageLayout] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PageLayoutContents {
+  /// The [PageHeight] element specifies the height of the page.
   pub page_height: Option<PageHeight>,
+  /// The [PageWidth] element specifies the width of the page.
   pub page_width: Option<PageWidth>,
+  /// The [PageMargins] element specifies the margins around the page.
   pub page_margins: Vec<PageMargins>,
 }
 

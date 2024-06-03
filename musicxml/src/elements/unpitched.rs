@@ -2,9 +2,12 @@ use super::{DisplayOctave, DisplayStep};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Unpitched] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct UnpitchedContents {
+  /// The [DisplayStep] element specifies the pitch step of the unpitched note.
   pub display_step: DisplayStep,
+  /// The [DisplayOctave] element specifies the pitch octave of the unpitched note.
   pub display_octave: DisplayOctave,
 }
 

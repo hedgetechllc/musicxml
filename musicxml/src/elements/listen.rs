@@ -2,10 +2,14 @@ use super::{Assess, OtherListen, Wait};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// The [ListenContents] element specifies all possible options available for use in a [Listen] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub enum ListenContents {
+  /// The [Assess] element specifies the assessment of a performance.
   Assess(Assess),
+  /// The [Wait] element specifies the amount of time to wait before continuing.
   Wait(Wait),
+  /// The [OtherListen] element specifies other types of listening.
   #[rename("other-listen")]
   OtherListen(OtherListen),
 }

@@ -13,18 +13,30 @@ pub struct ScorePartAttributes {
   pub id: Id,
 }
 
+/// Contents of the [ScorePart] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ScorePartContents {
+  /// The [Identification] element contains information about the creator, rights, and encoding of the part.
   pub identification: Option<Identification>,
-  pub part_linke: Vec<PartLink>,
+  /// The [PartLink] element specifies a link to a part group within a score.
+  pub part_link: Vec<PartLink>,
+  /// The [PartName] element specifies the name of the part.
   pub part_name: PartName,
+  /// The [PartNameDisplay] element specifies how the part name should be displayed.
   pub part_name_display: Option<PartNameDisplay>,
+  /// The [PartAbbreviation] element specifies the abbreviation for the part name.
   pub part_abbreviation: Option<PartAbbreviation>,
+  /// The [PartAbbreviationDisplay] element specifies how the part abbreviation should be displayed.
   pub part_abbreviation_display: Option<PartAbbreviationDisplay>,
+  /// The [Group] element allows for multiple parts within a score to be grouped together for a variety of purposes.
   pub group: Vec<Group>,
+  /// The [ScoreInstrument] element represents a single instrument within a [ScorePart].
   pub score_instrument: Vec<ScoreInstrument>,
+  /// The [Player] element allows for multiple players per [ScorePart] for use in listening applications.
   pub player: Vec<Player>,
+  /// The [MidiDevice] element specifies MIDI 1.0 device settings.
   pub midi_device: Vec<MidiDevice>,
+  /// The [MidiInstrument] element defines MIDI 1.0 instrument playback.
   pub midi_instrument: Vec<MidiInstrument>,
 }
 

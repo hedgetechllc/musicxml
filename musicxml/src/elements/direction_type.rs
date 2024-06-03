@@ -14,31 +14,56 @@ pub struct DirectionTypeAttributes {
   pub id: Option<Id>,
 }
 
+/// The [DirectionTypeContents] element specifies all possible options available for use in a [DirectionType] element.
 #[derive(Debug, PartialEq, Eq)]
 pub enum DirectionTypeContents {
+  /// The [Rehearsal] element indicates a rehearsal mark.
   Rehearsal(Vec<Rehearsal>),
+  /// The [Segno] element indicates a segno mark.
   Segno(Vec<Segno>),
+  /// The [Coda] element indicates a coda mark.
   Coda(Vec<Coda>),
+  /// The [Words] element specifies a text direction.
   Words(Vec<Words>),
+  /// The [Symbol] element specifies a musical symbol.
   Symbol(Vec<Symbol>),
+  /// The [Wedge] element specifies a wedge symbol.
   Wedge(Wedge),
+  /// The [Dynamics] element specifies a dynamic mark.
   Dynamics(Vec<Dynamics>),
+  /// The [Dashes] element specifies a dashed line.
   Dashes(Dashes),
+  /// The [Bracket] element specifies a bracket.
   Bracket(Bracket),
+  /// The [Pedal] element specifies a piano pedal mark.
   Pedal(Pedal),
+  /// The [Metronome] element specifies a metronome mark.
   Metronome(Metronome),
+  /// The [OctaveShift] element specifies an octave shift.
   OctaveShift(OctaveShift),
+  /// The [HarpPedals] element specifies harp pedal settings.
   HarpPedals(HarpPedals),
+  /// The [Damp] element specifies a damp mark.
   Damp(Damp),
+  /// The [DampAll] element specifies a damp all mark.
   DampAll(DampAll),
+  /// The [Eyeglasses] element specifies eyeglasses.
   Eyeglasses(Eyeglasses),
+  /// The [StringMute] element specifies a string mute.
   StringMute(StringMute),
+  /// The [Scordatura] element specifies scordatura tuning.
   Scordatura(Scordatura),
+  /// The [Image] element specifies an image.
   Image(Image),
+  /// The [PrincipalVoice] element specifies the principal voice.
   PrincipalVoice(PrincipalVoice),
+  /// The [Percussion] element specifies percussion notation.
   Percussion(Vec<Percussion>),
+  /// The [AccordionRegistration] element specifies accordion registration.
   AccordionRegistration(AccordionRegistration),
+  /// The [StaffDivide] element specifies a staff divide.
   StaffDivide(StaffDivide),
+  /// The [OtherDirection] element specifies a direction not yet defined.
   OtherDirection(OtherDirection),
 }
 

@@ -64,24 +64,36 @@ pub struct MetronomeAttributes {
   pub valign: Option<Valign>,
 }
 
+/// The [BeatBasedEquation] element specifies the metronome mark in terms of beat units.
 #[derive(Debug, PartialEq, Eq)]
 pub struct BeatBasedEquation {
+  /// The [BeatUnit] element specifies the beat unit for the metronome mark.
   pub beat_unit: BeatUnit,
+  /// The [BeatUnitDot] element specifies the presence of a dot in the metronome mark.
   pub beat_unit_dot: Vec<BeatUnitDot>,
+  /// The [BeatUnitTied] element specifies the presence of a tie in the metronome mark.
   pub beat_unit_tied: Vec<BeatUnitTied>,
 }
 
+/// The [BeatEquation] element specifies the metronome mark in terms of beats per minute or beat units.
 #[derive(Debug, PartialEq, Eq)]
 pub enum BeatEquation {
+  /// The [PerMinute] element specifies the metronome mark in terms of beats per minute.
   BPM(PerMinute),
+  /// The [BeatBasedEquation] element specifies the metronome mark in terms of beat units.
   Beats(BeatBasedEquation),
 }
 
+/// The [BeatBased] element specifies the metronome mark in terms of beat units.
 #[derive(Debug, PartialEq, Eq)]
 pub struct BeatBased {
+  /// The [BeatUnit] element specifies the beat unit for the metronome mark.
   pub beat_unit: BeatUnit,
+  /// The [BeatUnitDot] element specifies the presence of a dot in the metronome mark.
   pub beat_unit_dot: Vec<BeatUnitDot>,
+  /// The [BeatUnitTied] element specifies the presence of a tie in the metronome mark.
   pub beat_unit_tied: Vec<BeatUnitTied>,
+  /// The [BeatEquation] element specifies the metronome mark in terms of beats per minute or beat units.
   pub equals: BeatEquation,
 }
 
@@ -169,16 +181,23 @@ impl ContentSerializer for BeatBased {
   }
 }
 
+/// The [AdditionalMetronomeBasedContents] element specifies additional metronome marks.
 #[derive(Debug, PartialEq, Eq)]
 pub struct AdditionalMetronomeBasedContents {
+  /// The [MetronomeRelation] element specifies the relationship between additional metronome marks.
   pub metronome_relation: MetronomeRelation,
+  /// The [MetronomeNote] element defines the appearance of a note within a metric relationship mark.
   pub metronome_note: Vec<MetronomeNote>,
 }
 
+/// The [MetronomeBased] element specifies the metronome mark in terms of beat units.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct MetronomeBased {
+  /// The [MetronomeArrows] element specifies the appearance of arrows in the metronome mark.
   pub metronome_arrows: Option<MetronomeArrows>,
+  /// The [MetronomeNote] element defines the appearance of a note within a metric relationship mark.
   pub metronome_note: Vec<MetronomeNote>,
+  /// The [MetronomeRelation] element specifies the relationship between additional metronome marks.
   pub additional: Option<AdditionalMetronomeBasedContents>,
 }
 
@@ -229,9 +248,14 @@ impl ContentSerializer for MetronomeBased {
   }
 }
 
+/// Contents of the [Metronome] element.
+/// 
+/// The [Metronome] element may contain either [BeatBased] or [MetronomeBased] contents.
 #[derive(Debug, PartialEq, Eq)]
 pub enum MetronomeContents {
+  /// The [BeatBased] element specifies the metronome mark in terms of beat units.
   BeatBased(BeatBased),
+  /// The [MetronomeBased] element specifies the metronome mark in terms of metronome units.
   MetronomeBased(MetronomeBased),
 }
 

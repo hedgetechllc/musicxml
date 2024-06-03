@@ -19,15 +19,24 @@ pub struct DirectionAttributes {
   pub system: Option<SystemRelation>,
 }
 
+/// Contents of the [Direction] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct DirectionContents {
+  /// The [DirectionType] element specifies the type of the direction.
   pub direction_type: Vec<DirectionType>,
+  /// The [Offset] element is used to indicate the amount of pitch shift for the direction.
   pub offset: Option<Offset>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
+  /// The [Voice] element specifies the voice to which a direction applies.
   pub voice: Option<Voice>,
+  /// The [Staff] element specifies the staff to which a direction applies.
   pub staff: Option<Staff>,
+  /// The [Sound] element specifies playback sound information.
   pub sound: Option<Sound>,
+  /// The [Listening] element specifies the MIDI device that should be used for playback.
   pub listening: Option<Listening>,
 }
 

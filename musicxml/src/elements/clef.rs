@@ -55,10 +55,14 @@ pub struct ClefAttributes {
   pub size: Option<SymbolSize>,
 }
 
+/// Contents of the [Clef] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ClefContents {
+  /// The [Sign] element represents the clef symbol.
   pub sign: Sign,
+  /// The [Line] element is used to specify the line number of the staff associated with a clef.
   pub line: Option<Line>,
+  /// The [ClefOctaveChange] element is used to indicate the octave change for the clef.
   pub clef_octave_change: Option<ClefOctaveChange>,
 }
 

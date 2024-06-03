@@ -2,9 +2,12 @@ use super::{Millimeters, Tenths};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Scaling] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct ScalingContents {
+  /// The [Millimeters] element specifies the number of millimeters that are equivalent to the scaling number.
   pub millimeters: Millimeters,
+  /// The [Tenths] element specifies the number of tenths that are equivalent to the scaling number.
   pub tenths: Tenths,
 }
 

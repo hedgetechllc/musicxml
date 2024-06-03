@@ -10,10 +10,14 @@ pub struct BassAttributes {
   pub arrangement: Option<HarmonyArrangement>,
 }
 
+/// Contents of the [Bass] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct BassContents {
+  /// The [BassSeparator] element specifies the symbol used to indicate a bass note in popular music chord symbols.
   pub bass_separator: Option<BassSeparator>,
+  /// The [BassStep] element specifies the step of the bass note.
   pub bass_step: BassStep,
+  /// The [BassAlter] element specifies the alteration of the bass note.
   pub bass_alter: Option<BassAlter>,
 }
 

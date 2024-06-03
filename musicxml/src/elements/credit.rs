@@ -15,23 +15,34 @@ pub struct CreditAttributes {
   pub page: Option<PositiveInteger>,
 }
 
+/// Contents of the [CreditImage] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct CreditImageContents {
+  /// The [CreditImage] element specifies the appearance of an image within a credit.
   pub credit_image: CreditImage,
 }
 
+/// Contents of the [CreditTextSubcontents] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct CreditTextSubcontents {
+  /// The [Link] element specifies a hyperlink to a URL.
   pub link: Vec<Link>,
+  /// The [Bookmark] element specifies a unique ID for a bookmark.
   pub bookmark: Vec<Bookmark>,
+  /// The [CreditWords] element specifies the text of a credit.
   pub credit_words: Option<CreditWords>,
+  /// The [CreditSymbol] element specifies a musical symbol within a credit.
   pub credit_symbol: Option<CreditSymbol>,
 }
 
+/// Contents of the [CreditText] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct CreditTextContents {
+  /// The [CreditWords] element specifies the text of a credit.
   pub credit_words: Option<CreditWords>,
+  /// The [CreditSymbol] element specifies a musical symbol within a credit.
   pub credit_symbol: Option<CreditSymbol>,
+  /// Additional [Link], [Bookmark], [CreditWords], and [CreditSymbol] elements.
   pub additional: Vec<CreditTextSubcontents>,
 }
 
@@ -76,17 +87,26 @@ impl ContentDeserializer for CreditTextContents {
   }
 }
 
+/// Contents of the [CreditSubcontents] element.
 #[derive(Debug, PartialEq, Eq)]
 pub enum CreditSubcontents {
+  /// The [CreditImageContents] element specifies the appearance of an image within a credit.
   Image(CreditImageContents),
+  /// The [CreditTextContents] element specifies the text of a credit.
   Text(CreditTextContents),
 }
 
+/// Contents of the [Credit] element.
 #[derive(Debug, PartialEq, Eq)]
 pub struct CreditContents {
+  /// The [CreditType] element specifies the type of text that appears in a credit.
   pub credit_type: Vec<CreditType>,
+  /// The [Link] element specifies a hyperlink to a URL.
   pub link: Vec<Link>,
+  /// The [Bookmark] element specifies a unique ID for a bookmark.
   pub bookmark: Vec<Bookmark>,
+  /// The [CreditSubcontents] element specifies the appearance of the title, composer, arranger, lyricist, copyright,
+  /// dedication, and other text, symbols, and graphics that commonly appear on the first page of a score.
   pub credit: CreditSubcontents,
 }
 

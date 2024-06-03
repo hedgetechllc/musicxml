@@ -2,10 +2,14 @@ use super::{Duration, Footnote, Level};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Backup] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct BackupContents {
+  /// The [Duration] element specifies the number of divisions to move back.
   pub duration: Duration,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
 }
 

@@ -77,17 +77,25 @@ pub struct NoteAttributes {
   pub time_only: Option<TimeOnly>,
 }
 
+/// The [AudibleType] element contains whether the note is a pitch, unpitched, or rest.
 #[derive(Debug, PartialEq, Eq)]
 pub enum AudibleType {
+  /// The [Pitch] element contains the pitch of a note.
   Pitch(Pitch),
+  /// The [Unpitched] element contains the unpitched information of a note.
   Unpitched(Unpitched),
+  /// The [Rest] element contains the rest information of a note.
   Rest(Rest),
 }
 
+/// The [GraceNormalInfo] element contains the actual data for a normal grace note.
 #[derive(Debug, PartialEq, Eq)]
 pub struct GraceNormalInfo {
+  /// The [Chord] element indicates that this note is a chord note.
   pub chord: Option<Chord>,
+  /// The [AudibleType] element contains whether the note is a pitch, unpitched, or rest.
   pub audible: AudibleType,
+  /// The [Tie] element is used to specify the tie of a note.
   pub tie: Vec<Tie>,
 }
 
@@ -136,10 +144,14 @@ impl ContentSerializer for GraceNormalInfo {
   }
 }
 
+/// The [GraceCueInfo] element contains the actual data for a cue grace note.
 #[derive(Debug, PartialEq, Eq)]
 pub struct GraceCueInfo {
+  /// The [Cue] element indicates that this note is a cue note.
   pub cue: Cue,
+  /// The [Chord] element indicates that this note is a chord note.
   pub chord: Option<Chord>,
+  /// The [AudibleType] element contains whether the note is a pitch, unpitched, or rest.
   pub audible: AudibleType,
 }
 
@@ -190,15 +202,21 @@ impl ContentSerializer for GraceCueInfo {
   }
 }
 
+/// The [GraceType] element contains the actual data for either a cue grace note or a normal grace note.
 #[derive(Debug, PartialEq, Eq)]
 pub enum GraceType {
+  /// The [GraceCueInfo] element contains the actual data for a cue grace note.
   Cue(GraceCueInfo),
+  /// The [GraceNormalInfo] element contains the actual data for a normal grace note.
   Normal(GraceNormalInfo),
 }
 
+/// The [GraceInfo] element contains the actual data for a grace note.
 #[derive(Debug, PartialEq, Eq)]
 pub struct GraceInfo {
+  /// The [Grace] element indicates that this note is a grace note.
   pub grace: Grace,
+  /// The [GraceType] element contains the actual data for the grace note.
   pub info: GraceType,
 }
 
@@ -227,11 +245,16 @@ impl ContentSerializer for GraceInfo {
   }
 }
 
+/// The [CueInfo] element contains the actual data for a cue note.
 #[derive(Debug, PartialEq, Eq)]
 pub struct CueInfo {
+  /// The [Cue] element indicates that this note is a cue note.
   pub cue: Cue,
+  /// The [Chord] element indicates that this note is a chord note.
   pub chord: Option<Chord>,
+  /// The [AudibleType] element contains whether the note is a pitch, unpitched, or rest.
   pub audible: AudibleType,
+  /// The [Duration] element indicates the duration of the note.
   pub duration: Duration,
 }
 
@@ -290,11 +313,16 @@ impl ContentSerializer for CueInfo {
   }
 }
 
+/// The [NormalInfo] element contains the actual data for a normal note.
 #[derive(Debug, PartialEq, Eq)]
 pub struct NormalInfo {
+  /// The [Chord] element indicates that this note is a chord note.
   pub chord: Option<Chord>,
+  /// The [AudibleType] element contains whether the note is a pitch, unpitched, or rest.
   pub audible: AudibleType,
+  /// The [Duration] element indicates the duration of the note.
   pub duration: Duration,
+  /// The [Tie] element is used to specify the tie of a note.
   pub tie: Vec<Tie>,
 }
 
@@ -351,32 +379,55 @@ impl ContentSerializer for NormalInfo {
   }
 }
 
+/// The [NoteType] element contains the actual data for a note.
 #[derive(Debug, PartialEq, Eq)]
 pub enum NoteType {
+  /// The [GraceInfo] element contains the actual data for a grace note.
   Grace(GraceInfo),
+  /// The [CueInfo] element contains the actual data for a cue note.
   Cue(CueInfo),
+  /// The [NormalInfo] element contains the actual data for a normal note.
   Normal(NormalInfo),
 }
 
+/// Contents of the [Note] element.
 #[derive(Debug, PartialEq, Eq)]
 pub struct NoteContents {
+  /// The [NoteType] element contains the actual data for the note.
   pub info: NoteType,
+  /// The [Instrument] element is used to specify the instrument for a note.
   pub instrument: Vec<Instrument>,
+  /// The [Footnote] element is used to specify editorial information or analysis.
   pub footnote: Option<Footnote>,
+  /// The [Level] element is used to specify editorial information or analysis.
   pub level: Option<Level>,
+  /// The [Voice] element is used to specify the voice of a note.
   pub voice: Option<Voice>,
+  /// The [Type] element is used to specify the type of a note.
   pub r#type: Option<Type>,
+  /// The [Dot] element is used to specify the presence of a dot on a note.
   pub dot: Vec<Dot>,
+  /// The [Accidental] element is used to specify the accidental of a note.
   pub accidental: Option<Accidental>,
+  /// The [TimeModification] element is used to specify the time modification of a note.
   pub time_modification: Option<TimeModification>,
+  /// The [Stem] element is used to specify the stem of a note.
   pub stem: Option<Stem>,
+  /// The [Notehead] element is used to specify the notehead of a note.
   pub notehead: Option<Notehead>,
+  /// The [NoteheadText] element is used to specify the notehead text of a note.
   pub notehead_text: Option<NoteheadText>,
+  /// The [Staff] element is used to specify the staff of a note.
   pub staff: Option<Staff>,
+  /// The [Beam] element is used to specify the beam of a note.
   pub beam: Vec<Beam>,
+  /// The [Notations] element is used to specify the notations of a note.
   pub notations: Vec<Notations>,
+  /// The [Lyric] element is used to specify the lyric of a note.
   pub lyric: Vec<Lyric>,
+  /// The [Play] element is used to specify the play of a note.
   pub play: Option<Play>,
+  /// The [Listen] element is used to specify the listen of a note.
   pub listen: Option<Listen>,
 }
 

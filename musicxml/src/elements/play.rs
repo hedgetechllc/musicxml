@@ -10,11 +10,16 @@ pub struct PlayAttributes {
   pub id: Option<IdRef>,
 }
 
+/// Contents of the [Play] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PlayContents {
+  /// The [Ipa] element specifies International Phonetic Alphabet symbols for vocal music.
   pub ipa: Option<Ipa>,
+  /// The [Mute] element specifies muting techniques to be used in conjunction with the [InstrumentSound][super::InstrumentSound] element.
   pub mute: Option<Mute>,
+  /// The [SemiPitched] element specifies pitch modifications to be used in conjunction with the [InstrumentSound][super::InstrumentSound] element.
   pub semi_pitched: Option<SemiPitched>,
+  /// The [OtherPlay] element specifies other playback techniques to be used in conjunction with the [InstrumentSound][super::InstrumentSound] element.
   pub other_play: Option<OtherPlay>,
 }
 

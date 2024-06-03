@@ -2,11 +2,16 @@ use super::{Chromatic, Diatonic, Double, OctaveChange};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [PartTranspose] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PartTransposeContents {
+  /// The [Diatonic] element specifies the number of diatonic steps up or down from the written key signature.
   pub diatonic: Option<Diatonic>,
+  /// The [Chromatic] element specifies the number of chromatic steps up or down from the written key signature.
   pub chromatic: Chromatic,
+  /// The [OctaveChange] element specifies the number of octaves up or down from the written key signature.
   pub octave_change: Option<OctaveChange>,
+  /// The [Double] element specifies the number of double accidentals up or down from the written key signature.
   pub double: Option<Double>,
 }
 

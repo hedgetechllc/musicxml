@@ -2,9 +2,12 @@ use super::{LeftDivider, RightDivider};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [SystemDividers] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct SystemDividersContents {
+  /// The [LeftDivider] element indicates the presence or absence of a system divider on the left side of the page.
   pub left_divider: LeftDivider,
+  /// The [RightDivider] element indicates the presence or absence of a system divider on the right side of the page.
   pub right_divider: RightDivider,
 }
 

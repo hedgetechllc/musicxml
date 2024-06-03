@@ -2,9 +2,12 @@ use super::{BeatUnit, BeatUnitDot};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [BeatUnitTied] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct BeatUnitTiedContents {
+  /// The [BeatUnit] element specifies the beat unit for a metronome mark.
   pub beat_unit: BeatUnit,
+  /// The [BeatUnitDot] element specifies the presence of a dot in the beat unit.
   pub beat_unit_dot: Vec<BeatUnitDot>,
 }
 

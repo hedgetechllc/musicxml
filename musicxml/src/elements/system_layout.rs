@@ -2,11 +2,16 @@ use super::{SystemDistance, SystemDividers, SystemMargins, TopSystemDistance};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [SystemLayout] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct SystemLayoutContents {
+  /// The [SystemMargins] element specifies the left and right margins of the system.
   pub system_margins: Option<SystemMargins>,
+  /// The [SystemDistance] element specifies the vertical distance between this system and the previous system.
   pub system_distance: Option<SystemDistance>,
+  /// The [TopSystemDistance] element specifies the vertical distance from the top of the page to the top of the system.
   pub top_system_distance: Option<TopSystemDistance>,
+  /// The [SystemDividers] element specifies the presence or absence of dividers before the system.
   pub system_dividers: Option<SystemDividers>,
 }
 

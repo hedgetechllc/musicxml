@@ -10,9 +10,12 @@ pub struct PartAbbreviationDisplayAttributes {
   pub print_object: Option<YesNo>,
 }
 
+/// Contents of the [PartAbbreviationDisplay] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PartAbbreviationDisplayContents {
+  /// The [DisplayText] element specifies the text to display for the part abbreviation.
   pub display_text: Option<DisplayText>,
+  /// The [AccidentalText] element specifies the accidental to display for the part abbreviation.
   pub accidental_text: Option<AccidentalText>,
 }
 

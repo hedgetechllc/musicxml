@@ -59,24 +59,39 @@ pub struct HarmonyAttributes {
   pub r#type: Option<HarmonyType>,
 }
 
+/// Contents of the [HarmonySubcontents] element.
 #[derive(Debug, PartialEq, Eq, ContentSerialize)]
 pub struct HarmonySubcontents {
+  /// The [Root] element specifies the root of a harmony-chord.
   pub root: Option<Root>,
+  /// The [Numeral] element specifies the numeral of a harmony-chord.
   pub numeral: Option<Numeral>,
+  /// The [Function] element specifies the function of a harmony-chord.
   pub function: Option<Function>,
+  /// The [Kind] element specifies the kind of a harmony-chord.
   pub kind: Kind,
+  /// The [Inversion] element specifies the inversion of a harmony-chord.
   pub inversion: Option<Inversion>,
+  /// The [Bass] element specifies the bass of a harmony-chord.
   pub bass: Option<Bass>,
+  /// The [Degree] element specifies the degree of a harmony-chord.
   pub degree: Vec<Degree>,
 }
 
+/// Contents of the [Harmony] element.
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct HarmonyContents {
+  /// The [HarmonySubcontents] element specifies the root, numeral, function, kind, inversion, bass, and degree of a harmony-chord.
   pub harmony: Vec<HarmonySubcontents>,
+  /// The [Frame] element specifies the frame or fretboard diagram used together with a chord symbol.
   pub frame: Option<Frame>,
+  /// The [Offset] element specifies the horizontal position relative to the default position.
   pub offset: Option<Offset>,
+  /// The [Footnote] element specifies editorial information or footnotes.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of the harmony.
   pub level: Option<Level>,
+  /// The [Staff] element specifies the staff number of the harmony.
   pub staff: Option<Staff>,
 }
 

@@ -39,10 +39,14 @@ pub struct HoleAttributes {
   pub relative_y: Option<Tenths>,
 }
 
+/// Contents of the [Hole] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct HoleContents {
+  /// The [HoleType] element specifies the type of hole.
   pub hole_type: Option<HoleType>,
+  /// The [HoleClosed] element represents the symbols used for woodwind and brass fingerings as well as other notations.
   pub hole_closed: HoleClosed,
+  /// The [HoleShape] element specifies the shape of the hole.
   pub hole_shape: Option<HoleShape>,
 }
 

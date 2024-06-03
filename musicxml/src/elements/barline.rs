@@ -27,16 +27,26 @@ pub struct BarlineAttributes {
   pub segno: Option<Token>,
 }
 
+/// Contents of the [Barline] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct BarlineContents {
+  /// The [BarStyle] element indicates the style of the barline.
   pub bar_style: Option<BarStyle>,
+  /// The [Footnote] element specifies editorial information or lyrics content.
   pub footnote: Option<Footnote>,
+  /// The [Level] element specifies the editorial level of a score or part.
   pub level: Option<Level>,
+  /// The [WavyLine] element represents a wavy line symbol.
   pub wavy_line: Option<WavyLine>,
+  /// The [Segno] element indicates a segno sign.
   pub segno: Option<Segno>,
+  /// The [Coda] element indicates a coda sign.
   pub coda: Option<Coda>,
+  /// The [Fermata] element represents a fermata symbol.
   pub fermata: Vec<Fermata>,
+  /// The [Ending] element indicates a multiple ending.
   pub ending: Option<Ending>,
+  /// The [repeat] element specifies a repeat barline.
   pub repeat: Option<Repeat>,
 }
 

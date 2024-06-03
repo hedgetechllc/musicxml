@@ -2,10 +2,14 @@ use super::{Opus, WorkNumber, WorkTitle};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [Work] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct WorkContents {
+  /// The [WorkNumber] element specifies the number of the work.
   pub work_number: Option<WorkNumber>,
+  /// The [WorkTitle] element specifies the title of the work.
   pub work_title: Option<WorkTitle>,
+  /// The [Opus] element specifies the opus number of the work.
   pub opus: Option<Opus>,
 }
 

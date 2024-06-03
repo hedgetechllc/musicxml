@@ -10,9 +10,12 @@ pub struct RestAttributes {
   pub measure: Option<YesNo>,
 }
 
+/// Contents of the [Rest] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct RestContents {
+  /// The [DisplayStep] element specifies the step of the rest.
   pub display_step: Option<DisplayStep>,
+  /// The [DisplayOctave] element specifies the octave of the rest.
   pub display_octave: Option<DisplayOctave>,
 }
 

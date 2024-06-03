@@ -2,11 +2,16 @@ use super::{PartGroup, ScorePart};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// Contents of the [PartList] element.
 #[derive(Debug, PartialEq, Eq)]
 pub struct PartListContents {
+  /// The [PartGroup] element indicates a group of parts that is bracketed together.
   pub part_group: Vec<PartGroup>,
+  /// The [ScorePart] element identifies a part in this score.
   pub score_part: ScorePart,
+  /// Additional [PartGroup] elements.
   pub additional_part_group: Vec<PartGroup>,
+  /// Additional [ScorePart] elements.
   pub additional_score_part: Vec<ScorePart>,
 }
 

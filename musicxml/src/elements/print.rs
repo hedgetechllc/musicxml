@@ -29,14 +29,22 @@ pub struct PrintAttributes {
   pub staff_spacing: Option<Tenths>,
 }
 
+/// Contents of the [Print] element.
 #[derive(Debug, Default, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct PrintContents {
+  /// The [PageLayout] element contains general page layout parameters.
   pub page_layout: Option<PageLayout>,
+  /// The [SystemLayout] element contains general system layout parameters.
   pub system_layout: Option<SystemLayout>,
+  /// The [StaffLayout] element contains general staff layout parameters.
   pub staff_layout: Vec<StaffLayout>,
+  /// The [MeasureLayout] element contains general measure layout parameters.
   pub measure_layout: Option<MeasureLayout>,
+  /// The [MeasureNumbering] element specifies how measure numbers are displayed.
   pub measure_numbering: Option<MeasureNumbering>,
+  /// The [PartNameDisplay] element specifies how a part name is displayed over the course of a piece.
   pub part_name_display: Option<PartNameDisplay>,
+  /// The [PartAbbreviationDisplay] element specifies how a part abbreviation is displayed over the course of a piece.
   pub part_abbreviation_display: Option<PartAbbreviationDisplay>,
 }
 

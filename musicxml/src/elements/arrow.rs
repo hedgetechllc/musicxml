@@ -42,21 +42,32 @@ pub struct ArrowAttributes {
   pub smufl: Option<SmuflGlyphName>,
 }
 
+/// Contents of the [StraightArrowContents] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct StraightArrowContents {
+  /// The [ArrowDirection] element specifies the direction of the arrow.
   pub arrow_direction: ArrowDirection,
+  /// The [ArrowStyle] element specifies the style of the arrow.
   pub arrow_style: Option<ArrowStyle>,
+  /// The [Arrowhead] element specifies the arrowhead style.
   pub arrowhead: Option<Arrowhead>,
 }
 
+/// Contents of the [CircularArrowContents] element.
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct CircularArrowContents {
+  /// The [CircularArrow] element specifies the direction of the circular arrow.
   pub circular_arrow: CircularArrow,
 }
 
+/// Contents of the [Arrow] element.
+/// 
+/// The [Arrow] element may contain either [StraightArrowContents] or [CircularArrowContents].
 #[derive(Debug, PartialEq, Eq)]
 pub enum ArrowContents {
+  /// The [StraightArrowContents] element specifies the direction, style, and arrowhead of a straight arrow.
   Straight(StraightArrowContents),
+  /// The [CircularArrowContents] element specifies the direction of a circular arrow.
   Circular(CircularArrowContents),
 }
 
