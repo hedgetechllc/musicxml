@@ -1,0 +1,14 @@
+[package]
+edition.workspace = true
+name = "musicxml_internal"
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "MusicXML Rust SDK Shared Internal Data Types and Traits"
+documentation.workspace = true
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish.workspace = true

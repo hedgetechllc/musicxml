@@ -1,0 +1,33 @@
+[workspace]
+members = ["musicxml_internal", "musicxml_macros", "musicxml"]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+version = "1.0.0"
+authors = ["Will Hedgecock <will.hedgecock@gmail.com>"]
+license = "MIT"
+documentation = "https://docs.rs/<your_crate_name>/latest/"
+readme = "README.md"
+homepage = "https://github.com/hedgetechllc/musicxml"
+repository = "https://github.com/hedgetechllc/musicxml"
+keywords = ["musicxml", "parser", "deserializer", "music", "format"]
+categories = ["api-bindings", "encoding", "parsing"]
+publish = false
+
+[workspace.dependencies]
+musicxml_internal = { path = "musicxml_internal", version = "1.0.0" }
+musicxml_macros = { path = "musicxml_macros", version = "1.0.0" }
+cargo-smart-release = { version = "0.21" }
+
+[profile.release]
+codegen-units = 4096
+debug = false
+debug-assertions = false
+incremental = false
+lto = true
+opt-level = 3
+overflow-checks = false
+panic = "abort"
+rpath = false
+strip = "symbols"

@@ -1,0 +1,23 @@
+[package]
+edition.workspace = true
+name = "musicxml"
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "MusicXML Rust SDK"
+documentation.workspace = true
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish.workspace = true
+
+[dependencies]
+regex = { version = "1.10", default-features = false, features = ["std", "perf"] }
+flate2 = { version = "1.0", default-features = false, features = ["zlib-ng-compat"] }
+musicxml_internal.workspace = true
+musicxml_macros.workspace = true
+
+[lib]
+crate-type = ["rlib"]

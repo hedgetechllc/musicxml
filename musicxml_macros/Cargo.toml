@@ -1,0 +1,25 @@
+[package]
+edition.workspace = true
+name = "musicxml_macros"
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "MusicXML Rust SDK Internal Macros"
+documentation.workspace = true
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish.workspace = true
+
+[dependencies]
+syn = { version = "2.0", default-features = false, features = ["derive", "parsing", "printing", "proc-macro"] }
+quote = { version = "1.0", default-features = false }
+proc-macro2 = { version = "1.0", default-features = false }
+
+[features]
+debug = ["syn/extra-traits", "syn/clone-impls"]
+
+[lib]
+proc-macro = true
