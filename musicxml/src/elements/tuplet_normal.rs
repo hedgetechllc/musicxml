@@ -11,7 +11,7 @@ pub struct TupletNormalContents {
 
 /// The [TupletNormal] element provides optional full control over how the normal part of the [Tuplet][super::Tuplet] is displayed,
 /// including number and note type (with dots).
-/// 
+///
 /// If any of these elements are absent, their values are based on the [TimeModification][super::TimeModification] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("tuplet-normal")]

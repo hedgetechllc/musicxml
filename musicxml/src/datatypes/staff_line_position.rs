@@ -3,10 +3,10 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 use std::ops::Deref;
 
 /// Indicates the line position on a given staff.
-/// 
+///
 /// Staff lines are numbered from bottom to top, with 1 being the bottom line on a staff.
 /// A [StaffLinePosition] value can extend beyond the range of the lines on the current staff.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub struct StaffLinePosition(pub i16);

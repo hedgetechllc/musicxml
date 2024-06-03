@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents pictograms for wood percussion instruments.
-/// 
+///
 /// The [Maraca][WoodValue::Maraca] and [Maracas][WoodValue::Maracas] values distinguish
 /// the one- and two-maraca versions of the pictogram.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]

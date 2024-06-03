@@ -3,13 +3,13 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Specifies rotation, pan, and elevation values in degrees.
-/// 
+///
 /// Values range from -180 to 180.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value:** -180.0
-/// 
+///
 /// **Maximum value:** 180.0
 #[derive(Debug, PartialEq, DatatypeSerialize)]
 pub struct RotationDegrees(pub f32);

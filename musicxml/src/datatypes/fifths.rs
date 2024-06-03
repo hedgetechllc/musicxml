@@ -3,10 +3,10 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Represents the number of flats or sharps in a traditional key signature.
-/// 
+///
 /// Negative numbers are used for flats and positive numbers for sharps, reflecting the
 /// key's placement within the circle of fifths (hence the type name).
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct Fifths(pub i8);

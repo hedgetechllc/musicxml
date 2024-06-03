@@ -32,9 +32,9 @@ pub enum MeasureStyleContents {
 }
 
 /// The [MeasureStyle] element indicates a special way to print partial to multiple measures within a part.
-/// 
+///
 /// This includes multiple rests over several measures, repeats of beats, single, or multiple measures, and use of slash notation.
-/// 
+///
 /// The [MultipleRest] and [MeasureRepeat] elements indicate the number of measures covered in the element content.
 /// The [BeatRepeat] and [Slash] elements can cover partial measures. All but the [MultipleRest] element use a `type` attribute to indicate
 /// starting and stopping the use of the style.
@@ -50,13 +50,17 @@ impl ElementDeserializer for MeasureStyle {
   fn deserialize(element: &XmlElement) -> Result<Self, String> {
     Ok(MeasureStyle {
       attributes: MeasureStyleAttributes::deserialize(&element.attributes)?,
-      content: match element.elements.first().ok_or("Missing required content elements in <measure-style>")? {
+      content: match element
+        .elements
+        .first()
+        .ok_or("Missing required content elements in <measure-style>")?
+      {
         el if el.name == "multiple-rest" => MeasureStyleContents::MultipleRest(MultipleRest::deserialize(el)?),
         el if el.name == "measure-repeat" => MeasureStyleContents::MeasureRepeat(MeasureRepeat::deserialize(el)?),
         el if el.name == "beat-repeat" => MeasureStyleContents::BeatRepeat(BeatRepeat::deserialize(el)?),
         el if el.name == "slash" => MeasureStyleContents::Slash(Slash::deserialize(el)?),
         el => return Err(format!("Invalid <measure-style> element name: {}", el.name)),
-      }
+      },
     })
   }
 }

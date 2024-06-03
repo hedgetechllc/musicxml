@@ -4,11 +4,11 @@ use regex::Regex;
 use std::ops::Deref;
 
 /// Used to specify either a comma-separated list of positive integers without leading zeros, or a string of zero or more spaces.
-/// 
+///
 /// It is used for the `number` attribute of the [Ending][crate::elements::Ending] element.
-/// 
+///
 /// The "zero or more spaces" version is used when software knows that an ending is present, but cannot determine the type of the ending.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct EndingNumber(pub String);

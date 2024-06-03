@@ -28,13 +28,13 @@ pub struct TiedAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -59,23 +59,23 @@ pub struct TiedAttributes {
 }
 
 /// The [Tied] element represents the notated tie.
-/// 
+///
 /// The [Tie][super::Tie] element represents the tie sound.
-/// 
+///
 /// ![Tied](tied.png)
-/// 
+///
 /// Ties that join two notes of the same pitch together should be represented with a [Tied] element on the first note with type="start" and a [Tied] element
 /// on the second note with type="stop". This can also be done if the two notes being tied are enharmonically equivalent, but have different step values.
 /// It is not recommended to use [Tied] elements to join two notes with enharmonically inequivalent pitches.
-/// 
+///
 /// Ties that indicate that an instrument should be undamped are specified with a single [Tied] element with type="let-ring".
-/// 
+///
 /// Ties that are visually attached to only one note, other than undamped ties, should be specified with two [Tied] elements on the same note,
 /// first type="start" then type="stop". This can be used to represent ties into or out of repeated sections or codas.
-/// 
+///
 /// When multiple [Tied] elements with the same tag are used within the same note, their order within the MusicXML document should match the musical score order.
 /// For example, a note with a tie at the end of a first ending should have the [Tied] element with a type of start precede the [Tied] element with a type of stop.
-/// 
+///
 /// Normal ties need only two bezier points: one associated with the start of the tie, the other with the stop. Ties divided over system breaks can specify
 /// additional bezier data at [Tied] elements with a continue type.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

@@ -12,7 +12,7 @@ pub struct AppearanceContents {
 }
 
 /// The [Appearance] element controls general graphical settings for the music's final form appearance on a printed page of display.
-/// 
+///
 /// This includes support for line widths, definitions for note sizes, standard distances between notation elements, and Standard Music Font Layout (SMuFL) glyphs,
 /// plus an extension element for other aspects of appearance.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

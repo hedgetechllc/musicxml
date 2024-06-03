@@ -10,7 +10,7 @@ pub struct PartClefContents {
 }
 
 /// The [PartClef] element is used for transpositions from concert scores that also include a change of clef, as for instruments such as bass clarinet.
-/// 
+///
 /// The child elements of the [PartClef] element have the same meaning as for the [Clef][super::Clef] element. However that meaning applies
 /// to a transposed part created from the existing score file.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

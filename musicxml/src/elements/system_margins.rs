@@ -9,7 +9,7 @@ pub struct SystemMarginsContents {
 }
 
 /// System margins are relative to the page margins.
-/// 
+///
 /// Positive values indent and negative values reduce the margin size.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("system-margins")]

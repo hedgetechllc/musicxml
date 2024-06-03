@@ -4,10 +4,10 @@ use std::ops::Deref;
 
 /// Used to indicate that a particular playback- or listening-related element only applies particular times
 /// through a repeated section.
-/// 
+///
 /// The value is a comma-separated list of positive integers arranged in ascending order, indicating which times
 /// through the repeated section that the element applies.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq)]
 pub struct TimeOnly(pub Vec<u8>);

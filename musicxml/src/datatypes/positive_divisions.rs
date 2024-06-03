@@ -3,9 +3,9 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Represents how many integer divisions per quarter note represent a note duration.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value**: 1
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct PositiveDivisions(pub u32);

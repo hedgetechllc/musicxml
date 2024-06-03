@@ -11,12 +11,12 @@ pub enum SystemRelationNumber {
   #[rename("only-bottom")]
   OnlyBottom,
   /// The number should appear on both the current part and the top part of the current system.
-  /// 
+  ///
   /// If these values appear in a score, when parts are created the number should only appear once in this part, not twice.
   #[rename("also-top")]
   AlsoTop,
   /// The number should appear on both the current part and the bottom part of the current system.
-  /// 
+  ///
   /// If these values appear in a score, when parts are created the number should only appear once in this part, not twice.
   #[rename("also-bottom")]
   AlsoBottom,

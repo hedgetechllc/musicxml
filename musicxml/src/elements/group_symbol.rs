@@ -10,13 +10,13 @@ pub struct GroupSymbolAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -29,7 +29,7 @@ pub struct GroupSymbolAttributes {
 }
 
 /// The [GroupSymbol] element indicates how the symbol for a group is indicated in the score.
-/// 
+///
 /// It is none if not specified.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("group-symbol")]

@@ -3,7 +3,7 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Indicates how to display the arrangement between the [Beats][crate::elements::Beats] and
 /// [BeatType][crate::elements::BeatType] values in a time signature.
-/// 
+///
 /// The default value is [None][TimeSeparator::None]. The [Horizontal][TimeSeparator::Horizontal],
 /// [Diagonal][TimeSeparator::Diagonal], and [Vertical][TimeSeparator::Vertical] values represent
 /// horizontal, diagonal lower-left to upper-right, and vertical lines respectively. For these values, the

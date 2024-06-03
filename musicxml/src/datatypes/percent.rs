@@ -3,11 +3,11 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Specifies a percentage from 0 to 100.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value:** 0.0
-/// 
+///
 /// **Maximum value:** 100.0
 #[derive(Debug, PartialEq, DatatypeSerialize)]
 pub struct Percent(pub f64);

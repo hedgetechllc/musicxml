@@ -8,7 +8,7 @@ pub struct MiscellaneousContents {
 }
 
 /// If a program has other metadata not yet supported in the MusicXML format, it can go in the [Miscellaneous] element.
-/// 
+///
 /// The [Miscellaneous] element puts each separate part of metadata into its own [MiscellaneousField] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Miscellaneous {

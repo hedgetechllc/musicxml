@@ -11,7 +11,7 @@ use musicxml_macros::*;
 pub struct MeasureAttributes {
   /// The attribute that identifies the measure. Going from partwise to timewise, measures are grouped via this attribute.
   /// In partwise files, it should be the same for measures in different parts that share the same left barline.
-  /// 
+  ///
   /// While often numeric, it does not have to be. Non-numeric values are typically used together with the `implicit` or
   /// `non_controlling` attributes being set to "yes". For a pickup measure, the `number` attribute is typically set to "0"
   /// and the `implicit` attribute is typically set to "yes".

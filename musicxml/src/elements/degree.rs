@@ -18,10 +18,10 @@ pub struct DegreeContents {
 }
 
 /// The [Degree] element is used to add, alter, or subtract individual notes in the chord.
-/// 
+///
 /// The `print_object` attribute can be used to keep the degree from printing separately when it has already taken into account in the
 /// text attribute of the [Kind][super::Kind] element.
-/// 
+///
 /// A [Harmony][super::Harmony] with a [Kind][super::Kind] value of "other" can be spelled explicitly by using a series of [Degree] elements together with
 /// a [Root][super::Root], [Numeral][super::Numeral], or [Function][super::Function] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

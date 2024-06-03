@@ -15,13 +15,13 @@ pub struct OtherNotationAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -53,10 +53,10 @@ pub struct OtherNotationAttributes {
 }
 
 /// The [OtherNotation] element is used to define any notations not yet in the MusicXML format.
-/// 
+///
 /// It handles notations where more specific extension elements such as [OtherDynamics][super::OtherDynamics] and
 /// [OtherTechnical][super::OtherTechnical] are not appropriate.
-/// 
+///
 /// The `smufl` attribute can be used to specify a particular notation, allowing application interoperability without requiring every
 /// Standard Music Font Layout (SMuFL) glyph to have a MusicXML element equivalent. Using the [OtherNotation] element without the `smufl` attribute
 /// allows for extended representation, though without application interoperability.

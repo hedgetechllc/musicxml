@@ -40,7 +40,7 @@ pub enum ArticulationsType {
 }
 
 /// The [Articulations] element groups together articulations and accents.
-/// 
+///
 /// ![Articulations](articulations.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Articulations {

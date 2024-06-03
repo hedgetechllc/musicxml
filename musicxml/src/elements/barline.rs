@@ -6,7 +6,7 @@ use musicxml_macros::*;
 /// Attributes pertaining to the [Barline] element.
 #[derive(Debug, Default, PartialEq, Eq, AttributeDeserialize, AttributeSerialize)]
 pub struct BarlineAttributes {
-  /// Used for playback when there is a [Coda] child element. 
+  /// Used for playback when there is a [Coda] child element.
   /// Indicates the end point for a forward jump to a coda sign.
   /// If there are multiple jumps, the value of these parameters can be used to name and distinguish them.
   pub coda: Option<Token>,
@@ -41,9 +41,9 @@ pub struct BarlineContents {
 }
 
 /// If a barline is other than a normal single barline, it should be represented by a [Barline] element that describes it.
-/// 
+///
 /// ![Barline](barline.png)
-/// 
+///
 /// This includes information about repeats and multiple endings, as well as line style. Barline data is on the same level as the other musical data
 /// in a score - a child of a measure in a partwise score, or a part in a timewise score. This allows for barlines within measures, as in dotted barlines
 /// that subdivide measures in complex meters. The two [Fermata] elements allow for fermatas on both sides of the barline (the lower one inverted).

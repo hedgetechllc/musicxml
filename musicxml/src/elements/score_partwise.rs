@@ -26,7 +26,7 @@ pub struct ScorePartwiseContents {
 }
 
 /// The [ScorePartwise] element is the root element for a partwise MusicXML score.
-/// 
+///
 /// It includes score header information followed by a series of [Part] elements with [Measure][super::Measure] elements inside.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("score-partwise")]

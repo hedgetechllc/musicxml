@@ -3,11 +3,11 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Represents a Roman numeral or Nashville number value as a positive integer from 1 to 7.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value**: 1
-/// 
+///
 /// **Maximum value**: 7
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct NumeralValue(pub u8);

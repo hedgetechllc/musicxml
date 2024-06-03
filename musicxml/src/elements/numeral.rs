@@ -10,7 +10,7 @@ pub struct NumeralContents {
 }
 
 /// The [Numeral] element represents the Roman numeral or Nashville number part of a harmony.
-/// 
+///
 /// It requires that the key be specified in the encoding, either with a [Key][super::Key] or [NumeralKey] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Numeral {

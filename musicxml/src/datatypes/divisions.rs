@@ -3,9 +3,9 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 use std::ops::Deref;
 
 /// Used to express values in terms of the musical divisions defined by the divisions element.
-/// 
+///
 /// It is preferred that these be integer values both for MIDI interoperability and to avoid roundoff errors.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub struct Divisions(pub i32);

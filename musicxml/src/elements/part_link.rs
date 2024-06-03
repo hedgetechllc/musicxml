@@ -33,7 +33,7 @@ pub struct PartLinkContents {
 }
 
 /// The [PartLink] element allows MusicXML data for both score and parts to be contained within a single compressed MusicXML file.
-/// 
+///
 /// It links a [ScorePart][super::ScorePart] from a score document to MusicXML documents that contain parts data. In the case of a single
 /// compressed MusicXML file, the link href values are paths that are relative to the root folder of the zip file.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

@@ -39,7 +39,6 @@ pub trait ElementSerializer {
   fn serialize(element: &Self) -> XmlElement;
 }
 
-
 impl DatatypeDeserializer for String {
   fn deserialize(value: &str) -> Result<Self, String> {
     Ok(String::from(value))

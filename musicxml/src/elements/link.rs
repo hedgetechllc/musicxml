@@ -11,13 +11,13 @@ pub struct LinkAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -28,7 +28,7 @@ pub struct LinkAttributes {
   pub name: Option<Token>,
   /// The `position` attribute specifies the position of the descendant element specified by the `element` attribute, where the first position is 1.
   /// The `position` attribute is ignored if the `element` attribute is not present.
-  /// 
+  ///
   /// For instance, an `element` value of "beam" and a `position` value of "2" defines the [Link] or [Bookmark][super::Bookmark] to refer to the second beam descendant
   /// of the next sibling element that is not a [Link] or [Bookmark][super::Bookmark] element. This is equivalent to an XPath test of `[.//beam[2]]` done in the
   /// context of the sibling element.
@@ -57,7 +57,7 @@ pub struct LinkAttributes {
 }
 
 /// The [Link] element serves as an outgoing simple XLink.
-/// 
+///
 /// If a relative link is used within a document that is part of a compressed MusicXML file, the link is relative to the root folder of the zip file.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Link {

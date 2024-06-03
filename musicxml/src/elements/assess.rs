@@ -28,7 +28,7 @@ impl Default for AssessAttributes {
 }
 
 /// The [Assess] element allows default [Cue][super::Cue] assessments to be overridden for individual notes.
-/// 
+///
 /// By default, an assessment application should assess all notes without a [Cue][super::Cue] child element,
 /// and not assess any note with a [Cue][super::Cue] child element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

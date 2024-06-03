@@ -3,9 +3,9 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Specifies a non-negative decimal value.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value:** 0.0
 #[derive(Debug, PartialEq, DatatypeSerialize)]
 pub struct NonNegativeDecimal(pub f64);

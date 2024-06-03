@@ -17,9 +17,9 @@ pub struct PartNameDisplayContents {
 }
 
 /// The [PartNameDisplay] element is used for exact formatting of multi-font text in part names to the left of the system.
-/// 
+///
 /// The `print_object` attribute can be used to determine what, if anything, is printed at the start of each system.
-/// 
+///
 /// Formatting specified in the [PartNameDisplay] element overrides formatting specified in the [PartName][super::PartName] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("part-name-display")]

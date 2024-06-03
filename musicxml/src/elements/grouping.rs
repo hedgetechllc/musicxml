@@ -22,10 +22,10 @@ pub struct GroupingContents {
 }
 
 /// The [Grouping] element is used for musical analysis.
-/// 
+///
 /// When the `type` attribute is start or single, it usually contains one or more [Feature] elements.
 /// Feature elements contained within a stop type of grouping may be ignored.
-/// 
+///
 /// This element is flexible to allow for different types of analyses. Future versions of the MusicXML format may add elements that can represent more
 /// standardized categories of analysis data, allowing for easier data sharing.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

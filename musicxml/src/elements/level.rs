@@ -21,7 +21,7 @@ pub struct LevelAttributes {
 }
 
 /// The [Level] element is used to specify editorial information for different MusicXML elements.
-/// 
+///
 /// The content contains identifying and/or descriptive text about the editorial status of the parent element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Level {

@@ -3,11 +3,11 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Used to specify the number of lines in text decoration attributes.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value**: 0
-/// 
+///
 /// **Maximum value**: 3
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct NumberOfLines(pub u8);

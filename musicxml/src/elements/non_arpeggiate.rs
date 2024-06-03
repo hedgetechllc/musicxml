@@ -12,13 +12,13 @@ pub struct NonArpeggiateAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -37,7 +37,7 @@ pub struct NonArpeggiateAttributes {
 }
 
 /// The [NonArpeggiate] element indicates that this [Note][super::Note] is at the top or bottom of a bracket indicating to not arpeggiate these notes.
-/// 
+///
 /// Since this does not involve playback, it is only used on the top or bottom notes, not on each [Note][super::Note] as for the [Arpeggiate][super::Arpeggiate] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("non-arpeggiate")]

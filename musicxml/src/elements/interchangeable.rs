@@ -43,9 +43,7 @@ impl ContentDeserializer for InterchangeableContents {
               beats: temp_beat.clone(),
               beat_type: BeatType::deserialize(element)?,
             }),
-            _ => {
-              Err(format!("Missing required \"beat\" element prior to \"beat-type\""))?
-            }
+            _ => Err(format!("Missing required \"beat\" element prior to \"beat-type\""))?,
           };
           temp_beats = None;
         }
@@ -110,7 +108,10 @@ mod interchangeable_tests {
           ..Default::default()
         },
         content: InterchangeableContents {
-          time_relation: Some(TimeRelation { attributes: (), content: crate::datatypes::TimeRelation::Parentheses }),
+          time_relation: Some(TimeRelation {
+            attributes: (),
+            content: crate::datatypes::TimeRelation::Parentheses
+          }),
           beat_data: vec![
             InterchangeableBeatData {
               beats: Beats {

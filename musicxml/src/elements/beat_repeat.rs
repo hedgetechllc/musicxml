@@ -23,12 +23,12 @@ pub struct BeatRepeatContents {
 }
 
 /// The [BeatRepeat] element is used to indicate that a single beat (but possibly many notes) is repeated.
-/// 
+///
 /// ![BeatRepeat](beat-repeat.png)
-/// 
+///
 /// The "stop" type indicates the first beat where the repeats are no longer displayed. Both the start and stop of the beats being repeated
 /// should be specified unless the repeats are displayed through the end of the part.
-/// 
+///
 /// The [BeatRepeat] element specifies a notation style for repetitions. The actual music being repeated needs to be repeated within the MusicXML file.
 /// This element specifies the notation that indicates the repeat.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

@@ -11,7 +11,7 @@ pub struct RightsAttributes {
 }
 
 /// The [Rights] element contains copyright and other intellectual property notices.
-/// 
+///
 /// This is similar to the [Dublin Core rights](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/rights/) element.
 /// Words, music, and derivatives can have different types, so multiple [Rights] elements with different type attributes are supported.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

@@ -10,7 +10,7 @@ pub struct BarStyleAttributes {
 }
 
 /// The [BarStyle] element contains barline style and color information.
-/// 
+///
 /// ![BarStyle](bar-style.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("bar-style")]

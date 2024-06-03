@@ -4,9 +4,9 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Indicates the line on a given staff.
-/// 
+///
 /// Staff lines are numbered from bottom to top, with 1 being the bottom line on a staff.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct StaffLine(pub u8);

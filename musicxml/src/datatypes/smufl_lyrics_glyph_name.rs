@@ -5,9 +5,9 @@ use regex::Regex;
 use std::ops::Deref;
 
 /// Used to reference a specific Standard Music Font Layout (SMuFL) lyrics elision character.
-/// 
+///
 /// The value is a SMuFL canonical glyph name that starts with lyrics.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct SmuflLyricsGlyphName(pub String);
@@ -25,10 +25,16 @@ impl DatatypeDeserializer for SmuflLyricsGlyphName {
       if Regex::new(r"^lyrics.*$").unwrap().is_match(&token) {
         Ok(SmuflLyricsGlyphName((*token).clone()))
       } else {
-        Err(format!("Value {} is invalid for the <smufl-lyrics-glyph-name> data type", value))
+        Err(format!(
+          "Value {} is invalid for the <smufl-lyrics-glyph-name> data type",
+          value
+        ))
       }
     } else {
-      Err(format!("Value {} is invalid for the <smufl-lyrics-glyph-name> data type", value))
+      Err(format!(
+        "Value {} is invalid for the <smufl-lyrics-glyph-name> data type",
+        value
+      ))
     }
   }
 }

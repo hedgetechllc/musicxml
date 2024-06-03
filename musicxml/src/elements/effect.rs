@@ -10,7 +10,7 @@ pub struct EffectAttributes {
 }
 
 /// The [Effect] element represents pictograms for sound effect percussion instruments.
-/// 
+///
 /// ![Effect](effect.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Effect {

@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents notated accidentals supported by MusicXML.
-/// 
+///
 /// The Quarter- and ThreeQuarters- accidentals are Tartini-style quarter-tone accidentals.
 /// The -Down and -Up accidentals are quarter-tone accidentals that include arrows pointing down or up.
 /// The Slash- accidentals are used in Turkish classical music.
@@ -10,7 +10,7 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// The Sori and Koron accidentals are microtonal sharp and flat accidentals used in Iranian and Persian music.
 /// The Other accidental covers accidentals other than those listed here. It is usually used in combination with a
 /// `smufl` attribute to specify a particular Standard Music Font Layout (SMuFL) accidental.
-/// 
+///
 /// The `smufl` attribute may be used with any accidental value to help specify the appearance of symbols that share the same MusicXML semantics.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum AccidentalValue {

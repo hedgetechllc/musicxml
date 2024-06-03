@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use std::ops::Deref;
 
 /// Used to specify a comma-separated list of text elements, as is used by the `font_family` attribute.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq)]
 pub struct CommaSeparatedText(pub Vec<String>);

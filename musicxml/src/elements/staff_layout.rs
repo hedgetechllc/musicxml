@@ -17,7 +17,7 @@ pub struct StaffLayoutContents {
 
 /// The [StaffLayout] element includes the vertical distance from the bottom line of the previous staff in this system to the
 /// top line of the staff specified by the `number` attribute.
-/// 
+///
 /// When used in the [Defaults][super::Defaults] element, the values apply to all systems in all parts. When used in the [Print][super::Print] element,
 /// the values apply to the current system only. This value is ignored for the first staff in a system.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

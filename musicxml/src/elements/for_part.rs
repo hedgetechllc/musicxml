@@ -21,7 +21,7 @@ pub struct ForPartContents {
 }
 
 /// The [ForPart] element is used in a concert score to indicate the transposition for a transposed part created from that score.
-/// 
+///
 /// It is only used in score files that contain a [ConcertScore][super::ConcertScore] element in the [Defaults][super::Defaults] element.
 /// This allows concert scores with transposed parts to be represented in a single uncompressed MusicXML file.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

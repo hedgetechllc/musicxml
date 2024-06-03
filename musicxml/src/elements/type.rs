@@ -10,7 +10,7 @@ pub struct TypeAttributes {
 }
 
 /// The [Type] element indicates the graphic note type.
-/// 
+///
 /// Values range from 1024th to maxima.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Type {

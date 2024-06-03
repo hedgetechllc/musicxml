@@ -23,7 +23,7 @@ pub struct MidiInstrumentContents {
 }
 
 /// The [MidiInstrument] element defines MIDI 1.0 instrument playback.
-/// 
+///
 /// The [MidiInstrument] element can be a part of either the [ScoreInstrument][super::ScoreInstrument] element at the start of a part,
 /// or the [Sound][super::Sound] element within a part.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

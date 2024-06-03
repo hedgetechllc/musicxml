@@ -5,11 +5,11 @@ use regex::Regex;
 use std::ops::Deref;
 
 /// Used to reference a specific Standard Music Font Layout (SMuFL) wavy line character.
-/// 
+///
 /// The value is a SMuFL canonical glyph name that either starts with wiggle, or begins
 /// with guitar and ends with VibratoStroke. This includes all the glyphs in the Multi-segment
 /// lines range, excluding the beam glyphs.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct SmuflWavyLineGlyphName(pub String);
@@ -30,10 +30,16 @@ impl DatatypeDeserializer for SmuflWavyLineGlyphName {
       {
         Ok(SmuflWavyLineGlyphName((*token).clone()))
       } else {
-        Err(format!("Value {} is invalid for the <smufl-wavy-glyph-name> data type", value))
+        Err(format!(
+          "Value {} is invalid for the <smufl-wavy-glyph-name> data type",
+          value
+        ))
       }
     } else {
-      Err(format!("Value {} is invalid for the <smufl-wavy-glyph-name> data type", value))
+      Err(format!(
+        "Value {} is invalid for the <smufl-wavy-glyph-name> data type",
+        value
+      ))
     }
   }
 }
@@ -53,7 +59,10 @@ mod smufl_wavy_line_glyph_name_tests {
   fn deserialize_valid2() {
     let result = SmuflWavyLineGlyphName::deserialize("guitarLongVibratoStroke");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), SmuflWavyLineGlyphName(String::from("guitarLongVibratoStroke")));
+    assert_eq!(
+      result.unwrap(),
+      SmuflWavyLineGlyphName(String::from("guitarLongVibratoStroke"))
+    );
   }
 
   #[test]

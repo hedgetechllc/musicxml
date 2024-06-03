@@ -3,7 +3,7 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// See the definition in the [W3C XML Schema standard](https://www.w3.org/TR/xmlschema-2/#positiveInteger).
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct PositiveInteger(pub u32);

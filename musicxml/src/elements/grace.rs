@@ -17,7 +17,7 @@ pub struct GraceAttributes {
 }
 
 /// The [Grace] element indicates the presence of a grace note.
-/// 
+///
 /// ![Grace](grace.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Grace {

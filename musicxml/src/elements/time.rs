@@ -14,13 +14,13 @@ pub struct TimeAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -34,14 +34,14 @@ pub struct TimeAttributes {
   pub font_weight: Option<FontWeight>,
   /// In cases where text extends over more than one line, horizontal alignment and justify values can be different.
   /// The most typical case is for credits, such as:
-  /// 
+  ///
   /// ```text
   /// Words and music by
   ///   Pat Songwriter
   /// ```
   /// Typically this type of credit is aligned to the right, so that the position information refers to the right-most part of the text.
   /// But in this example, the text is center-justified, not right-justified.
-  /// 
+  ///
   /// The `halign` attribute is used in these situations. If it is not present, its value is the same as for the `justify` attribute.
   /// For elements where a justify attribute is not allowed, the default is implementation-dependent.
   pub halign: Option<LeftCenterRight>,
@@ -93,7 +93,7 @@ impl ContentDeserializer for TimeContents {
             beat_type: BeatType::deserialize(element)?,
           });
           time_beats = None;
-        },
+        }
         "interchangeable" => interchangeable = Some(Interchangeable::deserialize(element)?),
         "senza-misura" => senza_misura = Some(SenzaMisura::deserialize(element)?),
         _ => return Err(format!("Invalid element name: {}", element.name)),
@@ -127,12 +127,12 @@ impl ContentSerializer for TimeContents {
 }
 
 /// Time signatures are represented by the [Beats] element for the numerator and the [BeatType] element for the denominator.
-/// 
+///
 /// ![Time](time.png)
-/// 
+///
 /// Multiple pairs of [Beats] and [BeatType] elements are used for composite time signatures with multiple denominators, such as 2/4 + 3/8.
 /// A composite such as 3+2/8 requires only one [Beats]/[BeatType] pair.
-/// 
+///
 /// The `print_object` attribute allows a time signature to be specified but not printed, as is the case for excerpts from the middle of a score.
 /// The value is "yes" if not present.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
@@ -147,7 +147,10 @@ pub struct Time {
 #[cfg(test)]
 mod time_tests {
   use crate::elements::*;
-  use crate::{elements::InterchangeableContents, parser::{parse_from_xml_str, parse_to_xml_str}};
+  use crate::{
+    elements::InterchangeableContents,
+    parser::{parse_from_xml_str, parse_to_xml_str},
+  };
 
   #[test]
   fn serialize_valid1() {
@@ -156,12 +159,24 @@ mod time_tests {
       content: TimeContents {
         beats: vec![
           TimeBeatContents {
-            beats: Beats { attributes: (), content: String::from("3") },
-            beat_type: BeatType { attributes: (), content: String::from("4") },
+            beats: Beats {
+              attributes: (),
+              content: String::from("3"),
+            },
+            beat_type: BeatType {
+              attributes: (),
+              content: String::from("4"),
+            },
           },
           TimeBeatContents {
-            beats: Beats { attributes: (), content: String::from("6") },
-            beat_type: BeatType { attributes: (), content: String::from("8") },
+            beats: Beats {
+              attributes: (),
+              content: String::from("6"),
+            },
+            beat_type: BeatType {
+              attributes: (),
+              content: String::from("8"),
+            },
           },
         ],
         interchangeable: Some(Interchangeable {
@@ -171,16 +186,20 @@ mod time_tests {
               attributes: (),
               content: crate::datatypes::TimeRelation::Bracket,
             }),
-            beat_data: vec![
-              InterchangeableBeatData {
-                beats: Beats { attributes: (), content: String::from("4") },
-                beat_type: BeatType { attributes: (), content: String::from("4") },
-              }
-            ],
+            beat_data: vec![InterchangeableBeatData {
+              beats: Beats {
+                attributes: (),
+                content: String::from("4"),
+              },
+              beat_type: BeatType {
+                attributes: (),
+                content: String::from("4"),
+              },
+            }],
           },
         }),
         senza_misura: None,
-      }
+      },
     };
     let expected = "<time>
   <beats>3</beats>
@@ -208,7 +227,7 @@ mod time_tests {
           attributes: (),
           content: String::from("Senza Test"),
         }),
-      }
+      },
     };
     let expected = "<time><senza-misura>Senza Test</senza-misura></time>";
     let result = parse_to_xml_str(&test, false);
@@ -228,7 +247,8 @@ mod time_tests {
         <beats>4</beats>
         <beat-type>4</beat-type>
       </interchangeable>
-    </time>");
+    </time>",
+    );
     assert!(result.is_ok());
     assert_eq!(
       result.unwrap(),
@@ -237,12 +257,24 @@ mod time_tests {
         content: TimeContents {
           beats: vec![
             TimeBeatContents {
-              beats: Beats { attributes: (), content: String::from("3") },
-              beat_type: BeatType { attributes: (), content: String::from("4") },
+              beats: Beats {
+                attributes: (),
+                content: String::from("3")
+              },
+              beat_type: BeatType {
+                attributes: (),
+                content: String::from("4")
+              },
             },
             TimeBeatContents {
-              beats: Beats { attributes: (), content: String::from("6") },
-              beat_type: BeatType { attributes: (), content: String::from("8") },
+              beats: Beats {
+                attributes: (),
+                content: String::from("6")
+              },
+              beat_type: BeatType {
+                attributes: (),
+                content: String::from("8")
+              },
             },
           ],
           interchangeable: Some(Interchangeable {
@@ -252,12 +284,16 @@ mod time_tests {
                 attributes: (),
                 content: crate::datatypes::TimeRelation::Bracket,
               }),
-              beat_data: vec![
-                InterchangeableBeatData {
-                  beats: Beats { attributes: (), content: String::from("4") },
-                  beat_type: BeatType { attributes: (), content: String::from("4") },
-                }
-              ],
+              beat_data: vec![InterchangeableBeatData {
+                beats: Beats {
+                  attributes: (),
+                  content: String::from("4")
+                },
+                beat_type: BeatType {
+                  attributes: (),
+                  content: String::from("4")
+                },
+              }],
             },
           }),
           senza_misura: None,

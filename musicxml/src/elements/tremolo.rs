@@ -12,13 +12,13 @@ pub struct TremoloAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -46,19 +46,19 @@ pub struct TremoloAttributes {
 }
 
 /// The [Tremolo] element can be used to indicate single-note, double-note, or unmeasured tremolos.
-/// 
+///
 /// ![Tremolo](tremolo.png)
-/// 
+///
 /// The text of the element indicates the number of tremolo marks and is an integer from 0 to 8. Note that the number of attached beams is not
 /// included in this value, but is represented separately using the [Beam][super::Beam]. The value should be 0 for unmeasured tremolos.
-/// 
+///
 /// When using double-note tremolos, the duration of each note in the tremolo should correspond to half of the notated type value. A [TimeModification][super::TimeModification] element
 /// should also be added with an [ActualNotes][super::ActualNotes] value of 2 and a [NormalNotes][super::NormalNotes] value of 1. If used within a tuplet, this 2/1 ratio should be multiplied
 /// by the existing tuplet ratio.
-/// 
+///
 /// The `smufl` attribute specifies the glyph to use from the Standard Music Font Layout (SMuFL) [Tremolos](https://www.w3.org/2021/03/smufl14/tables/tremolos.html)
 /// range for an unmeasured tremolo. It is ignored for other tremolo types. The SMuFL "buzzRoll" glyph is used if the attribute is missing.
-/// 
+///
 /// Using repeater beams for indicating tremolos is deprecated as of Version 3.0.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Tremolo {

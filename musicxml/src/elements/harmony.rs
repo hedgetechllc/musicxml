@@ -1,7 +1,9 @@
-use super::{Bass, Degree, Footnote, Frame, Function, Inversion, Kind, KindAttributes, Level, Numeral, Offset, Root, Staff};
+use super::{
+  Bass, Degree, Footnote, Frame, Function, Inversion, Kind, KindAttributes, Level, Numeral, Offset, Root, Staff,
+};
 use crate::datatypes::{
-  AboveBelow, Color, FontFamily, FontSize, FontStyle, FontWeight, HarmonyArrangement, HarmonyType, Id, SystemRelation,
-  Tenths, YesNo, KindValue,
+  AboveBelow, Color, FontFamily, FontSize, FontStyle, FontWeight, HarmonyArrangement, HarmonyType, Id, KindValue,
+  SystemRelation, Tenths, YesNo,
 };
 use musicxml_internal::*;
 use musicxml_macros::*;
@@ -18,13 +20,13 @@ pub struct HarmonyAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -87,7 +89,10 @@ impl ContentDeserializer for HarmonyContents {
           root: None,
           numeral: None,
           function: None,
-          kind: Kind { attributes: KindAttributes::default(), content: KindValue::Major },
+          kind: Kind {
+            attributes: KindAttributes::default(),
+            content: KindValue::Major,
+          },
           inversion: None,
           bass: None,
           degree: Vec::new(),
@@ -158,14 +163,14 @@ impl ContentSerializer for HarmonyContents {
 }
 
 /// The [Harmony] element represents harmony analysis, including chord symbols in popular music as well as functional harmony analysis in classical music.
-/// 
+///
 /// The `print_object` attribute controls whether or not anything is printed due to the [Harmony] element. The print suggestion attributes set the defaults
 /// for the harmony, but individual elements can override this with their own values.
-/// 
+///
 /// A [Harmony] element can contain many stacked chords (e.g. V of II). Each individual chord including a required [Kind] element is referred to as a harmony-chord.
 /// Stacked chords or secondary functions are represented using a sequence of harmony-chords. For example, V of II would be represented by a harmony-chord
 /// with a 5 numeral followed by a harmony-chord with a 2 numeral.
-/// 
+///
 /// A [Root] is a pitch name like C, D, E, while a [Numeral] is a scale degree like 1, 2, 3. The [Root] element is generally used with pop chord symbols,
 /// while the [Numeral] element is generally used with classical functional harmony and Nashville numbers. It is an either/or choice to avoid data inconsistency.
 /// The [Function] element, which represents Roman numerals with roman numeral text, has been deprecated as of MusicXML 4.0.
@@ -181,8 +186,10 @@ pub struct Harmony {
 #[cfg(test)]
 mod harmony_tests {
   use super::*;
+  use crate::datatypes::{
+    DegreeTypeValue, Divisions, KindValue, NonNegativeInteger, PositiveInteger, Semitones, StartStop, Step,
+  };
   use crate::elements::*;
-  use crate::datatypes::{DegreeTypeValue, Divisions, KindValue, NonNegativeInteger, PositiveInteger, Semitones, StartStop, Step};
   use crate::parser::{parse_from_xml_str, parse_to_xml_str};
 
   #[test]
@@ -193,43 +200,101 @@ mod harmony_tests {
         ..Default::default()
       },
       content: HarmonyContents {
-        harmony: vec![
-          HarmonySubcontents {
-            root: Some(Root { attributes: (), content: RootContents { root_step: RootStep { attributes: RootStepAttributes::default(), content: Step::D }, root_alter: Some(RootAlter { attributes: RootAlterAttributes::default(), content: Semitones(-2) }) } }),
-            numeral: None,
-            function: None,
-            kind: Kind { attributes: KindAttributes::default(), content: KindValue::Dominant11th },
-            inversion: Some(Inversion{ attributes: InversionAttributes::default(), content: NonNegativeInteger(1) }),
-            bass: Some(Bass { attributes: BassAttributes::default(), content: BassContents { bass_separator: Some(BassSeparator{ attributes: BassSeparatorAttributes::default(), content: String::from("Test Bass") }), bass_step: BassStep { attributes: BassStepAttributes::default(), content: Step::F }, bass_alter: None } }),
-            degree: vec![
-              Degree {
-                attributes: DegreeAttributes::default(),
-                content: DegreeContents {
-                  degree_value: DegreeValue { attributes: DegreeValueAttributes::default(), content: PositiveInteger(5) },
-                  degree_alter: DegreeAlter { attributes: DegreeAlterAttributes::default(), content: Semitones(7) },
-                  degree_type: DegreeType { attributes: DegreeTypeAttributes::default(), content: DegreeTypeValue::Alter },
-                }
-              }
-            ],
-          }
-        ],
+        harmony: vec![HarmonySubcontents {
+          root: Some(Root {
+            attributes: (),
+            content: RootContents {
+              root_step: RootStep {
+                attributes: RootStepAttributes::default(),
+                content: Step::D,
+              },
+              root_alter: Some(RootAlter {
+                attributes: RootAlterAttributes::default(),
+                content: Semitones(-2),
+              }),
+            },
+          }),
+          numeral: None,
+          function: None,
+          kind: Kind {
+            attributes: KindAttributes::default(),
+            content: KindValue::Dominant11th,
+          },
+          inversion: Some(Inversion {
+            attributes: InversionAttributes::default(),
+            content: NonNegativeInteger(1),
+          }),
+          bass: Some(Bass {
+            attributes: BassAttributes::default(),
+            content: BassContents {
+              bass_separator: Some(BassSeparator {
+                attributes: BassSeparatorAttributes::default(),
+                content: String::from("Test Bass"),
+              }),
+              bass_step: BassStep {
+                attributes: BassStepAttributes::default(),
+                content: Step::F,
+              },
+              bass_alter: None,
+            },
+          }),
+          degree: vec![Degree {
+            attributes: DegreeAttributes::default(),
+            content: DegreeContents {
+              degree_value: DegreeValue {
+                attributes: DegreeValueAttributes::default(),
+                content: PositiveInteger(5),
+              },
+              degree_alter: DegreeAlter {
+                attributes: DegreeAlterAttributes::default(),
+                content: Semitones(7),
+              },
+              degree_type: DegreeType {
+                attributes: DegreeTypeAttributes::default(),
+                content: DegreeTypeValue::Alter,
+              },
+            },
+          }],
+        }],
         frame: Some(Frame {
           attributes: FrameAttributes::default(),
           content: FrameContents {
-            frame_strings: FrameStrings { attributes: (), content: PositiveInteger(2) },
-            frame_frets: FrameFrets { attributes: (), content: PositiveInteger(3) },
-            first_fret: Some(FirstFret { attributes: FirstFretAttributes::default(), content: PositiveInteger(1) }),
-            frame_note: vec![
-              FrameNote {
-                attributes: (),
-                content: FrameNoteContents {
-                  string: StringNumber{ attributes: StringAttributes::default(), content: crate::datatypes::StringNumber(2) },
-                  fret: Fret{ attributes: FretAttributes::default(), content: NonNegativeInteger(1) },
-                  fingering: Some(Fingering{ attributes: FingeringAttributes:: default(), content: String::from("Fingers") }),
-                  barre: Some(Barre { attributes: BarreAttributes { r#type: StartStop::Start, color: None }, content: () }),
-                }
-              }
-            ],
+            frame_strings: FrameStrings {
+              attributes: (),
+              content: PositiveInteger(2),
+            },
+            frame_frets: FrameFrets {
+              attributes: (),
+              content: PositiveInteger(3),
+            },
+            first_fret: Some(FirstFret {
+              attributes: FirstFretAttributes::default(),
+              content: PositiveInteger(1),
+            }),
+            frame_note: vec![FrameNote {
+              attributes: (),
+              content: FrameNoteContents {
+                string: StringNumber {
+                  attributes: StringAttributes::default(),
+                  content: crate::datatypes::StringNumber(2),
+                },
+                fret: Fret {
+                  attributes: FretAttributes::default(),
+                  content: NonNegativeInteger(1),
+                },
+                fingering: Some(Fingering {
+                  attributes: FingeringAttributes::default(),
+                  content: String::from("Fingers"),
+                }),
+                barre: Some(Barre {
+                  attributes: BarreAttributes {
+                    r#type: StartStop::Start,
+                    color: None,
+                  },
+                  content: (),
+                }),
+              },
+            }],
           },
         }),
         offset: Some(Offset {
@@ -240,9 +305,9 @@ mod harmony_tests {
         level: None,
         staff: Some(Staff {
           attributes: (),
-          content: PositiveInteger(2)
+          content: PositiveInteger(2),
         }),
-      }
+      },
     };
     let expected = "<harmony arrangement=\"diagonal\">
   <root>
@@ -310,7 +375,7 @@ mod harmony_tests {
         </frame>
         <offset>7</offset>
         <staff>2</staff>
-      </harmony>"
+      </harmony>",
     );
     assert!(result.is_ok());
     assert_eq!(
@@ -321,43 +386,101 @@ mod harmony_tests {
           ..Default::default()
         },
         content: HarmonyContents {
-          harmony: vec![
-            HarmonySubcontents {
-              root: Some(Root { attributes: (), content: RootContents { root_step: RootStep { attributes: RootStepAttributes::default(), content: Step::D }, root_alter: Some(RootAlter { attributes: RootAlterAttributes::default(), content: Semitones(-2) }) } }),
-              numeral: None,
-              function: None,
-              kind: Kind { attributes: KindAttributes::default(), content: KindValue::Dominant11th },
-              inversion: Some(Inversion{ attributes: InversionAttributes::default(), content: NonNegativeInteger(1) }),
-              bass: Some(Bass { attributes: BassAttributes::default(), content: BassContents { bass_separator: Some(BassSeparator{ attributes: BassSeparatorAttributes::default(), content: String::from("Test Bass") }), bass_step: BassStep { attributes: BassStepAttributes::default(), content: Step::F }, bass_alter: None } }),
-              degree: vec![
-                Degree {
-                  attributes: DegreeAttributes::default(),
-                  content: DegreeContents {
-                    degree_value: DegreeValue { attributes: DegreeValueAttributes::default(), content: PositiveInteger(5) },
-                    degree_alter: DegreeAlter { attributes: DegreeAlterAttributes::default(), content: Semitones(7) },
-                    degree_type: DegreeType { attributes: DegreeTypeAttributes::default(), content: DegreeTypeValue::Alter },
-                  }
-                }
-              ],
-            }
-          ],
+          harmony: vec![HarmonySubcontents {
+            root: Some(Root {
+              attributes: (),
+              content: RootContents {
+                root_step: RootStep {
+                  attributes: RootStepAttributes::default(),
+                  content: Step::D
+                },
+                root_alter: Some(RootAlter {
+                  attributes: RootAlterAttributes::default(),
+                  content: Semitones(-2)
+                })
+              }
+            }),
+            numeral: None,
+            function: None,
+            kind: Kind {
+              attributes: KindAttributes::default(),
+              content: KindValue::Dominant11th
+            },
+            inversion: Some(Inversion {
+              attributes: InversionAttributes::default(),
+              content: NonNegativeInteger(1)
+            }),
+            bass: Some(Bass {
+              attributes: BassAttributes::default(),
+              content: BassContents {
+                bass_separator: Some(BassSeparator {
+                  attributes: BassSeparatorAttributes::default(),
+                  content: String::from("Test Bass")
+                }),
+                bass_step: BassStep {
+                  attributes: BassStepAttributes::default(),
+                  content: Step::F
+                },
+                bass_alter: None
+              }
+            }),
+            degree: vec![Degree {
+              attributes: DegreeAttributes::default(),
+              content: DegreeContents {
+                degree_value: DegreeValue {
+                  attributes: DegreeValueAttributes::default(),
+                  content: PositiveInteger(5)
+                },
+                degree_alter: DegreeAlter {
+                  attributes: DegreeAlterAttributes::default(),
+                  content: Semitones(7)
+                },
+                degree_type: DegreeType {
+                  attributes: DegreeTypeAttributes::default(),
+                  content: DegreeTypeValue::Alter
+                },
+              }
+            }],
+          }],
           frame: Some(Frame {
             attributes: FrameAttributes::default(),
             content: FrameContents {
-              frame_strings: FrameStrings { attributes: (), content: PositiveInteger(2) },
-              frame_frets: FrameFrets { attributes: (), content: PositiveInteger(3) },
-              first_fret: Some(FirstFret { attributes: FirstFretAttributes::default(), content: PositiveInteger(1) }),
-              frame_note: vec![
-                FrameNote {
-                  attributes: (),
-                  content: FrameNoteContents {
-                    string: StringNumber{ attributes: StringAttributes::default(), content: crate::datatypes::StringNumber(2) },
-                    fret: Fret{ attributes: FretAttributes::default(), content: NonNegativeInteger(1) },
-                    fingering: Some(Fingering{ attributes: FingeringAttributes:: default(), content: String::from("Fingers") }),
-                    barre: Some(Barre { attributes: BarreAttributes { r#type: StartStop::Start, color: None }, content: () }),
-                  }
+              frame_strings: FrameStrings {
+                attributes: (),
+                content: PositiveInteger(2)
+              },
+              frame_frets: FrameFrets {
+                attributes: (),
+                content: PositiveInteger(3)
+              },
+              first_fret: Some(FirstFret {
+                attributes: FirstFretAttributes::default(),
+                content: PositiveInteger(1)
+              }),
+              frame_note: vec![FrameNote {
+                attributes: (),
+                content: FrameNoteContents {
+                  string: StringNumber {
+                    attributes: StringAttributes::default(),
+                    content: crate::datatypes::StringNumber(2)
+                  },
+                  fret: Fret {
+                    attributes: FretAttributes::default(),
+                    content: NonNegativeInteger(1)
+                  },
+                  fingering: Some(Fingering {
+                    attributes: FingeringAttributes::default(),
+                    content: String::from("Fingers")
+                  }),
+                  barre: Some(Barre {
+                    attributes: BarreAttributes {
+                      r#type: StartStop::Start,
+                      color: None
+                    },
+                    content: ()
+                  }),
                 }
-              ],
+              }],
             },
           }),
           offset: Some(Offset {

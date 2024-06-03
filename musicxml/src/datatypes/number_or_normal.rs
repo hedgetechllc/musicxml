@@ -1,7 +1,7 @@
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Can be either a decimal number or the string "normal".
-/// 
+///
 /// This is used by the `line_height` and `letter_spacing` attributes.
 #[derive(Debug, PartialEq)]
 pub enum NumberOrNormal {
@@ -29,7 +29,10 @@ impl DatatypeDeserializer for NumberOrNormal {
     } else if value.to_lowercase() == "normal" {
       Ok(NumberOrNormal::Normal)
     } else {
-      Err(format!("Value {} is invalid for the <number-or-normal> data type", value))
+      Err(format!(
+        "Value {} is invalid for the <number-or-normal> data type",
+        value
+      ))
     }
   }
 }

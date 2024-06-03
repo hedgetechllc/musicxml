@@ -13,13 +13,13 @@ pub struct PercussionAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -35,14 +35,14 @@ pub struct PercussionAttributes {
   pub font_weight: Option<FontWeight>,
   /// In cases where text extends over more than one line, horizontal alignment and justify values can be different.
   /// The most typical case is for credits, such as:
-  /// 
+  ///
   /// ```text
   /// Words and music by
   ///   Pat Songwriter
   /// ```
   /// Typically this type of credit is aligned to the right, so that the position information refers to the right-most part of the text.
   /// But in this example, the text is center-justified, not right-justified.
-  /// 
+  ///
   /// The `halign` attribute is used in these situations. If it is not present, its value is the same as for the `justify` attribute.
   /// For elements where a justify attribute is not allowed, the default is implementation-dependent.
   pub halign: Option<LeftCenterRight>,
@@ -74,9 +74,9 @@ pub enum PercussionContents {
 }
 
 /// The [Percussion] element is used to define percussion pictogram symbols.
-/// 
+///
 /// ![Percussion](percussion.png)
-/// 
+///
 /// The organization of these symbols follows the definitions in Kurt Stone's "Music Notation in the Twentieth Century" on pages 206-212 and 223.
 /// More pictograms have been added to the ones listed in Stone, based on how usage has evolved since the book was published in 1980.
 #[derive(Debug, PartialEq, Eq)]
@@ -105,7 +105,7 @@ impl ElementDeserializer for Percussion {
         "stick-location" => PercussionContents::StickLocation(StickLocation::deserialize(el)?),
         "other-percussion" => PercussionContents::OtherPercussion(OtherPercussion::deserialize(el)?),
         other => Err(format!("Unknown sub-element type for <percussion>: {}", other))?,
-      }
+      },
     })
   }
 }
@@ -117,17 +117,50 @@ impl ElementSerializer for Percussion {
       name: String::new(),
       attributes: PercussionAttributes::serialize(&element.attributes),
       elements: vec![match &element.content {
-        PercussionContents::Glass(content) => { name = String::from("glass"); Glass::serialize(content) },
-        PercussionContents::Metal(content) => { name = String::from("metal"); Metal::serialize(content) },
-        PercussionContents::Wood(content) => { name = String::from("wood"); Wood::serialize(content) },
-        PercussionContents::Pitched(content) => { name = String::from("pitched"); Pitched::serialize(content) },
-        PercussionContents::Membrane(content) => { name = String::from("membrane"); Membrane::serialize(content) },
-        PercussionContents::Effect(content) => { name = String::from("effect"); Effect::serialize(content) },
-        PercussionContents::Timpani(content) => { name = String::from("timpani"); Timpani::serialize(content) },
-        PercussionContents::Beater(content) => { name = String::from("beater"); Beater::serialize(content) },
-        PercussionContents::Stick(content) => { name = String::from("stick"); Stick::serialize(content) },
-        PercussionContents::StickLocation(content) => { name = String::from("stick-location"); StickLocation::serialize(content) },
-        PercussionContents::OtherPercussion(content) => { name = String::from("other-percussion"); OtherPercussion::serialize(content) },
+        PercussionContents::Glass(content) => {
+          name = String::from("glass");
+          Glass::serialize(content)
+        }
+        PercussionContents::Metal(content) => {
+          name = String::from("metal");
+          Metal::serialize(content)
+        }
+        PercussionContents::Wood(content) => {
+          name = String::from("wood");
+          Wood::serialize(content)
+        }
+        PercussionContents::Pitched(content) => {
+          name = String::from("pitched");
+          Pitched::serialize(content)
+        }
+        PercussionContents::Membrane(content) => {
+          name = String::from("membrane");
+          Membrane::serialize(content)
+        }
+        PercussionContents::Effect(content) => {
+          name = String::from("effect");
+          Effect::serialize(content)
+        }
+        PercussionContents::Timpani(content) => {
+          name = String::from("timpani");
+          Timpani::serialize(content)
+        }
+        PercussionContents::Beater(content) => {
+          name = String::from("beater");
+          Beater::serialize(content)
+        }
+        PercussionContents::Stick(content) => {
+          name = String::from("stick");
+          Stick::serialize(content)
+        }
+        PercussionContents::StickLocation(content) => {
+          name = String::from("stick-location");
+          StickLocation::serialize(content)
+        }
+        PercussionContents::OtherPercussion(content) => {
+          name = String::from("other-percussion");
+          OtherPercussion::serialize(content)
+        }
       }],
       text: String::new(),
     };
@@ -138,8 +171,8 @@ impl ElementSerializer for Percussion {
 
 #[cfg(test)]
 mod percussion_tests {
-  use crate::elements::*;
   use crate::datatypes::SmuflPictogramGlyphName;
+  use crate::elements::*;
   use crate::parser::{parse_from_xml_str, parse_to_xml_str};
 
   #[test]
@@ -147,8 +180,10 @@ mod percussion_tests {
     let test = Percussion {
       attributes: PercussionAttributes::default(),
       content: PercussionContents::Timpani(Timpani {
-        attributes: TimpaniAttributes { smufl: Some(SmuflPictogramGlyphName(String::from("Glyph"))) },
-        content: ()
+        attributes: TimpaniAttributes {
+          smufl: Some(SmuflPictogramGlyphName(String::from("Glyph"))),
+        },
+        content: (),
       }),
     };
     let expected = "<><timpani smufl=\"Glyph\"/></>";
@@ -172,9 +207,7 @@ mod percussion_tests {
 
   #[test]
   fn deserialize_valid1() {
-    let result = parse_from_xml_str::<Percussion>(
-      "<percussion><membrane>Chinese tomtom</membrane></percussion>"
-    );
+    let result = parse_from_xml_str::<Percussion>("<percussion><membrane>Chinese tomtom</membrane></percussion>");
     assert!(result.is_ok());
     assert_eq!(
       result.unwrap(),
@@ -190,9 +223,7 @@ mod percussion_tests {
 
   #[test]
   fn deserialize_valid2() {
-    let result = parse_from_xml_str::<Percussion>(
-      "<percussion><effect>duck call</effect></percussion>"
-    );
+    let result = parse_from_xml_str::<Percussion>("<percussion><effect>duck call</effect></percussion>");
     assert!(result.is_ok());
     assert_eq!(
       result.unwrap(),

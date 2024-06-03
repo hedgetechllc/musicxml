@@ -1,9 +1,9 @@
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Defines what type of distance is being defined in a [Distance][crate::elements::Distance] element.
-/// 
+///
 /// Values include:
-/// 
+///
 /// - [Beam][DistanceType::Beam]: The distance between beams.
 /// - [Hyphen][DistanceType::Hyphen]: The distance between hyphens in lyrics.
 /// - [Other][DistanceType::Other]: Left as a string so that other application-specific types can be defined.

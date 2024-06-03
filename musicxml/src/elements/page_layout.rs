@@ -10,9 +10,9 @@ pub struct PageLayoutContents {
 }
 
 /// Page layout can be defined both in score-wide [Defaults][super::Defaults] and in the [Print][super::Print] element.
-/// 
+///
 /// If no [PageLayout] element is present in the [Defaults][super::Defaults] element, default page layout values are chosen by the application.
-/// 
+///
 /// When used in the [Print][super::Print] element, the [PageLayout] element affects the appearance of the current page only.
 /// All other pages use the default values as determined by the [Defaults][super::Defaults] element. If any child elements are missing
 /// from the [PageLayout] element in a [Print][super::Print] element, the values determined by the [Defaults][super::Defaults] element

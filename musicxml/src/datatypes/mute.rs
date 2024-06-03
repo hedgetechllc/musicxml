@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents muting playback for different instruments, including brass, winds, and strings.
-/// 
+///
 /// The [On][Mute::On] and [Off][Mute::Off] values are used for undifferentiated mutes.
 /// The remaining values represent specific mutes.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]

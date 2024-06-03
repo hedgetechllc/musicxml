@@ -12,26 +12,26 @@ pub struct ImageAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
   /// In cases where text extends over more than one line, horizontal alignment and justify values can be different.
   /// The most typical case is for credits, such as:
-  /// 
+  ///
   /// ```text
   /// Words and music by
   ///   Pat Songwriter
   /// ```
   /// Typically this type of credit is aligned to the right, so that the position information refers to the right-most part of the text.
   /// But in this example, the text is center-justified, not right-justified.
-  /// 
+  ///
   /// The `halign` attribute is used in these situations. If it is not present, its value is the same as for the `justify` attribute.
   /// For elements where a justify attribute is not allowed, the default is implementation-dependent.
   pub halign: Option<LeftCenterRight>,

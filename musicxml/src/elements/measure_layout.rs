@@ -8,7 +8,7 @@ pub struct MeasureLayoutContents {
 }
 
 /// The [MeasureLayout] element includes the horizontal distance from the previous measure.
-/// 
+///
 /// It applies to the current measure only.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("measure-layout")]

@@ -10,7 +10,7 @@ pub struct MetronomeTiedAttributes {
 }
 
 /// The [MetronomeTied] element indicates the presence of a tie within a metric relationship mark.
-/// 
+///
 /// As with the [Tied][super::Tied] element, both the start and stop of the tie should be specified, in this case within separate
 /// [MetronomeNote][super::MetronomeNote] elements.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

@@ -18,7 +18,7 @@ pub struct BassContents {
 }
 
 /// The [Bass] element is used to indicate a bass note in popular music chord symbols, e.g. G/C.
-/// 
+///
 /// It is generally not used in functional harmony, as inversion is generally not used in pop chord symbols.
 /// As with [Root][super::Root], it is divided into step and alter elements, similar to pitches.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

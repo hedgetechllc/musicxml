@@ -10,7 +10,7 @@ pub struct PitchedAttributes {
 }
 
 /// The [Pitched] element represents pictograms for pitched percussion instruments.
-/// 
+///
 /// ![Pitched](pitched.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Pitched {

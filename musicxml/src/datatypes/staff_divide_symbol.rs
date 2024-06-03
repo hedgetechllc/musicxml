@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Used for staff division symbols.
-/// 
+///
 /// The down, up, and up-down values correspond to SMuFL code points U+E00B, U+E00C, and U+E00D respectively.
 #[derive(Debug, Default, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum StaffDivideSymbol {

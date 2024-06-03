@@ -19,7 +19,7 @@ pub struct PlayContents {
 }
 
 /// The [Play] element specifies playback techniques to be used in conjunction with the [InstrumentSound][super::InstrumentSound] element.
-/// 
+///
 /// When used as part of a [Sound][super::Sound] element, it applies to all notes going forward in score order. In multi-instrument parts,
 /// the affected instrument should be specified using the id attribute. When used as part of a [Note][super::Note] element, it applies to the current note only.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

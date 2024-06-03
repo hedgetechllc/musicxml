@@ -21,7 +21,7 @@ pub struct DefaultsContents {
 
 /// The [Defaults] element specifies score-wide defaults for scaling, whether or not the file is a concert score,
 /// layout, and default values for the music font, word font, lyric font, and lyric language.
-/// 
+///
 /// Except for the [ConcertScore] element, if any defaults are missing, the choice of what to use is determined by the application.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Defaults {

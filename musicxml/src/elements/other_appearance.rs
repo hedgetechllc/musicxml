@@ -10,7 +10,7 @@ pub struct OtherAppearanceAttributes {
 }
 
 /// The [OtherAppearance] element is used to define any graphical settings not yet in the current version of the MusicXML format.
-/// 
+///
 /// This allows extended representation, though without application interoperability.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("other-appearance")]

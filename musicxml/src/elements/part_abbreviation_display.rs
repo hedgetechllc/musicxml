@@ -17,9 +17,9 @@ pub struct PartAbbreviationDisplayContents {
 }
 
 /// The [PartAbbreviationDisplay] element is used for exact formatting of multi-font text in part abbreviations to the left of the system.
-/// 
+///
 /// The `print_object` attribute can be used to determine what, if anything, is printed at the start of each system.
-/// 
+///
 /// Formatting specified in the [PartAbbreviationDisplay] element overrides formatting specified in the
 /// [PartAbbreviation][super::PartAbbreviation] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

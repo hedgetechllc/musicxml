@@ -70,9 +70,7 @@ impl ContentDeserializer for NotationsContents {
           .push(NotationContentTypes::Technical(Technical::deserialize(child)?)),
         "articulations" => notations
           .notations
-          .push(NotationContentTypes::Articulations(Articulations::deserialize(
-            child
-          )?)),
+          .push(NotationContentTypes::Articulations(Articulations::deserialize(child)?)),
         "dynamics" => notations
           .notations
           .push(NotationContentTypes::Dynamics(Dynamics::deserialize(child)?)),
@@ -81,26 +79,20 @@ impl ContentDeserializer for NotationsContents {
           .push(NotationContentTypes::Fermata(Fermata::deserialize(child)?)),
         "arpeggiate" => notations
           .notations
-          .push(NotationContentTypes::Arpeggiate(Arpeggiate::deserialize(
-            child
-          )?)),
+          .push(NotationContentTypes::Arpeggiate(Arpeggiate::deserialize(child)?)),
         "non-arpeggiate" => notations
           .notations
-          .push(NotationContentTypes::NonArpeggiate(NonArpeggiate::deserialize(
-            child
-          )?)),
+          .push(NotationContentTypes::NonArpeggiate(NonArpeggiate::deserialize(child)?)),
         "accidental-mark" => {
           notations
             .notations
             .push(NotationContentTypes::AccidentalMark(AccidentalMark::deserialize(
-              child
+              child,
             )?))
         }
         "other-notation" => notations
           .notations
-          .push(NotationContentTypes::OtherNotation(OtherNotation::deserialize(
-            child
-          )?)),
+          .push(NotationContentTypes::OtherNotation(OtherNotation::deserialize(child)?)),
         _ => Err(format!("Unknown NotationsContent: {:?}", child.name))?,
       }
     }
@@ -140,7 +132,7 @@ impl ContentSerializer for NotationsContents {
 }
 
 ///The [Notations] element collects musical notations that apply to a specific note or chord.
-/// 
+///
 /// Multiple [Notations] elements are allowed in order to represent multiple editorial levels.
 /// The `print_object` attribute allows [Notations] to represent details of performance technique, such as fingerings,
 /// without having them appear in the score. This element is not related to the concept of XML notations.

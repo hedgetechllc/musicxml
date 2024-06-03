@@ -24,9 +24,9 @@ pub struct AttributesContents {
 }
 
 /// The [Attributes] element contains musical information that typically changes on measure boundaries.
-/// 
+///
 /// ![Attributes](attributes.png)
-/// 
+///
 /// This includes key and time signatures, clefs, transpositions, and staving. When attributes are changed mid-measure,
 /// it affects the music in score order, not in MusicXML document order.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

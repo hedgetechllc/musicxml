@@ -10,7 +10,7 @@ pub struct WoodAttributes {
 }
 
 /// The [Wood] element represents pictograms for wood percussion instruments.
-/// 
+///
 /// ![Wood](wood.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Wood {

@@ -30,7 +30,10 @@ impl DatatypeDeserializer for PositiveIntegerOrEmpty {
             "Value {val} is invalid for the <positive-integer-or-empty> data type"
           )),
         },
-        Err(_) => Err(format!("Value {} is invalid for the <positive-integer-or-empty> data type", value)),
+        Err(_) => Err(format!(
+          "Value {} is invalid for the <positive-integer-or-empty> data type",
+          value
+        )),
       }
     }
   }

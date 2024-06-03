@@ -13,7 +13,7 @@ pub struct TieAttributes {
 }
 
 /// The [Tie] element indicates that a tie begins or ends with this note.
-/// 
+///
 /// The [Tie] element indicates sound; the [Tied][super::Tied] element indicates notation.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Tie {

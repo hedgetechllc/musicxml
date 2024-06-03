@@ -44,102 +44,116 @@ pub enum DirectionTypeContents {
 
 impl ContentDeserializer for DirectionTypeContents {
   fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
-    Ok(
-      if let Some(element) = elements.first() {
-        match element.name.as_str() {
-          "rehearsal" => DirectionTypeContents::Rehearsal(
-            elements.iter().filter_map(|el| {
-                if el.name == "rehearsal" {
-                  Rehearsal::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "segno" => DirectionTypeContents::Segno(
-            elements.iter().filter_map(|el| {
-                if el.name == "segno" {
-                  Segno::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "coda" => DirectionTypeContents::Coda(
-            elements.iter().filter_map(|el| {
-                if el.name == "coda" {
-                  Coda::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "words" => DirectionTypeContents::Words(
-            elements.iter().filter_map(|el| {
-                if el.name == "words" {
-                  Words::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "symbol" => DirectionTypeContents::Symbol(
-            elements.iter().filter_map(|el| {
-                if el.name == "symbol" {
-                  Symbol::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "wedge" => DirectionTypeContents::Wedge(Wedge::deserialize(element)?),
-          "dynamics" => DirectionTypeContents::Dynamics(
-            elements.iter().filter_map(|el| {
-                if el.name == "dynamics" {
-                  Dynamics::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "dashes" => DirectionTypeContents::Dashes(Dashes::deserialize(element)?),
-          "bracket" => DirectionTypeContents::Bracket(Bracket::deserialize(element)?),
-          "pedal" => DirectionTypeContents::Pedal(Pedal::deserialize(element)?),
-          "metronome" => DirectionTypeContents::Metronome(Metronome::deserialize(element)?),
-          "octave-shift" => DirectionTypeContents::OctaveShift(OctaveShift::deserialize(element)?),
-          "harp-pedals" => DirectionTypeContents::HarpPedals(HarpPedals::deserialize(element)?),
-          "damp" => DirectionTypeContents::Damp(Damp::deserialize(element)?),
-          "damp-all" => DirectionTypeContents::DampAll(DampAll::deserialize(element)?),
-          "eyeglasses" => DirectionTypeContents::Eyeglasses(Eyeglasses::deserialize(element)?),
-          "string-mute" => DirectionTypeContents::StringMute(StringMute::deserialize(element)?),
-          "scordatura" => DirectionTypeContents::Scordatura(Scordatura::deserialize(element)?),
-          "image" => DirectionTypeContents::Image(Image::deserialize(element)?),
-          "principal-voice" => DirectionTypeContents::PrincipalVoice(PrincipalVoice::deserialize(element)?),
-          "percussion" => DirectionTypeContents::Percussion(
-            elements.iter().filter_map(|el| {
-                if el.name == "percussion" {
-                  Percussion::deserialize(el).ok()
-                } else {
-                  None
-                }
-              })
-              .collect::<Vec<_>>(),
-          ),
-          "accordion-registration" => DirectionTypeContents::AccordionRegistration(AccordionRegistration::deserialize(element)?),
-          "staff-divide" => DirectionTypeContents::StaffDivide(StaffDivide::deserialize(element)?),
-          "other-direction" => DirectionTypeContents::OtherDirection(OtherDirection::deserialize(element)?),
-          other => return Err(format!("Unknown child element <{}> of <direction-type>", other)),
+    Ok(if let Some(element) = elements.first() {
+      match element.name.as_str() {
+        "rehearsal" => DirectionTypeContents::Rehearsal(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "rehearsal" {
+                Rehearsal::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "segno" => DirectionTypeContents::Segno(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "segno" {
+                Segno::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "coda" => DirectionTypeContents::Coda(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "coda" {
+                Coda::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "words" => DirectionTypeContents::Words(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "words" {
+                Words::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "symbol" => DirectionTypeContents::Symbol(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "symbol" {
+                Symbol::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "wedge" => DirectionTypeContents::Wedge(Wedge::deserialize(element)?),
+        "dynamics" => DirectionTypeContents::Dynamics(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "dynamics" {
+                Dynamics::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "dashes" => DirectionTypeContents::Dashes(Dashes::deserialize(element)?),
+        "bracket" => DirectionTypeContents::Bracket(Bracket::deserialize(element)?),
+        "pedal" => DirectionTypeContents::Pedal(Pedal::deserialize(element)?),
+        "metronome" => DirectionTypeContents::Metronome(Metronome::deserialize(element)?),
+        "octave-shift" => DirectionTypeContents::OctaveShift(OctaveShift::deserialize(element)?),
+        "harp-pedals" => DirectionTypeContents::HarpPedals(HarpPedals::deserialize(element)?),
+        "damp" => DirectionTypeContents::Damp(Damp::deserialize(element)?),
+        "damp-all" => DirectionTypeContents::DampAll(DampAll::deserialize(element)?),
+        "eyeglasses" => DirectionTypeContents::Eyeglasses(Eyeglasses::deserialize(element)?),
+        "string-mute" => DirectionTypeContents::StringMute(StringMute::deserialize(element)?),
+        "scordatura" => DirectionTypeContents::Scordatura(Scordatura::deserialize(element)?),
+        "image" => DirectionTypeContents::Image(Image::deserialize(element)?),
+        "principal-voice" => DirectionTypeContents::PrincipalVoice(PrincipalVoice::deserialize(element)?),
+        "percussion" => DirectionTypeContents::Percussion(
+          elements
+            .iter()
+            .filter_map(|el| {
+              if el.name == "percussion" {
+                Percussion::deserialize(el).ok()
+              } else {
+                None
+              }
+            })
+            .collect::<Vec<_>>(),
+        ),
+        "accordion-registration" => {
+          DirectionTypeContents::AccordionRegistration(AccordionRegistration::deserialize(element)?)
         }
-      } else {
-        Err(format!("Missing required child of element <direction-type>"))?
+        "staff-divide" => DirectionTypeContents::StaffDivide(StaffDivide::deserialize(element)?),
+        "other-direction" => DirectionTypeContents::OtherDirection(OtherDirection::deserialize(element)?),
+        other => return Err(format!("Unknown child element <{}> of <direction-type>", other)),
       }
-    )
+    } else {
+      Err(format!("Missing required child of element <direction-type>"))?
+    })
   }
 }
 
@@ -151,33 +165,33 @@ impl ContentSerializer for DirectionTypeContents {
         for element in contents {
           elements.push(Rehearsal::serialize(element));
         }
-      },
+      }
       DirectionTypeContents::Segno(contents) => {
         for element in contents {
           elements.push(Segno::serialize(element));
         }
-      },
+      }
       DirectionTypeContents::Coda(contents) => {
         for element in contents {
           elements.push(Coda::serialize(element));
         }
-      },
+      }
       DirectionTypeContents::Words(contents) => {
         for element in contents {
           elements.push(Words::serialize(element));
         }
-      },
+      }
       DirectionTypeContents::Symbol(contents) => {
         for element in contents {
           elements.push(Symbol::serialize(element));
         }
-      },
+      }
       DirectionTypeContents::Wedge(contents) => elements.push(Wedge::serialize(contents)),
       DirectionTypeContents::Dynamics(contents) => {
         for element in contents {
           elements.push(Dynamics::serialize(element));
         }
-      },
+      }
       DirectionTypeContents::Dashes(contents) => elements.push(Dashes::serialize(contents)),
       DirectionTypeContents::Bracket(contents) => elements.push(Bracket::serialize(contents)),
       DirectionTypeContents::Pedal(contents) => elements.push(Pedal::serialize(contents)),
@@ -195,8 +209,10 @@ impl ContentSerializer for DirectionTypeContents {
         for element in contents {
           elements.push(Percussion::serialize(element));
         }
-      },
-      DirectionTypeContents::AccordionRegistration(contents) => elements.push(AccordionRegistration::serialize(contents)),
+      }
+      DirectionTypeContents::AccordionRegistration(contents) => {
+        elements.push(AccordionRegistration::serialize(contents))
+      }
       DirectionTypeContents::StaffDivide(contents) => elements.push(StaffDivide::serialize(contents)),
       DirectionTypeContents::OtherDirection(contents) => elements.push(OtherDirection::serialize(contents)),
     }
@@ -205,7 +221,7 @@ impl ContentSerializer for DirectionTypeContents {
 }
 
 /// Textual direction types may have more than 1 component due to multiple fonts.
-/// 
+///
 /// The [Dynamics] element may also be used in the [Notations][super::Notations] element. Child element attributes related to print suggestions apply
 /// to the individual [DirectionType], not to the overall [Direction][super::Direction].
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

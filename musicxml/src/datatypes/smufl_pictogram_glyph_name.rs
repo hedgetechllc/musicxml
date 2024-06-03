@@ -5,9 +5,9 @@ use regex::Regex;
 use std::ops::Deref;
 
 /// Used to reference a specific Standard Music Font Layout (SMuFL) percussion pictogram character.
-/// 
+///
 /// The value is a SMuFL canonical glyph name that starts with pict.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct SmuflPictogramGlyphName(pub String);
@@ -25,10 +25,16 @@ impl DatatypeDeserializer for SmuflPictogramGlyphName {
       if Regex::new(r"^pict.*$").unwrap().is_match(&token) {
         Ok(SmuflPictogramGlyphName((*token).clone()))
       } else {
-        Err(format!("Value {} is invalid for the <smufl-pictogram-glyph-name>e data type", value))
+        Err(format!(
+          "Value {} is invalid for the <smufl-pictogram-glyph-name>e data type",
+          value
+        ))
       }
     } else {
-      Err(format!("Value {} is invalid for the <smufl-pictogram-glyph-name> data type", value))
+      Err(format!(
+        "Value {} is invalid for the <smufl-pictogram-glyph-name> data type",
+        value
+      ))
     }
   }
 }

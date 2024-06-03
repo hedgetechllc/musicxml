@@ -41,7 +41,7 @@ pub struct TextAttributes {
 }
 
 /// The [Text] element represents a syllable or portion of a syllable for lyric text underlay.
-/// 
+///
 /// A hyphen in the element content should only be used for an actual hyphenated word.
 #[derive(Debug, Default, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Text {

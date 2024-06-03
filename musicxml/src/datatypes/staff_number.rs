@@ -4,9 +4,9 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Indicates staff numbers within a multi-staff part.
-/// 
+///
 /// Staves are numbered from top to bottom, with 1 being the top staff on a part.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct StaffNumber(pub u8);

@@ -10,7 +10,7 @@ pub struct WorkContents {
 }
 
 /// Works are optionally identified by number and title.
-/// 
+///
 /// The [Work] element also may indicate a link to the [Opus] document that composes multiple scores into a collection.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Work {

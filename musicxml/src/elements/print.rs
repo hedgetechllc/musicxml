@@ -41,10 +41,10 @@ pub struct PrintContents {
 }
 
 /// The [Print] element contains general printing parameters, including layout elements.
-/// 
+///
 /// The [PartNameDisplay] and [PartAbbreviationDisplay] elements may also be used here to change how a part name or abbreviation is
 /// displayed over the course of a piece. They take effect when the current measure or a succeeding measure starts a new system.
-/// 
+///
 /// Layout group elements in a [Print] element only apply to the current page, system, or staff. Music that follows continues to take
 /// the default values from the layout determined by the [Defaults][super::Defaults] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

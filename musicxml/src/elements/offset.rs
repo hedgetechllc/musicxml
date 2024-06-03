@@ -13,7 +13,7 @@ pub struct OffsetAttributes {
 }
 
 /// An [Offset] is represented in terms of divisions, and indicates where the direction will appear relative to the current musical location.
-/// 
+///
 /// The current musical location is always within the current measure, even at the end of a measure. If an element within a [Direction][super::Direction]
 /// includes a `default_x` attribute, the [Offset] value will be ignored when determining the appearance of that element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

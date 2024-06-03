@@ -13,7 +13,7 @@ pub struct WaitAttributes {
 }
 
 /// The [Wait] element specifies a point where the accompaniment should wait for a performer event before continuing.
-/// 
+///
 /// This typically happens at the start of new sections or after a held note or indeterminate music. These waiting points cannot always be
 /// inferred reliably from the contents of the displayed score.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

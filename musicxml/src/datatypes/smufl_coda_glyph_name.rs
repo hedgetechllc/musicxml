@@ -5,9 +5,9 @@ use regex::Regex;
 use std::ops::Deref;
 
 /// Used to reference a specific Standard Music Font Layout (SMuFL) coda character.
-/// 
+///
 /// The value is a SMuFL canonical glyph name that starts with coda.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct SmuflCodaGlyphName(pub String);
@@ -25,10 +25,16 @@ impl DatatypeDeserializer for SmuflCodaGlyphName {
       if Regex::new(r"^coda.*$").unwrap().is_match(&token) {
         Ok(SmuflCodaGlyphName((*token).clone()))
       } else {
-        Err(format!("Value {} is invalid for the <smufl-coda-glyph-name> data type", value))
+        Err(format!(
+          "Value {} is invalid for the <smufl-coda-glyph-name> data type",
+          value
+        ))
       }
     } else {
-      Err(format!("Value {} is invalid for the <smufl-coda-glyph-name> data type", value))
+      Err(format!(
+        "Value {} is invalid for the <smufl-coda-glyph-name> data type",
+        value
+      ))
     }
   }
 }

@@ -10,7 +10,7 @@ pub struct InstrumentLinkAttributes {
 }
 
 /// Multiple [PartLink][super::PartLink] elements can link a condensed part within a score file to multiple MusicXML parts files.
-/// 
+///
 /// For example, a "Clarinet 1 and 2" part in a score file could link to separate "Clarinet 1" and "Clarinet 2" part files.
 /// The [InstrumentLink] element distinguishes which of the [ScoreInstruments][super::ScoreInstrument] within a [ScorePart][super::ScorePart]
 /// are in which part file.

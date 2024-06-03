@@ -9,7 +9,7 @@ pub struct BeatUnitTiedContents {
 }
 
 /// The [BeatUnitTied] element indicates a [BeatUnit] within a metronome mark that is tied to the preceding [BeatUnit].
-/// 
+///
 /// This allows two or more tied notes to be associated with a [PerMinute][super::PerMinute] value in a metronome mark, whereas the [MetronomeTied][super::MetronomeTied] element
 /// is restricted to metric relationship marks.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

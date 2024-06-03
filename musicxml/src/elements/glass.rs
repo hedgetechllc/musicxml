@@ -10,7 +10,7 @@ pub struct GlassAttributes {
 }
 
 /// The [Glass] element represents pictograms for glass percussion instruments.
-/// 
+///
 /// ![Glass](glass.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Glass {

@@ -19,7 +19,7 @@ pub struct InstrumentChangeContents {
 }
 
 /// The [InstrumentChange] element type represents a change to the virtual instrument sound for a given [ScoreInstrument][super::ScoreInstrument].
-/// 
+///
 /// All [InstrumentChange] child elements can also be initially specified within the [ScoreInstrument][super::ScoreInstrument] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("instrument-change")]

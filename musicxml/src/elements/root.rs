@@ -9,7 +9,7 @@ pub struct RootContents {
 }
 
 /// The [Root] element indicates a pitch like C, D, E vs. a scale degree like 1, 2, 3.
-/// 
+///
 /// It is used with chord symbols in popular music. The [Root] element has a [RootStep] and optional [RootAlter] element similar to the
 /// [Step][super::Step] and [Alter][super::Alter] elements, but renamed to distinguish the different musical meanings.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

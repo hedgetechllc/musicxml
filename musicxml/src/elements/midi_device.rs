@@ -12,7 +12,7 @@ pub struct MidiDeviceAttributes {
 }
 
 /// The [MidiDevice] element corresponds to the `DeviceName` meta event in Standard MIDI Files.
-/// 
+///
 /// Unlike the `DeviceName` meta event, there can be multiple [MidiDevice] elements per MusicXML part.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("midi-device")]

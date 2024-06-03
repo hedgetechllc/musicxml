@@ -21,13 +21,13 @@ pub struct ScoreInstrumentContents {
 }
 
 /// The [ScoreInstrument] element represents a single instrument within a [ScorePart][super::ScorePart].
-/// 
+///
 /// As with the [ScorePart][super::ScorePart] element, each [ScoreInstrument] has a required ID attribute, a name, and an optional abbreviation.
-/// 
+///
 /// A [ScoreInstrument] element is also required if the score specifies MIDI 1.0 channels, banks, or programs. An initial
 /// [MidiInstrument][super::MidiInstrument] assignment can also be made here. MusicXML software should be able to automatically assign reasonable channels and
 /// instruments without these elements in simple cases, such as where part names match General MIDI instrument names.
-/// 
+///
 /// The [ScoreInstrument] element can also distinguish multiple instruments of the same type that are on the same part, such as Clarinet 1 and
 /// Clarinet 2 instruments within a Clarinets 1 and 2 part.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

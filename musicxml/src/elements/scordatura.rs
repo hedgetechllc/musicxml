@@ -11,9 +11,9 @@ pub struct ScordaturaAttributes {
 }
 
 /// [Scordatura] string tunings are represented by a series of [Accord] elements, similar to the [StaffTuning][super::StaffTuning] elements.
-/// 
+///
 /// ![Scordatura](scordatura.png)
-/// 
+///
 /// Strings are numbered from high to low.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Scordatura {
@@ -25,8 +25,8 @@ pub struct Scordatura {
 
 #[cfg(test)]
 mod scordatura_tests {
-  use crate::elements::*;
   use crate::datatypes::{Octave, Semitones, Step, StringNumber};
+  use crate::elements::*;
   use crate::parser::{parse_from_xml_str, parse_to_xml_str};
 
   #[test]
@@ -41,17 +41,17 @@ mod scordatura_tests {
           content: AccordContents {
             tuning_step: TuningStep {
               attributes: (),
-              content: Step::D
+              content: Step::D,
             },
             tuning_alter: Some(TuningAlter {
               attributes: (),
-              content: Semitones(-1)
+              content: Semitones(-1),
             }),
             tuning_octave: TuningOctave {
               attributes: (),
-              content: Octave(4)
+              content: Octave(4),
             },
-          }
+          },
         },
         Accord {
           attributes: AccordAttributes {
@@ -60,19 +60,19 @@ mod scordatura_tests {
           content: AccordContents {
             tuning_step: TuningStep {
               attributes: (),
-              content: Step::E
+              content: Step::E,
             },
             tuning_alter: Some(TuningAlter {
               attributes: (),
-              content: Semitones(4)
+              content: Semitones(4),
             }),
             tuning_octave: TuningOctave {
               attributes: (),
-              content: Octave(3)
+              content: Octave(3),
             },
-          }
+          },
         },
-      ]
+      ],
     };
     let expected = "<scordatura>
   <accord string=\"1\">
@@ -92,7 +92,8 @@ mod scordatura_tests {
 
   #[test]
   fn deserialize_valid1() {
-    let result = parse_from_xml_str::<Scordatura>("
+    let result = parse_from_xml_str::<Scordatura>(
+      "
     <scordatura>
       <accord string=\"1\">
         <tuning-step>D</tuning-step>
@@ -104,7 +105,7 @@ mod scordatura_tests {
         <tuning-alter>4</tuning-alter>
         <tuning-octave>3</tuning-octave>
       </accord>
-    </scordatura>"
+    </scordatura>",
     );
     assert!(result.is_ok());
     assert_eq!(

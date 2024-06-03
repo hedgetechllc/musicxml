@@ -30,12 +30,12 @@ pub struct PartGroupContents {
 }
 
 /// The [PartGroup] element indicates groupings of parts in the score, usually indicated by braces and brackets.
-/// 
+///
 /// Braces that are used for multi-staff parts should be defined in the [Attributes][super::Attributes] element for that part. The [PartGroup] start element appears before
 /// the first [ScorePart][super::ScorePart] in the group. The [PartGroup] stop element appears after the last [ScorePart][super::ScorePart] in the group.
-/// 
+///
 /// As with [Parts][super::Part], a [PartGroup] can have a name and abbreviation. Values for the child elements are ignored at the stop of a [PartGroup].
-/// 
+///
 /// A [PartGroup] element is not needed for a single multi-staff part. By default, multi-staff parts include a brace symbol and
 /// (if appropriate given the [BarStyle][super::BarStyle]) common barlines. The symbol formatting for a multi-staff part can be more fully specified
 /// using the [PartSymbol][super::PartSymbol] element.

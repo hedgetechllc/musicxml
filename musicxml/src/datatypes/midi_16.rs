@@ -3,11 +3,11 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Used to express MIDI 1.0 values that range from 1 to 16.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum Value**: 1
-/// 
+///
 /// **Maximum Value**: 16
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct Midi16(pub u8);

@@ -3,7 +3,7 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Represents octaves by the numbers 0 to 9, where 4 indicates the octave started by middle C.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct Octave(pub u8);

@@ -2,9 +2,9 @@ use musicxml_internal::*;
 use musicxml_macros::*;
 
 /// The [CreditType] element indicates the purpose behind a credit.
-/// 
+///
 /// Multiple types of data may be combined in a single credit, so multiple elements may be used. Standard values include:
-/// 
+///
 /// - page number
 /// - title
 /// - subtitle
@@ -13,7 +13,7 @@ use musicxml_macros::*;
 /// - lyricist
 /// - rights
 /// - part name
-/// 
+///
 /// Other values may also be used.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("credit-type")]

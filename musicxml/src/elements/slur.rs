@@ -28,13 +28,13 @@ pub struct SlurAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -59,10 +59,10 @@ pub struct SlurAttributes {
 }
 
 /// Most slurs are represented with two [Slur] elements: one with a start type, and one with a stop type.
-/// 
+///
 /// Slurs can add more elements using a "continue" type. This is typically used to specify the formatting of cross-system slurs, or to
 /// specify the shape of very complex slurs.
-/// 
+///
 /// Normal slurs and S-shaped slurs need only two bezier points: one associated with the start of the slur, the other with the stop.
 /// Complex slurs and slurs divided over system breaks can specify additional bezier data at [Slur] elements with a continue type.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

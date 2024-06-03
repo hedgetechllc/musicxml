@@ -14,7 +14,7 @@ pub struct KeyOctaveAttributes {
 }
 
 /// The [KeyOctave] element specifies in which octave an element of a key signature appears.
-/// 
+///
 /// The content specifies the octave value using the same values as the [DisplayOctave][super::DisplayOctave] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("key-octave")]

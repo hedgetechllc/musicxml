@@ -3,7 +3,7 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 use std::ops::Deref;
 
 /// Represents an integral number of milliseconds.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub struct Milliseconds(pub u32);

@@ -11,13 +11,13 @@ pub struct HarmonicAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -51,7 +51,7 @@ pub struct HarmonicContents {
 }
 
 /// The [Harmonic] element indicates natural and artificial harmonics.
-/// 
+///
 /// Allowing the type of pitch to be specified, combined with controls for appearance/playback differences, allows both the notation and the
 /// sound to be represented. Artificial harmonics can add a notated touching pitch; artificial pinch harmonics will usually not notate a touching pitch.
 /// The attributes for the [Harmonic] element refer to the use of the circular harmonic symbol, typically but not always used with natural harmonics.

@@ -17,9 +17,9 @@ pub struct GroupNameDisplayContents {
 }
 
 /// The [GroupNameDisplay] element is used for exact formatting of multi-font text in group names to the left of the system.
-/// 
+///
 /// The `print_object` attribute can be used to determine what, if anything, is printed at the start of each system.
-/// 
+///
 /// Formatting specified in the [GroupNameDisplay] element overrides formatting specified in the [GroupName][super::GroupName] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("group-name-display")]

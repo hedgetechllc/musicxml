@@ -10,9 +10,9 @@ pub struct CancelAttributes {
 }
 
 /// The [Cancel] element indicates that the old key signature should be cancelled before the new one appears.
-/// 
+///
 /// ![Cancel](cancel.png)
-/// 
+///
 /// This will always happen when changing to C major or A minor and need not be specified then.
 /// The [Cancel] element value matches the fifths value of the cancelled key signature
 /// (e.g., a cancel of -2 will provide an explicit cancellation for changing from B flat major to F major).

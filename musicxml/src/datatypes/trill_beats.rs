@@ -3,11 +3,11 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Specifies the beats used in a `trill-sound` or `bend-sound` attribute group.
-/// 
+///
 /// It is a decimal value with a minimum value of 2.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value**: 2.0
 #[derive(Debug, PartialEq, DatatypeSerialize)]
 pub struct TrillBeats(pub f64);

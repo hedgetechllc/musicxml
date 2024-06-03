@@ -26,7 +26,7 @@ pub struct ScoreTimewiseContents {
 }
 
 /// The [ScoreTimewise] element is the root element for a timewise MusicXML score.
-/// 
+///
 /// It includes score header information followed by a series of [Measure] elements with [Part][super::Part] elements inside.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("score-timewise")]

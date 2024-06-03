@@ -10,7 +10,7 @@ pub struct InstrumentAttributes {
 }
 
 /// The [Instrument] element distinguishes between [ScoreInstrument][super::ScoreInstrument] elements in a [ScorePart][super::ScorePart].
-/// 
+///
 /// If multiple [ScoreInstrument][super::ScoreInstrument] elements are specified in a [ScorePart][super::ScorePart], there should be an
 /// [Instrument] element for each note in the [Part][super::Part]. Notes that are shared between multiple [ScoreInstruments][super::ScoreInstrument]
 /// can have more than one [Instrument] element.

@@ -10,7 +10,7 @@ pub struct ReleaseAttributes {
 }
 
 /// The [Release] element indicates that a bend is a release rather than a normal bend or pre-bend.
-/// 
+///
 /// The `first_beat` and `last_beat` attributes of the parent [Bend][super::Bend] element are relative to the original note position, not this offset value.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Release {

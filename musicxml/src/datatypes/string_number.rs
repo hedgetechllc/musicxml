@@ -4,9 +4,9 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Indicates a string number.
-/// 
+///
 /// Strings are numbered from high to low, with 1 being the highest pitched full-length string.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct StringNumber(pub u8);

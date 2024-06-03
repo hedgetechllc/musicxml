@@ -19,7 +19,7 @@ pub struct LineDetailAttributes {
 }
 
 /// If the [StaffLines][super::StaffLines] element is present, the appearance of each line may be individually specified with a [LineDetail] element.
-/// 
+///
 /// The `print_object` attribute allows lines to be hidden within a staff. This is used in special situations such as a widely-spaced percussion staff
 /// where a note placed below the higher line is distinct from a note placed above the lower line. Hidden staff lines are included when specifying clef
 /// lines and determining [DisplayStep][super::DisplayStep] / [DisplayOctave][super::DisplayOctave] values, but are not counted as lines for the purposes

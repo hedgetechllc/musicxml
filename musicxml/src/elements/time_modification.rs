@@ -11,7 +11,7 @@ pub struct TimeModificationContents {
 }
 
 /// [TimeModification] indicates tuplets, double-note tremolos, and other durational changes.
-/// 
+///
 /// A [TimeModification] element shows how the cumulative, sounding effect of tuplets and double-note tremolos compare to the written
 /// note type represented by the [Type][super::Type] and [Dot][super::Dot] elements. Nested tuplets and other notations that use more detailed
 /// information need both the [TimeModification] and [Tuplet][super::Tuplet] elements to be represented accurately.

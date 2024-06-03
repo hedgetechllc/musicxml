@@ -105,9 +105,7 @@ impl ContentDeserializer for CreditContents {
     let mut image_or_words_found = false;
     for element in elements {
       match element.name.as_str() {
-        "credit-type" => contents
-          .credit_type
-          .push(CreditType::deserialize(element)?),
+        "credit-type" => contents.credit_type.push(CreditType::deserialize(element)?),
         "link" => {
           if !image_or_words_found {
             contents.link.push(Link::deserialize(element)?)
@@ -140,7 +138,9 @@ impl ContentSerializer for CreditContents {
       elements.push(Bookmark::serialize(el));
     }
     match &element.credit {
-      CreditSubcontents::Image(contents) => { elements.push(CreditImage::serialize(&contents.credit_image)); },
+      CreditSubcontents::Image(contents) => {
+        elements.push(CreditImage::serialize(&contents.credit_image));
+      }
       CreditSubcontents::Text(contents) => {
         if let Some(content) = &contents.credit_words {
           elements.push(CreditWords::serialize(content));
@@ -162,7 +162,7 @@ impl ContentSerializer for CreditContents {
             elements.push(CreditSymbol::serialize(content));
           }
         }
-      },
+      }
     }
     elements
   }
@@ -170,12 +170,12 @@ impl ContentSerializer for CreditContents {
 
 /// The [Credit] element represents the appearance of the title, composer, arranger, lyricist, copyright, dedication, and other text, symbols, and graphics
 /// that commonly appear on the first page of a score.
-/// 
+///
 /// The [CreditWords][super::CreditWords], [CreditSymbol][super::CreditSymbol], and [CreditImage][super::CreditImage] elements are similar to the
 /// [Words][super::Words], [Symbol][super::Symbol], and [Image][super::Image] elements for a [Direction][super::Direction]. However, since the credit is not
 /// part of a measure, the `default_x` and `default_y` attributes adjust the origin relative to the bottom left-hand corner of the page. The `enclosure`
 /// for [CreditWords][super::CreditWords] and [CreditSymbol][super::CreditSymbol] is none if not specified.
-/// 
+///
 /// By default, a series of [CreditWords][super::CreditWords] and [CreditSymbol][super::CreditSymbol] elements within a single [Credit] element follow one another
 /// in sequence visually. Non-positional formatting attributes are carried over from the previous element by default.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

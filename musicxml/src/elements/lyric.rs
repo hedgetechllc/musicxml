@@ -11,20 +11,20 @@ pub struct LyricAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
   /// Specifies an ID that is unique to the entire document.
   pub id: Option<Id>,
   /// Indicates left, center, or right justification. The default value varies for different elements.
-  /// For elements where the `justify` attribute is present but the `halign` attribute is not, 
+  /// For elements where the `justify` attribute is present but the `halign` attribute is not,
   /// the `justify` attribute indicates horizontal alignment as well as justification.
   pub justify: Option<LeftCenterRight>,
   /// Indicates the name of the lyric type. Common examples are verse and chorus.
@@ -185,17 +185,15 @@ pub enum LyricContents {
 
 impl ContentDeserializer for LyricContents {
   fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
-    Ok(
-      if let Some(_) = elements.iter().find(|&el| el.name == "text") {
-        LyricContents::Text(TextLyric::deserialize(elements)?)
-      } else if let Some(_) = elements.iter().find(|&el| el.name == "laughing") {
-        LyricContents::Laughing(LaughingLyric::deserialize(elements)?)
-      } else if let Some(_) = elements.iter().find(|&el| el.name == "humming") {
-        LyricContents::Humming(HummingLyric::deserialize(elements)?)
-      } else {
-        LyricContents::Extend(ExtendLyric::deserialize(elements)?)
-      },
-    )
+    Ok(if let Some(_) = elements.iter().find(|&el| el.name == "text") {
+      LyricContents::Text(TextLyric::deserialize(elements)?)
+    } else if let Some(_) = elements.iter().find(|&el| el.name == "laughing") {
+      LyricContents::Laughing(LaughingLyric::deserialize(elements)?)
+    } else if let Some(_) = elements.iter().find(|&el| el.name == "humming") {
+      LyricContents::Humming(HummingLyric::deserialize(elements)?)
+    } else {
+      LyricContents::Extend(ExtendLyric::deserialize(elements)?)
+    })
   }
 }
 
@@ -211,19 +209,19 @@ impl ContentSerializer for LyricContents {
 }
 
 /// The [Lyric] element represents text underlays for lyrics.
-/// 
+///
 /// ![Lyric](lyric.png)
-/// 
+///
 /// Two [Text] elements that are not separated by an [Elision] element are part of the same syllable, but may have different text formatting.
 /// A second [Syllabic] element is not allowed unless preceded by an [Elision] element.
-/// 
+///
 /// If not otherwise specified:
-/// 
+///
 /// - The `justify` value is center.
 /// - The `placement` value is below.
 /// - The `valign` value is baseline.
 /// - The `halign` value matches the `justify` value.
-/// 
+///
 /// The `print_object` attribute can override a [Note][super::Note]'s `print_lyric` attribute in cases where only some lyrics on a note are printed,
 /// as when lyrics for later verses are printed in a block of text rather than with each note.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

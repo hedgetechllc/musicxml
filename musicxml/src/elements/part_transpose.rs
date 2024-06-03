@@ -11,9 +11,9 @@ pub struct PartTransposeContents {
 }
 
 /// The child elements of the [PartTranspose] element have the same meaning as for the [Transpose][super::Transpose] element.
-/// 
+///
 /// However that meaning applies to a transposed part created from the existing score file.
-/// 
+///
 /// The [Chromatic] element in a [PartTranspose] element will usually have a non-zero value, since octave transpositions can be represented in concert
 /// scores using the [Transpose][super::Transpose] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

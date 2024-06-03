@@ -11,7 +11,7 @@ pub struct MetronomeBeamAttributes {
 
 /// The [MetronomeBeam] element works like the [Beam][super::Beam] element in defining metric relationships,
 /// but does not include all the attributes available in the [Beam][super::Beam] element.
-/// 
+///
 /// ![MetronomeBeam](metronome-beam.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("metronome-beam")]

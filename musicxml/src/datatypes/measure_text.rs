@@ -3,12 +3,12 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Used for the `text` attribute of [Measure][crate::elements::Measure] elements.
-/// 
+///
 /// It must have at least one character. The `implicit` attribute of the [Measure][crate::elements::Measure]
 /// element should be set to "yes" rather than setting the `text` attribute to an empty string.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum Length**: 1
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct MeasureText(pub String);

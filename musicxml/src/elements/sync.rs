@@ -17,7 +17,7 @@ pub struct SyncAttributes {
 }
 
 /// The [Sync] element specifies the style that a score-following application should use the synchronize an accompaniment with a performer.
-/// 
+///
 /// If this element is not included in a score, default synchronization depends on the application.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Sync {

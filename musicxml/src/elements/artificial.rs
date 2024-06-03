@@ -2,7 +2,7 @@ use musicxml_internal::*;
 use musicxml_macros::*;
 
 /// The [Artificial] element indicates that this is an artificial harmonic.
-/// 
+///
 /// ![Artificial](artificial.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Artificial {

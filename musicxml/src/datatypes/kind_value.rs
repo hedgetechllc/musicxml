@@ -2,9 +2,9 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Indicates the type of chord.
-/// 
+///
 /// [Degree][crate::elements::Degree] elements can then add, subtract, or alter from these starting points.
-/// 
+///
 /// The 11th and 13th values are usually used as a basis for alteration.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum KindValue {
@@ -82,10 +82,10 @@ pub enum KindValue {
   #[rename("Neapolitan")]
   Neapolitan,
   /// Used to explicitly encode the absence of chords or functional harmony.
-  /// 
+  ///
   /// In this case, the [Root][crate::elements::Root], [Numeral][crate::elements::Numeral],
   /// or [Function][crate::elements::Function] element has no meaning.
-  /// 
+  ///
   /// When using the [Root][crate::elements::Root] or [Numeral][crate::elements::Numeral] element,
   /// the `root_step` or `numeral_step` attribute should be set to the empty string to keep the
   /// root or numeral from being displayed.

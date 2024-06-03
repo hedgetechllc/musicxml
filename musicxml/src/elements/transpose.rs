@@ -22,7 +22,7 @@ pub struct TransposeContents {
 }
 
 /// The [Transpose] element represents what must be added to a written pitch to get a correct sounding pitch.
-/// 
+///
 /// It is used for encoding parts for transposing instruments that are in written vs. concert pitch.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Transpose {

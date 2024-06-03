@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Specifies the mode similar to the mode type, but with a restricted set of values.
-/// 
+///
 /// The different minor values are used to interpret [NuermalRoot][crate::elements::NumeralRoot] values
 /// of 6 and 7 when present in a minor key. The harmonic minor value sharpens the 7 and the
 /// melodic minor value sharpens both 6 and 7. If a minor mode is used without

@@ -3,11 +3,11 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// Represents the number of tremolo marks by a number from 0 to 8.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum value:** 0
-/// 
+///
 /// **Maximum value:** 8
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct TremoloMarks(pub u8);

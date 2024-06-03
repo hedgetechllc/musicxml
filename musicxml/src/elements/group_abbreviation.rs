@@ -10,13 +10,13 @@ pub struct GroupAbbreviationAttributes {
   /// Changes the computation of the default horizontal position.
   /// The origin is changed relative to the left-hand side of the note or the musical position within the bar.
   /// Positive x is right and negative x is left.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the [Offset][super::Offset] element.
   /// Applications reading a MusicXML file that can understand both features should generally rely on this attribute for its greater accuracy.
   pub default_x: Option<Tenths>,
   /// Changes the computation of the default vertical position.
   /// The origin is changed relative to the top line of the staff. Positive y is up and negative y is down.
-  /// 
+  ///
   /// This attribute provides higher-resolution positioning data than the `placement` attribute.
   /// Applications reading a MusicXML file that can understand both attributes should generally rely on this attribute for its greater accuracy.
   pub default_y: Option<Tenths>,
@@ -29,7 +29,7 @@ pub struct GroupAbbreviationAttributes {
   /// Normal or bold weight.
   pub font_weight: Option<FontWeight>,
   /// Indicates left, center, or right justification. The default value varies for different elements.
-  /// For elements where the `justify` attribute is present but the `halign` attribute is not, 
+  /// For elements where the `justify` attribute is present but the `halign` attribute is not,
   /// the `justify` attribute indicates horizontal alignment as well as justification.
   pub justify: Option<LeftCenterRight>,
   /// Changes the horizontal position relative to the default position, either as computed by the individual program, or as overridden by the `default_x` attribute.
@@ -41,7 +41,7 @@ pub struct GroupAbbreviationAttributes {
 }
 
 /// The [GroupAbbreviation] element describes the abbreviation of a [PartGroup][super::PartGroup] element.
-/// 
+///
 /// The formatting attributes are deprecated as of Version 2.0 in favor of the new [GroupAbbreviationDisplay][super::GroupAbbreviationDisplay] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("group-abbreviation")]

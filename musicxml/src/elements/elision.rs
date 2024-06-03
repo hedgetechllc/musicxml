@@ -20,7 +20,7 @@ pub struct ElisionAttributes {
 }
 
 /// The [Elision] element represents an elision between lyric syllables.
-/// 
+///
 /// The text content specifies the symbol used to display the elision. Common values are a no-break space (Unicode 00A0), an underscore (Unicode 005F),
 /// or an undertie (Unicode 203F). If the text content is empty, the `smufl` attribute is used to specify the symbol to use.
 /// If neither text content nor a `smufl` attribute are present, the elision glyph is application-specific.

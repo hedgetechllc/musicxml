@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents the style of an arrow, using Unicode arrow terminology.
-/// 
+///
 /// [Filled][ArrowStyle::Filled] and [Hollow][ArrowStyle::Hollow] arrows indicate polygonal single arrows.
 /// [Paired][ArrowStyle::Paired] arrows are duplicate [Single][ArrowStyle::Single] arrows in the same direction.
 /// [Combined][ArrowStyle::Combined] arrows apply to [Double][ArrowStyle::Double] direction arrows like left right,

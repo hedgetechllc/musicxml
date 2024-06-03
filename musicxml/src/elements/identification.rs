@@ -13,7 +13,7 @@ pub struct IdentificationContents {
 }
 
 /// The [Identification] element contains basic metadata about the score.
-/// 
+///
 /// It includes information that may apply at a score-wide, movement-wide, or part-wide level. The [Creator], [Rights], [Source],
 /// and [Relation] elements are based on [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/).
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

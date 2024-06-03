@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Describes the shape and presence / absence of an enclosure around text or symbols.
-/// 
+///
 /// A [Bracket][EnclosureShape::Bracket] enclosure is similar to a rectangle with the bottom line missing,
 /// as is common in jazz notation. An [InvertedBracket][EnclosureShape::InvertedBracket] enclosure is
 /// similar to a rectangle with the top line missing.

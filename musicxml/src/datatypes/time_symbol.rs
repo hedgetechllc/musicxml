@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Indicates how to display a time signature.
-/// 
+///
 /// The [Normal][TimeSymbol::Normal] value is the usual fractional display, and is the implied
 /// symbol type if none is specified. Other options are the [Common][TimeSymbol::Common] and
 /// [Cut][TimeSymbol::Cut] time symbols, as well as a [SingleNumber][TimeSymbol::SingleNumber] with

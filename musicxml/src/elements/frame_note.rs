@@ -11,7 +11,7 @@ pub struct FrameNoteContents {
 }
 
 /// The [FrameNote] type represents each note included in the frame.
-/// 
+///
 /// An open string will have a fret value of 0, while a muted string will not be associated with a [FrameNote] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("frame-note")]

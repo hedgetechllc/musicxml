@@ -2,7 +2,7 @@ use musicxml_internal::*;
 use musicxml_macros::*;
 
 /// The [Rf] element represents a rinforzando rf dynamic marking.
-/// 
+///
 /// ![rf](rf.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Rf {

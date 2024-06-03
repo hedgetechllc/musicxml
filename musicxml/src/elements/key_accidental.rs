@@ -11,7 +11,7 @@ pub struct KeyAccidentalAttributes {
 
 /// The [KeyAccidental] element indicates the accidental to be displayed in the key signature, represented in the same manner
 /// as the [Accidental][super::Accidental] element.
-/// 
+///
 /// It is used for disambiguating microtonal accidentals. The different element names indicate the different meaning of altering notes
 /// in a scale versus altering a sounding pitch.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

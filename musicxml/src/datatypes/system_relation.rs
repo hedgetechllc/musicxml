@@ -8,7 +8,7 @@ pub enum SystemRelation {
   #[rename("only-top")]
   OnlyTop,
   /// The element should appear on both the current part and the top part of the current system.
-  /// 
+  ///
   /// If this value appears in a score, when parts are created the element should only appear once in this part, not twice.
   #[rename("also-top")]
   AlsoTop,

@@ -17,9 +17,9 @@ pub struct GroupAbbreviationDisplayContents {
 }
 
 /// The [GroupAbbreviationDisplay] element is used for exact formatting of multi-font text in group abbreviations to the left of the system.
-/// 
+///
 /// The `print_object` attribute can be used to determine what, if anything, is printed at the start of each system.
-/// 
+///
 /// Formatting specified in the [GroupAbbreviationDisplay] element overrides formatting specified in the
 /// [GroupAbbreviation][super::GroupAbbreviation] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

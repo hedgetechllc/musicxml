@@ -5,10 +5,10 @@ use regex::Regex;
 use std::ops::Deref;
 
 /// Used to reference a specific Standard Music Font Layout (SMuFL) accidental character.
-/// 
+///
 /// The value is a SMuFL canonical glyph name that starts with one of the strings
 /// used at the start of glyph names for SMuFL accidentals.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct SmuflAccidentalGlyphName(pub String);
@@ -29,10 +29,16 @@ impl DatatypeDeserializer for SmuflAccidentalGlyphName {
       {
         Ok(SmuflAccidentalGlyphName((*token).clone()))
       } else {
-        Err(format!("Value {} is invalid for the <smufl-accidental-glyph-name> data type", value))
+        Err(format!(
+          "Value {} is invalid for the <smufl-accidental-glyph-name> data type",
+          value
+        ))
       }
     } else {
-      Err(format!("Value {} is invalid for the <smufl-accidental-glyph-name> data type", value))
+      Err(format!(
+        "Value {} is invalid for the <smufl-accidental-glyph-name> data type",
+        value
+      ))
     }
   }
 }

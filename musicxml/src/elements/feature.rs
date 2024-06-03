@@ -10,7 +10,7 @@ pub struct FeatureAttributes {
 }
 
 /// The [Feature] element is a part of the [Grouping][super::Grouping] element used for musical analysis.
-/// 
+///
 /// The `type` attribute represents the type of the feature and the element content represents its value.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Feature {

@@ -10,7 +10,7 @@ pub struct MetalAttributes {
 }
 
 /// The [Metal] element represents pictograms for metal percussion instruments.
-/// 
+///
 /// ![Metal](metal.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Metal {

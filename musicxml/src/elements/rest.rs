@@ -17,7 +17,7 @@ pub struct RestContents {
 }
 
 /// The [Rest] element indicates notated rests or silences.
-/// 
+///
 /// A [Rest] element is usually empty, but placement on the staff can be specified using [DisplayStep] and [DisplayOctave] elements.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Rest {

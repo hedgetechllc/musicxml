@@ -11,7 +11,7 @@ pub struct TupletActualContents {
 
 /// The [TupletActual] element provides optional full control over how the actual part of the [Tuplet][super::Tuplet] is displayed,
 /// including number and note type (with dots).
-/// 
+///
 /// If any of these elements are absent, their values are based on the [TimeModification][super::TimeModification] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("tuplet-actual")]

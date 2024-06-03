@@ -152,7 +152,6 @@ pub fn serialize_datatype(tokens: TokenStream) -> TokenStream {
   }
 }
 
-
 // --------------------------------------------------------------------------------------------------------------------
 // ATTRIBUTE FUNCTIONALITY --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------------
@@ -165,7 +164,12 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
   for field in &fields.named {
     // Perform any requested field renaming
     let field_name = field.ident.as_ref().unwrap();
-    let field_name_string = field_name.to_string().replace("xml_", "xml:").replace("xlink_", "xlink:").replace("_", "-").replace("r#", "");
+    let field_name_string = field_name
+      .to_string()
+      .replace("xml_", "xml:")
+      .replace("xlink_", "xlink:")
+      .replace("_", "-")
+      .replace("r#", "");
 
     // Deserialize field based on its type
     match &field.ty {
@@ -185,7 +189,7 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
                 }
               }
             }
-          },
+          }
           _ => {
             deserialized_fields.push(quote! {
               #field_name: match attributes.iter().find(|&el| el.0 == #field_name_string) {
@@ -193,9 +197,9 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
                 None => Err(format!("Missing required attribute for '{}': {}", #element_type_string, #field_name_string))?,
               }
             });
-          },
+          }
         }
-      },
+      }
       _ => panic!("Unknown MusicXML element attribute field type"),
     }
   }
@@ -217,7 +221,12 @@ fn serialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   for field in &fields.named {
     // Perform any requested field renaming
     let field_name = field.ident.as_ref().unwrap();
-    let field_name_string = field_name.to_string().replace("xml_", "xml:").replace("xlink_", "xlink:").replace("r#", "").replace("_", "-");
+    let field_name_string = field_name
+      .to_string()
+      .replace("xml_", "xml:")
+      .replace("xlink_", "xlink:")
+      .replace("r#", "")
+      .replace("_", "-");
 
     // Serialize field based on its type
     match &field.ty {
@@ -236,10 +245,10 @@ fn serialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::Fie
                 }
               }
             }
-          },
+          }
           _ => {
             serialized_fields.push(quote! { attributes.push((String::from(#field_name_string), #type_path::serialize(&element.#field_name))); });
-          },
+          }
         }
       }
       _ => panic!("Unknown MusicXML Element field type"),
@@ -282,7 +291,6 @@ pub fn serialize_attribute(tokens: TokenStream) -> TokenStream {
   }
 }
 
-
 // --------------------------------------------------------------------------------------------------------------------
 // CONTENT FUNCTIONALITY ----------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------------
@@ -315,7 +323,7 @@ fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Fie
                 }
               }
             }
-          },
+          }
           field_type if field_type == "Vec" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
               if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
@@ -324,7 +332,7 @@ fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Fie
                 }
               }
             }
-          },
+          }
           _ => {
             deserialized_fields.push(quote! { #field_name: #type_path::deserialize(match elements.iter().find(|&el| el.name == #field_name_string) { Some(val) => val, None => Err(format!("Missing required element <{}> in <{}>", #field_name_string, #element_type_string))? })? });
           }
@@ -354,7 +362,7 @@ fn serialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Field
 
     // Serialize field based on its type
     match &field.ty {
-      syn::Type::Tuple(_type_tuple) => {},
+      syn::Type::Tuple(_type_tuple) => {}
       syn::Type::Path(type_path) => {
         let field_details = type_path.path.segments.first().unwrap();
         match &field_details.ident {
@@ -368,7 +376,7 @@ fn serialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Field
                 }
               }
             }
-          },
+          }
           field_type if field_type == "Vec" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
               if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
@@ -379,7 +387,7 @@ fn serialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Field
                 }
               }
             }
-          },
+          }
           _ => {
             serialized_fields.push(quote! { elements.push(#type_path::serialize(&element.#field_name)); });
           }
@@ -425,7 +433,6 @@ pub fn serialize_content(tokens: TokenStream) -> TokenStream {
   }
 }
 
-
 // --------------------------------------------------------------------------------------------------------------------
 // ELEMENT FUNCTIONALITY ----------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------------
@@ -464,9 +471,8 @@ fn deserialize_element_enum(element_type: &syn::Ident, data: &syn::DataEnum) -> 
 
     // Add a match arm for each type of variant
     for variant_type_str in &variant_type_strings {
-      enum_arms.push(
-        quote! { #variant_type_str => Ok(#element_type::#variant_type(#variant_type::deserialize(element)?)) },
-      );
+      enum_arms
+        .push(quote! { #variant_type_str => Ok(#element_type::#variant_type(#variant_type::deserialize(element)?)) });
     }
   }
   enum_arms.push(quote! { other => Err(format!("Unknown MusicXML variant for {}: {}", #element_type_string, other)) });
@@ -556,7 +562,12 @@ fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::Fie
           _ => {
             if field_name == "attributes" {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(&element.attributes)? });
-            } else if field.attrs.iter().find(|&attr| attr.path().is_ident("flatten")).is_some() {
+            } else if field
+              .attrs
+              .iter()
+              .find(|&attr| attr.path().is_ident("flatten"))
+              .is_some()
+            {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(&element.elements)? });
             } else {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(element.text.as_str())? });
@@ -578,7 +589,11 @@ fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   })
 }
 
-fn serialize_element_named_struct(element_type: &syn::Ident, element_type_name: &String, fields: &syn::FieldsNamed) -> TokenStream {
+fn serialize_element_named_struct(
+  element_type: &syn::Ident,
+  element_type_name: &String,
+  fields: &syn::FieldsNamed,
+) -> TokenStream {
   let mut serialized_fields: Vec<proc_macro2::TokenStream> = Vec::new();
 
   // Iterate through all named struct fields
@@ -587,7 +602,7 @@ fn serialize_element_named_struct(element_type: &syn::Ident, element_type_name: 
 
     // Serialize field based on its type
     match &field.ty {
-      syn::Type::Tuple(_type_tuple) => {},
+      syn::Type::Tuple(_type_tuple) => {}
       syn::Type::Path(type_path) => {
         let field_details = type_path.path.segments.first().unwrap();
         match &field_details.ident {
@@ -595,22 +610,29 @@ fn serialize_element_named_struct(element_type: &syn::Ident, element_type_name: 
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
               if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
                 if let syn::Type::Path(vec_path) = vec_type {
-                  serialized_fields.push(quote! { elements: element.content.iter().map(|el| #vec_path::serialize(el)).collect::<Vec<_>>() });
+                  serialized_fields.push(
+                    quote! { elements: element.content.iter().map(|el| #vec_path::serialize(el)).collect::<Vec<_>>() },
+                  );
                 }
               }
             }
-          },
+          }
           _ => {
             if field_name == "attributes" {
               serialized_fields.push(quote! { attributes: #type_path::serialize(&element.attributes) });
-            } else if field.attrs.iter().find(|&attr| attr.path().is_ident("flatten")).is_some() {
+            } else if field
+              .attrs
+              .iter()
+              .find(|&attr| attr.path().is_ident("flatten"))
+              .is_some()
+            {
               serialized_fields.push(quote! { elements: #type_path::serialize(&element.content) });
             } else {
               serialized_fields.push(quote! { text: #type_path::serialize(&element.content) });
             }
-          },
+          }
         }
-      },
+      }
       _ => panic!("Unknown MusicXML Element field type"),
     }
   }

@@ -18,7 +18,7 @@ pub struct RepeatAttributes {
 }
 
 /// The [Repeat] element represents repeat marks.
-/// 
+///
 /// ![Repeat](repeat.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Repeat {

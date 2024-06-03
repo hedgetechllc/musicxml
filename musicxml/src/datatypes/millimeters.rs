@@ -3,9 +3,9 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 use std::ops::Deref;
 
 /// Used to represent millimeters.
-/// 
+///
 /// This is used in the [Scaling][crate::elements::Scaling] element to provide a default scaling from tenths to physical units.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
 #[derive(Debug, PartialEq, DatatypeDeserialize, DatatypeSerialize)]
 pub struct Millimeters(pub f64);

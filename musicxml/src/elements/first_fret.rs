@@ -12,7 +12,7 @@ pub struct FirstFretAttributes {
 }
 
 /// The [FirstFret] element indicates which fret is shown in the top space of the frame.
-/// 
+///
 /// It is fret 1 if the element is not present.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("first-fret")]

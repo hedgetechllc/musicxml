@@ -25,11 +25,11 @@ pub struct NoteheadAttributes {
 }
 
 /// The [Notehead] element indicates shapes other than the open and closed ovals associated with note durations.
-/// 
+///
 /// The `smufl` attribute can be used to specify a particular notehead, allowing application interoperability without requiring every
 /// Standard Music Font Layout (SMuFL) glyph to have a MusicXML element equivalent. This attribute can be used either with the other value,
 /// or to refine a specific notehead value such as "cluster".
-/// 
+///
 /// Noteheads in the SMuFL [Note name noteheads](https://www.w3.org/2021/03/smufl14/tables/note-name-noteheads.html) and
 /// [Note name noteheads supplement](https://www.w3.org/2021/03/smufl14/tables/note-name-noteheads-supplement.html) ranges
 /// (U+E150–U+E1AF and U+EEE0–U+EEFF) should not use the `smufl` attribute or the `other` value, but instead use

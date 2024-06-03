@@ -18,7 +18,7 @@ pub struct AccordContents {
 }
 
 /// The [Accord] element represents the tuning of a single string in the [Scordatura][super::Scordatura] element.
-/// 
+///
 /// It uses the same group of elements as the [StaffTuning][super::StaffTuning] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Accord {
@@ -97,17 +97,17 @@ mod accord_tests {
       content: AccordContents {
         tuning_step: TuningStep {
           attributes: (),
-          content: Step::D
+          content: Step::D,
         },
         tuning_alter: Some(TuningAlter {
           attributes: (),
-          content: Semitones(-1)
+          content: Semitones(-1),
         }),
         tuning_octave: TuningOctave {
           attributes: (),
-          content: Octave(4)
+          content: Octave(4),
         },
-      }
+      },
     };
     let result = parse_to_xml_str(&test, true);
     assert_eq!(result, expected);

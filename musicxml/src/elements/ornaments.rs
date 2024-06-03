@@ -50,14 +50,26 @@ pub struct OrnamentContents {
 impl ContentDeserializer for OrnamentContents {
   fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
     Ok(OrnamentContents {
-      ornaments: elements.iter().filter_map(|el| OrnamentType::deserialize(el).ok()).collect::<Vec<_>>(),
-      accidental_mark: elements.iter().filter_map(|el| if el.name == "accidental-mark" { AccidentalMark::deserialize(el).ok() } else { None }).collect::<Vec<_>>(),
+      ornaments: elements
+        .iter()
+        .filter_map(|el| OrnamentType::deserialize(el).ok())
+        .collect::<Vec<_>>(),
+      accidental_mark: elements
+        .iter()
+        .filter_map(|el| {
+          if el.name == "accidental-mark" {
+            AccidentalMark::deserialize(el).ok()
+          } else {
+            None
+          }
+        })
+        .collect::<Vec<_>>(),
     })
   }
 }
 
 /// [Ornaments] can be any of several types, followed optionally by accidentals.
-/// 
+///
 /// The [AccidentalMark] element's content is represented the same as an [Accidental][super::Accidental] element, but with a different
 /// name to reflect the different musical meaning.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
@@ -71,8 +83,8 @@ pub struct Ornaments {
 
 #[cfg(test)]
 mod ornaments_tests {
+  use crate::datatypes::{TremoloMarks, TrillBeats, YesNo};
   use crate::elements::*;
-  use crate::datatypes::{TrillBeats, TremoloMarks, YesNo};
   use crate::parser::{parse_from_xml_str, parse_to_xml_str};
 
   #[test]
@@ -91,7 +103,7 @@ mod ornaments_tests {
           }),
         ],
         accidental_mark: vec![],
-      }
+      },
     };
     let expected = "<ornaments><schleifer/><tremolo>2</tremolo></ornaments>";
     let result = parse_to_xml_str(&test, false);
@@ -106,7 +118,7 @@ mod ornaments_tests {
         <shake accelerate=\"no\"/>
         <accidental-mark>natural-down</accidental-mark>
         <accidental-mark>double-sharp-down</accidental-mark>
-      </ornaments>"
+      </ornaments>",
     );
     assert!(result.is_ok());
     assert_eq!(

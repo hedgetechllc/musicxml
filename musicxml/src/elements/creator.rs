@@ -13,7 +13,7 @@ pub struct CreatorAttributes {
 }
 
 /// The [Creator] element describes the creators of the score.
-/// 
+///
 /// This is similar to the Dublin Core creator element. The MusicXML format does not use the creator / contributor distinction from Dublin Core.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Creator {

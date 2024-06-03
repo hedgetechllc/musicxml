@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents pictograms for sound effect percussion instruments.
-/// 
+///
 /// The cannon, lotus flute, and megaphone values are in addition to Stone's list.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum EffectValue {

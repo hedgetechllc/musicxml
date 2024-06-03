@@ -10,7 +10,7 @@ pub struct BeaterAttributes {
 }
 
 /// The [Beater] element represents pictograms for beaters, mallets, and sticks that do not have different materials represented in the pictogram.
-/// 
+///
 /// ![Beater](beater.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Beater {

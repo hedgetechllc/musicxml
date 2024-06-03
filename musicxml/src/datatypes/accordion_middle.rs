@@ -3,13 +3,13 @@ use musicxml_macros::DatatypeSerialize;
 use std::ops::Deref;
 
 /// May have values of 1, 2, or 3, corresponding to having 1 to 3 dots in the middle section of the accordion registration symbol.
-/// 
+///
 /// This type is not used if no dots are present.
-/// 
+///
 /// The value of an instance of this type may be accessed by dereferencing the struct: `*datatype_val`.
-/// 
+///
 /// **Minimum allowed value:** 1
-/// 
+///
 /// **Maximum allowed value:** 3
 #[derive(Debug, PartialEq, Eq, DatatypeSerialize)]
 pub struct AccordionMiddle(pub u8);

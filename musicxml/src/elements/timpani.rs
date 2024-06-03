@@ -10,7 +10,7 @@ pub struct TimpaniAttributes {
 }
 
 /// The [Timpani] element represents the timpani pictogram.
-/// 
+///
 /// ![Timpani](timpani.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Timpani {

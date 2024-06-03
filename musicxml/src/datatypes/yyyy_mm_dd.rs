@@ -3,7 +3,7 @@ use regex::Regex;
 use std::fmt;
 
 /// Represents dates in the yyyy-mm-dd format, following ISO 8601.
-/// 
+///
 /// This is a W3C XML Schema date type, but without the optional timezone data.
 #[derive(Debug, PartialEq, Eq)]
 pub struct YyyyMmDd {

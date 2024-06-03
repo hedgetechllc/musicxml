@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents pictograms for metal percussion instruments.
-/// 
+///
 /// The hi-hat value refers to a pictogram like high-hat cymbals, but without the long vertical line at the bottom.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum MetalValue {

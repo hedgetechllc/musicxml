@@ -13,7 +13,7 @@ pub struct ForwardContents {
 
 /// The [Backup][super::Backup] and [Forward] elements are required to coordinate multiple voices in one part,
 /// including music on multiple staves.
-/// 
+///
 /// The [Forward] element is generally used within voices and staves. [Duration] values should always be positive, and should not cross
 /// measure boundaries or mid-measure changes in the [Divisions][super::Divisions] value.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

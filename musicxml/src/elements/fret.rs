@@ -18,7 +18,7 @@ pub struct FretAttributes {
 }
 
 /// The [Fret] element is used with tablature notation and chord diagrams.
-/// 
+///
 /// Fret numbers start with 0 for an open string and 1 for the first fret.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Fret {

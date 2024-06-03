@@ -2,7 +2,7 @@ use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents pictograms for pitched percussion instruments.
-/// 
+///
 /// The [Chimes][PitchedValue::Chimes] and [TubularChimes][PitchedValue::TubularChimes] values
 /// distinguish the single-line and double-line versions of the pictogram.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]

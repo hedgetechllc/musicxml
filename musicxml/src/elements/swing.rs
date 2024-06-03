@@ -12,12 +12,12 @@ pub struct SwingContents {
 }
 
 /// The [Swing] element specifies whether or not to use swing playback, where consecutive on-beat / off-beat eighth or 16th notes are played with unequal nominal durations.
-/// 
+///
 /// The [First] and [Second] elements are positive integers that specify the ratio between durations of consecutive notes. For example, a [First] element
 /// with a value of 2 and a [Second] element with a value of 1 applied to eighth notes specifies a quarter note / eighth note tuplet playback,
 /// where the first note is twice as long as the second note. Ratios should be specified with the smallest integers possible. For example, a ratio
 /// of 6 to 4 should be specified as 3 to 2 instead.
-/// 
+///
 /// The [Swing] element has no effect for playback of grace notes, notes where a [Type][super::Type] element is not present, and notes where the
 /// specified [Duration][super::Duration] is different than the nominal value associated with the specified [Type][super::Type]. If a swung note has
 /// `attack` and `release` attributes, those values modify the swung playback.

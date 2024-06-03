@@ -16,7 +16,7 @@ pub enum ClefSign {
   /// ![Percussion](clef-percussion.png)
   Percussion,
   /// ![TAB](clef-TAB.png)
-  /// 
+  ///
   /// The TAB sign indicates that the music that follows should be in tablature notation.
   #[rename("TAB")]
   TAB,
