@@ -1,5 +1,4 @@
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
-use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 
 /// Represents the shape of the fermata sign.
 #[derive(Debug, PartialEq, Eq)]
