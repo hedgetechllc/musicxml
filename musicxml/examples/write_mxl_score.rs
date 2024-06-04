@@ -8,7 +8,7 @@ fn main() {
   println!(
     "Writing to '{}'...{}",
     output_path,
-    if write_score_partwise(&score, output_path, true).is_ok() {
+    if write_partwise_score(output_path, &score, true, false).is_ok() {
       "SUCCESS"
     } else {
       "FAILED"

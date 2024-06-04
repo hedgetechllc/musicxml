@@ -24,7 +24,7 @@ pub struct MeasureStyleAttributes {
 }
 
 /// Contents of the [MeasureStyle] element.
-/// 
+///
 /// The [MeasureStyle] element may contain either a [MultipleRest], [MeasureRepeat], [BeatRepeat], or [Slash].
 #[derive(Debug, PartialEq, Eq)]
 pub enum MeasureStyleContents {

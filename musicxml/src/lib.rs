@@ -10,14 +10,14 @@
 //!
 //! Description, etc.
 
-/// This module contains the main data types used in the MusicXML format.
+/// Contains the main data types used by the MusicXML format.
 ///
 /// Note that these data types correspond to the textual contents of an XML tag. For example, the XML string
 /// `<element>123</element>` might specify that the `123` value be of data type `UnsignedInteger`.
 /// This module defines all the various data types that a MusicXML text field can have.
 pub mod datatypes;
 
-/// This module contains the main elements used in the MusicXML format.
+/// Contains the main elements used in the MusicXML format.
 ///
 /// Note that these elements correspond to the XML tags themselves and are usually containers for other
 /// MusicXML elements or data types. For example, take the following contrived MusicXML string:
@@ -36,27 +36,37 @@ pub mod datatypes;
 /// This module defines all the various container elements that a MusicXML file can have.
 pub mod elements;
 
-/// Information about parser module
+/// Contains functions for parsing and writing MusicXML files.
+/// 
+/// It is recommended that the top-level [MusicXML][crate] functions be used to read and write MusicXML files;
+/// however, the functions in this module can be used directly for more fine-grained control over the parsing
+/// and writing process.
 pub mod parser;
 
 use elements::{ScorePartwise, ScoreTimewise};
 
 pub fn read_score_partwise(path: &str) -> Result<ScorePartwise, String> {
-  parser::parse_from_xml_file::<ScorePartwise>(path)
-  // TODO: Auto-convert if wrong type
+  parser::parse_score_partwise_from_file(path)
 }
 
 pub fn read_score_timewise(path: &str) -> Result<ScoreTimewise, String> {
-  parser::parse_from_xml_file::<ScoreTimewise>(path)
-  // TODO: Auto-convert if wrong type
+  parser::parse_score_timewise_from_file(path)
 }
 
-pub fn write_score_partwise(score: &ScorePartwise, path: &str, compressed: bool) -> Result<(), String> {
-  parser::parse_to_xml_file(path, score, compressed, true)
-  // TODO: Auto-convert if wrong type
+pub fn write_partwise_score(
+  path: &str,
+  score: &ScorePartwise,
+  compressed: bool,
+  write_as_timewise: bool,
+) -> Result<(), String> {
+  parser::parse_score_partwise_to_file(path, score, compressed, true, write_as_timewise)
 }
 
-pub fn write_score_timewise(score: &ScoreTimewise, path: &str, compressed: bool) -> Result<(), String> {
-  parser::parse_to_xml_file(path, score, compressed, true)
-  // TODO: Auto-convert if wrong type
+pub fn write_timewise_score(
+  path: &str,
+  score: &ScoreTimewise,
+  compressed: bool,
+  write_as_partwise: bool,
+) -> Result<(), String> {
+  parser::parse_score_timewise_to_file(path, score, compressed, true, write_as_partwise)
 }

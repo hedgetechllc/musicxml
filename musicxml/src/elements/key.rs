@@ -70,7 +70,7 @@ pub struct RelativeKeyContents {
 }
 
 /// Contents of the [Key] element.
-/// 
+///
 /// The [Key] element may contain either [ExplicitKeyContents] or [RelativeKeyContents].
 #[derive(Debug, PartialEq, Eq)]
 pub enum KeyContents {

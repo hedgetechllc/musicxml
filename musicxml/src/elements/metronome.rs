@@ -249,7 +249,7 @@ impl ContentSerializer for MetronomeBased {
 }
 
 /// Contents of the [Metronome] element.
-/// 
+///
 /// The [Metronome] element may contain either [BeatBased] or [MetronomeBased] contents.
 #[derive(Debug, PartialEq, Eq)]
 pub enum MetronomeContents {

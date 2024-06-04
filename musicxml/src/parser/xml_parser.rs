@@ -1,5 +1,3 @@
-use std::io::Write;
-
 use musicxml_internal::XmlElement;
 
 enum TagType {
@@ -80,7 +78,7 @@ fn read_tag_str(str: &str) -> TagType {
   TagType::Done
 }
 
-pub fn write_xml_to_str(xml: &XmlElement, depth: i16) -> String {
+pub fn parse_to_string(xml: &XmlElement, depth: i16) -> String {
   let mut xml_str = String::new();
   if depth > 0 {
     xml_str += "\n";
@@ -97,7 +95,7 @@ pub fn write_xml_to_str(xml: &XmlElement, depth: i16) -> String {
   } else {
     xml_str += ">";
     for element in &xml.elements {
-      xml_str += write_xml_to_str(element, if depth >= 0 { depth + 1 } else { depth }).as_str();
+      xml_str += parse_to_string(element, if depth >= 0 { depth + 1 } else { depth }).as_str();
     }
     if xml.text.is_empty() && depth >= 0 {
       xml_str += "\n";
@@ -112,26 +110,7 @@ pub fn write_xml_to_str(xml: &XmlElement, depth: i16) -> String {
   xml_str
 }
 
-pub fn write_xml_to_file(path: &str, xml: &XmlElement, pretty_print: bool) -> Result<(), String> {
-  let mut file = std::fs::OpenOptions::new()
-    .write(true)
-    .create(true)
-    .open(path)
-    .map_err(|e| e.to_string())?;
-  file
-    .write_all(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
-    .map_err(|e| e.to_string())?;
-  if xml.name == "score-partwise" {
-    file.write_all(b"<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n").map_err(|e| e.to_string())?;
-  } else if xml.name == "score-timewise" {
-    file.write_all(b"<!DOCTYPE score-timewise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Timewise//EN\" \"http://www.musicxml.org/dtds/timewise.dtd\">\n").map_err(|e| e.to_string())?;
-  }
-  file
-    .write_all(write_xml_to_str(xml, if pretty_print { 0 } else { -1 }).as_ref())
-    .map_err(|e| e.to_string())
-}
-
-pub fn parse_xml_from_str(mut str: &str) -> Result<XmlElement, String> {
+pub fn parse_from_string(mut str: &str) -> Result<XmlElement, String> {
   let mut open_tags: Vec<XmlElement> = Vec::new();
   while !str.is_empty() {
     if str.starts_with('<') {
@@ -177,14 +156,6 @@ pub fn parse_xml_from_str(mut str: &str) -> Result<XmlElement, String> {
     str = &str[1..];
   }
   Err(format!("Missing one or more matched tags"))
-}
-
-pub fn parse_xml_from_file(path: &str) -> Result<XmlElement, String> {
-  if let Ok(contents) = std::fs::read_to_string(path) {
-    parse_xml_from_str(&contents)
-  } else {
-    Err(format!("Unable to open file at '{}'", path))
-  }
 }
 
 #[cfg(test)]
@@ -246,7 +217,7 @@ mod xml_parser_tests {
       ],
       text: String::new(),
     };
-    let result = write_xml_to_str(&test_xml, 0);
+    let result = parse_to_string(&test_xml, 0);
     assert_eq!(result.as_str(), test_xml_str);
   }
 
@@ -261,7 +232,7 @@ mod xml_parser_tests {
         <val2>567</val2>
       </inner2>
     </outer2>";
-    let result = parse_xml_from_str(test_xml);
+    let result = parse_from_string(test_xml);
     assert!(result.is_ok());
     assert_eq!(
       result.unwrap(),
@@ -304,11 +275,5 @@ mod xml_parser_tests {
         text: String::new()
       }
     );
-  }
-
-  #[test]
-  fn deserialize_valid_file() {
-    let result = parse_xml_from_file("tests/Grande Valse Brillante.musicxml");
-    assert!(result.is_ok());
   }
 }

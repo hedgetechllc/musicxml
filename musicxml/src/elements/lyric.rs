@@ -207,7 +207,7 @@ pub struct HummingLyric {
 }
 
 /// Contents of the [Lyric] element.
-/// 
+///
 /// The [Lyric] element may contain either a [TextLyric], [ExtendLyric], [LaughingLyric], or [HummingLyric].
 #[derive(Debug, PartialEq, Eq)]
 pub enum LyricContents {

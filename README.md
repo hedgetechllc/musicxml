@@ -2,7 +2,6 @@
 
 MusicXML Parsing, Manipulation, and Export Library
 
-TODO: Auto-convert between partwise/timewise score types
 TODO: Finish documentation
 TODO: Verify production settings, generate crate, upload to crates.io
 

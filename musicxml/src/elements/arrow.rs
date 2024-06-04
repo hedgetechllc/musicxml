@@ -61,7 +61,7 @@ pub struct CircularArrowContents {
 }
 
 /// Contents of the [Arrow] element.
-/// 
+///
 /// The [Arrow] element may contain either [StraightArrowContents] or [CircularArrowContents].
 #[derive(Debug, PartialEq, Eq)]
 pub enum ArrowContents {

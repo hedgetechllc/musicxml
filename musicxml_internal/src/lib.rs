@@ -1,7 +1,6 @@
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct XmlElement {
   pub name: String,
-  /// Element-specific attributes
   pub attributes: Vec<(String, String)>,
   pub elements: Vec<XmlElement>,
   pub text: String,
