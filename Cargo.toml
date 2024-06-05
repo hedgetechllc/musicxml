@@ -18,7 +18,6 @@ publish = true
 [workspace.dependencies]
 musicxml_internal = { path = "musicxml_internal", version = "1.0.0" }
 musicxml_macros = { path = "musicxml_macros", version = "1.0.0" }
-cargo-smart-release = { version = "0.21" }
 
 [profile.release]
 codegen-units = 4096

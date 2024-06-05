@@ -1,7 +1,7 @@
-.PHONY: all clean docs lib format testunit
+.PHONY: all clean docs lib format publish testunit
 
 all:
-	$(error You must specify one of the following targets: clean docs lib format testunit test_EXAMPLE)
+	$(error You must specify one of the following targets: clean docs lib format publish testunit test_EXAMPLE)
 
 clean:
 	@rm -rf pkg target
@@ -16,6 +16,10 @@ lib:
 
 format:
 	cargo fmt
+
+publish:
+	cargo install cargo-smart-release
+	cargo smart-release --update-crates-index musicxml
 
 testunit:
 	cargo test --features debug -- --nocapture
