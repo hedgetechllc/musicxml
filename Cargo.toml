@@ -11,7 +11,7 @@ documentation = "https://docs.rs/musicxml/latest/"
 readme = "README.md"
 homepage = "https://github.com/hedgetechllc/musicxml"
 repository = "https://github.com/hedgetechllc/musicxml"
-keywords = ["musicxml", "parser", "deserializer", "serializer", "music", "format"]
+keywords = ["musicxml", "parser", "deserializer", "music", "format"]
 categories = ["api-bindings", "encoding", "parsing"]
 publish = true
 
