@@ -18,8 +18,8 @@ format:
 	cargo fmt
 
 publish:
-	cargo install cargo-smart-release
-	cargo changelog --write --without commit-statistics musicxml
+	cargo publish -p musicxml_internal
+	cargo publish -p musicxml_macros
 	cargo publish -p musicxml_internal
 
 testunit:
