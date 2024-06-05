@@ -12,8 +12,8 @@ be robust and reliable, handling a wide variety of MusicXML files and formats wi
 
 ## Features
 
-- Exactly follows the full official [MusicXML Standard](https://www.w3.org/2021/06/musicxml40/)
-- Supports both standard `.musicxml` and compressed `.mxl` file formats
+- Implements the full official [MusicXML Standard](https://www.w3.org/2021/06/musicxml40/)
+- Supports both raw `.musicxml` and compressed `.mxl` file formats
 - Supports both "partwise" and "timewise" data representations
 - Allows for transparent conversion between the partwise and timewise representations
 - Is provided as a Rust-format library so that it can be link-time optimized with your own code
