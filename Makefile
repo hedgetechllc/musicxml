@@ -19,7 +19,7 @@ format:
 
 publish:
 	cargo install cargo-smart-release
-	cargo smart-release --update-crates-index --without commit-statistics --execute musicxml
+	cargo smart-release --update-crates-index --changelog-without commit-statistics --execute --no-changelog-preview musicxml
 
 testunit:
 	cargo test --features debug -- --nocapture
