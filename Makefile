@@ -1,7 +1,7 @@
-.PHONY: all clean lib format unit
+.PHONY: all clean docs lib format testunit
 
 all:
-	$(error You must specify one of the following targets: clean docs lib testunit test_EXAMPLE format)
+	$(error You must specify one of the following targets: clean docs lib format testunit test_EXAMPLE)
 
 clean:
 	@rm -rf pkg target
@@ -13,6 +13,9 @@ docs:
 
 lib:
 	cargo build --lib --release
+
+format:
+	cargo fmt
 
 testunit:
 	cargo test --features debug -- --nocapture
@@ -40,6 +43,3 @@ test_write_convert1:
 
 test_write_convert2:
 	cargo run --release --features debug --example write_convert_score2
-
-format:
-	cargo fmt

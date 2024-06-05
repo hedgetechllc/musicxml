@@ -198,7 +198,7 @@ fn convert_xml_timewise_to_partwise(xml: XmlElement) -> Result<XmlElement, Strin
 }
 
 /// Parses a MusicXML string into a MusicXML element.
-/// 
+///
 /// This function can be used to parse any MusicXML datatype or element from a string. It is not required that the
 /// element being parsed be a top-level element such as `<score-partwise>` or `<score-timewise>`.
 pub fn parse_from_xml_str<T: ElementDeserializer>(str: &str) -> Result<T, String> {
@@ -207,7 +207,7 @@ pub fn parse_from_xml_str<T: ElementDeserializer>(str: &str) -> Result<T, String
 }
 
 /// Parses a MusicXML element into a MusicXML string.
-/// 
+///
 /// This function can be used to convert any MusicXML datatype or element into a string. It is not required that the
 /// element being parsed be a top-level element such as `<score-partwise>` or `<score-timewise>`.
 pub fn parse_to_xml_str<T: ElementSerializer>(data: &T, pretty_print: bool) -> String {
@@ -216,7 +216,7 @@ pub fn parse_to_xml_str<T: ElementSerializer>(data: &T, pretty_print: bool) -> S
 }
 
 /// Parses the contents of the specified MusicXML file into a [ScorePartwise] element.
-/// 
+///
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
 pub fn parse_score_partwise_from_file(path: &str) -> Result<ScorePartwise, String> {
   let contents = get_musicxml_contents_from_file(path)?;
@@ -225,7 +225,7 @@ pub fn parse_score_partwise_from_file(path: &str) -> Result<ScorePartwise, Strin
 }
 
 /// Parses the contents of the specified MusicXML file into a [ScoreTimewise] element.
-/// 
+///
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
 pub fn parse_score_timewise_from_file(path: &str) -> Result<ScoreTimewise, String> {
   let contents = get_musicxml_contents_from_file(path)?;
@@ -234,11 +234,11 @@ pub fn parse_score_timewise_from_file(path: &str) -> Result<ScoreTimewise, Strin
 }
 
 /// Writes the contents of the specified [ScorePartwise] element into a MusicXML file.
-/// 
+///
 /// If the `compressed` parameter is set to `true`, the MusicXML file will be written as a compressed `.mxl` file.
 /// If the `write_timewise` parameter is set to `true`, the MusicXML file will be converted into a timewise format and
 /// written as a `<score-timewise>` element.
-/// 
+///
 /// The `pretty_print` parameter specifies whether the MusicXML file should be written with indentation and newlines.
 pub fn parse_score_partwise_to_file(
   path: &str,
@@ -256,11 +256,11 @@ pub fn parse_score_partwise_to_file(
 }
 
 /// Writes the contents of the specified [ScoreTimewise] element into a MusicXML file.
-/// 
+///
 /// If the `compressed` parameter is set to `true`, the MusicXML file will be written as a compressed `.mxl` file.
 /// If the `write_partwise` parameter is set to `true`, the MusicXML file will be converted into a partwise format and
 /// written as a `<score-partwise>` element.
-/// 
+///
 /// The `pretty_print` parameter specifies whether the MusicXML file should be written with indentation and newlines.
 pub fn parse_score_timewise_to_file(
   path: &str,
