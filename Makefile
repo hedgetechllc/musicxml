@@ -20,7 +20,7 @@ format:
 publish:
 	cargo publish -p musicxml_internal
 	cargo publish -p musicxml_macros
-	cargo publish -p musicxml_internal
+	cargo publish -p musicxml
 
 testunit:
 	cargo test --features debug -- --nocapture
