@@ -49,7 +49,7 @@ match read_score_timewise("path/to/file.musicxml") {
 }
 ```
 
-Please refer to the [library documentation](https://docs.rs/musicxml/latest/musicxml/) for full usage instructions.
+Please refer to the [library documentation](https://docs.rs/musicxml/latest/) for full usage instructions.
 You may also want to consult the official [MusicXML Standard](https://www.w3.org/2021/06/musicxml40/) for additional
 details.
 

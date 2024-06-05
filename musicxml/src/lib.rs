@@ -1,6 +1,5 @@
 #![deny(missing_docs)]
 #![deny(rustdoc::broken_intra_doc_links)]
-// TODO: Fix icon and logo
 #![doc(html_favicon_url = "favicon.ico")]
 #![doc(html_logo_url = "MusicXML-Logo-Square.png")]
 #![doc(html_playground_url = "https://playground.example.com/")]

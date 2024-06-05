@@ -7,13 +7,13 @@ edition = "2021"
 version = "1.0.0"
 authors = ["Will Hedgecock <will.hedgecock@gmail.com>"]
 license = "MIT"
-documentation = "https://docs.rs/<your_crate_name>/latest/"
+documentation = "https://docs.rs/musicxml/latest/"
 readme = "README.md"
 homepage = "https://github.com/hedgetechllc/musicxml"
 repository = "https://github.com/hedgetechllc/musicxml"
-keywords = ["musicxml", "parser", "deserializer", "music", "format"]
+keywords = ["musicxml", "parser", "deserializer", "serializer", "music", "format"]
 categories = ["api-bindings", "encoding", "parsing"]
-publish = false
+publish = true
 
 [workspace.dependencies]
 musicxml_internal = { path = "musicxml_internal", version = "1.0.0" }
