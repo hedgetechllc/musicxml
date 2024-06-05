@@ -57,7 +57,7 @@ pub struct ShakeAttributes {
 
 /// The [Shake] element has a similar appearance to an [InvertedMordent][super::InvertedMordent] element.
 ///
-/// ![Shake](shake.png)
+/// ![Shake](https://hedgetechllc.github.io/musicxml/musicxml/elements/shake.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Shake {
   /// Element-specific attributes

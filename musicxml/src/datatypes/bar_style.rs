@@ -4,30 +4,30 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// Represents barline style information.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum BarStyle {
-  /// ![Dashed](bar-style-dashed.png)
+  /// ![Dashed](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-dashed.png)
   Dashed,
-  /// ![Dotted](bar-style-dotted.png)
+  /// ![Dotted](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-dotted.png)
   Dotted,
-  /// ![Heavy](bar-style-heavy.png)
+  /// ![Heavy](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-heavy.png)
   Heavy,
-  /// ![HeavyHeavy](bar-style-heavy-heavy.png)
+  /// ![HeavyHeavy](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-heavy-heavy.png)
   #[rename("heavy-heavy")]
   HeavyHeavy,
-  /// ![HeavyLight](bar-style-heavy-light.png)
+  /// ![HeavyLight](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-heavy-light.png)
   #[rename("heavy-light")]
   HeavyLight,
-  /// ![LightHeavy](bar-style-light-heavy.png)
+  /// ![LightHeavy](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-light-heavy.png)
   #[rename("light-heavy")]
   LightHeavy,
-  /// ![LightLight](bar-style-light-light.png)
+  /// ![LightLight](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-light-light.png)
   #[rename("light-light")]
   LightLight,
   /// No barline appears.
   None,
-  /// ![Regular](bar-style-regular.png)
+  /// ![Regular](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-regular.png)
   Regular,
-  /// ![Short](bar-style-short.png)
+  /// ![Short](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-short.png)
   Short,
-  /// ![Tick](bar-style-tick.png)
+  /// ![Tick](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/bar-style-tick.png)
   Tick,
 }

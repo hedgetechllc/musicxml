@@ -4,18 +4,18 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// Represents the different clef symbols.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum ClefSign {
-  /// ![G](clef-G.png)
+  /// ![G](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/clef-G.png)
   #[rename("G")]
   G,
-  /// ![F](clef-F.png)
+  /// ![F](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/clef-F.png)
   #[rename("F")]
   F,
-  /// ![C](clef-C.png)
+  /// ![C](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/clef-C.png)
   #[rename("C")]
   C,
-  /// ![Percussion](clef-percussion.png)
+  /// ![Percussion](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/clef-percussion.png)
   Percussion,
-  /// ![TAB](clef-TAB.png)
+  /// ![TAB](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/clef-TAB.png)
   ///
   /// The TAB sign indicates that the music that follows should be in tablature notation.
   #[rename("TAB")]

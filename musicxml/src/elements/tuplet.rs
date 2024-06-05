@@ -55,7 +55,7 @@ pub struct TupletContents {
 /// A [Tuplet] element is present when a tuplet is to be displayed graphically, in addition to the sound data provided
 /// by the [TimeModification][super::TimeModification] elements.
 ///
-/// ![Tuplet](tuplet.png)
+/// ![Tuplet](https://hedgetechllc.github.io/musicxml/musicxml/elements/tuplet.png)
 ///
 /// Whereas a [TimeModification][super::TimeModification] element shows how the cumulative, sounding effect of tuplets and double-note tremolos compare
 /// to the written note type, the [Tuplet] element describes how this is displayed. The [Tuplet] element also provides more detailed representation information

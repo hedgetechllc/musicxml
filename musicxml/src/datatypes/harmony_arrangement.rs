@@ -9,10 +9,10 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// specifies that the second element appears both below and to the right of the first.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum HarmonyArrangement {
-  /// ![Horizontal](harmony-arrangement-horizontal.png)
+  /// ![Horizontal](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/harmony-arrangement-horizontal.png)
   Horizontal,
-  /// ![Vertical](harmony-arrangement-vertical.png)
+  /// ![Vertical](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/harmony-arrangement-vertical.png)
   Vertical,
-  /// ![Diagonal](harmony-arrangement-diagonal.png)
+  /// ![Diagonal](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/harmony-arrangement-diagonal.png)
   Diagonal,
 }

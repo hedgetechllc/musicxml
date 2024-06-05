@@ -61,7 +61,7 @@ pub struct SlideAttributes {
 
 /// The [Glissando][super::Glissando] and [Slide] elements both indicate rapidly moving from one pitch to the other so that individual notes are not discerned.
 ///
-/// ![Slide](slide.png)
+/// ![Slide](https://hedgetechllc.github.io/musicxml/musicxml/elements/slide.png)
 ///
 /// A [Slide] is continuous between the two pitches and defaults to a solid line. The optional text is printed alongside the line.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

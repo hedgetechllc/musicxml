@@ -59,7 +59,7 @@ pub struct DelayedTurnAttributes {
 
 /// The [DelayedTurn] element indicates a normal turn that is delayed until the end of the current note.
 ///
-/// ![DelayedTurn](delayed-turn.png)
+/// ![DelayedTurn](https://hedgetechllc.github.io/musicxml/musicxml/elements/delayed-turn.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("delayed-turn")]
 pub struct DelayedTurn {

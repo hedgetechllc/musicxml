@@ -14,7 +14,7 @@ pub struct BarreAttributes {
 
 /// The [Barre] element indicates placing a finger over multiple strings on a single fret.
 ///
-/// ![Barre](barre.png)
+/// ![Barre](https://hedgetechllc.github.io/musicxml/musicxml/elements/barre.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Barre {
   /// Element-specific attributes

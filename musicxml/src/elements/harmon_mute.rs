@@ -48,7 +48,7 @@ pub struct HarmonMuteContents {
 
 /// The [HarmonMute] element represents the symbols used for harmon mutes in brass notation.
 ///
-/// ![HarmonMute](harmon-mute.png)
+/// ![HarmonMute](https://hedgetechllc.github.io/musicxml/musicxml/elements/harmon-mute.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("harmon-mute")]
 pub struct HarmonMute {

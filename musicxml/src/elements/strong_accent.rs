@@ -42,7 +42,7 @@ pub struct StrongAccentAttributes {
 
 /// The [StrongAccent] element indicates a vertical accent mark.
 ///
-/// ![StrongAccent](strong-accent.png)
+/// ![StrongAccent](https://hedgetechllc.github.io/musicxml/musicxml/elements/strong-accent.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("strong-accent")]
 pub struct StrongAccent {

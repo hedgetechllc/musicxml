@@ -52,7 +52,7 @@ pub struct ScoopAttributes {
 
 /// The [Scoop] element is an indeterminate slide attached to a single note.
 ///
-/// ![Scoop](scoop.png)
+/// ![Scoop](https://hedgetechllc.github.io/musicxml/musicxml/elements/scoop.png)
 ///
 /// The scoop appears before the main note and comes from below the main pitch.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

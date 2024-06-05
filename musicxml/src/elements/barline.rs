@@ -52,7 +52,7 @@ pub struct BarlineContents {
 
 /// If a barline is other than a normal single barline, it should be represented by a [Barline] element that describes it.
 ///
-/// ![Barline](barline.png)
+/// ![Barline](https://hedgetechllc.github.io/musicxml/musicxml/elements/barline.png)
 ///
 /// This includes information about repeats and multiple endings, as well as line style. Barline data is on the same level as the other musical data
 /// in a score - a child of a measure in a partwise score, or a part in a timewise score. This allows for barlines within measures, as in dotted barlines

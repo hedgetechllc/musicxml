@@ -40,7 +40,7 @@ pub struct AccentAttributes {
 
 /// The [Accent] element indicates a regular horizontal accent mark.
 ///
-/// ![Accent](accent.png)
+/// ![Accent](https://hedgetechllc.github.io/musicxml/musicxml/elements/accent.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Accent {
   /// Element-specific attributes

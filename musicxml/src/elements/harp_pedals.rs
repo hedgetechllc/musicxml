@@ -63,7 +63,7 @@ pub struct HarpPedalsContents {
 
 /// The [HarpPedals] element represents harp pedal diagrams.
 ///
-/// ![HarpPedals](harp-pedals.png)
+/// ![HarpPedals](https://hedgetechllc.github.io/musicxml/musicxml/elements/harp-pedals.png)
 ///
 /// The [PedalStep][super::PedalStep] and [PedalAlter][super::PedalAlter] elements use the same values
 /// as the [Step][super::Step] and [Alter][super::Alter] elements. For easiest reading, the [PedalTuning] elements should follow standard harp pedal order,

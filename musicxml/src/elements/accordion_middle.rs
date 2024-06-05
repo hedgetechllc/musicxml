@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [AccordionMiddle] element indicates the presence of 1 to 3 dots in the middle (8') section of the registration symbol.
 ///
-/// ![AccordionMiddle](accordion-middle.png)
+/// ![AccordionMiddle](https://hedgetechllc.github.io/musicxml/musicxml/elements/accordion-middle.png)
 ///
 /// This element is omitted if no dots are present.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

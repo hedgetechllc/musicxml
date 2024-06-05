@@ -43,7 +43,7 @@ pub struct StoppedAttributes {
 
 /// The [Stopped] element represents the stopped symbol, which looks like a plus sign.
 ///
-/// ![Stopped](stopped.png)
+/// ![Stopped](https://hedgetechllc.github.io/musicxml/musicxml/elements/stopped.png)
 ///
 /// The `smufl` attribute distinguishes different Standard Music Font Layout (SMuFL) glyphs that have a similar appearance
 /// such as "handbellsMalletBellSuspended" and "guitarClosePedal". If not present, the default glyph is brassMuteClosed.

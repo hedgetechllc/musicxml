@@ -75,7 +75,7 @@ impl Default for OctaveShiftAttributes {
 
 /// The [OctaveShift] element indicates where notes are shifted up or down from their performed values because of printing difficulty.
 ///
-/// ![OctaveShift](octave-shift.png)
+/// ![OctaveShift](https://hedgetechllc.github.io/musicxml/musicxml/elements/octave-shift.png)
 ///
 /// A treble clef line noted with 8va will be indicated with an [OctaveShift] down from the pitch data indicated in the notes.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

@@ -87,7 +87,7 @@ pub enum PercussionContents {
 
 /// The [Percussion] element is used to define percussion pictogram symbols.
 ///
-/// ![Percussion](percussion.png)
+/// ![Percussion](https://hedgetechllc.github.io/musicxml/musicxml/elements/percussion.png)
 ///
 /// The organization of these symbols follows the definitions in Kurt Stone's "Music Notation in the Twentieth Century" on pages 206-212 and 223.
 /// More pictograms have been added to the ones listed in Stone, based on how usage has evolved since the book was published in 1980.

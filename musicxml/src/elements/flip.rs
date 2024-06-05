@@ -40,7 +40,7 @@ pub struct FlipAttributes {
 
 /// The [Flip] element represents the flip symbol used in brass notation.
 ///
-/// ![Flip](flip.png)
+/// ![Flip](https://hedgetechllc.github.io/musicxml/musicxml/elements/flip.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Flip {
   /// Element-specific attributes

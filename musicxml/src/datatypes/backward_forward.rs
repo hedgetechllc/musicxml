@@ -7,8 +7,8 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// the end of the repeat has a [Backward][BackwardForward::Backward] direction.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum BackwardForward {
-  /// ![Backward](backward-forward-backward.png)
+  /// ![Backward](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/backward-forward-backward.png)
   Backward,
-  /// ![Forward](backward-forward-forward.png)
+  /// ![Forward](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/backward-forward-forward.png)
   Forward,
 }

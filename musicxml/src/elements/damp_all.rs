@@ -55,7 +55,7 @@ pub struct DampAllAttributes {
 
 /// The [DampAll] element specifies a harp damping mark for all strings.
 ///
-/// ![DampAll](damp-all.png)
+/// ![DampAll](https://hedgetechllc.github.io/musicxml/musicxml/elements/damp-all.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("damp-all")]
 pub struct DampAll {

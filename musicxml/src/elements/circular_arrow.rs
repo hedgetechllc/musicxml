@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [CircularArrow] element represents a circular arrow, using Unicode arrow terminology to specify the arrow direction.
 ///
-/// ![CircularArrow](circular-arrow.png)
+/// ![CircularArrow](https://hedgetechllc.github.io/musicxml/musicxml/elements/circular-arrow.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("circular-arrow")]
 pub struct CircularArrow {

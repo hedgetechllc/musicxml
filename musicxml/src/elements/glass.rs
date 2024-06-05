@@ -11,7 +11,7 @@ pub struct GlassAttributes {
 
 /// The [Glass] element represents pictograms for glass percussion instruments.
 ///
-/// ![Glass](glass.png)
+/// ![Glass](https://hedgetechllc.github.io/musicxml/musicxml/elements/glass.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Glass {
   /// Element-specific attributes

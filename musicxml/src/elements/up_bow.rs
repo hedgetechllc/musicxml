@@ -40,7 +40,7 @@ pub struct UpBowAttributes {
 
 /// The [UpBow] element represents the symbol that is used both for up-bowing on bowed instruments, and up-stroke on plucked instruments.
 ///
-/// ![UpBow](up-bow.png)
+/// ![UpBow](https://hedgetechllc.github.io/musicxml/musicxml/elements/up-bow.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("up-bow")]
 pub struct UpBow {

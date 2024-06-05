@@ -89,7 +89,7 @@ pub struct RehearsalAttributes {
 
 /// The [Rehearsal] element specifies letters, numbers, and section names that are notated in the score for reference during rehearsal.
 ///
-/// ![Rehearsal](rehearsal.png)
+/// ![Rehearsal](https://hedgetechllc.github.io/musicxml/musicxml/elements/rehearsal.png)
 ///
 /// The `enclosure` is square if not specified. Left justification is used if not specified.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

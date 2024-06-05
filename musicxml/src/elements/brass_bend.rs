@@ -40,7 +40,7 @@ pub struct BrassBendAttributes {
 
 /// The [BrassBend] element represents the u-shaped bend symbol used in brass notation, distinct from the [Bend][super::Bend] element used in guitar music.
 ///
-/// ![BrassBend](brass-bend.png)
+/// ![BrassBend](https://hedgetechllc.github.io/musicxml/musicxml/elements/brass-bend.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("brass-bend")]
 pub struct BrassBend {

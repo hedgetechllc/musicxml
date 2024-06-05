@@ -55,7 +55,7 @@ pub struct DampAttributes {
 
 /// The [Damp] element specifies a harp damping mark.
 ///
-/// ![Damp](damp.png)
+/// ![Damp](https://hedgetechllc.github.io/musicxml/musicxml/elements/damp.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Damp {
   /// Element-specific attributes

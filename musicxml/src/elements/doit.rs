@@ -54,7 +54,7 @@ pub struct DoitAttributes {
 ///
 /// The doit appears after the main note and goes above the main pitch.
 ///
-/// ![Doit](doit.png)
+/// ![Doit](https://hedgetechllc.github.io/musicxml/musicxml/elements/doit.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Doit {
   /// Element-specific attributes

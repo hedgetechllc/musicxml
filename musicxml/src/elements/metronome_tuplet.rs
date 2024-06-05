@@ -30,7 +30,7 @@ pub struct MetronomeTupletContents {
 /// The [MetronomeTuplet] element uses the same element structure as the [TimeModification][super::TimeModification] element,
 /// along with some attributes from the [Tuplet][super::Tuplet] element.
 ///
-/// ![MetronomeTuplet](metronome-tuplet.png)
+/// ![MetronomeTuplet](https://hedgetechllc.github.io/musicxml/musicxml/elements/metronome-tuplet.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("metronome-tuplet")]
 pub struct MetronomeTuplet {

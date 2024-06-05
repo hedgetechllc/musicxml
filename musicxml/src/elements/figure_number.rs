@@ -38,7 +38,7 @@ pub struct FigureNumberAttributes {
 
 /// A [FigureNumber] element represents a number.
 ///
-/// ![FigureNumber](figure-number.png)
+/// ![FigureNumber](https://hedgetechllc.github.io/musicxml/musicxml/elements/figure-number.png)
 ///
 /// Overstrikes of the figure number are represented in the [Suffix][super::Suffix] element.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

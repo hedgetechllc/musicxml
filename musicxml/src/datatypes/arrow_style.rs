@@ -9,18 +9,18 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// indicating that an arrow in one direction should be combined with an arrow in the other direction.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum ArrowStyle {
-  /// ![Combined](arrow-style-combined.png)
+  /// ![Combined](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/arrow-style-combined.png)
   Combined,
-  /// ![Double](arrow-style-double.png)
+  /// ![Double](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/arrow-style-double.png)
   Double,
-  /// ![Filled](arrow-style-filled.png)
+  /// ![Filled](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/arrow-style-filled.png)
   Filled,
-  /// ![Hollow](arrow-style-hollow.png)
+  /// ![Hollow](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/arrow-style-hollow.png)
   Hollow,
   /// Another style besides on of those listed.
   Other,
-  /// ![Paired](arrow-style-paired.png)
+  /// ![Paired](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/arrow-style-paired.png)
   Paired,
-  /// ![Single](arrow-style-single.png)
+  /// ![Single](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/arrow-style-single.png)
   Single,
 }

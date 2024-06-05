@@ -55,7 +55,7 @@ pub struct EyeglassesAttributes {
 
 /// The [Eyeglasses] element represents the eyeglasses symbol, common in commercial music.
 ///
-/// ![Eyeglasses](eyeglasses.png)
+/// ![Eyeglasses](https://hedgetechllc.github.io/musicxml/musicxml/elements/eyeglasses.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Eyeglasses {
   /// Element-specific attributes

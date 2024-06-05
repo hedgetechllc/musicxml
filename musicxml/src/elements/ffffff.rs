@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [Ffffff] element represents an ffffff dynamic marking.
 ///
-/// ![ffffff](ffffff.png)
+/// ![ffffff](https://hedgetechllc.github.io/musicxml/musicxml/elements/ffffff.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Ffffff {
   /// Element-specific attributes

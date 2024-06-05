@@ -40,7 +40,7 @@ pub struct DoubleTongueAttributes {
 
 /// The [DoubleTongue] element represents the double tongue symbol (two dots arranged horizontally).
 ///
-/// ![DoubleTongue](double-tongue.png)
+/// ![DoubleTongue](https://hedgetechllc.github.io/musicxml/musicxml/elements/double-tongue.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("double-tongue")]
 pub struct DoubleTongue {

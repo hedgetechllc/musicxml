@@ -14,18 +14,18 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// [Beats][crate::elements::Beats] value.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum TimeSymbol {
-  /// ![Common](time-symbol-common.png)
+  /// ![Common](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-symbol-common.png)
   Common,
-  /// ![Cut](time-symbol-cut.png)
+  /// ![Cut](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-symbol-cut.png)
   Cut,
-  /// ![Dotted Note](time-symbol-dotted-note.png)
+  /// ![Dotted Note](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-symbol-dotted-note.png)
   #[rename("dotted-note")]
   DottedNote,
-  /// ![Normal](time-symbol-normal.png)
+  /// ![Normal](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-symbol-normal.png)
   Normal,
-  /// ![Note](time-symbol-note.png)
+  /// ![Note](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-symbol-note.png)
   Note,
-  /// ![Single Number](time-symbol-single-number.png)
+  /// ![Single Number](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-symbol-single-number.png)
   #[rename("single-number")]
   SingleNumber,
 }

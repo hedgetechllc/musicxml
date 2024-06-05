@@ -40,7 +40,7 @@ pub struct SmearAttributes {
 
 /// The [Smear] element represents the tilde-shaped smear symbol used in brass notation.
 ///
-/// ![Smear](smear.png)
+/// ![Smear](https://hedgetechllc.github.io/musicxml/musicxml/elements/smear.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Smear {
   /// Element-specific attributes

@@ -25,7 +25,7 @@ pub struct StickContents {
 
 /// The [Stick] element represents pictograms where the material of the stick, mallet, or beater is included.
 ///
-/// ![Stick](stick.png)
+/// ![Stick](https://hedgetechllc.github.io/musicxml/musicxml/elements/stick.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Stick {
   /// Element-specific attributes

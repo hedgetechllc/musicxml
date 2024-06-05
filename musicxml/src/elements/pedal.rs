@@ -52,7 +52,7 @@ pub struct PedalAttributes {
 
 /// The [Pedal] element represents piano pedal marks, including damper and sostenuto pedal marks.
 ///
-/// ![Pedal](pedal.png)
+/// ![Pedal](https://hedgetechllc.github.io/musicxml/musicxml/elements/pedal.png)
 ///
 /// The soft pedal is not included here because there is no special symbol or graphic used for it beyond what can be specified
 /// with [Words][super::Words] and [Bracket][super::Bracket] elements.

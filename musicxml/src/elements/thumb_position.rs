@@ -40,7 +40,7 @@ pub struct ThumbPositionAttributes {
 
 /// The [ThumbPosition] element represents the thumb position symbol.
 ///
-/// ![ThumbPosition](thumb-position.png)
+/// ![ThumbPosition](https://hedgetechllc.github.io/musicxml/musicxml/elements/thumb-position.png)
 ///
 /// This is a circle with a line, where the line does not come within the circle. It is distinct from the [SnapPizzicato][super::SnapPizzicato] symbol, where the line comes inside the circle.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

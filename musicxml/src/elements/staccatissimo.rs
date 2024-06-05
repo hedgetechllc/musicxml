@@ -40,7 +40,7 @@ pub struct StaccatissimoAttributes {
 
 /// The [Staccatissimo] element is used for a wedge articulation, as opposed to a dot or a stroke.
 ///
-/// ![Staccatissimo](staccatissimo.png)
+/// ![Staccatissimo](https://hedgetechllc.github.io/musicxml/musicxml/elements/staccatissimo.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Staccatissimo {
   /// Element-specific attributes

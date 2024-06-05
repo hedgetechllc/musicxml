@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [Ppppp] element represents a pppp dynamic marking.
 ///
-/// ![ppppp](ppppp.png)
+/// ![ppppp](https://hedgetechllc.github.io/musicxml/musicxml/elements/ppppp.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Ppppp {
   /// Element-specific attributes

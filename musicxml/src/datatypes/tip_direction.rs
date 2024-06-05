@@ -4,20 +4,20 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// Represents the direction in which the tip of a stick or beater points, using Unicode arrow terminology.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum TipDirection {
-  /// ![Down](tip-direction-down.png)
+  /// ![Down](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-down.png)
   Down,
-  /// ![Left](tip-direction-left.png)
+  /// ![Left](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-left.png)
   Left,
-  /// ![Northeast](tip-direction-northeast.png)
+  /// ![Northeast](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-northeast.png)
   Northeast,
-  /// ![Northwest](tip-direction-northwest.png)
+  /// ![Northwest](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-northwest.png)
   Northwest,
-  /// ![Right](tip-direction-right.png)
+  /// ![Right](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-right.png)
   Right,
-  /// ![Southeast](tip-direction-southeast.png)
+  /// ![Southeast](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-southeast.png)
   Southeast,
-  /// ![Southwest](tip-direction-southwest.png)
+  /// ![Southwest](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-southwest.png)
   Southwest,
-  /// ![Up](tip-direction-up.png)
+  /// ![Up](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/tip-direction-up.png)
   Up,
 }

@@ -5,12 +5,12 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// [HoleClosedValue][super::HoleClosedValue] is [Half][super::HoleClosedValue::Half].
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum HoleClosedLocation {
-  /// ![Bottom](hole-closed-location-bottom.png)
+  /// ![Bottom](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/hole-closed-location-bottom.png)
   Bottom,
-  /// ![Left](hole-closed-location-left.png)
+  /// ![Left](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/hole-closed-location-left.png)
   Left,
-  /// ![Right](hole-closed-location-right.png)
+  /// ![Right](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/hole-closed-location-right.png)
   Right,
-  /// ![Top](hole-closed-location-top.png)
+  /// ![Top](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/hole-closed-location-top.png)
   Top,
 }

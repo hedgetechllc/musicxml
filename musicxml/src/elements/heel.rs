@@ -42,7 +42,7 @@ pub struct HeelAttributes {
 
 /// The [Heel] element is used with organ pedals.
 ///
-/// ![Heel](heel.png)
+/// ![Heel](https://hedgetechllc.github.io/musicxml/musicxml/elements/heel.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Heel {
   /// Element-specific attributes

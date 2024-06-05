@@ -52,7 +52,7 @@ pub struct PlopAttributes {
 
 /// The [Plop] element is an indeterminate slide attached to a single note.
 ///
-/// ![Plop](plop.png)
+/// ![Plop](https://hedgetechllc.github.io/musicxml/musicxml/elements/plop.png)
 ///
 /// The plop appears before the main note and comes from above the main pitch.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

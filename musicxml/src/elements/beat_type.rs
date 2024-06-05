@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [BeatType] element indicates the beat unit, as found in the denominator of a time signature.
 ///
-/// ![BeatType](beat-type.png)
+/// ![BeatType](https://hedgetechllc.github.io/musicxml/musicxml/elements/beat-type.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("beat-type")]
 pub struct BeatType {

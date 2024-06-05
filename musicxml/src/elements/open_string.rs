@@ -40,7 +40,7 @@ pub struct OpenStringAttributes {
 
 /// The [OpenString] element represents the zero-shaped open string symbol.
 ///
-/// ![OpenString](open-string.png)
+/// ![OpenString](https://hedgetechllc.github.io/musicxml/musicxml/elements/open-string.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("open-string")]
 pub struct OpenString {

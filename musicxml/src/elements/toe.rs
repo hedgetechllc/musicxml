@@ -42,7 +42,7 @@ pub struct ToeAttributes {
 
 /// The [Toe] element is used with organ pedals.
 ///
-/// ![Toe](toe.png)
+/// ![Toe](https://hedgetechllc.github.io/musicxml/musicxml/elements/toe.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Toe {
   /// Element-specific attributes

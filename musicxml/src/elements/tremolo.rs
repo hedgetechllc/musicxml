@@ -47,7 +47,7 @@ pub struct TremoloAttributes {
 
 /// The [Tremolo] element can be used to indicate single-note, double-note, or unmeasured tremolos.
 ///
-/// ![Tremolo](tremolo.png)
+/// ![Tremolo](https://hedgetechllc.github.io/musicxml/musicxml/elements/tremolo.png)
 ///
 /// The text of the element indicates the number of tremolo marks and is an integer from 0 to 8. Note that the number of attached beams is not
 /// included in this value, but is represented separately using the [Beam][super::Beam]. The value should be 0 for unmeasured tremolos.

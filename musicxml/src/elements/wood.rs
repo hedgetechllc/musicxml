@@ -11,7 +11,7 @@ pub struct WoodAttributes {
 
 /// The [Wood] element represents pictograms for wood percussion instruments.
 ///
-/// ![Wood](wood.png)
+/// ![Wood](https://hedgetechllc.github.io/musicxml/musicxml/elements/wood.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Wood {
   /// Element-specific attributes

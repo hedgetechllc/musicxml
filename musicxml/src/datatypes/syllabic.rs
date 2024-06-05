@@ -7,12 +7,12 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// word-beginning syllables, word-ending syllables, and mid-word syllables, respectively.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum Syllabic {
-  /// ![Begin](syllabic-begin.png)
+  /// ![Begin](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/syllabic-begin.png)
   Begin,
-  /// ![End](syllabic-end.png)
+  /// ![End](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/syllabic-end.png)
   End,
-  /// ![Middle](syllabic-middle.png)
+  /// ![Middle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/syllabic-middle.png)
   Middle,
-  /// ![Single](syllabic-single.png)
+  /// ![Single](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/syllabic-single.png)
   Single,
 }

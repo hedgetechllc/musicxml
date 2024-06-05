@@ -92,7 +92,7 @@ impl ContentSerializer for ArrowContents {
 
 /// The [Arrow] element represents an arrow used for a musical technical indication.
 ///
-/// ![Arrow](arrow.png)
+/// ![Arrow](https://hedgetechllc.github.io/musicxml/musicxml/elements/arrow.png)
 ///
 /// It can represent both Unicode and Standard Music Font Layout (SMuFL) arrows.
 /// The `smufl` attribute distinguishes different SMuFL glyphs that have an arrow appearance such as "arrowBlackUp,"

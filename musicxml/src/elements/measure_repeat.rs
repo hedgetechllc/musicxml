@@ -13,7 +13,7 @@ pub struct MeasureRepeatAttributes {
 
 /// The [MeasureRepeat] element is used for both single and multiple measure repeats.
 ///
-/// ![MeasureRepeat](measure-repeat.png)
+/// ![MeasureRepeat](https://hedgetechllc.github.io/musicxml/musicxml/elements/measure-repeat.png)
 ///
 /// The text of the element indicates the number of measures to be repeated in a single pattern. The text of the element is ignored when the `type` is stop.
 ///

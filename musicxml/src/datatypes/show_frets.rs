@@ -6,8 +6,8 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// The default choice is numbers.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum ShowFrets {
-  /// ![Letters](show-frets-letters.png)
+  /// ![Letters](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/show-frets-letters.png)
   Letters,
-  /// ![Numbers](show-frets-numbers.png)
+  /// ![Numbers](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/show-frets-numbers.png)
   Numbers,
 }

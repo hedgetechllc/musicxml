@@ -40,7 +40,7 @@ pub struct GolpeAttributes {
 
 /// The [Golpe] element represents the golpe symbol that is used for tapping the pick guard in guitar music.
 ///
-/// ![Golpe](golpe.png)
+/// ![Golpe](https://hedgetechllc.github.io/musicxml/musicxml/elements/golpe.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Golpe {
   /// Element-specific attributes

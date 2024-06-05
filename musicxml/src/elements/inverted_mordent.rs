@@ -63,7 +63,7 @@ pub struct InvertedMordentAttributes {
 
 /// The [InvertedMordent] element represents the sign without the vertical line.
 ///
-/// ![InvertedMordent](inverted-mordent.png)
+/// ![InvertedMordent](https://hedgetechllc.github.io/musicxml/musicxml/elements/inverted-mordent.png)
 ///
 /// The choice of which mordent is inverted differs between MusicXML and the Standard Music Font Layout (SMuFL).
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

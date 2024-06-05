@@ -57,7 +57,7 @@ pub struct TrillMarkAttributes {
 
 /// The [TrillMark] element represents the trill symbol.
 ///
-/// ![TrillMark](trill-mark.png)
+/// ![TrillMark](https://hedgetechllc.github.io/musicxml/musicxml/elements/trill-mark.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("trill-mark")]
 pub struct TrillMark {

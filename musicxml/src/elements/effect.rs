@@ -11,7 +11,7 @@ pub struct EffectAttributes {
 
 /// The [Effect] element represents pictograms for sound effect percussion instruments.
 ///
-/// ![Effect](effect.png)
+/// ![Effect](https://hedgetechllc.github.io/musicxml/musicxml/elements/effect.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Effect {
   /// Element-specific attributes

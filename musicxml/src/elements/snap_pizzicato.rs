@@ -40,7 +40,7 @@ pub struct SnapPizzicatoAttributes {
 
 /// The [SnapPizzicato] element represents the snap pizzicato symbol.
 ///
-/// ![SnapPizzicato](snap-pizzicato.png)
+/// ![SnapPizzicato](https://hedgetechllc.github.io/musicxml/musicxml/elements/snap-pizzicato.png)
 ///
 /// This is a circle with a line, where the line comes inside the circle. It is distinct from the [ThumbPosition][super::ThumbPosition] symbol,
 /// where the line does not come inside the circle.

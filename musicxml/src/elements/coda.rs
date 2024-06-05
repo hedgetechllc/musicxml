@@ -61,7 +61,7 @@ pub struct CodaAttributes {
 ///
 /// A [Sound][super::Sound] element is also needed to guide playback applications reliably.
 ///
-/// ![Coda](coda.png)
+/// ![Coda](https://hedgetechllc.github.io/musicxml/musicxml/elements/coda.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Coda {
   /// Element-specific attributes

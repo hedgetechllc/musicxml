@@ -9,11 +9,11 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// For mid-measure key elements, [BeforeBarline][CancelLocation::BeforeBarline] should be treated like [Left][CancelLocation::Left].
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum CancelLocation {
-  /// ![Left](cancel-location-left.png)
+  /// ![Left](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/cancel-location-left.png)
   Left,
-  /// ![Right](cancel-location-right.png)
+  /// ![Right](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/cancel-location-right.png)
   Right,
-  /// ![BeforeBarline](cancel-location-before-barline.png)
+  /// ![BeforeBarline](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/cancel-location-before-barline.png)
   #[rename("before-barline")]
   BeforeBarline,
 }

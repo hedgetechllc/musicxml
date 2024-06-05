@@ -40,7 +40,7 @@ pub struct BreathMarkAttributes {
 
 /// The [BreathMark] element indicates a place to take a breath.
 ///
-/// ![BreathMark](breath-mark.png)
+/// ![BreathMark](https://hedgetechllc.github.io/musicxml/musicxml/elements/breath-mark.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("breath-mark")]
 pub struct BreathMark {

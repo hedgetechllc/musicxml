@@ -59,7 +59,7 @@ pub struct SegnoAttributes {
 
 /// The [Segno] element is the visual indicator of a segno sign.
 ///
-/// ![Segno](segno.png)
+/// ![Segno](https://hedgetechllc.github.io/musicxml/musicxml/elements/segno.png)
 ///
 /// A [Sound][super::Sound] element is also needed to guide playback applications reliably.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

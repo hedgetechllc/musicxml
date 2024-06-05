@@ -55,7 +55,7 @@ pub struct WavyLineAttributes {
 
 /// Wavy lines are one way to indicate trills and vibrato.
 ///
-/// ![WavyLine](wavy-line.png)
+/// ![WavyLine](https://hedgetechllc.github.io/musicxml/musicxml/elements/wavy-line.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("wavy-line")]
 pub struct WavyLine {

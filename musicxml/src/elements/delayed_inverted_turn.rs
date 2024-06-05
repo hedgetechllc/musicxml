@@ -61,7 +61,7 @@ pub struct DelayedInvertedTurnAttributes {
 ///
 /// An inverted turn has the shape which goes down and then up.
 ///
-/// ![DelayedInvertedTurn](delayed-inverted-turn.png)
+/// ![DelayedInvertedTurn](https://hedgetechllc.github.io/musicxml/musicxml/elements/delayed-inverted-turn.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("delayed-inverted-turn")]
 pub struct DelayedInvertedTurn {

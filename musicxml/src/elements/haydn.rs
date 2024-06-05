@@ -57,7 +57,7 @@ pub struct HaydnAttributes {
 
 /// The [Haydn] element represents the Haydn ornament.
 ///
-/// ![Haydn](haydn.png)
+/// ![Haydn](https://hedgetechllc.github.io/musicxml/musicxml/elements/haydn.png)
 ///
 /// This is defined in the Standard Music Font Layout (SMuFL) as ornamentHaydn.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

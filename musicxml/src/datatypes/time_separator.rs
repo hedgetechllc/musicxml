@@ -13,14 +13,14 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// separator with the beats and beat-type arranged horizontally.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum TimeSeparator {
-  /// ![Adjacent](time-separator-adjacent.png)
+  /// ![Adjacent](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-separator-adjacent.png)
   Adjacent,
-  /// ![Diagonal](time-separator-diagonal.png)
+  /// ![Diagonal](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-separator-diagonal.png)
   Diagonal,
-  /// ![Horizontal](time-separator-horizontal.png)
+  /// ![Horizontal](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-separator-horizontal.png)
   Horizontal,
-  /// ![None](time-separator-none.png)
+  /// ![None](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-separator-none.png)
   None,
-  /// ![Vertical](time-separator-vertical.png)
+  /// ![Vertical](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/time-separator-vertical.png)
   Vertical,
 }

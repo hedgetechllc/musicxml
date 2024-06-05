@@ -69,7 +69,7 @@ pub struct MeasureNumberingAttributes {
 
 /// The [MeasureNumbering] element describes how frequently measure numbers are displayed on this part.
 ///
-/// ![MeasureNumbering](measure-numbering.png)
+/// ![MeasureNumbering](https://hedgetechllc.github.io/musicxml/musicxml/elements/measure-numbering.png)
 ///
 /// The `text` attribute from the [Measure][super::Measure] element is used for display, or the `number` attribute if the text attribute is not present.
 /// Measures with an `implicit` attribute set to yes never display a measure number, regardless of the [MeasureNumbering] setting.

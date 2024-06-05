@@ -11,7 +11,7 @@ pub struct BeaterAttributes {
 
 /// The [Beater] element represents pictograms for beaters, mallets, and sticks that do not have different materials represented in the pictogram.
 ///
-/// ![Beater](beater.png)
+/// ![Beater](https://hedgetechllc.github.io/musicxml/musicxml/elements/beater.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Beater {
   /// Element-specific attributes

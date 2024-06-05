@@ -40,7 +40,7 @@ pub struct TripleTongueAttributes {
 
 /// The [TripleTongue] element represents the triple tongue symbol (three dots arranged horizontally).
 ///
-/// ![TripleTongue](triple-tongue.png)
+/// ![TripleTongue](https://hedgetechllc.github.io/musicxml/musicxml/elements/triple-tongue.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("triple-tongue")]
 pub struct TripleTongue {

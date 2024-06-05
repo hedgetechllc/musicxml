@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [Sffz] element represents a sforzando sffz dynamic marking.
 ///
-/// ![sffz](sffz.png)
+/// ![sffz](https://hedgetechllc.github.io/musicxml/musicxml/elements/sffz.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Sffz {
   /// Element-specific attributes

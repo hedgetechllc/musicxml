@@ -40,7 +40,7 @@ pub struct SchleiferAttributes {
 
 /// The name for the [Schleifer] element is based on the German ornament name, to avoid confusion with the [Slide][super::Slide] element.
 ///
-/// ![Schleifer](schleifer.png)
+/// ![Schleifer](https://hedgetechllc.github.io/musicxml/musicxml/elements/schleifer.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Schleifer {
   /// Element-specific attributes

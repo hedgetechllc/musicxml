@@ -46,7 +46,7 @@ pub struct HammerOnAttributes {
 
 /// The [HammerOn] element is used in guitar and fretted instrument notation.
 ///
-/// ![HammerOn](hammer-on.png)
+/// ![HammerOn](https://hedgetechllc.github.io/musicxml/musicxml/elements/hammer-on.png)
 ///
 /// Since a single slur can be marked over many notes, the [HammerOn] element is separate so the individual pair of notes can be specified.
 /// The element content can be used to specify how the [HammerOn] should be notated. An empty element leaves this choice up to the application.

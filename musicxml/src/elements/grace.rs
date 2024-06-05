@@ -18,7 +18,7 @@ pub struct GraceAttributes {
 
 /// The [Grace] element indicates the presence of a grace note.
 ///
-/// ![Grace](grace.png)
+/// ![Grace](https://hedgetechllc.github.io/musicxml/musicxml/elements/grace.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Grace {
   /// Element-specific attributes

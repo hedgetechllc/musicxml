@@ -40,7 +40,7 @@ pub struct SpiccatoAttributes {
 
 /// The [Spiccato] element is used for a stroke articulation, as opposed to a dot or a wedge.
 ///
-/// ![Spiccato](spiccato.png)
+/// ![Spiccato](https://hedgetechllc.github.io/musicxml/musicxml/elements/spiccato.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Spiccato {
   /// Element-specific attributes

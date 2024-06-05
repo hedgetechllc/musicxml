@@ -60,7 +60,7 @@ pub struct EndingAttributes {
 
 /// The [Ending] element represents multiple (e.g. first and second) endings.
 ///
-/// ![Ending](ending.png)
+/// ![Ending](https://hedgetechllc.github.io/musicxml/musicxml/elements/ending.png)
 ///
 /// The element text is used when the text displayed in the ending is different than what appears in the number attribute.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

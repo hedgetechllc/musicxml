@@ -27,7 +27,7 @@ pub struct BeamAttributes {
 /// Each beam in a note is represented with a separate [Beam] element with a different `number` attribute,
 /// starting with the eighth note beam using a value of 1:
 ///
-/// ![Beam](beam.png)
+/// ![Beam](https://hedgetechllc.github.io/musicxml/musicxml/elements/beam.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Beam {
   /// Element-specific attributes

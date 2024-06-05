@@ -40,7 +40,7 @@ pub struct SoftAccentAttributes {
 
 /// The [SoftAccent] element indicates a soft accent that is not as heavy as a normal accent.
 ///
-/// ![SoftAccent](soft-accent.png)
+/// ![SoftAccent](https://hedgetechllc.github.io/musicxml/musicxml/elements/soft-accent.png)
 ///
 /// It can be combined with other articulations to implement the first eight symbols in the Standard Music Font Layout (SMuFL) Articulation supplement range.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

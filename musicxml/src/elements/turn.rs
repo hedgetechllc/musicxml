@@ -59,7 +59,7 @@ pub struct TurnAttributes {
 
 /// The [Turn] element is the normal turn shape which goes up then down.
 ///
-/// ![Turn](turn.png)
+/// ![Turn](https://hedgetechllc.github.io/musicxml/musicxml/elements/turn.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Turn {
   /// Element-specific attributes

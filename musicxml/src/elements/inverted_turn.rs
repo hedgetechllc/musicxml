@@ -59,7 +59,7 @@ pub struct InvertedTurnAttributes {
 
 /// The [InvertedTurn] element has the shape which goes down and then up.
 ///
-/// ![InvertedTurn](inverted-turn.png)
+/// ![InvertedTurn](https://hedgetechllc.github.io/musicxml/musicxml/elements/inverted-turn.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("inverted-turn")]
 pub struct InvertedTurn {

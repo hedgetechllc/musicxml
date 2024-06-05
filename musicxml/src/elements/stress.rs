@@ -40,7 +40,7 @@ pub struct StressAttributes {
 
 /// The [Stress] element indicates a stressed note.
 ///
-/// ![Stress](stress.png)
+/// ![Stress](https://hedgetechllc.github.io/musicxml/musicxml/elements/stress.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Stress {
   /// Element-specific attributes

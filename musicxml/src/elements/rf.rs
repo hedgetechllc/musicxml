@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [Rf] element represents a rinforzando rf dynamic marking.
 ///
-/// ![rf](rf.png)
+/// ![rf](https://hedgetechllc.github.io/musicxml/musicxml/elements/rf.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Rf {
   /// Element-specific attributes

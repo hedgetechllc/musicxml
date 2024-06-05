@@ -40,7 +40,7 @@ pub struct DetachedLegatoAttributes {
 
 /// The [DetachedLegato] element indicates the combination of a tenuto line and staccato dot symbol.
 ///
-/// ![DetachedLegato](detached-legato.png)
+/// ![DetachedLegato](https://hedgetechllc.github.io/musicxml/musicxml/elements/detached-legato.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("detached-legato")]
 pub struct DetachedLegato {

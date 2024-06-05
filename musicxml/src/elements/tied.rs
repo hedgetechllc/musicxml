@@ -62,7 +62,7 @@ pub struct TiedAttributes {
 ///
 /// The [Tie][super::Tie] element represents the tie sound.
 ///
-/// ![Tied](tied.png)
+/// ![Tied](https://hedgetechllc.github.io/musicxml/musicxml/elements/tied.png)
 ///
 /// Ties that join two notes of the same pitch together should be represented with a [Tied] element on the first note with type="start" and a [Tied] element
 /// on the second note with type="stop". This can also be done if the two notes being tied are enharmonically equivalent, but have different step values.

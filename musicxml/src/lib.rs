@@ -1,7 +1,7 @@
 #![deny(missing_docs)]
 #![deny(rustdoc::broken_intra_doc_links)]
-#![doc(html_favicon_url = "favicon.ico")]
-#![doc(html_logo_url = "MusicXML-Logo-Square.png")]
+#![doc(html_favicon_url = "https://hedgetechllc.github.io/musicxml/musicxml/favicon.ico")]
+#![doc(html_logo_url = "https://hedgetechllc.github.io/musicxml/musicxml/MusicXML-Logo-Square.png")]
 #![doc(html_playground_url = "https://playground.example.com/")]
 
 //! # Overview

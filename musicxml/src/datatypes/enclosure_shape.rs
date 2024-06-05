@@ -8,34 +8,34 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// similar to a rectangle with the top line missing.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum EnclosureShape {
-  /// ![Rectangle](enclosure-shape-rectangle.png)
+  /// ![Rectangle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-rectangle.png)
   Rectangle,
-  /// ![Square](enclosure-shape-square.png)
+  /// ![Square](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-square.png)
   Square,
-  /// ![Oval](enclosure-shape-oval.png)
+  /// ![Oval](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-oval.png)
   Oval,
-  /// ![Circle](enclosure-shape-circle.png)
+  /// ![Circle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-circle.png)
   Circle,
-  /// ![Bracket](enclosure-shape-bracket.png)
+  /// ![Bracket](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-bracket.png)
   Bracket,
-  /// ![Inverted Bracket](enclosure-shape-inverted-bracket.png)
+  /// ![Inverted Bracket](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-inverted-bracket.png)
   #[rename("inverted-bracket")]
   InvertedBracket,
-  /// ![Triangle](enclosure-shape-triangle.png)
+  /// ![Triangle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-triangle.png)
   Triangle,
-  /// ![Diamond](enclosure-shape-diamond.png)
+  /// ![Diamond](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-diamond.png)
   Diamond,
-  /// ![Trill](enclosure-shape-pentagon.png)
+  /// ![Trill](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-pentagon.png)
   Pentagon,
-  /// ![Hexagon](enclosure-shape-hexagon.png)
+  /// ![Hexagon](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-hexagon.png)
   Hexagon,
-  /// ![Heptagon](enclosure-shape-heptagon.png)
+  /// ![Heptagon](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-heptagon.png)
   Heptagon,
-  /// ![Octagon](enclosure-shape-octagon.png)
+  /// ![Octagon](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-octagon.png)
   Octagon,
-  /// ![Nonagon](enclosure-shape-nonagon.png)
+  /// ![Nonagon](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-nonagon.png)
   Nonagon,
-  /// ![Decagon](enclosure-shape-decagon.png)
+  /// ![Decagon](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/enclosure-shape-decagon.png)
   Decagon,
   /// No enclosure is displayed.
   None,

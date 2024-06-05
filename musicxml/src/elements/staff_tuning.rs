@@ -23,7 +23,7 @@ pub struct StaffTuningContents {
 
 /// The [StaffTuning] element specifies the open, non-capo tuning of the lines on a tablature staff.
 ///
-/// ![StaffTuning](staff-tuning.png)
+/// ![StaffTuning](https://hedgetechllc.github.io/musicxml/musicxml/elements/staff-tuning.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("staff-tuning")]
 pub struct StaffTuning {

@@ -59,7 +59,7 @@ pub struct VerticalTurnAttributes {
 
 /// The [VerticalTurn] element has the turn symbol shape arranged vertically going from upper left to lower right.
 ///
-/// ![VerticalTurn](vertical-turn.png)
+/// ![VerticalTurn](https://hedgetechllc.github.io/musicxml/musicxml/elements/vertical-turn.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("vertical-turn")]
 pub struct VerticalTurn {

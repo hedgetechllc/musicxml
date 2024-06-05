@@ -15,7 +15,7 @@ pub struct BackupContents {
 
 /// The [Backup] and [Forward][super::Forward] elements are required to coordinate multiple voices in one part, including music on multiple staves.
 ///
-/// ![Backup](backup.png)
+/// ![Backup](https://hedgetechllc.github.io/musicxml/musicxml/elements/backup.png)
 ///
 /// The [Backup] element is generally used to move between voices and staves. Thus it does not include [Voice][super::Voice] or [Staff][super::Staff] elements.
 /// Duration values should always be positive, and should not cross measure boundaries or mid-measure changes in the [Divisions][super::Divisions] value.

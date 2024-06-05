@@ -40,7 +40,7 @@ pub struct FingernailsAttributes {
 
 /// The [Fingernails] element is used in notation for harp and other plucked string instruments.
 ///
-/// ![Fingernails](fingernails.png)
+/// ![Fingernails](https://hedgetechllc.github.io/musicxml/musicxml/elements/fingernails.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Fingernails {
   /// Element-specific attributes

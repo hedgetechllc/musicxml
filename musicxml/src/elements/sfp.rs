@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [Sfp] element represents a sforzando piano sfp dynamic marking.
 ///
-/// ![sfp](sfp.png)
+/// ![sfp](https://hedgetechllc.github.io/musicxml/musicxml/elements/sfp.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Sfp {
   /// Element-specific attributes

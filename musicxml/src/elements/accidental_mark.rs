@@ -54,7 +54,7 @@ pub struct AccidentalMarkAttributes {
 
 /// An [AccidentalMark] element can be used as a separate notation or as part of an ornament.
 ///
-/// ![AccidentalMark](accidental-mark.png)
+/// ![AccidentalMark](https://hedgetechllc.github.io/musicxml/musicxml/elements/accidental-mark.png)
 ///
 /// When used in an ornament, position and placement are relative to the ornament, not relative to the note.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

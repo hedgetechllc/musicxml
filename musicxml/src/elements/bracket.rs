@@ -46,7 +46,7 @@ pub struct BracketAttributes {
 
 /// Brackets are combined with words in a variety of modern directions.
 ///
-/// ![Bracket](bracket.png)
+/// ![Bracket](https://hedgetechllc.github.io/musicxml/musicxml/elements/bracket.png)
 ///
 /// The `line_type` is solid if not specified.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

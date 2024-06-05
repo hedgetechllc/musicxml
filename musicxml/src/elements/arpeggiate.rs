@@ -41,7 +41,7 @@ pub struct ArpeggiateAttributes {
 
 /// The [Arpeggiate] element indicates that this note is part of an arpeggiated chord.
 ///
-/// ![Arpeggiate](arpeggiate.png)
+/// ![Arpeggiate](https://hedgetechllc.github.io/musicxml/musicxml/elements/arpeggiate.png)
 ///
 /// The length of the sign can be determined from the position attributes for the [Arpeggiate] elements used with the
 /// top and bottom notes of the arpeggiated chord.

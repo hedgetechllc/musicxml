@@ -57,7 +57,7 @@ pub struct InvertedVerticalTurnAttributes {
 
 /// The [InvertedVerticalTurn] element has the turn symbol shape arranged vertically going from upper right to lower left.
 ///
-/// ![InvertedVerticalTurn](inverted-vertical-turn.png)
+/// ![InvertedVerticalTurn](https://hedgetechllc.github.io/musicxml/musicxml/elements/inverted-vertical-turn.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("inverted-vertical-turn")]
 pub struct InvertedVerticalTurn {

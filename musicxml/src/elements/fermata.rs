@@ -44,7 +44,7 @@ pub struct FermataAttributes {
 ///
 /// An empty [Fermata] element represents a normal fermata.
 ///
-/// ![Fermata](fermata.png)
+/// ![Fermata](https://hedgetechllc.github.io/musicxml/musicxml/elements/fermata.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Fermata {
   /// Element-specific attributes

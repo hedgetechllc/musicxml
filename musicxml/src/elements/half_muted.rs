@@ -43,7 +43,7 @@ pub struct HalfMutedAttributes {
 
 /// The [HalfMuted] element represents the half-muted symbol, which looks like a circle with a plus sign inside.
 ///
-/// ![HalfMuted](half-muted.png)
+/// ![HalfMuted](https://hedgetechllc.github.io/musicxml/musicxml/elements/half-muted.png)
 ///
 /// The `smufl` attribute can be used to distinguish different SMuFL glyphs that have a similar appearance such as "brassMuteHalfClosed" and "guitarHalfOpenPedal".
 /// If not present, the default glyph is "brassMuteHalfClosed".

@@ -248,7 +248,7 @@ impl ContentSerializer for LyricContents {
 
 /// The [Lyric] element represents text underlays for lyrics.
 ///
-/// ![Lyric](lyric.png)
+/// ![Lyric](https://hedgetechllc.github.io/musicxml/musicxml/elements/lyric.png)
 ///
 /// Two [Text] elements that are not separated by an [Elision] element are part of the same syllable, but may have different text formatting.
 /// A second [Syllabic] element is not allowed unless preceded by an [Elision] element.

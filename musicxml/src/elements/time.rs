@@ -135,7 +135,7 @@ impl ContentSerializer for TimeContents {
 
 /// Time signatures are represented by the [Beats] element for the numerator and the [BeatType] element for the denominator.
 ///
-/// ![Time](time.png)
+/// ![Time](https://hedgetechllc.github.io/musicxml/musicxml/elements/time.png)
 ///
 /// Multiple pairs of [Beats] and [BeatType] elements are used for composite time signatures with multiple denominators, such as 2/4 + 3/8.
 /// A composite such as 3+2/8 requires only one [Beats]/[BeatType] pair.

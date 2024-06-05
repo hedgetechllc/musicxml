@@ -42,7 +42,7 @@ pub struct RootAlterAttributes {
 
 /// The [RootAlter] element represents the chromatic alteration of the root of the current chord within the [Harmony][super::Harmony] element.
 ///
-/// ![RootAlter](root-alter.png)
+/// ![RootAlter](https://hedgetechllc.github.io/musicxml/musicxml/elements/root-alter.png)
 ///
 /// In some chord styles, the text for the [RootStep][super::RootStep] element may include [RootAlter] information. In that case,
 /// the `print_object` attribute of the [RootAlter] element can be set to "no".

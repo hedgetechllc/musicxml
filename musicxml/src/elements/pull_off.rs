@@ -46,7 +46,7 @@ pub struct PullOffAttributes {
 
 /// The [PullOff] element is used in guitar and fretted instrument notation.
 ///
-/// ![PullOff](pull-off.png)
+/// ![PullOff](https://hedgetechllc.github.io/musicxml/musicxml/elements/pull-off.png)
 ///
 /// Since a single slur can be marked over many notes, the [PullOff] element is separate so the individual pair of notes can be specified.
 ///

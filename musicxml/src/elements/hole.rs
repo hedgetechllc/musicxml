@@ -52,7 +52,7 @@ pub struct HoleContents {
 
 /// The [Hole] element represents the symbols used for woodwind and brass fingerings as well as other notations.
 ///
-/// ![Hole](hole.png)
+/// ![Hole](https://hedgetechllc.github.io/musicxml/musicxml/elements/hole.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Hole {
   /// Element-specific attributes

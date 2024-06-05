@@ -40,7 +40,7 @@ pub struct UnstressAttributes {
 
 /// The [Unstress] element indicates an unstressed note.
 ///
-/// ![Unstress](unstress.png)
+/// ![Unstress](https://hedgetechllc.github.io/musicxml/musicxml/elements/unstress.png)
 ///
 /// It is often notated using a u-shaped symbol.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

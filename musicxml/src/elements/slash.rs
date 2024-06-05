@@ -27,7 +27,7 @@ pub struct SlashContents {
 
 /// The [Slash] element indicates that slash notation is to be used.
 ///
-/// ![Slash](slash.png)
+/// ![Slash](https://hedgetechllc.github.io/musicxml/musicxml/elements/slash.png)
 ///
 /// The stop type indicates the first beat where slash notation no longer displayed. Both the start and stop of the slash notation should be
 /// specified unless the slashes are displayed through the end of the part.

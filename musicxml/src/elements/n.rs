@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [N] element represents a niente dynamic marking.
 ///
-/// ![n](n.png)
+/// ![n](https://hedgetechllc.github.io/musicxml/musicxml/elements/n.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct N {
   /// Element-specific attributes

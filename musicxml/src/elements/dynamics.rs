@@ -132,7 +132,7 @@ pub enum DynamicsType {
 
 /// Dynamics can be associated either with a note or a general musical direction.
 ///
-/// ![Dynamics](dynamics.png)
+/// ![Dynamics](https://hedgetechllc.github.io/musicxml/musicxml/elements/dynamics.png)
 ///
 /// To avoid inconsistencies between and amongst the letter abbreviations for dynamics (what is sf vs. sfz, standing alone or with a trailing dynamic
 /// that is not always piano), we use the actual letters as the names of these dynamic elements. The [OtherDynamics][super::OtherDynamics] element

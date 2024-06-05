@@ -12,7 +12,7 @@ pub struct ScordaturaAttributes {
 
 /// [Scordatura] string tunings are represented by a series of [Accord] elements, similar to the [StaffTuning][super::StaffTuning] elements.
 ///
-/// ![Scordatura](scordatura.png)
+/// ![Scordatura](https://hedgetechllc.github.io/musicxml/musicxml/elements/scordatura.png)
 ///
 /// Strings are numbered from high to low.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

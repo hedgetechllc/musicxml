@@ -40,7 +40,7 @@ pub struct RootStepAttributes {
 
 /// The [RootStep] element represents the pitch step of the root of the current chord within the harmony element.
 ///
-/// ![RootStep](root-step.png)
+/// ![RootStep](https://hedgetechllc.github.io/musicxml/musicxml/elements/root-step.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("root-step")]
 pub struct RootStep {

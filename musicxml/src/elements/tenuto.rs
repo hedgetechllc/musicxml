@@ -40,7 +40,7 @@ pub struct TenutoAttributes {
 
 /// The [Tenuto] element indicates a tenuto line symbol.
 ///
-/// ![Tenuto](tenuto.png)
+/// ![Tenuto](https://hedgetechllc.github.io/musicxml/musicxml/elements/tenuto.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Tenuto {
   /// Element-specific attributes

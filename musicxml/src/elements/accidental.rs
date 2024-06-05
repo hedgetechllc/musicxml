@@ -54,7 +54,7 @@ pub struct AccidentalAttributes {
 
 /// The [Accidental] element represents actual notated accidentals.
 ///
-/// ![Accidental](accidental.png)
+/// ![Accidental](https://hedgetechllc.github.io/musicxml/musicxml/elements/accidental.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Accidental {
   /// Element-specific attributes

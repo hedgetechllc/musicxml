@@ -3,7 +3,7 @@ use musicxml_macros::*;
 
 /// The [Fz] element represents a forzando fz dynamic marking.
 ///
-/// ![fz](fz.png)
+/// ![fz](https://hedgetechllc.github.io/musicxml/musicxml/elements/fz.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Fz {
   /// Element-specific attributes

@@ -40,7 +40,7 @@ pub struct StaccatoAttributes {
 
 /// The [Staccato] element is used for a dot articulation, as opposed to a stroke or a wedge.
 ///
-/// ![Staccato](staccato.png)
+/// ![Staccato](https://hedgetechllc.github.io/musicxml/musicxml/elements/staccato.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Staccato {
   /// Element-specific attributes

@@ -19,7 +19,7 @@ pub struct RepeatAttributes {
 
 /// The [Repeat] element represents repeat marks.
 ///
-/// ![Repeat](repeat.png)
+/// ![Repeat](https://hedgetechllc.github.io/musicxml/musicxml/elements/repeat.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Repeat {
   /// Element-specific attributes

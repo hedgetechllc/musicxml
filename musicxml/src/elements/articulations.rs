@@ -59,7 +59,7 @@ pub enum ArticulationsType {
 
 /// The [Articulations] element groups together articulations and accents.
 ///
-/// ![Articulations](articulations.png)
+/// ![Articulations](https://hedgetechllc.github.io/musicxml/musicxml/elements/articulations.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Articulations {
   /// Element-specific attributes

@@ -38,7 +38,7 @@ pub struct BassSeparatorAttributes {
 
 /// The [BassSeparator] element indicates that text, rather than a line or slash, separates the bass from what precedes it.
 ///
-/// ![BassSeparator](bass-separator.png)
+/// ![BassSeparator](https://hedgetechllc.github.io/musicxml/musicxml/elements/bass-separator.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("bass-separator")]
 pub struct BassSeparator {

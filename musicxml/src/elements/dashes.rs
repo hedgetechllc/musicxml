@@ -40,7 +40,7 @@ pub struct DashesAttributes {
 
 /// The [Dashes] element represents dashes, used for instance with cresc. and dim. marks.
 ///
-/// ![Dashes](dashes.png)
+/// ![Dashes](https://hedgetechllc.github.io/musicxml/musicxml/elements/dashes.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Dashes {
   /// Element-specific attributes

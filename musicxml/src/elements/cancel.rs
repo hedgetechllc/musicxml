@@ -11,7 +11,7 @@ pub struct CancelAttributes {
 
 /// The [Cancel] element indicates that the old key signature should be cancelled before the new one appears.
 ///
-/// ![Cancel](cancel.png)
+/// ![Cancel](https://hedgetechllc.github.io/musicxml/musicxml/elements/cancel.png)
 ///
 /// This will always happen when changing to C major or A minor and need not be specified then.
 /// The [Cancel] element value matches the fifths value of the cancelled key signature

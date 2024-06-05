@@ -59,7 +59,7 @@ pub struct StringMuteAttributes {
 
 /// The [StringMute] element represents string mute on and mute off symbols.
 ///
-/// ![StringMute](string-mute.png)
+/// ![StringMute](https://hedgetechllc.github.io/musicxml/musicxml/elements/string-mute.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 #[rename("string-mute")]
 pub struct StringMute {

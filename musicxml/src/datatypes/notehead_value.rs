@@ -20,83 +20,83 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 /// but instead use the [NoteheadText][crate::elements::NoteheadText] element.
 #[derive(Debug, PartialEq, Eq, DatatypeDeserialize, DatatypeSerialize)]
 pub enum NoteheadValue {
-  /// ![ArrowDown](notehead-value-arrow-down.png)
+  /// ![ArrowDown](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-arrow-down.png)
   #[rename("arrow down")]
   ArrowDown,
-  /// ![ArrowUp](notehead-value-arrow-up.png)
+  /// ![ArrowUp](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-arrow-up.png)
   #[rename("arrow up")]
   ArrowUp,
-  /// ![BackSlashed](notehead-value-back-slashed.png)
+  /// ![BackSlashed](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-back-slashed.png)
   #[rename("back slashed")]
   BackSlashed,
-  /// ![CircleDot](notehead-value-circle-dot.png)
+  /// ![CircleDot](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-circle-dot.png)
   #[rename("circle dot")]
   CircleDot,
-  /// ![CircleX](notehead-value-circle-x.png)
+  /// ![CircleX](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-circle-x.png)
   #[rename("circle-x")]
   CircleX,
-  /// ![Circled](notehead-value-circled.png)
+  /// ![Circled](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-circled.png)
   Circled,
-  /// ![Cluster](notehead-value-cluster.png)
+  /// ![Cluster](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-cluster.png)
   Cluster,
-  /// ![Cross](notehead-value-cross.png)
+  /// ![Cross](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-cross.png)
   Cross,
-  /// ![Diamond](notehead-value-diamond.png)
+  /// ![Diamond](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-diamond.png)
   Diamond,
   /// As in Aikin's 7-shape system:
   ///
-  /// ![Do](notehead-value-do.png)
+  /// ![Do](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-do.png)
   Do,
   /// As in Aikin's 7-shape system, typically used with downstems or no stems:
   ///
-  /// ![Fa](notehead-value-fa.png)
+  /// ![Fa](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-fa.png)
   Fa,
   /// As in Aikin's 7-shape system, typically used with upstems:
   ///
-  /// ![FaUp](notehead-value-fa-up.png)
+  /// ![FaUp](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-fa-up.png)
   #[rename("fa up")]
   FaUp,
-  /// ![InvertedTriangle](notehead-value-inverted-triangle.png)
+  /// ![InvertedTriangle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-inverted-triangle.png)
   #[rename("inverted triangle")]
   InvertedTriangle,
   /// As in Aikin's 7-shape system:
   ///
-  /// ![La](notehead-value-la.png)
+  /// ![La](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-la.png)
   La,
-  /// ![LeftTriangle](notehead-value-left-triangle.png)
+  /// ![LeftTriangle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-left-triangle.png)
   #[rename("left triangle")]
   LeftTriangle,
   /// As in Aikin's 7-shape system:
   ///
-  /// ![Mi](notehead-value-mi.png)
+  /// ![Mi](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-mi.png)
   Mi,
-  /// ![None](notehead-value-none.png)
+  /// ![None](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-none.png)
   None,
-  /// ![Normal](notehead-value-normal.png)
+  /// ![Normal](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-normal.png)
   Normal,
   /// As in Aikin's 7-shape system:
   ///
-  /// ![Re](notehead-value-re.png)
+  /// ![Re](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-re.png)
   Re,
-  /// ![Rectangle](notehead-value-rectangle.png)
+  /// ![Rectangle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-rectangle.png)
   Rectangle,
-  /// ![Slash](notehead-value-slash.png)
+  /// ![Slash](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-slash.png)
   Slash,
-  /// ![Slashed](notehead-value-slashed.png)
+  /// ![Slashed](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-slashed.png)
   Slashed,
   /// As in Aikin's 7-shape system:
   ///
-  /// ![So](notehead-value-so.png)
+  /// ![So](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-so.png)
   So,
-  /// ![Square](notehead-value-square.png)
+  /// ![Square](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-square.png)
   Square,
   /// As in Aikin's 7-shape system:
   ///
-  /// ![Ti](notehead-value-ti.png)
+  /// ![Ti](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-ti.png)
   Ti,
-  /// ![Triangle](notehead-value-triangle.png)
+  /// ![Triangle](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-triangle.png)
   Triangle,
-  /// ![X](notehead-value-x.png)
+  /// ![X](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/notehead-value-x.png)
   X,
   /// Noteheads other than those listed here.
   ///

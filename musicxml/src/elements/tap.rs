@@ -43,7 +43,7 @@ pub struct TapAttributes {
 
 /// The [Tap] element indicates a tap on the fretboard.
 ///
-/// ![Tap](tap.png)
+/// ![Tap](https://hedgetechllc.github.io/musicxml/musicxml/elements/tap.png)
 ///
 /// The element content allows specification of the notation; + and T are common choices.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

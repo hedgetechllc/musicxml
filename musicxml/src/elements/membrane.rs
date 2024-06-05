@@ -11,7 +11,7 @@ pub struct MembraneAttributes {
 
 /// The [Membrane] element represents pictograms for membrane percussion instruments.
 ///
-/// ![Membrane](membrane.png)
+/// ![Membrane](https://hedgetechllc.github.io/musicxml/musicxml/elements/membrane.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Membrane {
   /// Element-specific attributes

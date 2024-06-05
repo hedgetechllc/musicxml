@@ -12,7 +12,7 @@ pub struct MultipleRestAttributes {
 
 /// The [MultipleRest] element indicates multiple rests that span several measures.
 ///
-/// ![MultipleRest](multiple-rest.png)
+/// ![MultipleRest](https://hedgetechllc.github.io/musicxml/musicxml/elements/multiple-rest.png)
 ///
 /// The element text indicates the number of measures in the multiple rest.
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]

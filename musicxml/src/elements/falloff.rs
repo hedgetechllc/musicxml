@@ -54,7 +54,7 @@ pub struct FalloffAttributes {
 ///
 /// The falloff appears after the main note and goes below the main pitch.
 ///
-/// ![Falloff](falloff.png)
+/// ![Falloff](https://hedgetechllc.github.io/musicxml/musicxml/elements/falloff.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Falloff {
   /// Element-specific attributes

@@ -11,7 +11,7 @@ pub struct TimpaniAttributes {
 
 /// The [Timpani] element represents the timpani pictogram.
 ///
-/// ![Timpani](timpani.png)
+/// ![Timpani](https://hedgetechllc.github.io/musicxml/musicxml/elements/timpani.png)
 #[derive(Debug, PartialEq, Eq, ElementDeserialize, ElementSerialize)]
 pub struct Timpani {
   /// Element-specific attributes
