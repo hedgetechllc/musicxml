@@ -7,7 +7,7 @@ use musicxml_macros::*;
 pub struct RightsAttributes {
   /// Standard type values are music, words, and arrangement, but other types may be used.
   /// This attribute is only needed when there are multiple [Rights] elements.
-  pub r#type: Token,
+  pub r#type: Option<Token>,
 }
 
 /// The [Rights] element contains copyright and other intellectual property notices.

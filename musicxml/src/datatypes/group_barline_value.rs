@@ -8,7 +8,7 @@ pub enum GroupBarlineValue {
   Yes,
   /// ![No](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/group-barline-value-no.png)
   No,
-  /// ![Mensurstrich](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/group-barline-value-mensurstrich.png)
+  /// ![Mensurstrich](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/group-barline-value-Mensurstrich.png)
   #[rename("Mensurstrich")]
   Mensurstrich,
 }
