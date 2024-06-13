@@ -2,63 +2,46 @@ use super::{PartGroup, ScorePart};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
+/// The [PartListElement] specifies all possible elements available for use in a [PartList] element.
+#[derive(Debug, PartialEq, Eq)]
+pub enum PartListElement {
+  /// The [PartGroup] element indicates a group of parts that is bracketed together.
+  PartGroup(PartGroup),
+  /// The [ScorePart] element identifies a part in this score.
+  ScorePart(ScorePart),
+}
+
 /// Contents of the [PartList] element.
 #[derive(Debug, PartialEq, Eq)]
 pub struct PartListContents {
-  /// The [PartGroup] element indicates a group of parts that is bracketed together.
-  pub part_group: Vec<PartGroup>,
-  /// The [ScorePart] element identifies a part in this score.
-  pub score_part: ScorePart,
-  /// Additional [PartGroup] elements.
-  pub additional_part_group: Vec<PartGroup>,
-  /// Additional [ScorePart] elements.
-  pub additional_score_part: Vec<ScorePart>,
+  /// Ordered list of [PartList] content elements.
+  pub content: Vec<PartListElement>,
 }
 
 impl ContentDeserializer for PartListContents {
   fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
-    let mut part_group: Vec<PartGroup> = Vec::new();
-    let mut score_part: Option<ScorePart> = None;
-    let mut additional_part_group: Vec<PartGroup> = Vec::new();
-    let mut additional_score_part: Vec<ScorePart> = Vec::new();
+    let mut content = PartListContents { content: Vec::new() };
     for element in elements {
       if element.name == "part-group" {
-        if score_part.is_some() {
-          additional_part_group.push(PartGroup::deserialize(element)?);
-        } else {
-          part_group.push(PartGroup::deserialize(element)?);
-        }
+        content.content.push(PartListElement::PartGroup(PartGroup::deserialize(element)?));
       } else if element.name == "score-part" {
-        if score_part.is_some() {
-          additional_score_part.push(ScorePart::deserialize(element)?);
-        } else {
-          score_part = Some(ScorePart::deserialize(element)?);
-        }
+        content.content.push(PartListElement::ScorePart(ScorePart::deserialize(element)?));
       } else {
         return Err(format!("Unexpected <part-list> element '{}'", element.name));
       }
     }
-    Ok(PartListContents {
-      part_group,
-      score_part: score_part.unwrap(),
-      additional_part_group,
-      additional_score_part,
-    })
+    Ok(content)
   }
 }
 
 impl ContentSerializer for PartListContents {
   fn serialize(element: &Self) -> Vec<XmlElement> {
     let mut elements: Vec<XmlElement> = Vec::new();
-    for el in &element.part_group {
-      elements.push(PartGroup::serialize(el));
-    }
-    elements.push(ScorePart::serialize(&element.score_part));
-    for el in &element.additional_part_group {
-      elements.push(PartGroup::serialize(el));
-    }
-    for el in &element.additional_score_part {
-      elements.push(ScorePart::serialize(el));
+    for el in &element.content {
+      match el {
+        PartListElement::PartGroup(el) => elements.push(PartGroup::serialize(el)),
+        PartListElement::ScorePart(el) => elements.push(ScorePart::serialize(el)),
+      }
     }
     elements
   }
