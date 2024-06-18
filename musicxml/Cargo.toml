@@ -14,8 +14,7 @@ categories.workspace = true
 publish.workspace = true
 
 [package.metadata.docs.rs]
-cargo-args = ["--workspace", "--no-deps", "--release"]
-rustdoc-args = ["--extend-css", "musicxml/assets/docs.css"]
+rustdoc-args = ["--extend-css", "assets/docs.css"]
 
 [dependencies]
 regex = { version = "1.10", default-features = false, features = ["std", "perf"] }
