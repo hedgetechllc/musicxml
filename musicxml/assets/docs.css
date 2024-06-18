@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'smufl';
-  src: url('fonts/BravuraText.woff2') format('woff2'),
-       url('fonts/BravuraText.woff') format('woff');
+  src: url('https://hedgetechllc.github.io/musicxml/fonts/BravuraText.woff2') format('woff2'),
+       url('https://hedgetechllc.github.io/musicxml/fonts/BravuraText.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
