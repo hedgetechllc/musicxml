@@ -4,7 +4,7 @@ resolver = "2"
 
 [workspace.package]
 edition = "2021"
-version = "1.0.3"
+version = "1.0.4"
 authors = ["Will Hedgecock <will.hedgecock@gmail.com>"]
 license = "MIT"
 documentation = "https://docs.rs/musicxml/latest/"
@@ -16,8 +16,8 @@ categories = ["api-bindings", "encoding", "parsing"]
 publish = true
 
 [workspace.dependencies]
-musicxml_internal = { path = "musicxml_internal", version = "1.0.3" }
-musicxml_macros = { path = "musicxml_macros", version = "1.0.3" }
+musicxml_internal = { path = "musicxml_internal", version = "1.0.4" }
+musicxml_macros = { path = "musicxml_macros", version = "1.0.4" }
 
 [profile.release]
 codegen-units = 4096
