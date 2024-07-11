@@ -1,14 +1,14 @@
 use musicxml_internal::XmlElement;
 
 enum TagType {
-  Opening { tag_length: usize, tag: XmlElement },
-  Closing { tag_length: usize, tag: XmlElement },
-  SelfClosing { tag_length: usize, tag: XmlElement },
-  Ignored { tag_length: usize },
+  Opening(XmlElement),
+  Closing(XmlElement),
+  SelfClosing(XmlElement),
+  Ignored,
   Done,
 }
 
-fn read_tag_str(str: &str) -> TagType {
+fn read_tag_str(str: &mut std::str::Chars) -> TagType {
   let mut tag = XmlElement {
     name: String::new(),
     attributes: Vec::new(),
@@ -18,20 +18,20 @@ fn read_tag_str(str: &str) -> TagType {
   let (mut is_closing, mut is_self_closing, mut in_attribute, mut in_string, mut in_tag, mut ignore) =
     (false, false, true, false, true, false);
   let (mut attribute, mut value) = (String::new(), String::new());
-  for (i, c) in str.chars().enumerate() {
+  for (i, c) in str.enumerate() {
     match c {
       '>' => {
         if !in_attribute {
           tag.attributes.push((attribute.clone(), value.clone()));
         }
         return if ignore {
-          TagType::Ignored { tag_length: i + 1 }
+          TagType::Ignored
         } else if is_closing {
-          TagType::Closing { tag_length: i + 1, tag }
+          TagType::Closing(tag)
         } else if is_self_closing {
-          TagType::SelfClosing { tag_length: i + 1, tag }
+          TagType::SelfClosing(tag)
         } else {
-          TagType::Opening { tag_length: i + 1, tag }
+          TagType::Opening(tag)
         };
       }
       '\r' => (),
@@ -110,25 +110,19 @@ pub fn parse_to_string(xml: &XmlElement, depth: i16) -> String {
   xml_str
 }
 
-pub fn parse_from_string(mut str: &str) -> Result<XmlElement, String> {
+pub fn parse_from_string(str: &str) -> Result<XmlElement, String> {
+  let mut it = str.chars();
   let mut open_tags: Vec<XmlElement> = Vec::new();
-  while !str.is_empty() {
-    if str.starts_with('<') {
-      match read_tag_str(&str[1..]) {
-        TagType::Ignored { tag_length } => str = &str[tag_length..],
-        TagType::Opening { tag_length, tag } => {
-          str = &str[tag_length..];
-          open_tags.push(tag)
-        }
-        TagType::SelfClosing { tag_length, tag } => {
-          str = &str[tag_length..];
-          match open_tags.last_mut() {
-            Some(last_open_tag) => last_open_tag.elements.push(tag),
-            None => return Err(format!("Root tag cannot be self-closing")),
-          }
-        }
-        TagType::Closing { tag_length, tag } => {
-          str = &str[tag_length..];
+  while let Some(ch) = it.next() {
+    if ch == '<' {
+      match read_tag_str(&mut it) {
+        TagType::Ignored => (),
+        TagType::Opening(tag) => open_tags.push(tag),
+        TagType::SelfClosing(tag) => match open_tags.last_mut() {
+          Some(last_open_tag) => last_open_tag.elements.push(tag),
+          None => return Err(format!("Root tag cannot be self-closing")),
+        },
+        TagType::Closing(tag) => {
           let mut element = open_tags.pop().unwrap();
           element.text.truncate(element.text.trim().len());
           if tag.name != element.name {
@@ -143,17 +137,15 @@ pub fn parse_from_string(mut str: &str) -> Result<XmlElement, String> {
             return Ok(element);
           }
         }
-        TagType::Done => str = &str[str.chars().count() - 1..],
+        TagType::Done => break,
       }
-    } else if !str.starts_with('\r') && !str.starts_with('\n') && !str.starts_with('\t') {
+    } else if ch != '\r' && ch != '\n' && ch != '\t' {
       if let Some(item) = open_tags.last_mut() {
-        let ch = str.chars().next().unwrap();
         if !item.text.is_empty() || ch != ' ' {
           item.text.push(ch)
         }
       }
     }
-    str = &str[1..];
   }
   Err(format!("Missing one or more matched tags"))
 }
@@ -270,6 +262,61 @@ mod xml_parser_tests {
               },
             ],
             text: String::new()
+          },
+        ],
+        text: String::new()
+      }
+    );
+  }
+
+  #[test]
+  fn serialize_valid_unicode_str() {
+    let test_xml_str = "<element><test1>Waltz in E♭ Major</test1><test2>Frédéric François Chopin</test2></element>";
+    let test_xml = XmlElement {
+      name: String::from("element"),
+      attributes: vec![],
+      elements: vec![
+        XmlElement {
+          name: String::from("test1"),
+          attributes: vec![],
+          elements: vec![],
+          text: String::from("Waltz in E♭ Major"),
+        },
+        XmlElement {
+          name: String::from("test2"),
+          attributes: vec![],
+          elements: vec![],
+          text: String::from("Frédéric François Chopin"),
+        },
+      ],
+      text: String::new(),
+    };
+    let result = parse_to_string(&test_xml, -1);
+    assert_eq!(result.as_str(), test_xml_str);
+  }
+
+  #[test]
+  fn deserialize_valid_unicode_str() {
+    let test_xml = "<element><test1>Waltz in E♭ Major</test1><test2>Frédéric François Chopin</test2></element>";
+    let result = parse_from_string(test_xml);
+    assert!(result.is_ok());
+    assert_eq!(
+      result.unwrap(),
+      XmlElement {
+        name: String::from("element"),
+        attributes: vec![],
+        elements: vec![
+          XmlElement {
+            name: String::from("test1"),
+            attributes: vec![],
+            elements: vec![],
+            text: String::from("Waltz in E♭ Major")
+          },
+          XmlElement {
+            name: String::from("test2"),
+            attributes: vec![],
+            elements: vec![],
+            text: String::from("Frédéric François Chopin")
           },
         ],
         text: String::new()

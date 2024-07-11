@@ -23,9 +23,13 @@ impl ContentDeserializer for PartListContents {
     let mut content = PartListContents { content: Vec::new() };
     for element in elements {
       if element.name == "part-group" {
-        content.content.push(PartListElement::PartGroup(PartGroup::deserialize(element)?));
+        content
+          .content
+          .push(PartListElement::PartGroup(PartGroup::deserialize(element)?));
       } else if element.name == "score-part" {
-        content.content.push(PartListElement::ScorePart(ScorePart::deserialize(element)?));
+        content
+          .content
+          .push(PartListElement::ScorePart(ScorePart::deserialize(element)?));
       } else {
         return Err(format!("Unexpected <part-list> element '{}'", element.name));
       }
