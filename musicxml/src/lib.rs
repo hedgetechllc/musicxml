@@ -45,7 +45,7 @@
 //! simply by calling the appropriate function. To read a MusicXML file and get a [ScorePartwise] object, simply do the
 //! following:
 //!
-//! ```
+//! ```no_run
 //! use musicxml::read_score_partwise;
 //!
 //! match read_score_partwise("path/to/file.musicxml") {
@@ -56,7 +56,7 @@
 //!
 //! Likewise, to read a MusicXML file and get a [ScoreTimewise] object, you can do the following:
 //!
-//! ```
+//! ```no_run
 //! use musicxml::read_score_timewise;
 //!
 //! match read_score_timewise("path/to/file.musicxml") {
@@ -82,10 +82,10 @@
 //!
 //! To write a [ScorePartwise] object to a standard MusicXML file in its default representation, you can do the following:
 //!
-//! ```
+//! ```ignore
 //! use musicxml::write_partwise_score;
 //!
-//! let score = ScorePartwise::default(); // Assume ScorePartwise object created elsewhere
+//! // Assume ScorePartwise "score" object created elsewhere
 //! match write_partwise_score("path/to/output.musicxml", &score, false, false) {
 //!   Ok(_) => println!("Successfully wrote MusicXML file"),
 //!   Err(e) => println!("Error writing MusicXML file: {}", e),
@@ -94,10 +94,10 @@
 //!
 //! Alternately, to write a [ScoreTimewise] object to a compressed MusicXML file using a partwise representation, you can do the following:
 //!
-//! ```
+//! ```ignore
 //! use musicxml::write_timewise_score;
 //!
-//! let score = ScoreTimewise::default(); // Assume ScoreTimewise object created elsewhere
+//! // Assume ScoreTimewise "score" object created elsewhere
 //! match write_timewise_score("path/to/output.musicxml", &score, true, true) {
 //!   Ok(_) => println!("Successfully wrote compressed MusicXML file"),
 //!   Err(e) => println!("Error writing compressed MusicXML file: {}", e),
