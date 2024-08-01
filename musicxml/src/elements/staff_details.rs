@@ -1,5 +1,6 @@
 use super::{Capo, LineDetail, StaffLines, StaffSize, StaffTuning, StaffType};
 use crate::datatypes::{ShowFrets, StaffNumber, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

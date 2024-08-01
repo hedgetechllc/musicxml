@@ -1,3 +1,4 @@
+use alloc::string::{String, ToString};
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Represents a positive integer or an empty value.

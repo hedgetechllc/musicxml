@@ -1,5 +1,6 @@
 use super::{AccidentalText, DisplayText};
 use crate::datatypes::YesNo;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

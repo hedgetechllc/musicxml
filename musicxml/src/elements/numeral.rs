@@ -1,4 +1,5 @@
 use super::{NumeralAlter, NumeralKey, NumeralRoot};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

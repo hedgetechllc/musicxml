@@ -1,4 +1,5 @@
 use super::{PartGroup, ScorePart};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

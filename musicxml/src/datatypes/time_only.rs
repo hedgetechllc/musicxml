@@ -1,6 +1,7 @@
 use super::positive_integer::PositiveInteger;
+use alloc::{string::String, string::ToString, vec::Vec};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
-use std::ops::Deref;
 
 /// Used to indicate that a particular playback- or listening-related element only applies particular times
 /// through a repeated section.

@@ -1,5 +1,6 @@
 use super::Feature;
 use crate::datatypes::{Id, StartStopSingle, Token};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

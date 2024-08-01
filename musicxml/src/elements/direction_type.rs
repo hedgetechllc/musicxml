@@ -4,6 +4,7 @@ use super::{
   StringMute, Symbol, Wedge, Words,
 };
 use crate::datatypes::Id;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

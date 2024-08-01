@@ -3,6 +3,7 @@ use super::{
   Part, Print, Sound,
 };
 use crate::datatypes::{Id, MeasureText, Tenths, Token, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,6 +1,7 @@
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
-use std::ops::Deref;
 
 /// Supports six levels of beaming, up to 1024th notes.
 ///

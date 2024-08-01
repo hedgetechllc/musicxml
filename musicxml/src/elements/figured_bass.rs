@@ -2,6 +2,7 @@ use super::{Duration, Figure, Footnote, Level};
 use crate::datatypes::{
   AboveBelow, Color, FontFamily, FontSize, FontStyle, FontWeight, Id, LeftCenterRight, Tenths, Valign, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

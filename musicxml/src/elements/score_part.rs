@@ -3,6 +3,7 @@ use super::{
   PartNameDisplay, Player, ScoreInstrument,
 };
 use crate::datatypes::Id;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

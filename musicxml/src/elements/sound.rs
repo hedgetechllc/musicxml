@@ -1,5 +1,6 @@
 use super::{InstrumentChange, MidiDevice, MidiInstrument, Offset, Play, Swing};
 use crate::datatypes::{Divisions, Id, NonNegativeDecimal, RotationDegrees, TimeOnly, Token, YesNo, YesNoNumber};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

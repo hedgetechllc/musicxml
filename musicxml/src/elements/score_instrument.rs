@@ -1,5 +1,6 @@
 use super::{Ensemble, InstrumentAbbreviation, InstrumentName, InstrumentSound, Solo, VirtualInstrument};
 use crate::datatypes::Id;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

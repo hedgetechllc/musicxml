@@ -1,4 +1,5 @@
 use super::decimal::Decimal;
+use alloc::string::{String, ToString};
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Used for attributes that can be either boolean or numeric values.

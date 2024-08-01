@@ -4,6 +4,7 @@ use super::{
   Stopped, StringNumber, Tap, ThumbPosition, Toe, TripleTongue, UpBow,
 };
 use crate::datatypes::Id;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

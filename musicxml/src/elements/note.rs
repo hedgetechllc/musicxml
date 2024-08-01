@@ -5,6 +5,7 @@ use super::{
 use crate::datatypes::{
   Color, Divisions, FontFamily, FontSize, FontStyle, FontWeight, Id, NonNegativeDecimal, Tenths, TimeOnly, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
@@ -569,6 +570,7 @@ mod note_tests {
   use crate::datatypes::StartStop;
   use crate::elements::*;
   use crate::parser::parse_from_xml_str;
+  use alloc::string::ToString;
 
   #[test]
   fn deserialize_valid1() {

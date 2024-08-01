@@ -3,6 +3,7 @@ use super::{
   OtherNotation, Slide, Slur, Technical, Tied, Tuplet,
 };
 use crate::datatypes::{Id, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
@@ -168,6 +169,7 @@ pub struct Notations {
 mod notations_tests {
   use crate::elements::*;
   use crate::parser::parse_from_xml_str;
+  use alloc::string::String;
 
   #[test]
   fn deserialize_valid1() {

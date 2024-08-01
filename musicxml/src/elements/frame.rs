@@ -1,5 +1,6 @@
 use super::{FirstFret, FrameFrets, FrameNote, FrameStrings};
 use crate::datatypes::{Color, Id, LeftCenterRight, Tenths, Token, Valign};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

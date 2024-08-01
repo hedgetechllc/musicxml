@@ -1,5 +1,6 @@
 use super::{Elevation, MidiBank, MidiChannel, MidiName, MidiProgram, MidiUnpitched, Pan, Volume};
 use crate::datatypes::IdRef;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

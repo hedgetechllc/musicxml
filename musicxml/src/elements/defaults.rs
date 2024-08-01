@@ -2,6 +2,7 @@ use super::{
   Appearance, ConcertScore, LyricFont, LyricLanguage, MusicFont, PageLayout, Scaling, StaffLayout, SystemLayout,
   WordFont,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

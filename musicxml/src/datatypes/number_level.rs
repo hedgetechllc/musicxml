@@ -1,6 +1,7 @@
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
-use std::ops::Deref;
 
 /// Distinguishes up to 16 concurrent objects of the same type when the objects overlap in MusicXML document order.
 ///

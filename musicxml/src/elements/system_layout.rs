@@ -1,4 +1,5 @@
 use super::{SystemDistance, SystemDividers, SystemMargins, TopSystemDistance};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

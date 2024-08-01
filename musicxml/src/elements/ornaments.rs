@@ -3,6 +3,7 @@ use super::{
   Mordent, OtherOrnament, Schleifer, Shake, Tremolo, TrillMark, Turn, VerticalTurn, WavyLine,
 };
 use crate::datatypes::Id;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

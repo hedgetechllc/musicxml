@@ -1,4 +1,5 @@
 use crate::datatypes::{IdRef, TimeOnly, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

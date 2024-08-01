@@ -1,5 +1,6 @@
 use super::StaffDistance;
 use crate::datatypes::StaffNumber;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

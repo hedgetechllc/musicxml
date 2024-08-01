@@ -56,3 +56,8 @@ details.
 ## License
 
 This library is licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+
+## TODO
+
+Add documentation about "std" feature, add options to parse MusicXML files directly from string (both compressed and uncompressed), same for writing to string

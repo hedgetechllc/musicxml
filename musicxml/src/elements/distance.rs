@@ -1,4 +1,5 @@
 use crate::datatypes::{DistanceType, Tenths};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -2,6 +2,7 @@ use crate::datatypes::{
   AboveBelow, Color, FontFamily, FontSize, FontStyle, FontWeight, Id, NumberLevel, SmuflGlyphName, StartStopSingle,
   Tenths, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,4 +1,5 @@
 use super::{Chromatic, Diatonic, Double, OctaveChange};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

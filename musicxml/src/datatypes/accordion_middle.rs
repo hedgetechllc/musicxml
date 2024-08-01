@@ -1,6 +1,7 @@
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
-use std::ops::Deref;
 
 /// May have values of 1, 2, or 3, corresponding to having 1 to 3 dots in the middle section of the accordion registration symbol.
 ///

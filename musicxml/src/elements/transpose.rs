@@ -1,5 +1,6 @@
 use super::{Chromatic, Diatonic, Double, OctaveChange};
 use crate::datatypes::{Id, StaffNumber};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

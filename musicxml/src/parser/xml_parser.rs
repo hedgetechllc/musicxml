@@ -1,3 +1,4 @@
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::XmlElement;
 
 enum TagType {
@@ -8,7 +9,7 @@ enum TagType {
   Done,
 }
 
-fn read_tag_str(str: &mut std::str::Chars) -> TagType {
+fn read_tag_str(str: &mut core::str::Chars) -> TagType {
   let mut tag = XmlElement {
     name: String::new(),
     attributes: Vec::new(),

@@ -1,5 +1,6 @@
 use super::{Credit, Defaults, Identification, Measure, MovementNumber, MovementTitle, PartList, Work};
 use crate::datatypes::Token;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

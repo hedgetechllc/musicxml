@@ -1,12 +1,19 @@
 use crate::elements::{ScorePartwise, ScoreTimewise};
+use alloc::{collections::BTreeMap, string::String, vec::Vec};
 use musicxml_internal::{ElementDeserializer, ElementSerializer, XmlElement};
-use std::{
-  collections::{BTreeMap, HashMap},
-  io::{Read, Write},
+
+#[cfg(feature = "std")]
+extern crate std;
+
+#[cfg(feature = "std")]
+use {
+  alloc::string::ToString,
+  std::io::{Read, Write},
 };
 
 mod xml_parser;
 
+#[cfg(feature = "std")]
 fn is_mxl_file(path: &str) -> bool {
   let mut buffer: [u8; 4] = [0; 4];
   if let Ok(mut file) = std::fs::OpenOptions::new().read(true).open(path) {
@@ -16,6 +23,7 @@ fn is_mxl_file(path: &str) -> bool {
   }
 }
 
+#[cfg(feature = "std")]
 fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
   let mut contents = String::new();
   if is_mxl_file(path) {
@@ -53,6 +61,14 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
   Ok(contents)
 }
 
+#[cfg(not(feature = "std"))]
+fn get_musicxml_contents_from_file(_path: &str) -> Result<String, String> {
+  Err(String::from(
+    "Reading MusicXML files is not supported in a 'no_std' environment",
+  ))
+}
+
+#[cfg(feature = "std")]
 fn write_musicxml_file<T: Write>(file: &mut T, xml: &XmlElement, pretty_print: bool) -> Result<(), String> {
   file
     .write_all(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
@@ -67,6 +83,7 @@ fn write_musicxml_file<T: Write>(file: &mut T, xml: &XmlElement, pretty_print: b
     .map_err(|e| e.to_string())
 }
 
+#[cfg(feature = "std")]
 fn write_musicxml_to_file(path: &str, xml: &XmlElement, compressed: bool, pretty_print: bool) -> Result<(), String> {
   if compressed {
     let options = zip::write::SimpleFileOptions::default()
@@ -92,6 +109,18 @@ fn write_musicxml_to_file(path: &str, xml: &XmlElement, compressed: bool, pretty
       .map_err(|e| e.to_string())?;
     write_musicxml_file(&mut file, xml, pretty_print)
   }
+}
+
+#[cfg(not(feature = "std"))]
+fn write_musicxml_to_file(
+  _path: &str,
+  _xml: &XmlElement,
+  _compressed: bool,
+  _pretty_print: bool,
+) -> Result<(), String> {
+  Err(String::from(
+    "Writing MusicXML files is not supported in a 'no_std' environment",
+  ))
 }
 
 fn convert_xml_partwise_to_timewise(xml: XmlElement) -> Result<XmlElement, String> {
@@ -151,7 +180,7 @@ fn convert_xml_timewise_to_partwise(xml: XmlElement) -> Result<XmlElement, Strin
   if xml.name == "score-partwise" {
     Ok(xml)
   } else if xml.name == "score-timewise" {
-    let mut parts: HashMap<String, XmlElement> = HashMap::new();
+    let mut parts: BTreeMap<String, XmlElement> = BTreeMap::new();
     let mut converted_xml = XmlElement {
       name: String::from("score-partwise"),
       attributes: xml.attributes,
@@ -188,7 +217,7 @@ fn convert_xml_timewise_to_partwise(xml: XmlElement) -> Result<XmlElement, Strin
         converted_xml.elements.push(element);
       }
     }
-    parts.drain().for_each(|(_, part)| converted_xml.elements.push(part));
+    parts.into_values().for_each(|part| converted_xml.elements.push(part));
     Ok(converted_xml)
   } else {
     Err(String::from(

@@ -1,4 +1,5 @@
 use super::{Creator, Encoding, Miscellaneous, Relation, Rights, Source};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

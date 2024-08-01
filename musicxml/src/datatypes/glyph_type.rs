@@ -1,3 +1,4 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Defines what type of glyph is being defined in a [Glyph][crate::elements::Glyph] element.

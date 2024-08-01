@@ -2,6 +2,7 @@ use super::{
   Clef, Directive, Divisions, Footnote, ForPart, Instruments, Key, Level, MeasureStyle, PartSymbol, StaffDetails,
   Staves, Time, Transpose,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
@@ -60,6 +61,7 @@ mod attributes_tests {
   };
   use crate::elements::*;
   use crate::parser::parse_from_xml_str;
+  use alloc::{string::String, vec::Vec};
 
   #[test]
   fn deserialize_valid1() {

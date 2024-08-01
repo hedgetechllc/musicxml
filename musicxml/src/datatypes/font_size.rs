@@ -1,4 +1,5 @@
 use super::css_font_size::CssFontSize;
+use alloc::string::{String, ToString};
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Can be one of the [CSS font sizes](https://www.w3.org/2021/06/musicxml40/musicxml-reference/data-types/css-font-size/)

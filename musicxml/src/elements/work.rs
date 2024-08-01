@@ -1,4 +1,5 @@
 use super::{Opus, WorkNumber, WorkTitle};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

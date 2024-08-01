@@ -1,4 +1,5 @@
 use crate::datatypes::{BeaterValue, TipDirection};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

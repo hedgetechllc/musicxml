@@ -1,3 +1,4 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Defines what type of distance is being defined in a [Distance][crate::elements::Distance] element.

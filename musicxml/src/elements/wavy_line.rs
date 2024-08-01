@@ -2,6 +2,7 @@ use crate::datatypes::{
   AboveBelow, Color, NumberLevel, Percent, SmuflWavyLineGlyphName, StartNote, StartStopContinue, Tenths, TrillBeats,
   TrillStep, TwoNoteTurn, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

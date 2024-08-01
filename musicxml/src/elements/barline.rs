@@ -1,5 +1,6 @@
 use super::{BarStyle, Coda, Ending, Fermata, Footnote, Level, Repeat, Segno, WavyLine};
 use crate::datatypes::{Divisions, Id, RightLeftMiddle, Token};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

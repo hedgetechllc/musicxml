@@ -1,5 +1,6 @@
 use super::{Artificial, BasePitch, Natural, SoundingPitch, TouchingPitch};
 use crate::datatypes::{AboveBelow, Color, FontFamily, FontSize, FontStyle, FontWeight, Tenths, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

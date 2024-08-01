@@ -1,4 +1,5 @@
 use crate::datatypes::{NmToken, Token, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,5 +1,6 @@
 use super::PedalTuning;
 use crate::datatypes::{Color, FontFamily, FontSize, FontStyle, FontWeight, Id, LeftCenterRight, Tenths, Valign};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

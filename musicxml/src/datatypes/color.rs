@@ -1,6 +1,6 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use regex::Regex;
-use std::fmt;
 
 /// Indicates the color of an element.
 ///
@@ -33,8 +33,8 @@ impl Color {
   }
 }
 
-impl fmt::Display for Color {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
+impl core::fmt::Display for Color {
+  fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
     write!(f, "aRGB({}, {}, {}, {})", self.a, self.r, self.g, self.b)
   }
 }

@@ -1,7 +1,8 @@
 use super::positive_integer::PositiveInteger;
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
-use std::ops::Deref;
 
 /// Indicates staff numbers within a multi-staff part.
 ///

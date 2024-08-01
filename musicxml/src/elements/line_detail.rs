@@ -1,4 +1,5 @@
 use crate::datatypes::{Color, LineType, StaffLine, Tenths, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

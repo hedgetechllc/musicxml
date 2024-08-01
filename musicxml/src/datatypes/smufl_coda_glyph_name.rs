@@ -1,8 +1,9 @@
 use super::smufl_glyph_name::SmuflGlyphName;
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
 use regex::Regex;
-use std::ops::Deref;
 
 /// Used to reference a specific Standard Music Font Layout (SMuFL) coda character.
 ///

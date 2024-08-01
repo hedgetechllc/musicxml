@@ -1,4 +1,5 @@
 use super::{Duration, Footnote, Level, Staff, Voice};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,5 +1,6 @@
 use super::{ExceptVoice, SlashDot, SlashType};
 use crate::datatypes::{StartStop, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

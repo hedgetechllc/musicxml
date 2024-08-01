@@ -1,5 +1,6 @@
 use super::{Cancel, Fifths, KeyAccidental, KeyAlter, KeyOctave, KeyStep, Mode};
 use crate::datatypes::{Color, FontFamily, FontSize, FontStyle, FontWeight, Id, StaffNumber, Tenths, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

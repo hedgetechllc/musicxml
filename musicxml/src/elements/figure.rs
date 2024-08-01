@@ -1,4 +1,5 @@
 use super::{Extend, FigureNumber, Footnote, Level, Prefix, Suffix};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

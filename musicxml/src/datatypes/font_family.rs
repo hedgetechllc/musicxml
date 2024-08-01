@@ -1,5 +1,6 @@
+use alloc::{string::String, string::ToString, vec::Vec};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
-use std::ops::Deref;
 
 /// Comma-separated list of font names.
 ///

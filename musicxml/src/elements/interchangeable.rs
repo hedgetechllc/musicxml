@@ -1,5 +1,6 @@
 use super::{BeatType, Beats, TimeRelation};
 use crate::datatypes::{TimeSeparator, TimeSymbol};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

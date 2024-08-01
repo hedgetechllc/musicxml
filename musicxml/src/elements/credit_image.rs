@@ -1,4 +1,5 @@
 use crate::datatypes::{AnyUri, Id, LeftCenterRight, Tenths, Token, ValignImage};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

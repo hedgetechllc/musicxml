@@ -1,3 +1,4 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Represents the shape of the fermata sign.

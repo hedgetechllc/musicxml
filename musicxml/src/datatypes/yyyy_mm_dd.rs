@@ -1,6 +1,6 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use regex::Regex;
-use std::fmt;
 
 /// Represents dates in the yyyy-mm-dd format, following ISO 8601.
 ///
@@ -22,8 +22,8 @@ impl YyyyMmDd {
   }
 }
 
-impl fmt::Display for YyyyMmDd {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
+impl core::fmt::Display for YyyyMmDd {
+  fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
     write!(f, "{:02}-{:02}-{:02})", self.year, self.month, self.date)
   }
 }

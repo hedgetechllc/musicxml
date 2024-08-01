@@ -1,4 +1,5 @@
 use crate::datatypes::{Color, DegreeTypeValue, FontFamily, FontSize, FontStyle, FontWeight, Tenths, Token};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

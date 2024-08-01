@@ -1,4 +1,5 @@
 use crate::datatypes::{BeamLevel, BeamValue, Color, Fan, Id, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

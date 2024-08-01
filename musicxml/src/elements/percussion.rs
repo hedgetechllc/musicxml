@@ -2,6 +2,7 @@ use super::{Beater, Effect, Glass, Membrane, Metal, OtherPercussion, Pitched, St
 use crate::datatypes::{
   Color, EnclosureShape, FontFamily, FontSize, FontStyle, FontWeight, Id, LeftCenterRight, Tenths, Valign,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
@@ -186,6 +187,7 @@ mod percussion_tests {
   use crate::datatypes::SmuflPictogramGlyphName;
   use crate::elements::*;
   use crate::parser::{parse_from_xml_str, parse_to_xml_str};
+  use alloc::string::String;
 
   #[test]
   fn serialize_valid1() {

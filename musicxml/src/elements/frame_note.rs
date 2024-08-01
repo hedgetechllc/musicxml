@@ -1,4 +1,5 @@
 use super::{Barre, Fingering, Fret, StringNumber};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

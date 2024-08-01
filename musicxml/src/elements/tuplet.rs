@@ -1,5 +1,6 @@
 use super::{TupletActual, TupletNormal};
 use crate::datatypes::{AboveBelow, Id, LineShape, NumberLevel, ShowTuplet, StartStop, Tenths, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

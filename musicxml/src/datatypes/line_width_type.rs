@@ -1,3 +1,4 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Defines what type of line is being defined in a [LineWidth][crate::elements::LineWidth] element.

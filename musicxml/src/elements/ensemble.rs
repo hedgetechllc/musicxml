@@ -1,4 +1,5 @@
 use crate::datatypes::PositiveIntegerOrEmpty;
+use alloc::string::String;
 use musicxml_internal::*;
 use musicxml_macros::*;
 

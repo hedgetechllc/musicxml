@@ -1,4 +1,5 @@
 use crate::datatypes::{AnyUri, NmToken, PositiveInteger, Tenths, Token, XlinkActuate, XlinkShow, XlinkType};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

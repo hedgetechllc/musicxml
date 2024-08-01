@@ -1,6 +1,7 @@
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
-use std::ops::Deref;
 
 /// Used for attributes that reference a specific Standard Music Font Layout (SMuFL) character.
 ///

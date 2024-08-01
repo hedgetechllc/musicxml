@@ -1,6 +1,6 @@
+use alloc::string::String;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use regex::Regex;
-use std::fmt;
 
 /// See the definition in the [W3C XML Schema standard](https://www.w3.org/TR/xmlschema-2/#date).
 #[derive(Debug, PartialEq, Eq)]
@@ -30,8 +30,8 @@ impl Date {
   }
 }
 
-impl fmt::Display for Date {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
+impl core::fmt::Display for Date {
+  fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
     write!(
       f,
       "{:04}-{:02}-{:02}{:+03}:{:02}",

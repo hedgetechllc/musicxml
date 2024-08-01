@@ -1,7 +1,8 @@
+use alloc::{string::String, string::ToString, vec::Vec};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
 use regex::Regex;
-use std::ops::Deref;
 
 /// Used to specify either a comma-separated list of positive integers without leading zeros, or a string of zero or more spaces.
 ///

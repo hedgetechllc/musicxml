@@ -5,6 +5,7 @@ use crate::datatypes::{
   AboveBelow, Color, FontFamily, FontSize, FontStyle, FontWeight, HarmonyArrangement, HarmonyType, Id, KindValue,
   SystemRelation, Tenths, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

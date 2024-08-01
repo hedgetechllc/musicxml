@@ -3,6 +3,7 @@ use crate::datatypes::{
   Color, FontFamily, FontSize, FontStyle, FontWeight, Id, LeftCenterRight, StaffNumber, Tenths, TimeSeparator,
   TimeSymbol, Valign, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
@@ -158,6 +159,7 @@ mod time_tests {
     elements::InterchangeableContents,
     parser::{parse_from_xml_str, parse_to_xml_str},
   };
+  use alloc::{string::String, vec::Vec};
 
   #[test]
   fn serialize_valid1() {

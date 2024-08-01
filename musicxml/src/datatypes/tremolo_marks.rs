@@ -1,6 +1,7 @@
+use alloc::string::{String, ToString};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 use musicxml_macros::DatatypeSerialize;
-use std::ops::Deref;
 
 /// Represents the number of tremolo marks by a number from 0 to 8.
 ///

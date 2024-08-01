@@ -17,10 +17,14 @@ publish.workspace = true
 rustdoc-args = ["--extend-css", "assets/docs.css"]
 
 [dependencies]
-regex = { version = "1.10", default-features = false, features = ["std", "perf"] }
-zip = { version = "2.1", default-features = false, features = ["deflate"] }
+regex = { version = "1.10", default-features = false, features = ["perf"] }
+zip = { version = "2.1", default-features = false, features = ["deflate"], optional = true }
 musicxml_internal.workspace = true
 musicxml_macros.workspace = true
+
+[features]
+default = ["std"]
+std = ["zip", "regex/std"]
 
 [lib]
 crate-type = ["rlib"]

@@ -1,4 +1,5 @@
 use super::{LeftMargin, RightMargin};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,4 +1,5 @@
 use crate::datatypes::{LeftRight, PositiveInteger, Token};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

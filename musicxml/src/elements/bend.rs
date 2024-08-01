@@ -2,6 +2,7 @@ use super::{BendAlter, PreBend, Release, WithBar};
 use crate::datatypes::{
   BendShape, Color, FontFamily, FontSize, FontStyle, FontWeight, Percent, Tenths, TrillBeats, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -3,6 +3,7 @@ use super::{
   GroupTime, Level,
 };
 use crate::datatypes::{StartStop, Token};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

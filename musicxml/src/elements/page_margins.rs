@@ -1,5 +1,6 @@
 use super::{BottomMargin, LeftMargin, RightMargin, TopMargin};
 use crate::datatypes::MarginType;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

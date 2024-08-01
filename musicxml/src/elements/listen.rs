@@ -1,4 +1,5 @@
 use super::{Assess, OtherListen, Wait};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

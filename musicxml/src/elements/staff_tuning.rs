@@ -1,5 +1,6 @@
 use super::{TuningAlter, TuningOctave, TuningStep};
 use crate::datatypes::StaffLine;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,5 +1,6 @@
+use alloc::{string::String, string::ToString, vec::Vec};
+use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
-use std::ops::Deref;
 
 /// Used to specify a comma-separated list of text elements, as is used by the `font_family` attribute.
 ///

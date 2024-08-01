@@ -2,6 +2,7 @@ use super::{BeatUnit, BeatUnitDot, BeatUnitTied, MetronomeArrows, MetronomeNote,
 use crate::datatypes::{
   Color, FontFamily, FontSize, FontStyle, FontWeight, Id, LeftCenterRight, Tenths, Valign, YesNo,
 };
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

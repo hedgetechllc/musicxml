@@ -3,6 +3,7 @@
 #![doc(html_favicon_url = "https://hedgetechllc.github.io/musicxml/musicxml/favicon.ico")]
 #![doc(html_logo_url = "https://hedgetechllc.github.io/musicxml/musicxml/MusicXML-Logo-Square.png")]
 #![doc(html_playground_url = "https://playground.example.com/")]
+#![no_std]
 
 //! # Overview
 //!
@@ -103,6 +104,11 @@
 //!   Err(e) => println!("Error writing compressed MusicXML file: {}", e),
 //! }
 //! ```
+
+#[macro_use]
+extern crate alloc;
+
+use alloc::string::String;
 
 /// Contains the main data types used by the MusicXML format.
 ///

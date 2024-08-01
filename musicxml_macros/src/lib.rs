@@ -1,3 +1,9 @@
+#![no_std]
+
+extern crate alloc;
+
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 use proc_macro::TokenStream;
 use quote::quote;
 

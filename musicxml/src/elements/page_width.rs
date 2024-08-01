@@ -1,4 +1,5 @@
 use crate::datatypes::Tenths;
+use alloc::string::String;
 use musicxml_internal::*;
 use musicxml_macros::*;
 

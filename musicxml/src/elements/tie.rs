@@ -1,4 +1,5 @@
 use crate::datatypes::{StartStop, TimeOnly};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

@@ -1,5 +1,6 @@
 use super::{Elision, EndLine, EndParagraph, Extend, Footnote, Humming, Laughing, Level, Syllabic, Text};
 use crate::datatypes::{AboveBelow, Color, Id, LeftCenterRight, NmToken, Tenths, TimeOnly, Token, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

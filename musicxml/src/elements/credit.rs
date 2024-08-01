@@ -1,5 +1,6 @@
 use super::{Bookmark, CreditImage, CreditSymbol, CreditType, CreditWords, Link};
 use crate::datatypes::{Id, PositiveInteger};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

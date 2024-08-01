@@ -1,5 +1,6 @@
 use super::{DirectionType, Footnote, Level, Listening, Offset, Sound, Staff, Voice};
 use crate::datatypes::{AboveBelow, Id, SystemRelation, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

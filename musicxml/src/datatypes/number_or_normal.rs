@@ -1,3 +1,4 @@
+use alloc::string::{String, ToString};
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
 /// Can be either a decimal number or the string "normal".

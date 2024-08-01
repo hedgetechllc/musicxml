@@ -1,5 +1,6 @@
 use super::{BassAlter, BassSeparator, BassStep};
 use crate::datatypes::HarmonyArrangement;
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

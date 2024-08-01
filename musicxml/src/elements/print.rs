@@ -2,6 +2,7 @@ use super::{
   MeasureLayout, MeasureNumbering, PageLayout, PartAbbreviationDisplay, PartNameDisplay, StaffLayout, SystemLayout,
 };
 use crate::datatypes::{Id, PositiveInteger, Tenths, Token, YesNo};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 

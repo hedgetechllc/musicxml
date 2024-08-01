@@ -1,3 +1,10 @@
+#![no_std]
+
+extern crate alloc;
+
+use alloc::string::{String, ToString};
+use alloc::vec::Vec;
+
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct XmlElement {
   pub name: String,

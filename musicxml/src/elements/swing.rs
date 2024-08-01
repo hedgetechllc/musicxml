@@ -1,4 +1,5 @@
 use super::{First, Second, Straight, SwingStyle, SwingType};
+use alloc::{string::String, vec::Vec};
 use musicxml_internal::*;
 use musicxml_macros::*;
 
