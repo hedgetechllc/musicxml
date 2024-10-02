@@ -4,13 +4,13 @@ use alloc::{collections::BTreeMap, vec::Vec};
 use core2::io::Read;
 use libflate::deflate::Decoder;
 
-const DEFLATE_METHOD: u16 = 8;
+const DEFLATE_METHOD_CODE: u16 = 8;
 const LOCAL_FILE_HEADER_LEN: usize = core::mem::size_of::<LocalFileHeader>();
 const CENTRAL_FILE_HEADER_LEN: usize = core::mem::size_of::<CentralFileHeader>();
 const CENTRAL_DIR_END_LEN: usize = core::mem::size_of::<CentralDirEnd>();
 
 #[repr(packed)]
-pub(crate) struct LocalFileHeader {
+struct LocalFileHeader {
   signature: u32,
   version_needed_to_extract: u16,
   general_purpose_bit_flag: u16,
@@ -86,23 +86,20 @@ impl CentralDirEnd {
   }
 }
 
-pub(crate) struct LocalFile {
+struct LocalFile {
   pub file_name: String,
-  pub compressed_size: u64,
-  pub uncompressed_size: u64,
-  pub data: Vec<u8>,
+  pub relative_offset: usize,
+  pub compressed_size: usize,
+  pub uncompressed_size: usize,
 }
 
 impl LocalFile {
-  pub fn new(file_name: String, data: &[u8], details: &LocalFileHeader) -> Self {
-    let mut decoded_data = Vec::new();
-    let mut decoder = Decoder::new(&data[details.len()..(details.len() + details.compressed_size as usize)]);
-    let _ = decoder.read_to_end(&mut decoded_data);
+  pub fn new(file_name: String, file_offset: usize, details: &LocalFileHeader) -> Self {
     Self {
       file_name,
-      compressed_size: u64::from(details.compressed_size),
-      uncompressed_size: u64::from(details.uncompressed_size),
-      data: decoded_data,
+      relative_offset: file_offset,
+      compressed_size: details.compressed_size as usize,
+      uncompressed_size: details.uncompressed_size as usize,
     }
   }
 }
@@ -164,9 +161,7 @@ impl<'a> Iterator for ZipParser<'a> {
           for i in 0..(self.buffer_len + bytes_read - 4) {
             if self.buffer[i..i + 4] == [0x50, 0x4b, 0x01, 0x02] {
               let len = self.buffer_len + bytes_read - i;
-              unsafe {
-                core::ptr::copy(self.buffer.as_ptr().add(i), self.buffer.as_mut_ptr(), len);
-              }
+              self.buffer.copy_within(i..(len + i), 0);
               self.buffer_len = len;
               entry_found = true;
               break;
@@ -178,22 +173,14 @@ impl<'a> Iterator for ZipParser<'a> {
               bytes_read => {
                 self.buffer_len += bytes_read;
                 if self.buffer[28] < 8 || self.buffer[29] > 0 {
-                  unsafe {
-                    core::ptr::copy(
-                      self.buffer.as_ptr().add(4),
-                      self.buffer.as_mut_ptr(),
-                      self.buffer_len - 4,
-                    );
-                  }
+                  self.buffer.copy_within(4..self.buffer_len, 0);
                   self.buffer_len -= 4;
                   entry_found = false;
                 }
               }
             }
           } else if bytes_read > 2 {
-            unsafe {
-              core::ptr::copy(self.buffer.as_ptr().add(bytes_read - 3), self.buffer.as_mut_ptr(), 3);
-            }
+            self.buffer.copy_within((bytes_read - 3).., 0);
             self.buffer_len = 3;
           } else {
             return None;
@@ -203,66 +190,62 @@ impl<'a> Iterator for ZipParser<'a> {
     }
 
     // Read the file name, header, and compression method
-    let (file_name, file_header, compression_method, entry_length) = {
+    let (file_name, file_header, file_offset, compression_method, entry_length) = {
       let file_info = CentralFileHeader::from_bytes(&self.buffer);
-      let mut file_name_buffer = vec![0; file_info.file_name_length as usize];
-      unsafe {
-        core::ptr::copy(
-          self.buffer.as_ptr().add(CENTRAL_FILE_HEADER_LEN),
-          file_name_buffer.as_mut_ptr(),
-          file_name_buffer.len(),
-        );
-        (
-          String::from_utf8_unchecked(file_name_buffer),
-          &self.contents.content[file_info.relative_offset_of_local_header as usize..],
-          file_info.compression_method,
-          file_info.len(),
-        )
-      }
+      (
+        self.buffer[CENTRAL_FILE_HEADER_LEN..(CENTRAL_FILE_HEADER_LEN + file_info.file_name_length as usize)]
+          .iter()
+          .map(|&x| x as char)
+          .collect::<String>(),
+        &self.contents.content[file_info.relative_offset_of_local_header as usize..],
+        file_info.relative_offset_of_local_header as usize,
+        file_info.compression_method,
+        file_info.len(),
+      )
     };
 
     // Move remainder of the contents to beginning of the buffer for next iteration
-    unsafe {
-      core::ptr::copy(
-        self.buffer.as_ptr().add(entry_length),
-        self.buffer.as_mut_ptr(),
-        self.buffer_len - entry_length,
-      );
-    }
+    self.buffer.copy_within(entry_length..self.buffer_len, 0);
     self.buffer_len -= entry_length;
 
-    // Decompress the file if its method is DEFLATE
-    if compression_method == DEFLATE_METHOD {
-      Some(LocalFile::new(
-        file_name,
-        file_header,
-        LocalFileHeader::from_bytes(file_header),
-      ))
+    // Decompress the file if its compression method is DEFLATE
+    if compression_method == DEFLATE_METHOD_CODE {
+      let header = LocalFileHeader::from_bytes(file_header);
+      Some(LocalFile::new(file_name, file_offset + header.len(), header))
     } else {
       self.next()
     }
   }
 }
 
-pub(crate) struct ZipArchive {
+pub(crate) struct ZipArchive<'a> {
+  zip_data: &'a mut ZipData,
   file_map: BTreeMap<String, LocalFile>,
 }
 
-impl ZipArchive {
-  pub fn new(zip_data: &mut ZipData) -> Self {
+impl<'a> ZipArchive<'a> {
+  pub fn new(zip_data: &'a mut ZipData) -> Self {
     let mut file_map = BTreeMap::new();
     for file in ZipParser::new(zip_data) {
       file_map.insert(file.file_name.clone(), file);
     }
-    Self { file_map }
+    Self { zip_data, file_map }
   }
 
-  pub fn get_file(&self, file_name: &str) -> Option<&LocalFile> {
-    self.file_map.get(file_name)
+  pub fn read_file_to_string(&self, file_name: &str) -> Result<String, String> {
+    let mut decoded_data = Vec::new();
+    let file = self
+      .file_map
+      .get(file_name)
+      .ok_or(format!("File \"{file_name}\" not found within compressed archive"))?;
+    let mut decoder =
+      Decoder::new(&self.zip_data.content[file.relative_offset..(file.relative_offset + file.compressed_size)]);
+    decoder.read_to_end(&mut decoded_data).unwrap_or(0);
+    String::from_utf8(decoded_data).map_err(|e| e.to_string())
   }
 
-  pub fn iter(&self) -> impl Iterator<Item = &LocalFile> {
-    self.file_map.values()
+  pub fn iter(&self) -> impl Iterator<Item = &String> {
+    self.file_map.keys()
   }
 }
 
@@ -278,9 +261,10 @@ mod tests {
       .unwrap()
       .read_to_end(&mut zip_data.content)
       .unwrap_or(0);
-    for item in ZipArchive::new(&mut zip_data).iter() {
-      println!("File: {}, Size: {}", item.file_name, item.uncompressed_size);
-      println!("Content: {}", core::str::from_utf8(item.data.as_slice()).unwrap());
+    let zip_archive = ZipArchive::new(&mut zip_data);
+    for item in zip_archive.iter() {
+      println!("File: {}", item);
+      println!("Content: {}", zip_archive.read_file_to_string(item).unwrap());
     }
   }
 }

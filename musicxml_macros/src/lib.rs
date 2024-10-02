@@ -104,6 +104,7 @@ fn serialize_datatype_enum(element_type: &syn::Ident, data: &syn::DataEnum) -> T
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn deserialize_datatype_tuple_struct(element_type: &syn::Ident, fields: &syn::FieldsUnnamed) -> TokenStream {
   // Deserialize first unnamed struct field
   let deserialized_field = match &fields.unnamed.first().unwrap().ty {
@@ -132,6 +133,7 @@ fn serialize_datatype_tuple_struct(element_type: &syn::Ident, _fields: &syn::Fie
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(DatatypeDeserialize, attributes(rename))]
 pub fn deserialize_datatype(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -145,6 +147,7 @@ pub fn deserialize_datatype(tokens: TokenStream) -> TokenStream {
   }
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(DatatypeSerialize, attributes(rename))]
 pub fn serialize_datatype(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -162,6 +165,7 @@ pub fn serialize_datatype(tokens: TokenStream) -> TokenStream {
 // ATTRIBUTE FUNCTIONALITY --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------------
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::FieldsNamed) -> TokenStream {
   let mut deserialized_fields: Vec<proc_macro2::TokenStream> = Vec::new();
   let element_type_string = element_type.to_string();
@@ -218,6 +222,7 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn serialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::FieldsNamed) -> TokenStream {
   let mut serialized_fields: Vec<proc_macro2::TokenStream> = Vec::new();
 
@@ -269,6 +274,7 @@ fn serialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(AttributeDeserialize, attributes(rename))]
 pub fn deserialize_attribute(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -281,6 +287,7 @@ pub fn deserialize_attribute(tokens: TokenStream) -> TokenStream {
   }
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(AttributeSerialize, attributes(rename))]
 pub fn serialize_attribute(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -297,6 +304,7 @@ pub fn serialize_attribute(tokens: TokenStream) -> TokenStream {
 // CONTENT FUNCTIONALITY ----------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------------
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::FieldsNamed) -> TokenStream {
   let mut deserialized_fields: Vec<proc_macro2::TokenStream> = Vec::new();
   let element_type_string = element_type.to_string();
@@ -350,6 +358,7 @@ fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn serialize_content_named_struct(element_type: &syn::Ident, fields: &syn::FieldsNamed) -> TokenStream {
   let mut serialized_fields: Vec<proc_macro2::TokenStream> = Vec::new();
 
@@ -403,6 +412,7 @@ fn serialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Field
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(ContentDeserialize, attributes(rename))]
 pub fn deserialize_content(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -415,6 +425,7 @@ pub fn deserialize_content(tokens: TokenStream) -> TokenStream {
   }
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(ContentSerialize, attributes(rename))]
 pub fn serialize_content(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -531,6 +542,7 @@ fn serialize_element_enum(element_type: &syn::Ident, data: &syn::DataEnum) -> To
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::FieldsNamed) -> TokenStream {
   let mut deserialized_fields: Vec<proc_macro2::TokenStream> = Vec::new();
 
@@ -576,6 +588,7 @@ fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 fn serialize_element_named_struct(
   element_type: &syn::Ident,
   element_type_name: &String,
@@ -631,6 +644,7 @@ fn serialize_element_named_struct(
   })
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(ElementDeserialize, attributes(rename, flatten))]
 pub fn deserialize_element(tokens: TokenStream) -> TokenStream {
   let ast: syn::DeriveInput = syn::parse(tokens).unwrap();
@@ -644,6 +658,7 @@ pub fn deserialize_element(tokens: TokenStream) -> TokenStream {
   }
 }
 
+#[allow(clippy::panic, clippy::missing_panics_doc)]
 #[proc_macro_derive(ElementSerialize, attributes(rename))]
 pub fn serialize_element(tokens: TokenStream) -> TokenStream {
   // Fetch the actual or renamed name of the element to serialize

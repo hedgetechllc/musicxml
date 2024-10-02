@@ -35,10 +35,9 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
       .read_to_end(&mut mxl_data.content)
       .unwrap_or(0);
     let archive = zip_parser::ZipArchive::new(&mut mxl_data);
-    for item in archive.iter() {
-      if item.file_name == "META-INF/container.xml" {
-        let container =
-          xml_parser::parse_from_string(core::str::from_utf8(item.data.as_slice()).map_err(|e| e.to_string())?)?;
+    for file_name in archive.iter() {
+      if file_name == "META-INF/container.xml" {
+        let container = xml_parser::parse_from_string(archive.read_file_to_string(file_name)?.as_str())?;
         xml_path = container
           .elements
           .iter()
@@ -49,12 +48,7 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
       }
     }
     if let Some(full_path) = &xml_path {
-      let file = archive
-        .get_file(full_path.as_str())
-        .ok_or("MXL file missing expected contents")?;
-      core::str::from_utf8(file.data.as_slice())
-        .map_err(|e| e.to_string())?
-        .clone_into(&mut contents);
+      contents = archive.read_file_to_string(full_path)?;
     } else {
       Err(String::from("Cannot find MusicXML file in compressed archive"))?;
     }

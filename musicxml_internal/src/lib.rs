@@ -13,18 +13,22 @@ pub struct XmlElement {
   pub text: String,
 }
 
+#[allow(clippy::missing_errors_doc)]
 pub trait DatatypeDeserializer: Sized {
   fn deserialize(value: &str) -> Result<Self, String>;
 }
 
+#[allow(clippy::missing_errors_doc)]
 pub trait AttributeDeserializer: Sized {
   fn deserialize(attributes: &[(String, String)]) -> Result<Self, String>;
 }
 
+#[allow(clippy::missing_errors_doc)]
 pub trait ContentDeserializer: Sized {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String>;
 }
 
+#[allow(clippy::missing_errors_doc)]
 pub trait ElementDeserializer: Sized {
   fn deserialize(element: &XmlElement) -> Result<Self, String>;
 }
