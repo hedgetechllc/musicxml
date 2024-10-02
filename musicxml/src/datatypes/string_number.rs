@@ -23,6 +23,7 @@ impl DatatypeDeserializer for StringNumber {
   fn deserialize(value: &str) -> Result<Self, String> {
     match PositiveInteger::deserialize(value) {
       Ok(val) => match *val {
+        #[allow(clippy::cast_possible_truncation)]
         1..=255 => Ok(StringNumber(*val as u8)),
         _ => Err(format!("Value {} is invalid for the <string> data type", *val)),
       },

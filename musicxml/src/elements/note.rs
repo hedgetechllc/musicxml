@@ -116,7 +116,7 @@ impl ContentDeserializer for GraceNormalInfo {
       }
     }
     Ok(GraceNormalInfo {
-      chord: chord,
+      chord,
       audible: if let Some(audible) = audible {
         audible
       } else {
@@ -177,7 +177,7 @@ impl ContentDeserializer for GraceCueInfo {
       } else {
         Err("Missing <cue> element")?
       },
-      chord: chord,
+      chord,
       audible: if let Some(audible) = audible {
         audible
       } else {
@@ -282,7 +282,7 @@ impl ContentDeserializer for CueInfo {
       } else {
         Err("Missing <cue> element")?
       },
-      chord: chord,
+      chord,
       audible: if let Some(audible) = audible {
         audible
       } else {
@@ -345,7 +345,7 @@ impl ContentDeserializer for NormalInfo {
       }
     }
     Ok(NormalInfo {
-      chord: chord,
+      chord,
       audible: if let Some(audible) = audible {
         audible
       } else {

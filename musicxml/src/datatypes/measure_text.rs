@@ -23,10 +23,10 @@ impl Deref for MeasureText {
 
 impl DatatypeDeserializer for MeasureText {
   fn deserialize(value: &str) -> Result<Self, String> {
-    if !value.is_empty() {
-      Ok(MeasureText(String::from(value)))
-    } else {
+    if value.is_empty() {
       Err(format!("Value {value} is invalid for the <measure-text> data type"))
+    } else {
+      Ok(MeasureText(String::from(value)))
     }
   }
 }

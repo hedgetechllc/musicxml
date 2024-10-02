@@ -28,6 +28,7 @@ impl DatatypeSerializer for YesNoNumber {
 impl DatatypeDeserializer for YesNoNumber {
   fn deserialize(value: &str) -> Result<Self, String> {
     if let Ok(dec_val) = Decimal::deserialize(value) {
+      #[allow(clippy::cast_possible_truncation)]
       Ok(YesNoNumber::Decimal(*dec_val as f32))
     } else if value.to_lowercase() == "yes" {
       Ok(YesNoNumber::Yes)

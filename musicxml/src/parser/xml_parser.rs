@@ -35,8 +35,7 @@ fn read_tag_str(str: &mut core::str::Chars) -> TagType {
           TagType::Opening(tag)
         };
       }
-      '\r' => (),
-      '\n' => (),
+      '\r' | '\n' => (),
       '/' => {
         if in_string {
           value.push(c);

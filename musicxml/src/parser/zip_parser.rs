@@ -2,7 +2,7 @@
 
 use alloc::{collections::BTreeMap, vec::Vec};
 use core2::io::Read;
-use libflate::deflate::{Decoder, Encoder};
+use libflate::deflate::Decoder;
 
 const DEFLATE_METHOD: u16 = 8;
 const LOCAL_FILE_HEADER_LEN: usize = core::mem::size_of::<LocalFileHeader>();
@@ -232,14 +232,14 @@ impl<'a> Iterator for ZipParser<'a> {
     self.buffer_len -= entry_length;
 
     // Decompress the file if its method is DEFLATE
-    if compression_method != DEFLATE_METHOD {
-      self.next()
-    } else {
+    if compression_method == DEFLATE_METHOD {
       Some(LocalFile::new(
         file_name,
         file_header,
         LocalFileHeader::from_bytes(file_header),
       ))
+    } else {
+      self.next()
     }
   }
 }

@@ -51,9 +51,8 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
       let file = archive
         .get_file(full_path.as_str())
         .ok_or("MXL file missing expected contents")?;
-      contents = core::str::from_utf8(file.data.as_slice())
-        .map_err(|e| e.to_string())?
-        .to_owned();
+      core::str::from_utf8(file.data.as_slice())
+        .map_err(|e| e.to_string())?.clone_into(&mut contents);
     } else {
       Err(String::from("Cannot find MusicXML file in compressed archive"))?;
     }
@@ -111,6 +110,7 @@ fn write_musicxml_to_file(path: &str, xml: &XmlElement, compressed: bool, pretty
   let mut file = std::fs::OpenOptions::new()
     .write(true)
     .create(true)
+    .truncate(true)
     .open(path)
     .map_err(|e| e.to_string())?;
   write_musicxml_file(&mut file, xml, pretty_print)

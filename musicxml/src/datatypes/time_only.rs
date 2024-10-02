@@ -38,6 +38,7 @@ impl DatatypeDeserializer for TimeOnly {
     value.split(',').for_each(|item| {
       if let Ok(token) = PositiveInteger::deserialize(item) {
         match *token {
+          #[allow(clippy::cast_possible_truncation)]
           1..=255 => res.push(*token as u8),
           _ => errs = true,
         }

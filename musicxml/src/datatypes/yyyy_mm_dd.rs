@@ -40,9 +40,9 @@ impl DatatypeDeserializer for YyyyMmDd {
     let regex = Regex::new(r"([0-9]{4})-([0-9]{2})-([0-9]{2})$").unwrap();
     if let Some(captures) = regex.captures(value) {
       let date = YyyyMmDd::new(
-        u16::from_str_radix(captures.get(1).unwrap().as_str(), 10).unwrap(),
-        u8::from_str_radix(captures.get(2).unwrap().as_str(), 10).unwrap(),
-        u8::from_str_radix(captures.get(3).unwrap().as_str(), 10).unwrap(),
+        captures.get(1).unwrap().as_str().parse::<u16>().unwrap(),
+        captures.get(2).unwrap().as_str().parse::<u8>().unwrap(),
+        captures.get(3).unwrap().as_str().parse::<u8>().unwrap(),
       );
       if date.month > 0 && date.month < 13 && date.date > 0 && date.date < 32 {
         Ok(date)

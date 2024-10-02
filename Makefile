@@ -28,7 +28,7 @@ checknostd:
 	cd ensure_no_std && cargo rustc -- -C link-arg=-nostartfiles
 
 check:
-	cargo clippy -- -W clippy::all -W clippy::correctness -W clippy::suspicious -W clippy::complexity -W clippy::perf -W clippy::style -W clippy::pedantic -A clippy::missing_errors_doc -A clippy::missing_panics_doc -A clippy::doc_markdown -A clippy::wildcard_imports -D warnings
+	cargo clippy -- -W clippy::all -W clippy::correctness -W clippy::suspicious -W clippy::complexity -W clippy::perf -W clippy::style -W clippy::pedantic -A clippy::missing_errors_doc -A clippy::missing_panics_doc -A clippy::doc_markdown -A clippy::wildcard_imports -A clippy::module_name_repetitions -D warnings
 
 testunit:
 	cargo test --features debug -- --nocapture
