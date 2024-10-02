@@ -3,7 +3,7 @@
 #![doc(html_favicon_url = "https://hedgetechllc.github.io/musicxml/musicxml/favicon.ico")]
 #![doc(html_logo_url = "https://hedgetechllc.github.io/musicxml/musicxml/MusicXML-Logo-Square.png")]
 #![doc(html_playground_url = "https://playground.example.com/")]
-#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 
 //! # Overview
 //!

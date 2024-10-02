@@ -12,6 +12,7 @@ use {
 };
 
 mod xml_parser;
+mod zip_parser;
 
 #[cfg(feature = "std")]
 fn is_mxl_file(path: &str) -> bool {
@@ -28,14 +29,16 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
   let mut contents = String::new();
   if is_mxl_file(path) {
     let mut xml_path: Option<String> = None;
-    let mut archive =
-      zip::ZipArchive::new(std::fs::File::open(path).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;
-    for i in 0..archive.len() {
-      let mut file = archive.by_index(i).map_err(|e| e.to_string())?;
-      if file.name() == "META-INF/container.xml" {
-        let mut buffer = String::new();
-        file.read_to_string(&mut buffer).map_err(|e| e.to_string())?;
-        let container = xml_parser::parse_from_string(&buffer)?;
+    let mut mxl_data = zip_parser::ZipData::new();
+    std::fs::File::open(path)
+      .map_err(|e| e.to_string())?
+      .read_to_end(&mut mxl_data.content)
+      .unwrap_or(0);
+    let archive = zip_parser::ZipArchive::new(&mut mxl_data);
+    for item in archive.iter() {
+      if item.file_name == "META-INF/container.xml" {
+        let container =
+          xml_parser::parse_from_string(core::str::from_utf8(item.data.as_slice()).map_err(|e| e.to_string())?)?;
         xml_path = container
           .elements
           .iter()
@@ -46,8 +49,12 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
       }
     }
     if let Some(full_path) = &xml_path {
-      let mut file = archive.by_name(full_path.as_str()).map_err(|e| e.to_string())?;
-      file.read_to_string(&mut contents).map_err(|e| e.to_string())?;
+      let file = archive
+        .get_file(full_path.as_str())
+        .ok_or("MXL file missing expected contents")?;
+      contents = core::str::from_utf8(file.data.as_slice())
+        .map_err(|e| e.to_string())?
+        .to_owned();
     } else {
       Err(String::from("Cannot find MusicXML file in compressed archive"))?;
     }
@@ -85,7 +92,7 @@ fn write_musicxml_file<T: Write>(file: &mut T, xml: &XmlElement, pretty_print: b
 
 #[cfg(feature = "std")]
 fn write_musicxml_to_file(path: &str, xml: &XmlElement, compressed: bool, pretty_print: bool) -> Result<(), String> {
-  if compressed {
+  /*if compressed {
     let options = zip::write::SimpleFileOptions::default()
       .compression_method(zip::CompressionMethod::Deflated)
       .compression_level(Some(9));
@@ -101,14 +108,14 @@ fn write_musicxml_to_file(path: &str, xml: &XmlElement, compressed: bool, pretty
     write_musicxml_file(&mut archive, xml, pretty_print)?;
     archive.finish().map_err(|e| e.to_string())?;
     Ok(())
-  } else {
-    let mut file = std::fs::OpenOptions::new()
-      .write(true)
-      .create(true)
-      .open(path)
-      .map_err(|e| e.to_string())?;
-    write_musicxml_file(&mut file, xml, pretty_print)
-  }
+  } else {*/
+  let mut file = std::fs::OpenOptions::new()
+    .write(true)
+    .create(true)
+    .open(path)
+    .map_err(|e| e.to_string())?;
+  write_musicxml_file(&mut file, xml, pretty_print)
+  //}
 }
 
 #[cfg(not(feature = "std"))]
