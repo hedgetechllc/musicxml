@@ -69,7 +69,7 @@ pub enum DirectionTypeContents {
 }
 
 impl ContentDeserializer for DirectionTypeContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(if let Some(element) = elements.first() {
       match element.name.as_str() {
         "rehearsal" => DirectionTypeContents::Rehearsal(

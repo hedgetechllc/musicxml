@@ -99,7 +99,7 @@ pub struct BeatBased {
 }
 
 impl ContentDeserializer for BeatBased {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut beat_unit: Option<BeatUnit> = None;
     let mut beat_unit_dot: Vec<BeatUnitDot> = Vec::new();
     let mut beat_unit_tied: Vec<BeatUnitTied> = Vec::new();
@@ -203,7 +203,7 @@ pub struct MetronomeBased {
 }
 
 impl ContentDeserializer for MetronomeBased {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut content = MetronomeBased::default();
     for element in elements {
       match element.name.as_str() {
@@ -261,7 +261,7 @@ pub enum MetronomeContents {
 }
 
 impl ContentDeserializer for MetronomeContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(
       if let Some(_) = elements.iter().find(|&el| el.name == "metronome-note") {
         MetronomeContents::MetronomeBased(MetronomeBased::deserialize(elements)?)

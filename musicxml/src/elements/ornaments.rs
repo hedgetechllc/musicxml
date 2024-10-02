@@ -68,7 +68,7 @@ pub struct OrnamentContents {
 }
 
 impl ContentDeserializer for OrnamentContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(OrnamentContents {
       ornaments: elements
         .iter()

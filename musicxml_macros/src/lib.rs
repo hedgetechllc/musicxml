@@ -141,7 +141,7 @@ pub fn deserialize_datatype(tokens: TokenStream) -> TokenStream {
       _ => panic!("Unit structs are not supported in MusicXML"),
     },
     syn::Data::Enum(data) => deserialize_datatype_enum(&ast.ident, data),
-    _ => panic!("Unions are unsupported in MusicXML datatypes"),
+    syn::Data::Union(_) => panic!("Unions are unsupported in MusicXML datatypes"),
   }
 }
 
@@ -154,7 +154,7 @@ pub fn serialize_datatype(tokens: TokenStream) -> TokenStream {
       _ => panic!("Unit structs are not supported in MusicXML"),
     },
     syn::Data::Enum(data) => serialize_datatype_enum(&ast.ident, data),
-    _ => panic!("Unions are unsupported in MusicXML datatypes"),
+    syn::Data::Union(_) => panic!("Unions are unsupported in MusicXML datatypes"),
   }
 }
 
@@ -174,7 +174,7 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
       .to_string()
       .replace("xml_", "xml:")
       .replace("xlink_", "xlink:")
-      .replace("_", "-")
+      .replace('_', "-")
       .replace("r#", "");
 
     // Deserialize field based on its type
@@ -184,15 +184,13 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
         match &field_details.ident {
           field_type if field_type == "Option" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(option_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(option_path) = option_type {
-                  deserialized_fields.push(quote! {
-                    #field_name: match attributes.iter().find(|&el| el.0 == #field_name_string) {
-                      Some(attr) => Some(#option_path::deserialize(attr.1.as_str())?),
-                      None => None,
-                    }
-                  });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(option_path)) = details.args.first().unwrap() {
+                deserialized_fields.push(quote! {
+                  #field_name: match attributes.iter().find(|&el| el.0 == #field_name_string) {
+                    Some(attr) => Some(#option_path::deserialize(attr.1.as_str())?),
+                    None => None,
+                  }
+                });
               }
             }
           }
@@ -213,7 +211,7 @@ fn deserialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::F
   // Generate the actual deserialization function
   TokenStream::from(quote! {
     impl AttributeDeserializer for #element_type {
-      fn deserialize(attributes: &Vec<(String, String)>) -> Result<#element_type, String> {
+      fn deserialize(attributes: &[(String, String)]) -> Result<#element_type, String> {
         Ok(#element_type { #(#deserialized_fields),* })
       }
     }
@@ -232,7 +230,7 @@ fn serialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::Fie
       .replace("xml_", "xml:")
       .replace("xlink_", "xlink:")
       .replace("r#", "")
-      .replace("_", "-");
+      .replace('_', "-");
 
     // Serialize field based on its type
     match &field.ty {
@@ -241,14 +239,12 @@ fn serialize_attribute_named_struct(element_type: &syn::Ident, fields: &syn::Fie
         match &field_details.ident {
           field_type if field_type == "Option" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(option_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(option_path) = option_type {
-                  serialized_fields.push(quote! {
-                    if let Some(data) = &element.#field_name {
-                      attributes.push((String::from(#field_name_string), #option_path::serialize(data)));
-                    }
-                  });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(option_path)) = details.args.first().unwrap() {
+                serialized_fields.push(quote! {
+                  if let Some(data) = &element.#field_name {
+                    attributes.push((String::from(#field_name_string), #option_path::serialize(data)));
+                  }
+                });
               }
             }
           }
@@ -309,7 +305,7 @@ fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   for field in &fields.named {
     // Perform any requested field renaming
     let field_name = field.ident.as_ref().unwrap();
-    let field_name_string = field_name.to_string().replace("_", "-");
+    let field_name_string = field_name.to_string().replace('_', "-");
 
     // Deserialize field based on its type
     match &field.ty {
@@ -318,24 +314,20 @@ fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Fie
         match &field_details.ident {
           field_type if field_type == "Option" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(option_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(option_path) = option_type {
-                  deserialized_fields.push(quote! {
-                    #field_name: match elements.iter().find(|&el| el.name == #field_name_string) {
-                        Some(element) => Some(#option_path::deserialize(element)?),
-                        None => None,
-                      }
-                  });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(option_path)) = details.args.first().unwrap() {
+                deserialized_fields.push(quote! {
+                  #field_name: match elements.iter().find(|&el| el.name == #field_name_string) {
+                      Some(element) => Some(#option_path::deserialize(element)?),
+                      None => None,
+                    }
+                });
               }
             }
           }
           field_type if field_type == "Vec" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(vec_path) = vec_type {
-                  deserialized_fields.push(quote! { #field_name: elements.iter().filter_map(|el| if el.name == #field_name_string { #vec_path::deserialize(el).ok() } else { None }).collect::<Vec<_>>() });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(vec_path)) = details.args.first().unwrap() {
+                deserialized_fields.push(quote! { #field_name: elements.iter().filter_map(|el| if el.name == #field_name_string { #vec_path::deserialize(el).ok() } else { None }).collect::<Vec<_>>() });
               }
             }
           }
@@ -351,7 +343,7 @@ fn deserialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Fie
   // Generate the actual deserialization function
   TokenStream::from(quote! {
     impl ContentDeserializer for #element_type {
-      fn deserialize(elements: &Vec<XmlElement>) -> Result<#element_type, String> {
+      fn deserialize(elements: &[XmlElement]) -> Result<#element_type, String> {
         Ok(#element_type { #(#deserialized_fields),* })
       }
     }
@@ -374,23 +366,19 @@ fn serialize_content_named_struct(element_type: &syn::Ident, fields: &syn::Field
         match &field_details.ident {
           field_type if field_type == "Option" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(option_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(option_path) = option_type {
-                  serialized_fields.push(quote! {
-                    if let Some(data) = &element.#field_name { elements.push(#option_path::serialize(data)); }
-                  });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(option_path)) = details.args.first().unwrap() {
+                serialized_fields.push(quote! {
+                  if let Some(data) = &element.#field_name { elements.push(#option_path::serialize(data)); }
+                });
               }
             }
           }
           field_type if field_type == "Vec" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(vec_path) = vec_type {
-                  serialized_fields.push(quote! {
-                    for child in &element.#field_name { elements.push(#vec_path::serialize(child)); }
-                  });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(vec_path)) = details.args.first().unwrap() {
+                serialized_fields.push(quote! {
+                  for child in &element.#field_name { elements.push(#vec_path::serialize(child)); }
+                });
               }
             }
           }
@@ -558,10 +546,8 @@ fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::Fie
         match &field_details.ident {
           field_type if field_type == "Vec" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(vec_path) = vec_type {
-                  deserialized_fields.push(quote! { #field_name: element.elements.iter().filter_map(|el| #vec_path::deserialize(el).ok()).collect::<Vec<_>>() });
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(vec_path)) = details.args.first().unwrap() {
+                deserialized_fields.push(quote! { #field_name: element.elements.iter().filter_map(|el| #vec_path::deserialize(el).ok()).collect::<Vec<_>>() });
               }
             }
           }
@@ -571,8 +557,7 @@ fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::Fie
             } else if field
               .attrs
               .iter()
-              .find(|&attr| attr.path().is_ident("flatten"))
-              .is_some()
+              .any(|attr| attr.path().is_ident("flatten"))
             {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(&element.elements)? });
             } else {
@@ -614,12 +599,10 @@ fn serialize_element_named_struct(
         match &field_details.ident {
           field_type if field_type == "Vec" => {
             if let syn::PathArguments::AngleBracketed(details) = &field_details.arguments {
-              if let syn::GenericArgument::Type(vec_type) = details.args.first().unwrap() {
-                if let syn::Type::Path(vec_path) = vec_type {
-                  serialized_fields.push(
-                    quote! { elements: element.content.iter().map(|el| #vec_path::serialize(el)).collect::<Vec<_>>() },
-                  );
-                }
+              if let syn::GenericArgument::Type(syn::Type::Path(vec_path)) = details.args.first().unwrap() {
+                serialized_fields.push(
+                  quote! { elements: element.content.iter().map(|el| #vec_path::serialize(el)).collect::<Vec<_>>() },
+                );
               }
             }
           }
@@ -629,8 +612,7 @@ fn serialize_element_named_struct(
             } else if field
               .attrs
               .iter()
-              .find(|&attr| attr.path().is_ident("flatten"))
-              .is_some()
+              .any(|attr| attr.path().is_ident("flatten"))
             {
               serialized_fields.push(quote! { elements: #type_path::serialize(&element.content) });
             } else {
@@ -666,7 +648,7 @@ pub fn deserialize_element(tokens: TokenStream) -> TokenStream {
       _ => panic!("Unit and tuple structs are not supported in MusicXML elements"),
     },
     syn::Data::Enum(data) => deserialize_element_enum(&ast.ident, data),
-    _ => panic!("Unions are unsupported in MusicXML elements"),
+    syn::Data::Union(_) => panic!("Unions are unsupported in MusicXML elements"),
   }
 }
 
@@ -691,6 +673,6 @@ pub fn serialize_element(tokens: TokenStream) -> TokenStream {
       _ => panic!("Unit and tuple structs are not supported in MusicXML elements"),
     },
     syn::Data::Enum(data) => serialize_element_enum(&ast.ident, data),
-    _ => panic!("Unions are unsupported in MusicXML elements"),
+    syn::Data::Union(_) => panic!("Unions are unsupported in MusicXML elements"),
   }
 }

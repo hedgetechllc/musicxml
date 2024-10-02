@@ -20,7 +20,7 @@ pub struct PartListContents {
 }
 
 impl ContentDeserializer for PartListContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut content = PartListContents { content: Vec::new() };
     for element in elements {
       if element.name == "part-group" {

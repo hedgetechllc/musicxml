@@ -6,7 +6,7 @@ use musicxml_macros::*;
 /// Attributes pertaining to the [Glyph] element.
 #[derive(Debug, PartialEq, Eq, AttributeDeserialize, AttributeSerialize)]
 pub struct GlyphAttributes {
-  /// 	The type of glyph that is being defined.
+  /// The type of glyph that is being defined.
   pub r#type: GlyphType,
 }
 

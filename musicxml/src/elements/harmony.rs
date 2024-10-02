@@ -97,7 +97,7 @@ pub struct HarmonyContents {
 }
 
 impl ContentDeserializer for HarmonyContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut harmony: Vec<HarmonySubcontents> = Vec::new();
     for element in elements {
       if element.name == "root" || element.name == "numeral" || element.name == "function" {

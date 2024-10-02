@@ -80,7 +80,7 @@ pub struct TextLyric {
 }
 
 impl ContentDeserializer for TextLyric {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut text_lyric = TextLyric::default();
     for el in elements {
       match el.name.as_str() {
@@ -223,7 +223,7 @@ pub enum LyricContents {
 }
 
 impl ContentDeserializer for LyricContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(if let Some(_) = elements.iter().find(|&el| el.name == "text") {
       LyricContents::Text(TextLyric::deserialize(elements)?)
     } else if let Some(_) = elements.iter().find(|&el| el.name == "laughing") {

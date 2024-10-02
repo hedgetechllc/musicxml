@@ -18,11 +18,11 @@ pub trait DatatypeDeserializer: Sized {
 }
 
 pub trait AttributeDeserializer: Sized {
-  fn deserialize(attributes: &Vec<(String, String)>) -> Result<Self, String>;
+  fn deserialize(attributes: &[(String, String)]) -> Result<Self, String>;
 }
 
 pub trait ContentDeserializer: Sized {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String>;
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String>;
 }
 
 pub trait ElementDeserializer: Sized {

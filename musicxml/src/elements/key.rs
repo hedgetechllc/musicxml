@@ -82,7 +82,7 @@ pub enum KeyContents {
 }
 
 impl ContentDeserializer for KeyContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(if let Some(_) = elements.iter().find(|&el| el.name == "fifths") {
       KeyContents::Explicit(ExplicitKeyContents::deserialize(elements)?)
     } else {

@@ -32,7 +32,7 @@ pub struct InterchangeableContents {
 }
 
 impl ContentDeserializer for InterchangeableContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut temp_beats: Option<Beats> = None;
     let mut time_relation = None;
     let mut beat_data = Vec::new();

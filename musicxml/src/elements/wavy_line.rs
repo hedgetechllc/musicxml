@@ -11,7 +11,7 @@ use musicxml_macros::*;
 pub struct WavyLineAttributes {
   /// Indicates if this is the start, stop, or continuation of the wavy line. The value should be continue whenever used within a [Barline][super::Barline] element.
   pub r#type: StartStopContinue,
-  /// 	If yes, the trill accelerates during playback. It is no if not specified.
+  /// If yes, the trill accelerates during playback. It is no if not specified.
   pub acclerate: Option<YesNo>,
   /// The number of distinct notes during playback, counting the starting note but not the two-note turn. It is 4 if not specified.
   pub beats: Option<TrillBeats>,

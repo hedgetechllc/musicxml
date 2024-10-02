@@ -48,7 +48,7 @@ pub struct CreditTextContents {
 }
 
 impl ContentDeserializer for CreditTextContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut subcontents: Option<CreditTextSubcontents> = None;
     let mut contents = CreditTextContents::default();
     for element in elements {
@@ -112,7 +112,7 @@ pub struct CreditContents {
 }
 
 impl ContentDeserializer for CreditContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut contents = CreditContents {
       credit_type: Vec::new(),
       link: Vec::new(),

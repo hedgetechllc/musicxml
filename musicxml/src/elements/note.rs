@@ -101,7 +101,7 @@ pub struct GraceNormalInfo {
 }
 
 impl ContentDeserializer for GraceNormalInfo {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut chord: Option<Chord> = None;
     let mut audible: Option<AudibleType> = None;
     let mut tie: Vec<Tie> = Vec::new();
@@ -157,7 +157,7 @@ pub struct GraceCueInfo {
 }
 
 impl ContentDeserializer for GraceCueInfo {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut cue: Option<Cue> = None;
     let mut chord: Option<Chord> = None;
     let mut audible: Option<AudibleType> = None;
@@ -222,7 +222,7 @@ pub struct GraceInfo {
 }
 
 impl ContentDeserializer for GraceInfo {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(GraceInfo {
       grace: Grace::deserialize(elements.first().unwrap())?,
       info: if elements.iter().find(|&el| el.name == "cue").is_some() {
@@ -260,7 +260,7 @@ pub struct CueInfo {
 }
 
 impl ContentDeserializer for CueInfo {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut cue: Option<Cue> = None;
     let mut chord: Option<Chord> = None;
     let mut audible: Option<AudibleType> = None;
@@ -328,7 +328,7 @@ pub struct NormalInfo {
 }
 
 impl ContentDeserializer for NormalInfo {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut chord: Option<Chord> = None;
     let mut audible: Option<AudibleType> = None;
     let mut duration: Option<Duration> = None;
@@ -433,7 +433,7 @@ pub struct NoteContents {
 }
 
 impl ContentDeserializer for NoteContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut note_contents = NoteContents {
       info: if elements.first().unwrap().name == "grace" {
         NoteType::Grace(GraceInfo::deserialize(elements)?)

@@ -7,7 +7,7 @@ use musicxml_macros::{DatatypeDeserialize, DatatypeSerialize};
 pub enum PedalType {
   /// Indicates the start of a damper pedal.
   Start,
-  /// 	Indicates a pedal lift without a retake.
+  /// Indicates a pedal lift without a retake.
   Stop,
   /// Indicates the start of a sostenuto pedal.
   Sostenuto,

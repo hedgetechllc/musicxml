@@ -87,7 +87,7 @@ pub struct TimeContents {
 }
 
 impl ContentDeserializer for TimeContents {
-  fn deserialize(elements: &Vec<XmlElement>) -> Result<Self, String> {
+  fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut beats = Vec::new();
     let mut time_beats = None;
     let mut interchangeable = None;

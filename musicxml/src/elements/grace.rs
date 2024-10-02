@@ -9,7 +9,7 @@ pub struct GraceAttributes {
   /// Indicates to make time, not steal time, for grace note playback.
   /// The units are in real-time divisions for the grace note.
   pub make_time: Option<Divisions>,
-  /// 	The value is yes for slashed grace notes and no if no slash is present.
+  /// The value is yes for slashed grace notes and no if no slash is present.
   pub slash: Option<YesNo>,
   /// Indicates the percentage of time to steal from the following note for the grace note playback, as for appoggiaturas.
   pub steal_time_following: Option<Percent>,
