@@ -26,7 +26,7 @@ impl DatatypeDeserializer for StaffLine {
         1..=255 => Ok(StaffLine(*val as u8)),
         _ => Err(format!("Value {} is invalid for the <staff-line> data type", *val)),
       },
-      Err(_) => Err(format!("Invalid value {} for <staff-line>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <staff-line>")),
     }
   }
 }

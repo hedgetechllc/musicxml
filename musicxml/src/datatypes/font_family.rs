@@ -33,7 +33,7 @@ impl DatatypeDeserializer for FontFamily {
     let mut res: Vec<String> = Vec::new();
     value.split(',').for_each(|item| {
       let val = item.trim();
-      if val.len() > 0 {
+      if !val.is_empty() {
         res.push(val.to_string());
       }
     });

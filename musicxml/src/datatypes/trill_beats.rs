@@ -29,7 +29,7 @@ impl DatatypeDeserializer for TrillBeats {
         x if x >= 2.0 => Ok(TrillBeats(val)),
         _ => Err(format!("Value {val} is invalid for the <trill-beats> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <trill-beats>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <trill-beats>")),
     }
   }
 }

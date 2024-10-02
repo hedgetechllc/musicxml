@@ -25,7 +25,7 @@ impl DatatypeDeserializer for PositiveDivisions {
         1.. => Ok(PositiveDivisions(val)),
         _ => Err(format!("Value {val} is invalid for the <positive-divisions> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <positive-divisions>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <positive-divisions>")),
     }
   }
 }

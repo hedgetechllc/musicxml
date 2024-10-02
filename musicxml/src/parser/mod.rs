@@ -44,8 +44,7 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
           .iter()
           .find(|&el| el.name == "rootfiles")
           .and_then(|el| el.elements.iter().find(|&el| el.name == "rootfile"))
-          .and_then(|el| el.attributes.iter().find(|&attr| attr.0 == "full-path"))
-          .and_then(|attr| Some(attr.1.clone()));
+          .and_then(|el| el.attributes.iter().find(|&attr| attr.0 == "full-path")).map(|attr| attr.1.clone());
       }
     }
     if let Some(full_path) = &xml_path {

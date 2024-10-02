@@ -27,7 +27,7 @@ impl DatatypeDeserializer for NumberOfLines {
         0..=3 => Ok(NumberOfLines(val)),
         _ => Err(format!("Value {val} is invalid for the <number-of-lines> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <number-of-lines>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <number-of-lines>")),
     }
   }
 }

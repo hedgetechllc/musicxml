@@ -47,7 +47,7 @@ mod divisions_tests {
   fn deserialize_valid4() {
     let result = Divisions::deserialize("223234");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), Divisions(223234));
+    assert_eq!(result.unwrap(), Divisions(223_234));
   }
 
   #[test]

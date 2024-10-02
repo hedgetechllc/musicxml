@@ -27,7 +27,7 @@ impl DatatypeDeserializer for NonNegativeDecimal {
         x if x >= 0.0 => Ok(NonNegativeDecimal(val)),
         _ => Err(format!("Value {val} is invalid for the NonNegativeDecimal data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for NonNegativeDecimal", value)),
+      Err(_) => Err(format!("Invalid value {value} for NonNegativeDecimal")),
     }
   }
 }

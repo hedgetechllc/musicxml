@@ -27,7 +27,7 @@ impl DatatypeDeserializer for Midi16 {
         1..=16 => Ok(Midi16(val)),
         _ => Err(format!("Value {val} is invalid for the <midi-16> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <midi-16>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <midi-16>")),
     }
   }
 }

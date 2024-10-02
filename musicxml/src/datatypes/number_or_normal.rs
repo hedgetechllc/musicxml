@@ -31,8 +31,7 @@ impl DatatypeDeserializer for NumberOrNormal {
       Ok(NumberOrNormal::Normal)
     } else {
       Err(format!(
-        "Value {} is invalid for the <number-or-normal> data type",
-        value
+        "Value {value} is invalid for the <number-or-normal> data type"
       ))
     }
   }

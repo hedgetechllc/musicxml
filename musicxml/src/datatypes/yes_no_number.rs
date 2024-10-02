@@ -34,7 +34,7 @@ impl DatatypeDeserializer for YesNoNumber {
     } else if value.to_lowercase() == "no" {
       Ok(YesNoNumber::No)
     } else {
-      Err(format!("Value {} is invalid for the <yes-no-number> data type", value))
+      Err(format!("Value {value} is invalid for the <yes-no-number> data type"))
     }
   }
 }

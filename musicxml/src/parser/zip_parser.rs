@@ -30,7 +30,7 @@ impl LocalFileHeader {
   }
 
   pub fn from_bytes(ptr: &[u8]) -> &Self {
-    unsafe { (ptr.as_ptr() as *const Self).as_ref().unwrap_unchecked() }
+    unsafe { ptr.as_ptr().cast::<Self>().as_ref().unwrap_unchecked() }
   }
 }
 
@@ -64,7 +64,7 @@ impl CentralFileHeader {
   }
 
   pub fn from_bytes(bytes: &[u8]) -> &Self {
-    unsafe { (bytes.as_ptr() as *const Self).as_ref().unwrap_unchecked() }
+    unsafe { bytes.as_ptr().cast::<Self>().as_ref().unwrap_unchecked() }
   }
 }
 
@@ -82,7 +82,7 @@ struct CentralDirEnd {
 
 impl CentralDirEnd {
   pub fn from_bytes(bytes: &[u8]) -> &Self {
-    unsafe { (bytes.as_ptr() as *const Self).as_ref().unwrap_unchecked() }
+    unsafe { bytes.as_ptr().cast::<Self>().as_ref().unwrap_unchecked() }
   }
 }
 
@@ -100,8 +100,8 @@ impl LocalFile {
     let _ = decoder.read_to_end(&mut decoded_data);
     Self {
       file_name,
-      compressed_size: details.compressed_size as u64,
-      uncompressed_size: details.uncompressed_size as u64,
+      compressed_size: u64::from(details.compressed_size),
+      uncompressed_size: u64::from(details.uncompressed_size),
       data: decoded_data,
     }
   }

@@ -27,14 +27,12 @@ impl DatatypeDeserializer for SmuflPictogramGlyphName {
         Ok(SmuflPictogramGlyphName((*token).clone()))
       } else {
         Err(format!(
-          "Value {} is invalid for the <smufl-pictogram-glyph-name>e data type",
-          value
+          "Value {value} is invalid for the <smufl-pictogram-glyph-name>e data type"
         ))
       }
     } else {
       Err(format!(
-        "Value {} is invalid for the <smufl-pictogram-glyph-name> data type",
-        value
+        "Value {value} is invalid for the <smufl-pictogram-glyph-name> data type"
       ))
     }
   }

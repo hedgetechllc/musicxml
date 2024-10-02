@@ -29,7 +29,7 @@ impl DatatypeDeserializer for AccordionMiddle {
         1..=3 => Ok(AccordionMiddle(val)),
         _ => Err(format!("Value {val} is invalid for the <accordion-middle> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <accordion-middle>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <accordion-middle>")),
     }
   }
 }

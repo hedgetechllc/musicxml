@@ -24,9 +24,9 @@ impl DatatypeDeserializer for Fifths {
     match value.parse::<i8>() {
       Ok(val) => match val {
         -7..=7 => Ok(Fifths(val)),
-        _ => Err(format!("Value {} is invalid for the <fifths> data type", value)),
+        _ => Err(format!("Value {value} is invalid for the <fifths> data type")),
       },
-      _ => Err(format!("Value {} is invalid for the <fifths> data type", value)),
+      _ => Err(format!("Value {value} is invalid for the <fifths> data type")),
     }
   }
 }

@@ -28,10 +28,10 @@ impl DatatypeDeserializer for RotationDegrees {
   fn deserialize(value: &str) -> Result<Self, String> {
     match value.parse::<f32>() {
       Ok(val) => match val {
-        x if x >= -180.0 && x <= 180.0 => Ok(RotationDegrees(val)),
+        x if (-180.0..=180.0).contains(&x) => Ok(RotationDegrees(val)),
         _ => Err(format!("Value {val} is invalid for the <rotation-degrees> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <rotation-degrees>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <rotation-degrees>")),
     }
   }
 }

@@ -30,7 +30,7 @@ impl DatatypeDeserializer for EndingNumber {
     } else if integer_regex.is_match(value) {
       Ok(EndingNumber(value.split(' ').collect::<Vec<_>>().join("")))
     } else {
-      Err(format!("Value {} is invalid for the <ending-number> data type", value))
+      Err(format!("Value {value} is invalid for the <ending-number> data type"))
     }
   }
 }

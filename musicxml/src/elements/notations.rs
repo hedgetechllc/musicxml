@@ -108,7 +108,7 @@ impl ContentDeserializer for NotationsContents {
             .notations
             .push(NotationContentTypes::AccidentalMark(AccidentalMark::deserialize(
               child,
-            )?))
+            )?));
         }
         "other-notation" => notations
           .notations

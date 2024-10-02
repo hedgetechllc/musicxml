@@ -32,14 +32,12 @@ impl DatatypeDeserializer for SmuflWavyLineGlyphName {
         Ok(SmuflWavyLineGlyphName((*token).clone()))
       } else {
         Err(format!(
-          "Value {} is invalid for the <smufl-wavy-glyph-name> data type",
-          value
+          "Value {value} is invalid for the <smufl-wavy-glyph-name> data type"
         ))
       }
     } else {
       Err(format!(
-        "Value {} is invalid for the <smufl-wavy-glyph-name> data type",
-        value
+        "Value {value} is invalid for the <smufl-wavy-glyph-name> data type"
       ))
     }
   }

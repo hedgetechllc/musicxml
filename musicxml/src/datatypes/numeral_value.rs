@@ -27,7 +27,7 @@ impl DatatypeDeserializer for NumeralValue {
         1..=7 => Ok(NumeralValue(val)),
         _ => Err(format!("Value {val} is invalid for the <numeral-value> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <numeral-value>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <numeral-value>")),
     }
   }
 }

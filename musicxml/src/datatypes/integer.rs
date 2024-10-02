@@ -31,7 +31,7 @@ mod integer_tests {
   fn deserialize_valid2() {
     let result = Integer::deserialize("-234234");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), Integer(-234234));
+    assert_eq!(result.unwrap(), Integer(-234_234));
   }
 
   #[test]

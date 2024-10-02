@@ -29,12 +29,12 @@ impl DatatypeDeserializer for FontSize {
       if dec_val > 0.0 {
         Ok(FontSize::Decimal(dec_val))
       } else {
-        Err(format!("Value {} is invalid for the <font-size> data type", value))
+        Err(format!("Value {value} is invalid for the <font-size> data type"))
       }
     } else if let Ok(font_size) = CssFontSize::deserialize(value) {
       Ok(FontSize::Css(font_size))
     } else {
-      Err(format!("Value {} is invalid for the <font-size> data type", value))
+      Err(format!("Value {value} is invalid for the <font-size> data type"))
     }
   }
 }
@@ -54,7 +54,7 @@ mod font_size_tests {
   fn deserialize_valid2() {
     let result = FontSize::deserialize("3");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), FontSize::Decimal(3.0))
+    assert_eq!(result.unwrap(), FontSize::Decimal(3.0));
   }
 
   #[test]

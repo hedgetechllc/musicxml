@@ -55,7 +55,7 @@ impl DatatypeDeserializer for NumberLevel {
         if err.to_string().to_lowercase().contains("eof") {
           Ok(NumberLevel(1))
         } else {
-          Err(format!("Value {} is invalid for the <number-level> data type", value))
+          Err(format!("Value {value} is invalid for the <number-level> data type"))
         }
       }
     }

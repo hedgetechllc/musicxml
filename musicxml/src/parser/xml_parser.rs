@@ -39,23 +39,23 @@ fn read_tag_str(str: &mut core::str::Chars) -> TagType {
       '\n' => (),
       '/' => {
         if in_string {
-          value.push(c)
+          value.push(c);
         } else if i == 0 {
-          is_closing = true
+          is_closing = true;
         } else {
-          is_self_closing = true
+          is_self_closing = true;
         }
       }
       '?' | '!' => {
         if i == 0 {
-          ignore = true
+          ignore = true;
         }
       }
       ' ' => {
         if in_tag {
-          in_tag = false
+          in_tag = false;
         } else if in_string {
-          value.push(c)
+          value.push(c);
         } else {
           tag.attributes.push((attribute.clone(), value.clone()));
           in_attribute = true;
@@ -67,11 +67,11 @@ fn read_tag_str(str: &mut core::str::Chars) -> TagType {
       '=' => in_attribute = false,
       _ => {
         if in_tag {
-          tag.name.push(c)
+          tag.name.push(c);
         } else if in_attribute {
-          attribute.push(c)
+          attribute.push(c);
         } else {
-          value.push(c)
+          value.push(c);
         }
       }
     }
@@ -89,7 +89,7 @@ pub fn parse_to_string(xml: &XmlElement, depth: i16) -> String {
   }
   xml_str += ["<", &xml.name].concat().as_str();
   for (key, value) in &xml.attributes {
-    xml_str += [" ", &key, "=\"", &value, "\""].concat().as_str();
+    xml_str += [" ", key, "=\"", value, "\""].concat().as_str();
   }
   if xml.elements.is_empty() && xml.text.is_empty() {
     xml_str += "/>";
@@ -121,7 +121,7 @@ pub fn parse_from_string(str: &str) -> Result<XmlElement, String> {
         TagType::Opening(tag) => open_tags.push(tag),
         TagType::SelfClosing(tag) => match open_tags.last_mut() {
           Some(last_open_tag) => last_open_tag.elements.push(tag),
-          None => return Err(format!("Root tag cannot be self-closing")),
+          None => return Err(String::from("Root tag cannot be self-closing")),
         },
         TagType::Closing(tag) => {
           let mut element = open_tags.pop().unwrap();
@@ -143,12 +143,12 @@ pub fn parse_from_string(str: &str) -> Result<XmlElement, String> {
     } else if ch != '\r' && ch != '\n' && ch != '\t' {
       if let Some(item) = open_tags.last_mut() {
         if !item.text.is_empty() || ch != ' ' {
-          item.text.push(ch)
+          item.text.push(ch);
         }
       }
     }
   }
-  Err(format!("Missing one or more matched tags"))
+  Err(String::from("Missing one or more matched tags"))
 }
 
 #[cfg(test)]

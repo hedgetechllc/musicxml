@@ -19,6 +19,7 @@ pub struct Date {
 
 impl Date {
   /// Creates a new [Date] with the given year, month, day, and timezone offset.
+  #[must_use]
   pub fn new(year: u16, month: u8, date: u8, timezone_hours: i8, timezone_minutes: u8) -> Self {
     Date {
       year,
@@ -80,10 +81,10 @@ impl DatatypeDeserializer for Date {
       {
         Ok(date)
       } else {
-        Err(format!("Value {} is invalid for the <date> data type", value))
+        Err(format!("Value {value} is invalid for the <date> data type"))
       }
     } else {
-      Err(format!("Value {} is invalid for the <date> data type", value))
+      Err(format!("Value {value} is invalid for the <date> data type"))
     }
   }
 }

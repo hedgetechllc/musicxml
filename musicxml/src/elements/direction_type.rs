@@ -175,10 +175,10 @@ impl ContentDeserializer for DirectionTypeContents {
         }
         "staff-divide" => DirectionTypeContents::StaffDivide(StaffDivide::deserialize(element)?),
         "other-direction" => DirectionTypeContents::OtherDirection(OtherDirection::deserialize(element)?),
-        other => return Err(format!("Unknown child element <{}> of <direction-type>", other)),
+        other => return Err(format!("Unknown child element <{other}> of <direction-type>")),
       }
     } else {
-      Err(format!("Missing required child of element <direction-type>"))?
+      Err(String::from("Missing required child of element <direction-type>"))?
     })
   }
 }
@@ -237,7 +237,7 @@ impl ContentSerializer for DirectionTypeContents {
         }
       }
       DirectionTypeContents::AccordionRegistration(contents) => {
-        elements.push(AccordionRegistration::serialize(contents))
+        elements.push(AccordionRegistration::serialize(contents));
       }
       DirectionTypeContents::StaffDivide(contents) => elements.push(StaffDivide::serialize(contents)),
       DirectionTypeContents::OtherDirection(contents) => elements.push(OtherDirection::serialize(contents)),

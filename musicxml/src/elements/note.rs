@@ -116,7 +116,7 @@ impl ContentDeserializer for GraceNormalInfo {
       }
     }
     Ok(GraceNormalInfo {
-      chord: if let Some(chord) = chord { Some(chord) } else { None },
+      chord: chord,
       audible: if let Some(audible) = audible {
         audible
       } else {
@@ -177,7 +177,7 @@ impl ContentDeserializer for GraceCueInfo {
       } else {
         Err("Missing <cue> element")?
       },
-      chord: if let Some(chord) = chord { Some(chord) } else { None },
+      chord: chord,
       audible: if let Some(audible) = audible {
         audible
       } else {
@@ -225,7 +225,7 @@ impl ContentDeserializer for GraceInfo {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(GraceInfo {
       grace: Grace::deserialize(elements.first().unwrap())?,
-      info: if elements.iter().find(|&el| el.name == "cue").is_some() {
+      info: if elements.iter().any(|el| el.name == "cue") {
         GraceType::Cue(GraceCueInfo::deserialize(elements)?)
       } else {
         GraceType::Normal(GraceNormalInfo::deserialize(elements)?)
@@ -282,7 +282,7 @@ impl ContentDeserializer for CueInfo {
       } else {
         Err("Missing <cue> element")?
       },
-      chord: if let Some(chord) = chord { Some(chord) } else { None },
+      chord: chord,
       audible: if let Some(audible) = audible {
         audible
       } else {
@@ -345,7 +345,7 @@ impl ContentDeserializer for NormalInfo {
       }
     }
     Ok(NormalInfo {
-      chord: if let Some(chord) = chord { Some(chord) } else { None },
+      chord: chord,
       audible: if let Some(audible) = audible {
         audible
       } else {

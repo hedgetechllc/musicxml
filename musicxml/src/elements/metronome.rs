@@ -107,23 +107,20 @@ impl ContentDeserializer for BeatBased {
     for element in elements {
       match element.name.as_str() {
         "beat-unit" => {
-          if let Some(_) = beat_unit.as_mut() {
+          if beat_unit.as_mut().is_some() {
             equals = Some(BeatEquation::Beats(BeatBasedEquation {
               beat_unit: BeatUnit::deserialize(element)?,
               beat_unit_dot: Vec::new(),
               beat_unit_tied: Vec::new(),
-            }))
+            }));
           } else {
             beat_unit = Some(BeatUnit::deserialize(element)?);
           }
         }
         "beat-unit-dot" => {
           if let Some(equation) = equals.as_mut() {
-            match equation {
-              BeatEquation::Beats(ref mut beat_equation) => {
-                beat_equation.beat_unit_dot.push(BeatUnitDot::deserialize(element)?);
-              }
-              _ => (),
+            if let BeatEquation::Beats(ref mut beat_equation) = equation {
+              beat_equation.beat_unit_dot.push(BeatUnitDot::deserialize(element)?);
             }
           } else {
             beat_unit_dot.push(BeatUnitDot::deserialize(element)?);
@@ -131,11 +128,8 @@ impl ContentDeserializer for BeatBased {
         }
         "beat-unit-tied" => {
           if let Some(equation) = equals.as_mut() {
-            match equation {
-              BeatEquation::Beats(ref mut beat_equation) => {
-                beat_equation.beat_unit_tied.push(BeatUnitTied::deserialize(element)?);
-              }
-              _ => (),
+            if let BeatEquation::Beats(ref mut beat_equation) = equation {
+              beat_equation.beat_unit_tied.push(BeatUnitTied::deserialize(element)?);
             }
           } else {
             beat_unit_tied.push(BeatUnitTied::deserialize(element)?);
@@ -144,14 +138,14 @@ impl ContentDeserializer for BeatBased {
         "per-minute" => {
           equals = Some(BeatEquation::BPM(PerMinute::deserialize(element)?));
         }
-        other => Err(format!("Unknown subelement <{}> of <metronome>", other))?,
+        other => Err(format!("Unknown subelement <{other}> of <metronome>"))?,
       }
     }
     Ok(BeatBased {
-      beat_unit: beat_unit.ok_or_else(|| format!("Missing <beat-unit> subelement of <metronome>"))?,
+      beat_unit: beat_unit.ok_or_else(|| String::from("Missing <beat-unit> subelement of <metronome>"))?,
       beat_unit_dot,
       beat_unit_tied,
-      equals: equals.ok_or_else(|| format!("Missing some sort of <metronome> equivalency"))?,
+      equals: equals.ok_or_else(|| String::from("Missing some sort of <metronome> equivalency"))?,
     })
   }
 }
@@ -221,9 +215,9 @@ impl ContentDeserializer for MetronomeBased {
           content.additional = Some(AdditionalMetronomeBasedContents {
             metronome_relation: MetronomeRelation::deserialize(element)?,
             metronome_note: vec![],
-          })
+          });
         }
-        other => Err(format!("Unknown subelement <{}> of <metronome>", other))?,
+        other => Err(format!("Unknown subelement <{other}> of <metronome>"))?,
       }
     }
     Ok(content)
@@ -234,10 +228,10 @@ impl ContentSerializer for MetronomeBased {
   fn serialize(element: &Self) -> Vec<XmlElement> {
     let mut elements: Vec<XmlElement> = Vec::new();
     if let Some(content) = &element.metronome_arrows {
-      elements.push(MetronomeArrows::serialize(content))
+      elements.push(MetronomeArrows::serialize(content));
     }
     for el in &element.metronome_note {
-      elements.push(MetronomeNote::serialize(el))
+      elements.push(MetronomeNote::serialize(el));
     }
     if let Some(content) = &element.additional {
       elements.push(MetronomeRelation::serialize(&content.metronome_relation));
@@ -263,7 +257,7 @@ pub enum MetronomeContents {
 impl ContentDeserializer for MetronomeContents {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(
-      if let Some(_) = elements.iter().find(|&el| el.name == "metronome-note") {
+      if elements.iter().any(|el| el.name == "metronome-note") {
         MetronomeContents::MetronomeBased(MetronomeBased::deserialize(elements)?)
       } else {
         MetronomeContents::BeatBased(BeatBased::deserialize(elements)?)

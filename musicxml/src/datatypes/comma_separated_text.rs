@@ -26,7 +26,7 @@ impl DatatypeDeserializer for CommaSeparatedText {
     let mut text: Vec<String> = Vec::new();
     value.split(',').for_each(|item| {
       let res = item.trim();
-      if res.len() > 0 {
+      if !res.is_empty() {
         text.push(res.to_string());
       }
     });

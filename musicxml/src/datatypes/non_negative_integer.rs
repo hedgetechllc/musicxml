@@ -31,7 +31,7 @@ mod non_negative_integer_tests {
   fn deserialize_valid2() {
     let result = NonNegativeInteger::deserialize("234566");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), NonNegativeInteger(234566));
+    assert_eq!(result.unwrap(), NonNegativeInteger(234_566));
   }
 
   #[test]

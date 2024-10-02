@@ -23,7 +23,7 @@ impl DatatypeDeserializer for PositiveInteger {
         1.. => Ok(PositiveInteger(val)),
         _ => Err(format!("Value {val} is invalid for the <positive-integer> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <positive-integer>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <positive-integer>")),
     }
   }
 }
@@ -43,7 +43,7 @@ mod positive_integer_tests {
   fn deserialize_valid2() {
     let result = PositiveInteger::deserialize("2345534234");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), PositiveInteger(2345534234));
+    assert_eq!(result.unwrap(), PositiveInteger(2_345_534_234));
   }
 
   #[test]

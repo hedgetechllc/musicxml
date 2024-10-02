@@ -27,14 +27,12 @@ impl DatatypeDeserializer for SmuflCodaGlyphName {
         Ok(SmuflCodaGlyphName((*token).clone()))
       } else {
         Err(format!(
-          "Value {} is invalid for the <smufl-coda-glyph-name> data type",
-          value
+          "Value {value} is invalid for the <smufl-coda-glyph-name> data type"
         ))
       }
     } else {
       Err(format!(
-        "Value {} is invalid for the <smufl-coda-glyph-name> data type",
-        value
+        "Value {value} is invalid for the <smufl-coda-glyph-name> data type"
       ))
     }
   }

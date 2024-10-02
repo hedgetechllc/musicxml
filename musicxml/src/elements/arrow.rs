@@ -74,7 +74,7 @@ pub enum ArrowContents {
 
 impl ContentDeserializer for ArrowContents {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
-    if let Some(_) = elements.iter().find(|&el| el.name == "circular-arrow") {
+    if elements.iter().any(|el| el.name == "circular-arrow") {
       Ok(ArrowContents::Circular(CircularArrowContents::deserialize(elements)?))
     } else {
       Ok(ArrowContents::Straight(StraightArrowContents::deserialize(elements)?))

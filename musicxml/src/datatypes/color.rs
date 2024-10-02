@@ -28,6 +28,7 @@ pub struct Color {
 
 impl Color {
   /// Creates a new [Color] with the given red, green, blue, and alpha values.
+  #[must_use]
   pub fn new(r: u8, g: u8, b: u8, a: u8) -> Self {
     Color { r, g, b, a }
   }
@@ -69,7 +70,7 @@ impl DatatypeDeserializer for Color {
         ))
       }
     } else {
-      Err(format!("Value {} is invalid for the <color> data type", value))
+      Err(format!("Value {value} is invalid for the <color> data type"))
     }
   }
 }

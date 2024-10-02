@@ -17,6 +17,7 @@ pub struct YyyyMmDd {
 
 impl YyyyMmDd {
   /// Creates a new `YyyyMmDd` instance.
+  #[must_use]
   pub fn new(year: u16, month: u8, date: u8) -> Self {
     YyyyMmDd { year, month, date }
   }
@@ -46,10 +47,10 @@ impl DatatypeDeserializer for YyyyMmDd {
       if date.month > 0 && date.month < 13 && date.date > 0 && date.date < 32 {
         Ok(date)
       } else {
-        Err(format!("Value {} is invalid for the <yyyy-mm-dd> data type", value))
+        Err(format!("Value {value} is invalid for the <yyyy-mm-dd> data type"))
       }
     } else {
-      Err(format!("Value {} is invalid for the <yyyy-mm-dd> data type", value))
+      Err(format!("Value {value} is invalid for the <yyyy-mm-dd> data type"))
     }
   }
 }

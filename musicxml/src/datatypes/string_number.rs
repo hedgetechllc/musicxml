@@ -26,7 +26,7 @@ impl DatatypeDeserializer for StringNumber {
         1..=255 => Ok(StringNumber(*val as u8)),
         _ => Err(format!("Value {} is invalid for the <string> data type", *val)),
       },
-      Err(_) => Err(format!("Invalid value {} for <string>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <string>")),
     }
   }
 }

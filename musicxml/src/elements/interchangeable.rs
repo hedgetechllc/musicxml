@@ -50,7 +50,7 @@ impl ContentDeserializer for InterchangeableContents {
               beats: temp_beat.clone(),
               beat_type: BeatType::deserialize(element)?,
             }),
-            _ => Err(format!("Missing required \"beat\" element prior to \"beat-type\""))?,
+            _ => Err(String::from("Missing required \"beat\" element prior to \"beat-type\""))?,
           };
           temp_beats = None;
         }
@@ -72,7 +72,7 @@ impl ContentSerializer for InterchangeableContents {
     }
     for el in &element.beat_data {
       elements.push(Beats::serialize(&el.beats));
-      elements.push(BeatType::serialize(&el.beat_type))
+      elements.push(BeatType::serialize(&el.beat_type));
     }
     elements
   }

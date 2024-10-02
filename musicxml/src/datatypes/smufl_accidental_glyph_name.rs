@@ -31,14 +31,12 @@ impl DatatypeDeserializer for SmuflAccidentalGlyphName {
         Ok(SmuflAccidentalGlyphName((*token).clone()))
       } else {
         Err(format!(
-          "Value {} is invalid for the <smufl-accidental-glyph-name> data type",
-          value
+          "Value {value} is invalid for the <smufl-accidental-glyph-name> data type"
         ))
       }
     } else {
       Err(format!(
-        "Value {} is invalid for the <smufl-accidental-glyph-name> data type",
-        value
+        "Value {value} is invalid for the <smufl-accidental-glyph-name> data type"
       ))
     }
   }

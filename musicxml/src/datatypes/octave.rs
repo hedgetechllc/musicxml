@@ -23,7 +23,7 @@ impl DatatypeDeserializer for Octave {
         0..=9 => Ok(Octave(val)),
         _ => Err(format!("Value {val} is invalid for the <octave> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <octave>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <octave>")),
     }
   }
 }

@@ -1,5 +1,5 @@
 use super::positive_integer::PositiveInteger;
-use alloc::{string::String, string::ToString, vec::Vec};
+use alloc::{string::{String, ToString}, vec::Vec};
 use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
@@ -25,7 +25,7 @@ impl DatatypeSerializer for TimeOnly {
     element
       .0
       .iter()
-      .map(|val| val.to_string())
+      .map(ToString::to_string)
       .collect::<Vec<_>>()
       .join(",")
   }
@@ -42,11 +42,11 @@ impl DatatypeDeserializer for TimeOnly {
           _ => errs = true,
         }
       } else {
-        errs = true
+        errs = true;
       }
     });
     if errs {
-      Err(format!("Value {} is invalid for the <time-only> data type", value))
+      Err(format!("Value {value} is invalid for the <time-only> data type"))
     } else {
       Ok(TimeOnly(res))
     }

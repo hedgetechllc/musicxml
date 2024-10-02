@@ -29,7 +29,7 @@ impl DatatypeDeserializer for Midi128 {
         1..=128 => Ok(Midi128(val)),
         _ => Err(format!("Value {val} is invalid for the <midi-128> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <midi-128>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <midi-128>")),
     }
   }
 }

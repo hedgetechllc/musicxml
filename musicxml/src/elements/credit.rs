@@ -53,14 +53,8 @@ impl ContentDeserializer for CreditTextContents {
     let mut contents = CreditTextContents::default();
     for element in elements {
       match element.name.as_str() {
-        "link" => match subcontents.as_mut() {
-          Some(content) => content.link.push(Link::deserialize(element)?),
-          _ => (),
-        },
-        "bookmark" => match subcontents.as_mut() {
-          Some(content) => content.bookmark.push(Bookmark::deserialize(element)?),
-          _ => (),
-        },
+        "link" => if let Some(content) = subcontents.as_mut() { content.link.push(Link::deserialize(element)?) },
+        "bookmark" => if let Some(content) = subcontents.as_mut() { content.bookmark.push(Bookmark::deserialize(element)?) },
         "credit-words" => {
           match subcontents {
             Some(mut content) => {
@@ -117,7 +111,7 @@ impl ContentDeserializer for CreditContents {
       credit_type: Vec::new(),
       link: Vec::new(),
       bookmark: Vec::new(),
-      credit: if let Some(_) = elements.iter().find(|&el| el.name == "credit-image") {
+      credit: if elements.iter().any(|el| el.name == "credit-image") {
         CreditSubcontents::Image(CreditImageContents::deserialize(elements)?)
       } else {
         CreditSubcontents::Text(CreditTextContents::deserialize(elements)?)
@@ -129,12 +123,12 @@ impl ContentDeserializer for CreditContents {
         "credit-type" => contents.credit_type.push(CreditType::deserialize(element)?),
         "link" => {
           if !image_or_words_found {
-            contents.link.push(Link::deserialize(element)?)
+            contents.link.push(Link::deserialize(element)?);
           }
         }
         "bookmark" => {
           if !image_or_words_found {
-            contents.bookmark.push(Bookmark::deserialize(element)?)
+            contents.bookmark.push(Bookmark::deserialize(element)?);
           }
         }
         _ => {

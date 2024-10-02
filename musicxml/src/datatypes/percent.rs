@@ -26,10 +26,10 @@ impl DatatypeDeserializer for Percent {
   fn deserialize(value: &str) -> Result<Self, String> {
     match value.parse::<f64>() {
       Ok(val) => match val {
-        x if x >= 0.0 && x <= 100.0 => Ok(Percent(val)),
+        x if (0.0..=100.0).contains(&x) => Ok(Percent(val)),
         _ => Err(format!("Value {val} is invalid for the <percent> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <percent>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <percent>")),
     }
   }
 }

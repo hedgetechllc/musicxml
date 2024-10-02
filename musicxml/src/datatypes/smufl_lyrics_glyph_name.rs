@@ -27,14 +27,12 @@ impl DatatypeDeserializer for SmuflLyricsGlyphName {
         Ok(SmuflLyricsGlyphName((*token).clone()))
       } else {
         Err(format!(
-          "Value {} is invalid for the <smufl-lyrics-glyph-name> data type",
-          value
+          "Value {value} is invalid for the <smufl-lyrics-glyph-name> data type"
         ))
       }
     } else {
       Err(format!(
-        "Value {} is invalid for the <smufl-lyrics-glyph-name> data type",
-        value
+        "Value {value} is invalid for the <smufl-lyrics-glyph-name> data type"
       ))
     }
   }

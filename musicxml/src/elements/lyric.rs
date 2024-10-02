@@ -86,28 +86,28 @@ impl ContentDeserializer for TextLyric {
       match el.name.as_str() {
         "syllabic" => {
           if text_lyric.syllabic.is_none() {
-            text_lyric.syllabic = Some(Syllabic::deserialize(el)?)
+            text_lyric.syllabic = Some(Syllabic::deserialize(el)?);
           } else if !text_lyric.additional.is_empty() {
-            text_lyric.additional.last_mut().unwrap().syllabic = Some(Syllabic::deserialize(el)?)
+            text_lyric.additional.last_mut().unwrap().syllabic = Some(Syllabic::deserialize(el)?);
           }
         }
         "text" => {
           if text_lyric.text.content.is_empty() {
-            text_lyric.text = Text::deserialize(el)?
+            text_lyric.text = Text::deserialize(el)?;
           } else if text_lyric.additional.is_empty() {
             text_lyric.additional.push(AdditionalTextLyric {
               elision: None,
               syllabic: None,
               text: Text::deserialize(el)?,
-            })
+            });
           } else if text_lyric.additional.last().unwrap().text.content.is_empty() {
-            text_lyric.additional.last_mut().unwrap().text = Text::deserialize(el)?
+            text_lyric.additional.last_mut().unwrap().text = Text::deserialize(el)?;
           } else {
             text_lyric.additional.push(AdditionalTextLyric {
               elision: None,
               syllabic: None,
               text: Text::deserialize(el)?,
-            })
+            });
           }
         }
         "elision" => text_lyric.additional.push(AdditionalTextLyric {
@@ -224,11 +224,11 @@ pub enum LyricContents {
 
 impl ContentDeserializer for LyricContents {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
-    Ok(if let Some(_) = elements.iter().find(|&el| el.name == "text") {
+    Ok(if elements.iter().any(|el| el.name == "text") {
       LyricContents::Text(TextLyric::deserialize(elements)?)
-    } else if let Some(_) = elements.iter().find(|&el| el.name == "laughing") {
+    } else if elements.iter().any(|el| el.name == "laughing") {
       LyricContents::Laughing(LaughingLyric::deserialize(elements)?)
-    } else if let Some(_) = elements.iter().find(|&el| el.name == "humming") {
+    } else if elements.iter().any(|el| el.name == "humming") {
       LyricContents::Humming(HummingLyric::deserialize(elements)?)
     } else {
       LyricContents::Extend(ExtendLyric::deserialize(elements)?)

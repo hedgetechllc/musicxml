@@ -40,7 +40,7 @@ mod decimal_tests {
   fn deserialize_valid3() {
     let result = Decimal::deserialize("3.234234");
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), Decimal(3.234234));
+    assert_eq!(result.unwrap(), Decimal(3.234_234));
   }
 
   #[test]

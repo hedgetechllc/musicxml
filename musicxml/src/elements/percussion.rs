@@ -117,7 +117,7 @@ impl ElementDeserializer for Percussion {
         "stick" => PercussionContents::Stick(Stick::deserialize(el)?),
         "stick-location" => PercussionContents::StickLocation(StickLocation::deserialize(el)?),
         "other-percussion" => PercussionContents::OtherPercussion(OtherPercussion::deserialize(el)?),
-        other => Err(format!("Unknown sub-element type for <percussion>: {}", other))?,
+        other => Err(format!("Unknown sub-element type for <percussion>: {other}"))?,
       },
     })
   }

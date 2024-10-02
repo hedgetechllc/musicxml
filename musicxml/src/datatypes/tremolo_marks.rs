@@ -27,7 +27,7 @@ impl DatatypeDeserializer for TremoloMarks {
         0..=8 => Ok(TremoloMarks(val)),
         _ => Err(format!("Value {val} is invalid for the <tremolo-marks> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <tremolo-marks>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <tremolo-marks>")),
     }
   }
 }

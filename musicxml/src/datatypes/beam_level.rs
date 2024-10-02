@@ -26,7 +26,7 @@ impl DatatypeDeserializer for BeamLevel {
         1..=8 => Ok(BeamLevel(val)),
         _ => Err(format!("Value {val} is invalid for the <beam-level> data type")),
       },
-      Err(_) => Err(format!("Invalid value {} for <beam-level>", value)),
+      Err(_) => Err(format!("Invalid value {value} for <beam-level>")),
     }
   }
 }
