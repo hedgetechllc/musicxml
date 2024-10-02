@@ -256,13 +256,11 @@ pub enum MetronomeContents {
 
 impl ContentDeserializer for MetronomeContents {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
-    Ok(
-      if elements.iter().any(|el| el.name == "metronome-note") {
-        MetronomeContents::MetronomeBased(MetronomeBased::deserialize(elements)?)
-      } else {
-        MetronomeContents::BeatBased(BeatBased::deserialize(elements)?)
-      },
-    )
+    Ok(if elements.iter().any(|el| el.name == "metronome-note") {
+      MetronomeContents::MetronomeBased(MetronomeBased::deserialize(elements)?)
+    } else {
+      MetronomeContents::BeatBased(BeatBased::deserialize(elements)?)
+    })
   }
 }
 

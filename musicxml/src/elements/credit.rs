@@ -53,8 +53,16 @@ impl ContentDeserializer for CreditTextContents {
     let mut contents = CreditTextContents::default();
     for element in elements {
       match element.name.as_str() {
-        "link" => if let Some(content) = subcontents.as_mut() { content.link.push(Link::deserialize(element)?) },
-        "bookmark" => if let Some(content) = subcontents.as_mut() { content.bookmark.push(Bookmark::deserialize(element)?) },
+        "link" => {
+          if let Some(content) = subcontents.as_mut() {
+            content.link.push(Link::deserialize(element)?)
+          }
+        }
+        "bookmark" => {
+          if let Some(content) = subcontents.as_mut() {
+            content.bookmark.push(Bookmark::deserialize(element)?)
+          }
+        }
         "credit-words" => {
           match subcontents {
             Some(mut content) => {

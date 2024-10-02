@@ -1,5 +1,8 @@
 use super::positive_integer::PositiveInteger;
-use alloc::{string::{String, ToString}, vec::Vec};
+use alloc::{
+  string::{String, ToString},
+  vec::Vec,
+};
 use core::ops::Deref;
 use musicxml_internal::{DatatypeDeserializer, DatatypeSerializer};
 
@@ -22,12 +25,7 @@ impl Deref for TimeOnly {
 
 impl DatatypeSerializer for TimeOnly {
   fn serialize(element: &Self) -> String {
-    element
-      .0
-      .iter()
-      .map(ToString::to_string)
-      .collect::<Vec<_>>()
-      .join(",")
+    element.0.iter().map(ToString::to_string).collect::<Vec<_>>().join(",")
   }
 }
 

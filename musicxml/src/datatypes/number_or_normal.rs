@@ -30,9 +30,7 @@ impl DatatypeDeserializer for NumberOrNormal {
     } else if value.to_lowercase() == "normal" {
       Ok(NumberOrNormal::Normal)
     } else {
-      Err(format!(
-        "Value {value} is invalid for the <number-or-normal> data type"
-      ))
+      Err(format!("Value {value} is invalid for the <number-or-normal> data type"))
     }
   }
 }

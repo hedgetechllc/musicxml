@@ -554,11 +554,7 @@ fn deserialize_element_named_struct(element_type: &syn::Ident, fields: &syn::Fie
           _ => {
             if field_name == "attributes" {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(&element.attributes)? });
-            } else if field
-              .attrs
-              .iter()
-              .any(|attr| attr.path().is_ident("flatten"))
-            {
+            } else if field.attrs.iter().any(|attr| attr.path().is_ident("flatten")) {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(&element.elements)? });
             } else {
               deserialized_fields.push(quote! { #field_name: #type_path::deserialize(element.text.as_str())? });
@@ -609,11 +605,7 @@ fn serialize_element_named_struct(
           _ => {
             if field_name == "attributes" {
               serialized_fields.push(quote! { attributes: #type_path::serialize(&element.attributes) });
-            } else if field
-              .attrs
-              .iter()
-              .any(|attr| attr.path().is_ident("flatten"))
-            {
+            } else if field.attrs.iter().any(|attr| attr.path().is_ident("flatten")) {
               serialized_fields.push(quote! { elements: #type_path::serialize(&element.content) });
             } else {
               serialized_fields.push(quote! { text: #type_path::serialize(&element.content) });
