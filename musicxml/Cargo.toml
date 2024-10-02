@@ -17,8 +17,7 @@ publish.workspace = true
 rustdoc-args = ["--extend-css", "assets/docs.css"]
 
 [dependencies]
-core2 = { version = "0.4", default-features = false }
-libflate = { version = "2.1", default-features = false }
+miniz_oxide = { version = "0.8", default-features = false, features = ["with-alloc"] }
 regex = { version = "1.10", default-features = false, features = ["perf-cache", "perf-dfa", "perf-onepass", "perf-backtrack", "perf-inline"] }
 musicxml_internal.workspace = true
 musicxml_macros.workspace = true

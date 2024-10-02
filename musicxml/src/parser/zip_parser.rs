@@ -1,15 +1,14 @@
 #![allow(dead_code)]
 
 use alloc::{collections::BTreeMap, vec::Vec};
-use core2::io::Read;
-use libflate::deflate::Decoder;
+use miniz_oxide::inflate::decompress_to_vec;
 
 const DEFLATE_METHOD_CODE: u16 = 8;
 const LOCAL_FILE_HEADER_LEN: usize = core::mem::size_of::<LocalFileHeader>();
 const CENTRAL_FILE_HEADER_LEN: usize = core::mem::size_of::<CentralFileHeader>();
 const CENTRAL_DIR_END_LEN: usize = core::mem::size_of::<CentralDirEnd>();
 
-#[repr(packed)]
+#[repr(C, packed)]
 struct LocalFileHeader {
   signature: u32,
   version_needed_to_extract: u16,
@@ -34,7 +33,7 @@ impl LocalFileHeader {
   }
 }
 
-#[repr(packed)]
+#[repr(C, packed)]
 struct CentralFileHeader {
   signature: u32,
   version_made_by: u16,
@@ -68,7 +67,7 @@ impl CentralFileHeader {
   }
 }
 
-#[repr(packed)]
+#[repr(C, packed)]
 struct CentralDirEnd {
   signature: u32,
   number_of_disk: u16,
@@ -233,14 +232,13 @@ impl<'a> ZipArchive<'a> {
   }
 
   pub fn read_file_to_string(&self, file_name: &str) -> Result<String, String> {
-    let mut decoded_data = Vec::new();
     let file = self
       .file_map
       .get(file_name)
       .ok_or(format!("File \"{file_name}\" not found within compressed archive"))?;
-    let mut decoder =
-      Decoder::new(&self.zip_data.content[file.relative_offset..(file.relative_offset + file.compressed_size)]);
-    decoder.read_to_end(&mut decoded_data).unwrap_or(0);
+    let decoded_data =
+      decompress_to_vec(&self.zip_data.content[file.relative_offset..(file.relative_offset + file.compressed_size)])
+        .map_err(|e| e.to_string())?;
     String::from_utf8(decoded_data).map_err(|e| e.to_string())
   }
 
