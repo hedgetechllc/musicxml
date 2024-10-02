@@ -4,6 +4,7 @@ use musicxml_internal::*;
 use musicxml_macros::*;
 
 /// The [PartListElement] specifies all possible elements available for use in a [PartList] element.
+#[allow(clippy::large_enum_variant)]
 #[derive(Debug, PartialEq, Eq)]
 pub enum PartListElement {
   /// The [PartGroup] element indicates a group of parts that is bracketed together.

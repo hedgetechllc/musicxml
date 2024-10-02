@@ -91,7 +91,7 @@ fn write_musicxml_file<T: Write>(file: &mut T, xml: &XmlElement, pretty_print: b
 }
 
 #[cfg(feature = "std")]
-fn write_musicxml_to_file(path: &str, xml: &XmlElement, compressed: bool, pretty_print: bool) -> Result<(), String> {
+fn write_musicxml_to_file(path: &str, xml: &XmlElement, _compressed: bool, pretty_print: bool) -> Result<(), String> {
   /*if compressed {
     let options = zip::write::SimpleFileOptions::default()
       .compression_method(zip::CompressionMethod::Deflated)

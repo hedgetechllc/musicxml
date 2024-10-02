@@ -69,6 +69,7 @@ pub enum DirectionTypeContents {
 }
 
 impl ContentDeserializer for DirectionTypeContents {
+  #[allow(clippy::too_many_lines)]
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(if let Some(element) = elements.first() {
       match element.name.as_str() {

@@ -55,12 +55,12 @@ impl ContentDeserializer for CreditTextContents {
       match element.name.as_str() {
         "link" => {
           if let Some(content) = subcontents.as_mut() {
-            content.link.push(Link::deserialize(element)?)
+            content.link.push(Link::deserialize(element)?);
           }
         }
         "bookmark" => {
           if let Some(content) = subcontents.as_mut() {
-            content.bookmark.push(Bookmark::deserialize(element)?)
+            content.bookmark.push(Bookmark::deserialize(element)?);
           }
         }
         "credit-words" => {
@@ -91,6 +91,7 @@ impl ContentDeserializer for CreditTextContents {
 }
 
 /// Contents of the [CreditSubcontents] element.
+#[allow(clippy::large_enum_variant)]
 #[derive(Debug, PartialEq, Eq)]
 pub enum CreditSubcontents {
   /// The [CreditImageContents] element specifies the appearance of an image within a credit.
