@@ -3,6 +3,9 @@
 use alloc::{collections::BTreeMap, vec::Vec};
 use miniz_oxide::inflate::decompress_to_vec;
 
+#[cfg(not(feature = "std"))]
+use alloc::string::{String, ToString};
+
 const DEFLATE_METHOD_CODE: u16 = 8;
 const LOCAL_FILE_HEADER_LEN: usize = core::mem::size_of::<LocalFileHeader>();
 const CENTRAL_FILE_HEADER_LEN: usize = core::mem::size_of::<CentralFileHeader>();
