@@ -1,0 +1,15 @@
+[workspace]
+
+[package]
+name = "ensure_no_std"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+musicxml = { path = "../musicxml", default-features = false }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

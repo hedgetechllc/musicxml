@@ -1,10 +1,12 @@
-.PHONY: all clean docs lib format publish testunit
+.PHONY: all clean docs lib format publish checknostd testunit
 
 all:
-	$(error You must specify one of the following targets: clean docs lib format publish testunit test_EXAMPLE)
+	$(error You must specify one of the following targets: clean docs lib format publish checknostd check testunit test_EXAMPLE)
 
 clean:
-	@rm -rf pkg target
+	cd ensure_no_std && cargo clean && rm -rf Cargo.lock
+	cargo clean
+	@rm -rf pkg target*
 
 docs:
 	RUSTDOCFLAGS="--extend-css musicxml/assets/docs.css" cargo doc --workspace --no-deps --release --exclude musicxml_internal --exclude musicxml_macros
@@ -21,6 +23,12 @@ publish:
 	cargo publish -p musicxml_internal
 	cargo publish -p musicxml_macros
 	cargo publish -p musicxml
+
+checknostd:
+	cd ensure_no_std && cargo rustc -- -C link-arg=-nostartfiles
+
+check:
+	cargo clippy -- -W clippy::all -W clippy::correctness -W clippy::suspicious -W clippy::complexity -W clippy::perf -W clippy::style -W clippy::pedantic -A clippy::missing_errors_doc -A clippy::missing_panics_doc -A clippy::doc_markdown -A clippy::wildcard_imports -D warnings
 
 testunit:
 	cargo test --features debug -- --nocapture
