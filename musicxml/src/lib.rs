@@ -23,7 +23,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! musicxml = "1.0"
+//! musicxml = "1.1"
 //! ```
 //!
 //! # Parsing MusicXML Files
@@ -150,7 +150,9 @@ use elements::{ScorePartwise, ScoreTimewise};
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file does not exist, cannot be read, or is not a valid MusicXML file, an
+/// error message will be returned.
 pub fn read_score_partwise(path: &str) -> Result<ScorePartwise, String> {
   parser::parse_score_partwise_from_file(path)
 }
@@ -160,7 +162,9 @@ pub fn read_score_partwise(path: &str) -> Result<ScorePartwise, String> {
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file does not exist, cannot be read, or is not a valid MusicXML file, an
+/// error message will be returned.
 pub fn read_score_timewise(path: &str) -> Result<ScoreTimewise, String> {
   parser::parse_score_timewise_from_file(path)
 }
@@ -170,7 +174,8 @@ pub fn read_score_timewise(path: &str) -> Result<ScoreTimewise, String> {
 /// The specified data should have been read directly from either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be parsed or does not represent valid MusicXML contents, an error message will be returned.
 pub fn read_score_data_partwise(data: Vec<u8>) -> Result<ScorePartwise, String> {
   parser::parse_score_partwise_from_data(data)
 }
@@ -180,7 +185,8 @@ pub fn read_score_data_partwise(data: Vec<u8>) -> Result<ScorePartwise, String> 
 /// The specified data should have been read directly from either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be parsed or does not represent valid MusicXML contents, an error message will be returned.
 pub fn read_score_data_timewise(data: Vec<u8>) -> Result<ScoreTimewise, String> {
   parser::parse_score_timewise_from_data(data)
 }
@@ -188,11 +194,13 @@ pub fn read_score_data_timewise(data: Vec<u8>) -> Result<ScoreTimewise, String> 
 /// Writes a [ScorePartwise] object into a MusicXML file.
 ///
 /// If the `compressed` parameter is set to `true`, the MusicXML file will be written as a compressed `.mxl` file.
-/// If the `write_as_timewise` parameter is set to `true`, the MusicXML file will be converted into a timewise format and
-/// written as a `<score-timewise>` element.
+/// If the `write_as_timewise` parameter is set to `true`, the MusicXML file will be converted into a timewise
+/// format and written as a `<score-timewise>` element.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file cannot be written or the data cannot be serialized into a valid MusicXML format, an error message
+/// will be returned.
 pub fn write_partwise_score(
   path: &str,
   score: &ScorePartwise,
@@ -205,11 +213,13 @@ pub fn write_partwise_score(
 /// Writes a [ScoreTimewise] object into a MusicXML file.
 ///
 /// If the `compressed` parameter is set to `true`, the MusicXML file will be written as a compressed `.mxl` file.
-/// If the `write_as_partwise` parameter is set to `true`, the MusicXML file will be converted into a partwise format and
-/// written as a `<score-partwise>` element.
+/// If the `write_as_partwise` parameter is set to `true`, the MusicXML file will be converted into a partwise
+/// format and written as a `<score-partwise>` element.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file cannot be written or the data cannot be serialized into a valid MusicXML format, an error message
+/// will be returned.
 pub fn write_timewise_score(
   path: &str,
   score: &ScoreTimewise,
@@ -226,7 +236,8 @@ pub fn write_timewise_score(
 /// format and written as a `<score-timewise>` element.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be serialized into a valid MusicXML format, an error message will be returned.
 pub fn write_partwise_score_data(
   score: &ScorePartwise,
   compressed: bool,
@@ -242,7 +253,8 @@ pub fn write_partwise_score_data(
 /// format and written as a `<score-partwise>` element.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be serialized into a valid MusicXML format, an error message will be returned.
 pub fn write_timewise_score_data(
   score: &ScoreTimewise,
   compressed: bool,

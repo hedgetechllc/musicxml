@@ -143,10 +143,10 @@ fn convert_xml_partwise_to_timewise(xml: XmlElement) -> Result<XmlElement, Strin
             .attributes
             .iter()
             .find(|(key, _)| key == "number")
-            .unwrap()
+            .ok_or("Missing \"number\" attribute in <measure> element")?
             .1
             .parse()
-            .unwrap();
+            .map_err(|err| format!("Invalid \"number\" attribute in <measure> element: {}", err))?;
           measures
             .entry(measure_number)
             .or_insert_with(|| XmlElement {
@@ -196,7 +196,7 @@ fn convert_xml_timewise_to_partwise(xml: XmlElement) -> Result<XmlElement, Strin
             .attributes
             .iter()
             .find(|(key, _)| key == "id")
-            .unwrap()
+            .ok_or("Missing \"id\" attribute in <measure> element")?
             .1
             .clone();
           parts
@@ -234,7 +234,8 @@ fn convert_xml_timewise_to_partwise(xml: XmlElement) -> Result<XmlElement, Strin
 /// element being parsed be a top-level element such as `<score-partwise>` or `<score-timewise>`.
 ///
 /// # Errors
-/// TODO
+///
+/// If the string cannot be parsed into a valid MusicXML element, an error message will be returned.
 pub fn parse_from_xml_str<T: ElementDeserializer>(str: &str) -> Result<T, String> {
   let xml = xml_parser::parse_from_string(str)?;
   T::deserialize(&xml)
@@ -254,7 +255,9 @@ pub fn parse_to_xml_str<T: ElementSerializer>(data: &T, pretty_print: bool) -> S
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file does not exist, cannot be read, or is not a valid MusicXML file, an
+/// error message will be returned.
 pub fn parse_score_partwise_from_file(path: &str) -> Result<ScorePartwise, String> {
   let contents = get_musicxml_contents_from_file(path)?;
   let xml = xml_parser::parse_from_string(&contents)?;
@@ -266,7 +269,9 @@ pub fn parse_score_partwise_from_file(path: &str) -> Result<ScorePartwise, Strin
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file does not exist, cannot be read, or is not a valid MusicXML file, an
+/// error message will be returned.
 pub fn parse_score_timewise_from_file(path: &str) -> Result<ScoreTimewise, String> {
   let contents = get_musicxml_contents_from_file(path)?;
   let xml = xml_parser::parse_from_string(&contents)?;
@@ -278,7 +283,8 @@ pub fn parse_score_timewise_from_file(path: &str) -> Result<ScoreTimewise, Strin
 /// The specified data should have been read directly from either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be parsed or does not represent valid MusicXML contents, an error message will be returned.
 pub fn parse_score_partwise_from_data(data: Vec<u8>) -> Result<ScorePartwise, String> {
   let contents = get_musicxml_contents(data)?;
   let xml = xml_parser::parse_from_string(&contents)?;
@@ -290,7 +296,8 @@ pub fn parse_score_partwise_from_data(data: Vec<u8>) -> Result<ScorePartwise, St
 /// The specified data should have been read directly from either a `.musicxml` file or a compressed `.mxl` file.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be parsed or does not represent valid MusicXML contents, an error message will be returned.
 pub fn parse_score_timewise_from_data(data: Vec<u8>) -> Result<ScoreTimewise, String> {
   let contents = get_musicxml_contents(data)?;
   let xml = xml_parser::parse_from_string(&contents)?;
@@ -306,7 +313,9 @@ pub fn parse_score_timewise_from_data(data: Vec<u8>) -> Result<ScoreTimewise, St
 /// The `pretty_print` parameter specifies whether the MusicXML file should be written with indentation and newlines.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file cannot be written or the data cannot be serialized into a valid MusicXML format, an error message
+/// will be returned.
 pub fn parse_score_partwise_to_file(
   path: &str,
   score: &ScorePartwise,
@@ -332,7 +341,9 @@ pub fn parse_score_partwise_to_file(
 /// The `pretty_print` parameter specifies whether the MusicXML file should be written with indentation and newlines.
 ///
 /// # Errors
-/// TODO
+///
+/// If the file cannot be written or the data cannot be serialized into a valid MusicXML format, an error message
+/// will be returned.
 pub fn parse_score_timewise_to_file(
   path: &str,
   score: &ScoreTimewise,
@@ -359,7 +370,8 @@ pub fn parse_score_timewise_to_file(
 /// and newlines.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be serialized into a valid MusicXML format, an error message will be returned.
 pub fn parse_score_partwise_to_data(
   score: &ScorePartwise,
   compressed: bool,
@@ -384,7 +396,8 @@ pub fn parse_score_partwise_to_data(
 /// and newlines.
 ///
 /// # Errors
-/// TODO
+///
+/// If the data cannot be serialized into a valid MusicXML format, an error message will be returned.
 pub fn parse_score_timewise_to_data(
   score: &ScoreTimewise,
   compressed: bool,
