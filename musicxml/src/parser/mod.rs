@@ -6,34 +6,26 @@ use musicxml_internal::{ElementDeserializer, ElementSerializer, XmlElement};
 extern crate std;
 
 #[cfg(feature = "std")]
-use {
-  alloc::string::ToString,
-  std::io::{Read, Write},
-};
+use {alloc::string::ToString, std::io::Write};
 
 mod xml_parser;
 mod zip_parser;
 
-#[cfg(feature = "std")]
-fn is_mxl_file(path: &str) -> bool {
-  let mut buffer: [u8; 4] = [0; 4];
-  if let Ok(mut file) = std::fs::OpenOptions::new().read(true).open(path) {
-    file.read_exact(&mut buffer).is_ok() && (buffer == [0x50, 0x4b, 0x03, 0x04])
+#[inline]
+fn is_mxl_data(data: Option<&[u8]>) -> bool {
+  if let Some(data) = data {
+    *data == [0x50, 0x4b, 0x03, 0x04]
   } else {
     false
   }
 }
 
-#[cfg(feature = "std")]
-fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
+fn get_musicxml_contents(data: Vec<u8>) -> Result<String, String> {
   let mut contents = String::new();
-  if is_mxl_file(path) {
+  if is_mxl_data(data.get(0..4)) {
     let mut xml_path: Option<String> = None;
     let mut mxl_data = zip_parser::ZipData::new();
-    std::fs::File::open(path)
-      .map_err(|e| e.to_string())?
-      .read_to_end(&mut mxl_data.content)
-      .unwrap_or(0);
+    mxl_data.content = data;
     let archive = zip_parser::ZipArchive::new(&mut mxl_data);
     for file_name in archive.iter() {
       if file_name == "META-INF/container.xml" {
@@ -53,13 +45,14 @@ fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
       Err(String::from("Cannot find MusicXML file in compressed archive"))?;
     }
   } else {
-    let mut file = std::fs::OpenOptions::new()
-      .read(true)
-      .open(path)
-      .map_err(|e| e.to_string())?;
-    file.read_to_string(&mut contents).map_err(|e| e.to_string())?;
+    contents = String::from_utf8(data).map_err(|e| e.to_string())?;
   }
   Ok(contents)
+}
+
+#[cfg(feature = "std")]
+fn get_musicxml_contents_from_file(path: &str) -> Result<String, String> {
+  get_musicxml_contents(std::fs::read(path).map_err(|e| e.to_string())?)
 }
 
 #[cfg(not(feature = "std"))]
@@ -69,25 +62,21 @@ fn get_musicxml_contents_from_file(_path: &str) -> Result<String, String> {
   ))
 }
 
-#[cfg(feature = "std")]
-fn write_musicxml_file<T: Write>(file: &mut T, xml: &XmlElement, pretty_print: bool) -> Result<(), String> {
-  file
-    .write_all(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
-    .map_err(|e| e.to_string())?;
+fn put_musicxml_contents(xml: &XmlElement, pretty_print: bool) -> Vec<u8> {
+  let mut buffer = Vec::new();
+  buffer.extend_from_slice(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
   if xml.name == "score-partwise" {
-    file.write_all(b"<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n").map_err(|e| e.to_string())?;
+    buffer.extend_from_slice(b"<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n");
   } else if xml.name == "score-timewise" {
-    file.write_all(b"<!DOCTYPE score-timewise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Timewise//EN\" \"http://www.musicxml.org/dtds/timewise.dtd\">\n").map_err(|e| e.to_string())?;
+    buffer.extend_from_slice(b"<!DOCTYPE score-timewise PUBLIC \"-//Recordare//DTD MusicXML 3.0 Timewise//EN\" \"http://www.musicxml.org/dtds/timewise.dtd\">\n");
   }
-  file
-    .write_all(xml_parser::parse_to_string(xml, if pretty_print { 0 } else { -1 }).as_ref())
-    .map_err(|e| e.to_string())
+  buffer.extend_from_slice(xml_parser::parse_to_string(xml, if pretty_print { 0 } else { -1 }).as_ref());
+  buffer
 }
 
-#[cfg(feature = "std")]
-fn write_musicxml_to_file(path: &str, xml: &XmlElement, _compressed: bool, pretty_print: bool) -> Result<(), String> {
-  /*if compressed {
-    let options = zip::write::SimpleFileOptions::default()
+fn write_musicxml_contents(xml: &XmlElement, compressed: bool, pretty_print: bool) -> Result<Vec<u8>, String> {
+  if compressed {
+    /*let options = zip::write::SimpleFileOptions::default()
       .compression_method(zip::CompressionMethod::Deflated)
       .compression_level(Some(9));
     let mut archive = zip::ZipWriter::new(std::fs::File::create(path).map_err(|e| e.to_string())?);
@@ -99,22 +88,33 @@ fn write_musicxml_to_file(path: &str, xml: &XmlElement, _compressed: bool, prett
     archive
       .start_file("score.musicxml", options)
       .map_err(|e| e.to_string())?;
-    write_musicxml_file(&mut archive, xml, pretty_print)?;
-    archive.finish().map_err(|e| e.to_string())?;
-    Ok(())
-  } else {*/
+    archive.write_data(put_musicxml_contents(xml, pretty_print))?;
+    archive.finish().map_err(|e| e.to_string())?;*/
+    Err(String::from("Bad"))
+  } else {
+    Ok(put_musicxml_contents(xml, pretty_print))
+  }
+}
+
+#[cfg(feature = "std")]
+fn write_musicxml_contents_to_file(
+  path: &str,
+  xml: &XmlElement,
+  compressed: bool,
+  pretty_print: bool,
+) -> Result<(), String> {
   let mut file = std::fs::OpenOptions::new()
     .write(true)
     .create(true)
     .truncate(true)
     .open(path)
     .map_err(|e| e.to_string())?;
-  write_musicxml_file(&mut file, xml, pretty_print)
-  //}
+  write_musicxml_contents(xml, compressed, pretty_print)
+    .and_then(|result| file.write_all(result.as_slice()).map_err(|e| e.to_string()))
 }
 
 #[cfg(not(feature = "std"))]
-fn write_musicxml_to_file(
+fn write_musicxml_contents_to_file(
   _path: &str,
   _xml: &XmlElement,
   _compressed: bool,
@@ -232,6 +232,9 @@ fn convert_xml_timewise_to_partwise(xml: XmlElement) -> Result<XmlElement, Strin
 ///
 /// This function can be used to parse any MusicXML datatype or element from a string. It is not required that the
 /// element being parsed be a top-level element such as `<score-partwise>` or `<score-timewise>`.
+///
+/// # Errors
+/// TODO
 pub fn parse_from_xml_str<T: ElementDeserializer>(str: &str) -> Result<T, String> {
   let xml = xml_parser::parse_from_string(str)?;
   T::deserialize(&xml)
@@ -249,6 +252,9 @@ pub fn parse_to_xml_str<T: ElementSerializer>(data: &T, pretty_print: bool) -> S
 /// Parses the contents of the specified MusicXML file into a [ScorePartwise] element.
 ///
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
+///
+/// # Errors
+/// TODO
 pub fn parse_score_partwise_from_file(path: &str) -> Result<ScorePartwise, String> {
   let contents = get_musicxml_contents_from_file(path)?;
   let xml = xml_parser::parse_from_string(&contents)?;
@@ -258,8 +264,35 @@ pub fn parse_score_partwise_from_file(path: &str) -> Result<ScorePartwise, Strin
 /// Parses the contents of the specified MusicXML file into a [ScoreTimewise] element.
 ///
 /// The specified file can be either a `.musicxml` file or a compressed `.mxl` file.
+///
+/// # Errors
+/// TODO
 pub fn parse_score_timewise_from_file(path: &str) -> Result<ScoreTimewise, String> {
   let contents = get_musicxml_contents_from_file(path)?;
+  let xml = xml_parser::parse_from_string(&contents)?;
+  convert_xml_partwise_to_timewise(xml).and_then(|xml| ScoreTimewise::deserialize(&xml))
+}
+
+/// Parses the contents of the specified MusicXML data into a [ScorePartwise] element.
+///
+/// The specified data should have been read directly from either a `.musicxml` file or a compressed `.mxl` file.
+///
+/// # Errors
+/// TODO
+pub fn parse_score_partwise_from_data(data: Vec<u8>) -> Result<ScorePartwise, String> {
+  let contents = get_musicxml_contents(data)?;
+  let xml = xml_parser::parse_from_string(&contents)?;
+  convert_xml_timewise_to_partwise(xml).and_then(|xml| ScorePartwise::deserialize(&xml))
+}
+
+/// Parses the contents of the specified MusicXML data into a [ScoreTimewise] element.
+///
+/// The specified data should have been read directly from either a `.musicxml` file or a compressed `.mxl` file.
+///
+/// # Errors
+/// TODO
+pub fn parse_score_timewise_from_data(data: Vec<u8>) -> Result<ScoreTimewise, String> {
+  let contents = get_musicxml_contents(data)?;
   let xml = xml_parser::parse_from_string(&contents)?;
   convert_xml_partwise_to_timewise(xml).and_then(|xml| ScoreTimewise::deserialize(&xml))
 }
@@ -271,6 +304,9 @@ pub fn parse_score_timewise_from_file(path: &str) -> Result<ScoreTimewise, Strin
 /// written as a `<score-timewise>` element.
 ///
 /// The `pretty_print` parameter specifies whether the MusicXML file should be written with indentation and newlines.
+///
+/// # Errors
+/// TODO
 pub fn parse_score_partwise_to_file(
   path: &str,
   score: &ScorePartwise,
@@ -280,9 +316,10 @@ pub fn parse_score_partwise_to_file(
 ) -> Result<(), String> {
   let xml = ScorePartwise::serialize(score);
   if write_timewise {
-    convert_xml_partwise_to_timewise(xml).and_then(|xml| write_musicxml_to_file(path, &xml, compressed, pretty_print))
+    convert_xml_partwise_to_timewise(xml)
+      .and_then(|xml| write_musicxml_contents_to_file(path, &xml, compressed, pretty_print))
   } else {
-    write_musicxml_to_file(path, &xml, compressed, pretty_print)
+    write_musicxml_contents_to_file(path, &xml, compressed, pretty_print)
   }
 }
 
@@ -293,6 +330,9 @@ pub fn parse_score_partwise_to_file(
 /// written as a `<score-partwise>` element.
 ///
 /// The `pretty_print` parameter specifies whether the MusicXML file should be written with indentation and newlines.
+///
+/// # Errors
+/// TODO
 pub fn parse_score_timewise_to_file(
   path: &str,
   score: &ScoreTimewise,
@@ -302,8 +342,59 @@ pub fn parse_score_timewise_to_file(
 ) -> Result<(), String> {
   let xml = ScoreTimewise::serialize(score);
   if write_partwise {
-    convert_xml_timewise_to_partwise(xml).and_then(|xml| write_musicxml_to_file(path, &xml, compressed, pretty_print))
+    convert_xml_timewise_to_partwise(xml)
+      .and_then(|xml| write_musicxml_contents_to_file(path, &xml, compressed, pretty_print))
   } else {
-    write_musicxml_to_file(path, &xml, compressed, pretty_print)
+    write_musicxml_contents_to_file(path, &xml, compressed, pretty_print)
+  }
+}
+
+/// Writes the contents of the specified [ScorePartwise] element into a MusicXML data buffer.
+///
+/// If the `compressed` parameter is set to `true`, the MusicXML contents will be written as compressed `.mxl` data.
+/// If the `write_timewise` parameter is set to `true`, the MusicXML contents will be converted into a timewise
+/// format and written as a `<score-timewise>` element.
+///
+/// The `pretty_print` parameter specifies whether the MusicXML contents should be written with indentation
+/// and newlines.
+///
+/// # Errors
+/// TODO
+pub fn parse_score_partwise_to_data(
+  score: &ScorePartwise,
+  compressed: bool,
+  pretty_print: bool,
+  write_timewise: bool,
+) -> Result<Vec<u8>, String> {
+  let xml = ScorePartwise::serialize(score);
+  if write_timewise {
+    convert_xml_partwise_to_timewise(xml).and_then(|xml| write_musicxml_contents(&xml, compressed, pretty_print))
+  } else {
+    write_musicxml_contents(&xml, compressed, pretty_print)
+  }
+}
+
+/// Writes the contents of the specified [ScoreTimewise] element into a MusicXML data buffer.
+///
+/// If the `compressed` parameter is set to `true`, the MusicXML contents will be written as compressed `.mxl` data.
+/// If the `write_partwise` parameter is set to `true`, the MusicXML contents will be converted into a partwise
+/// format and written as a `<score-partwise>` element.
+///
+/// The `pretty_print` parameter specifies whether the MusicXML contents should be written with indentation
+/// and newlines.
+///
+/// # Errors
+/// TODO
+pub fn parse_score_timewise_to_data(
+  score: &ScoreTimewise,
+  compressed: bool,
+  pretty_print: bool,
+  write_partwise: bool,
+) -> Result<Vec<u8>, String> {
+  let xml = ScoreTimewise::serialize(score);
+  if write_partwise {
+    convert_xml_timewise_to_partwise(xml).and_then(|xml| write_musicxml_contents(&xml, compressed, pretty_print))
+  } else {
+    write_musicxml_contents(&xml, compressed, pretty_print)
   }
 }

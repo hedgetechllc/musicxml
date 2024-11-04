@@ -1,12 +1,16 @@
 .PHONY: all clean docs lib format publish checknostd testunit
 
 all:
-	$(error You must specify one of the following targets: clean docs lib format publish checknostd check testunit test_EXAMPLE)
+	$(error You must specify one of the following targets: clean setup docs lib format publish checknostd check testunit test_EXAMPLE)
 
 clean:
 	cd ensure_no_std && cargo clean && rm -rf Cargo.lock
 	cargo clean
 	@rm -rf pkg target*
+
+setup:
+	rustup target add wasm32-unknown-unknown x86_64-unknown-none
+	cargo install wasm-pack
 
 docs:
 	RUSTDOCFLAGS="--extend-css musicxml/assets/docs.css" cargo doc --workspace --no-deps --release --exclude musicxml_internal --exclude musicxml_macros
