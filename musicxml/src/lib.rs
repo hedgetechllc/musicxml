@@ -68,6 +68,10 @@
 //!
 //! Note that this library is able to read both `.musicxml` files and compressed `.mxl` files. The file type being read is
 //! determined internally, and decoding will be handled automatically when calling either of the above functions.
+//! 
+//! If you are using this library in a `no_std` environment, you can parse MusicXML data directly by calling the
+//! [read_score_data_partwise] and [read_score_data_timewise] functions. These functions take a `Vec<u8>` containing
+//! raw MusicXML data and return a [ScorePartwise] or [ScoreTimewise] object, respectively.
 //!
 //! # Writing MusicXML Files
 //!
@@ -93,7 +97,8 @@
 //! }
 //! ```
 //!
-//! Alternately, to write a [ScoreTimewise] object to a compressed MusicXML file using a partwise representation, you can do the following:
+//! Alternately, to write a [ScoreTimewise] object to a compressed MusicXML file using a partwise representation,
+//! you can do the following:
 //!
 //! ```ignore
 //! use musicxml::write_timewise_score;
@@ -104,6 +109,9 @@
 //!   Err(e) => println!("Error writing compressed MusicXML file: {}", e),
 //! }
 //! ```
+//! 
+//! As with reading data, if you are using this library in a `no_std` environment, you can write MusicXML data
+//! directly to a data buffer by calling the [write_partwise_score_data] and [write_timewise_score_data] functions.
 
 #[macro_use]
 extern crate alloc;

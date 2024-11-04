@@ -17,6 +17,7 @@ be robust and reliable, handling a wide variety of MusicXML files and formats wi
 - Supports both "partwise" and "timewise" data representations
 - Allows for transparent conversion between the partwise and timewise representations
 - Is provided as a Rust-format library so that it can be link-time optimized with your own code
+- Is `no_std` compatible with default features turned off
 
 ## Getting Started
 
@@ -24,7 +25,7 @@ To use this library in your Rust project, simply add the following line to your 
 
 ```toml
 [dependencies]
-musicxml = "1.0"
+musicxml = "1.1"
 ```
 
 You can then parse any regular MusicXML file or compressed MXL file into a structured data format using:
@@ -49,6 +50,9 @@ match read_score_timewise("path/to/file.musicxml") {
 }
 ```
 
+If you are using this library in a `no_std` environment, you can parse MusicXML data directly by instead
+calling the `read_score_data_partwise()` and `read_score_data_timewise()` functions.
+
 Please refer to the [library documentation](https://docs.rs/musicxml/latest/) for full usage instructions.
 You may also want to consult the official [MusicXML Standard](https://www.w3.org/2021/06/musicxml40/) for additional
 details.
@@ -60,6 +64,8 @@ This library is licensed under the [MIT license](http://opensource.org/licenses/
 
 ## TODO
 
-- [ ] Add documentation about "std" feature, including parsing to/from a data buffer instead of a file
 - [ ] Remove dependency on regex
 - [ ] Create WASM build
+
+- Finish ZIP writing
+- Test all new stuff
