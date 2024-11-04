@@ -14,6 +14,7 @@ setup:
 
 docs:
 	RUSTDOCFLAGS="--extend-css musicxml/assets/docs.css" cargo doc --workspace --no-deps --release --exclude musicxml_internal --exclude musicxml_macros
+	echo "<meta http-equiv=\"refresh\" content=\"0;url=musicxml/index.html\" />" > target/doc/index.html
 	cp -r musicxml/assets/* target/doc/musicxml/
 	mv target/doc/musicxml/fonts target/doc/
 
