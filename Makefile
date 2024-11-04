@@ -25,7 +25,7 @@ publish:
 	cargo publish -p musicxml
 
 checknostd:
-	cd ensure_no_std && cargo build --release --target x86_64-unknown-none
+	cd ensure_no_std && cargo build --target x86_64-unknown-none
 
 check:
 	cargo clippy -- -W clippy::all -W clippy::correctness -W clippy::suspicious -W clippy::complexity -W clippy::perf -W clippy::style -W clippy::pedantic -W clippy::panic -A clippy::doc_markdown -A clippy::wildcard_imports -A clippy::module_name_repetitions -D warnings

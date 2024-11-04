@@ -24,7 +24,7 @@ pub enum NoteTypeValue {
   #[rename("16th")]
   Sixteenth,
   /// ![32nd](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/note-type-32nd.png)
-  #[rename("32th")]
+  #[rename("32nd")]
   ThirtySecond,
   /// ![64th](https://hedgetechllc.github.io/musicxml/musicxml/datatypes/note-type-64th.png)
   #[rename("64th")]
