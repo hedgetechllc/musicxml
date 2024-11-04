@@ -123,18 +123,19 @@ pub fn parse_from_string(str: &str) -> Result<XmlElement, String> {
           None => return Err(String::from("Root tag cannot be self-closing")),
         },
         TagType::Closing(tag) => {
-          let mut element = open_tags.pop().unwrap();
-          element.text.truncate(element.text.trim().len());
-          if tag.name != element.name {
-            return Err(format!(
-              "Mismatched closing tag...expected '{}' but found '{}'",
-              element.name, tag.name
-            ));
-          }
-          if let Some(last_open_tag) = open_tags.last_mut() {
-            last_open_tag.elements.push(element);
-          } else {
-            return Ok(element);
+          if let Some(mut element) = open_tags.pop() {
+            element.text.truncate(element.text.trim().len());
+            if tag.name != element.name {
+              return Err(format!(
+                "Mismatched closing tag...expected '{}' but found '{}'",
+                element.name, tag.name
+              ));
+            }
+            if let Some(last_open_tag) = open_tags.last_mut() {
+              last_open_tag.elements.push(element);
+            } else {
+              return Ok(element);
+            }
           }
         }
         TagType::Done => break,

@@ -102,7 +102,7 @@ pub struct Percussion {
 
 impl ElementDeserializer for Percussion {
   fn deserialize(element: &XmlElement) -> Result<Self, String> {
-    let el = element.elements.first().unwrap();
+    let el = element.elements.first().ok_or("No sub-element found in <percussion>")?;
     Ok(Percussion {
       attributes: PercussionAttributes::deserialize(&element.attributes)?,
       content: match el.name.as_str() {
@@ -126,59 +126,59 @@ impl ElementDeserializer for Percussion {
 impl ElementSerializer for Percussion {
   fn serialize(element: &Self) -> XmlElement {
     let name;
-    let mut xml_element = XmlElement {
+    let mut xml_element = match &element.content {
+      PercussionContents::Glass(content) => {
+        name = String::from("glass");
+        Glass::serialize(content)
+      }
+      PercussionContents::Metal(content) => {
+        name = String::from("metal");
+        Metal::serialize(content)
+      }
+      PercussionContents::Wood(content) => {
+        name = String::from("wood");
+        Wood::serialize(content)
+      }
+      PercussionContents::Pitched(content) => {
+        name = String::from("pitched");
+        Pitched::serialize(content)
+      }
+      PercussionContents::Membrane(content) => {
+        name = String::from("membrane");
+        Membrane::serialize(content)
+      }
+      PercussionContents::Effect(content) => {
+        name = String::from("effect");
+        Effect::serialize(content)
+      }
+      PercussionContents::Timpani(content) => {
+        name = String::from("timpani");
+        Timpani::serialize(content)
+      }
+      PercussionContents::Beater(content) => {
+        name = String::from("beater");
+        Beater::serialize(content)
+      }
+      PercussionContents::Stick(content) => {
+        name = String::from("stick");
+        Stick::serialize(content)
+      }
+      PercussionContents::StickLocation(content) => {
+        name = String::from("stick-location");
+        StickLocation::serialize(content)
+      }
+      PercussionContents::OtherPercussion(content) => {
+        name = String::from("other-percussion");
+        OtherPercussion::serialize(content)
+      }
+    };
+    xml_element.name = name;
+    XmlElement {
       name: String::new(),
       attributes: PercussionAttributes::serialize(&element.attributes),
-      elements: vec![match &element.content {
-        PercussionContents::Glass(content) => {
-          name = String::from("glass");
-          Glass::serialize(content)
-        }
-        PercussionContents::Metal(content) => {
-          name = String::from("metal");
-          Metal::serialize(content)
-        }
-        PercussionContents::Wood(content) => {
-          name = String::from("wood");
-          Wood::serialize(content)
-        }
-        PercussionContents::Pitched(content) => {
-          name = String::from("pitched");
-          Pitched::serialize(content)
-        }
-        PercussionContents::Membrane(content) => {
-          name = String::from("membrane");
-          Membrane::serialize(content)
-        }
-        PercussionContents::Effect(content) => {
-          name = String::from("effect");
-          Effect::serialize(content)
-        }
-        PercussionContents::Timpani(content) => {
-          name = String::from("timpani");
-          Timpani::serialize(content)
-        }
-        PercussionContents::Beater(content) => {
-          name = String::from("beater");
-          Beater::serialize(content)
-        }
-        PercussionContents::Stick(content) => {
-          name = String::from("stick");
-          Stick::serialize(content)
-        }
-        PercussionContents::StickLocation(content) => {
-          name = String::from("stick-location");
-          StickLocation::serialize(content)
-        }
-        PercussionContents::OtherPercussion(content) => {
-          name = String::from("other-percussion");
-          OtherPercussion::serialize(content)
-        }
-      }],
+      elements: vec![xml_element],
       text: String::new(),
-    };
-    xml_element.elements.last_mut().unwrap().name = name;
-    xml_element
+    }
   }
 }
 

@@ -224,7 +224,7 @@ pub struct GraceInfo {
 impl ContentDeserializer for GraceInfo {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     Ok(GraceInfo {
-      grace: Grace::deserialize(elements.first().unwrap())?,
+      grace: Grace::deserialize(elements.first().ok_or("Missing <grace> sub-element")?)?,
       info: if elements.iter().any(|el| el.name == "cue") {
         GraceType::Cue(GraceCueInfo::deserialize(elements)?)
       } else {
@@ -435,9 +435,9 @@ pub struct NoteContents {
 impl ContentDeserializer for NoteContents {
   fn deserialize(elements: &[XmlElement]) -> Result<Self, String> {
     let mut note_contents = NoteContents {
-      info: if elements.first().unwrap().name == "grace" {
+      info: if elements.first().ok_or("Missing <note> sub-element")?.name == "grace" {
         NoteType::Grace(GraceInfo::deserialize(elements)?)
-      } else if elements.first().unwrap().name == "cue" {
+      } else if elements.first().ok_or("Missing <note> sub-element")?.name == "cue" {
         NoteType::Cue(CueInfo::deserialize(elements)?)
       } else {
         NoteType::Normal(NormalInfo::deserialize(elements)?)

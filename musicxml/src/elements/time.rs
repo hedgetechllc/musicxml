@@ -97,7 +97,7 @@ impl ContentDeserializer for TimeContents {
         "beats" => time_beats = Some(Beats::deserialize(element)?),
         "beat-type" => {
           beats.push(TimeBeatContents {
-            beats: time_beats.unwrap(),
+            beats: time_beats.ok_or("Missing required <beats> element in <time>")?,
             beat_type: BeatType::deserialize(element)?,
           });
           time_beats = None;

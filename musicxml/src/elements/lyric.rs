@@ -87,21 +87,23 @@ impl ContentDeserializer for TextLyric {
         "syllabic" => {
           if text_lyric.syllabic.is_none() {
             text_lyric.syllabic = Some(Syllabic::deserialize(el)?);
-          } else if !text_lyric.additional.is_empty() {
-            text_lyric.additional.last_mut().unwrap().syllabic = Some(Syllabic::deserialize(el)?);
+          } else if let Some(additional) = text_lyric.additional.last_mut() {
+            additional.syllabic = Some(Syllabic::deserialize(el)?);
           }
         }
         "text" => {
           if text_lyric.text.content.is_empty() {
             text_lyric.text = Text::deserialize(el)?;
-          } else if text_lyric.additional.is_empty() {
-            text_lyric.additional.push(AdditionalTextLyric {
-              elision: None,
-              syllabic: None,
-              text: Text::deserialize(el)?,
-            });
-          } else if text_lyric.additional.last().unwrap().text.content.is_empty() {
-            text_lyric.additional.last_mut().unwrap().text = Text::deserialize(el)?;
+          } else if let Some(additional) = text_lyric.additional.last_mut() {
+            if additional.text.content.is_empty() {
+              additional.text = Text::deserialize(el)?;
+            } else {
+              text_lyric.additional.push(AdditionalTextLyric {
+                elision: None,
+                syllabic: None,
+                text: Text::deserialize(el)?,
+              });
+            }
           } else {
             text_lyric.additional.push(AdditionalTextLyric {
               elision: None,
