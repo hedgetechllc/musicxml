@@ -1,7 +1,12 @@
 #![allow(dead_code)]
 
 use alloc::{collections::BTreeMap, vec::Vec};
+use crc32fast;
+use miniz_oxide::deflate::compress_to_vec;
 use miniz_oxide::inflate::decompress_to_vec;
+
+#[cfg(feature = "std")]
+use std::time::{SystemTime, UNIX_EPOCH};
 
 #[cfg(not(feature = "std"))]
 use alloc::string::{String, ToString};
@@ -250,6 +255,148 @@ impl<'a> ZipArchive<'a> {
   }
 }
 
+pub struct ZipArchiver {
+  content: Vec<u8>,
+  files: Vec<(String, LocalFileHeader, usize)>,
+  open_file: Option<(String, LocalFileHeader, Vec<u8>)>,
+  current_offset: usize,
+}
+
+#[allow(clippy::cast_possible_truncation)]
+impl ZipArchiver {
+  pub fn new() -> Self {
+    Self {
+      content: Vec::new(),
+      files: Vec::new(),
+      open_file: None,
+      current_offset: 0,
+    }
+  }
+
+  #[cfg(feature = "std")]
+  fn current_datetime() -> (u16, u16, u16, u16, u16, u16) {
+    let now = SystemTime::now()
+      .duration_since(UNIX_EPOCH)
+      .unwrap_or_default()
+      .as_secs();
+    let year = 1970 + now / 31_556_952;
+    let month = 1 + now % 31_556_952 / 2_629_746;
+    let day = now % 2_629_746 / 86_400;
+    let hours = now % 86_400 / 3600;
+    let minutes = now % 3600 / 60;
+    let seconds = now % 60;
+    (
+      year as u16,
+      month as u16,
+      day as u16,
+      hours as u16,
+      minutes as u16,
+      seconds as u16,
+    )
+  }
+
+  #[cfg(not(feature = "std"))]
+  fn current_datetime() -> (u16, u16, u16, u16, u16, u16) {
+    (2024, 1, 1, 0, 0, 0)
+  }
+
+  fn dostime(hour: u16, minute: u16, second: u16) -> u16 {
+    let time = ((hour & 0b1_1111) << 11) | ((minute & 0b11_1111) << 5) | ((second / 2) & 0b1_1111);
+    (time >> 8) | ((time & 0x00FF) << 8)
+  }
+
+  fn dosdate(year: u16, month: u16, day: u16) -> u16 {
+    let date = ((year - 1980) << 9) | ((month & 0b1111) << 5) | (day & 0b1_1111);
+    (date >> 8) | ((date & 0x00FF) << 8)
+  }
+
+  fn finish_open_file(&mut self) {
+    if let Some((file_name, mut header, mut data)) = self.open_file.take() {
+      header.crc32 = crc32fast::hash(data.as_slice());
+      header.uncompressed_size = data.len() as u32;
+      data = compress_to_vec(data.as_slice(), 10);
+      header.compressed_size = data.len() as u32;
+      self.content.extend_from_slice(unsafe {
+        core::slice::from_raw_parts(core::ptr::from_ref(&header).cast::<u8>(), LOCAL_FILE_HEADER_LEN)
+      });
+      self.content.extend_from_slice(file_name.as_bytes());
+      self.content.append(&mut data);
+      self.files.push((file_name, header, self.current_offset));
+      self.current_offset = self.content.len();
+    }
+  }
+
+  pub fn start_file(&mut self, file_name: &str) {
+    self.finish_open_file();
+    let file_name_bytes = file_name.as_bytes();
+    let file_name_len = file_name_bytes.len();
+    let (year, month, day, hour, minute, second) = Self::current_datetime();
+    let header = LocalFileHeader {
+      signature: 0x0403_4b50,
+      version_needed_to_extract: 20,
+      general_purpose_bit_flag: 0b1000_0000_0000,
+      compression_method: DEFLATE_METHOD_CODE,
+      last_mod_file_time: Self::dostime(hour, minute, second),
+      last_mod_file_date: Self::dosdate(year, month, day),
+      crc32: 0,
+      compressed_size: 0,
+      uncompressed_size: 0,
+      file_name_length: file_name_len as u16,
+      extra_field_length: 0,
+    };
+    self.open_file = Some((String::from(file_name), header, Vec::new()));
+  }
+
+  pub fn write_data(&mut self, data: &[u8]) {
+    if let Some((_, _, file_data)) = self.open_file.as_mut() {
+      file_data.extend_from_slice(data);
+    }
+  }
+
+  pub fn finish(&mut self) -> Vec<u8> {
+    self.finish_open_file();
+    for (file_name, header, file_offset) in &self.files {
+      let header = CentralFileHeader {
+        signature: 0x0201_4b50,
+        version_made_by: header.version_needed_to_extract,
+        version_needed_to_extract: header.version_needed_to_extract,
+        general_purpose_bit_flag: header.general_purpose_bit_flag,
+        compression_method: header.compression_method,
+        last_mod_file_time: header.last_mod_file_time,
+        last_mod_file_date: header.last_mod_file_date,
+        crc32: header.crc32,
+        compressed_size: header.compressed_size,
+        uncompressed_size: header.uncompressed_size,
+        file_name_length: header.file_name_length,
+        extra_field_length: 0,
+        file_comment_length: 0,
+        disk_number_start: 0,
+        internal_file_attributes: 0,
+        external_file_attributes: 0,
+        relative_offset_of_local_header: *file_offset as u32,
+      };
+      let header_bytes =
+        unsafe { core::slice::from_raw_parts(core::ptr::from_ref(&header).cast::<u8>(), CENTRAL_FILE_HEADER_LEN) };
+      self.content.extend_from_slice(header_bytes);
+      self.content.extend_from_slice(file_name.as_bytes());
+    }
+    let central_dir_end = CentralDirEnd {
+      signature: 0x0605_4b50,
+      number_of_disk: 0,
+      number_of_start_central_directory_disk: 0,
+      total_entries_this_disk: self.files.len() as u16,
+      total_entries_all_disk: self.files.len() as u16,
+      size_of_the_central_directory: (self.content.len() - self.current_offset) as u32,
+      central_directory_offset: self.current_offset as u32,
+      zip_file_comment_length: 0,
+    };
+    let central_dir_end_bytes =
+      unsafe { core::slice::from_raw_parts(core::ptr::from_ref(&central_dir_end).cast::<u8>(), CENTRAL_DIR_END_LEN) };
+    self.content.extend_from_slice(central_dir_end_bytes);
+    self.content.clone()
+  }
+}
+
 #[cfg(test)]
 mod tests {
   use super::*;
@@ -267,5 +414,61 @@ mod tests {
       println!("File: {}", item);
       println!("Content: {}", zip_archive.read_file_to_string(item).unwrap());
     }
+  }
+
+  #[test]
+  fn test_zip_creator() {
+    let mut archiver = ZipArchiver::new();
+    archiver.start_file("META-INF/container.xml");
+    archiver.write_data(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<container>\n  <rootfiles>\n    <rootfile full-path=\"score.musicxml\" media-type=\"application/vnd.recordare.musicxml+xml\"/>\n  </rootfiles>\n</container>");
+    archiver.start_file("score.musicxml");
+    archiver.write_data(b"Test Data");
+    let zip_data = archiver.finish();
+    assert_eq!(
+      zip_data[0..10],
+      [0x50, 0x4B, 0x03, 0x04, 0x14, 0x00, 0x00, 0x08, 0x08, 0x00]
+    );
+    assert_eq!(
+      zip_data[14..196],
+      [
+        0x58, 0x11, 0xA4, 0x95, 0x86, 0x00, 0x00, 0x00, 0xBB, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x4D, 0x45,
+        0x54, 0x41, 0x2D, 0x49, 0x4E, 0x46, 0x2F, 0x63, 0x6F, 0x6E, 0x74, 0x61, 0x69, 0x6E, 0x65, 0x72, 0x2E, 0x78,
+        0x6D, 0x6C, 0x4D, 0x8E, 0x3B, 0x0E, 0x02, 0x21, 0x14, 0x45, 0xFB, 0x59, 0x05, 0x79, 0xAD, 0x01, 0xB4, 0xB3,
+        0x80, 0x99, 0xCE, 0x15, 0xE8, 0x02, 0x08, 0xBC, 0xD1, 0x97, 0xF0, 0x0B, 0x30, 0x13, 0xDD, 0xBD, 0x8C, 0x8D,
+        0x94, 0x27, 0x39, 0x37, 0xE7, 0xAA, 0xE5, 0x1D, 0x3C, 0xDB, 0xB1, 0x54, 0x4A, 0x51, 0xC3, 0x45, 0x9C, 0x81,
+        0x61, 0xB4, 0xC9, 0x51, 0x7C, 0x6A, 0x78, 0xDC, 0x6F, 0xFC, 0x0A, 0xCB, 0x3C, 0x29, 0x9B, 0x62, 0x33, 0x14,
+        0xB1, 0xCC, 0x13, 0x63, 0xAA, 0xA4, 0xD4, 0x56, 0xF2, 0x58, 0x0F, 0x1A, 0x98, 0xAD, 0x9B, 0xF7, 0x3C, 0x9B,
+        0xF6, 0xD2, 0x50, 0x6D, 0x2A, 0x28, 0xC2, 0x56, 0xC9, 0xF6, 0x04, 0xB0, 0x80, 0x8E, 0x0C, 0x6F, 0x9F, 0x8C,
+        0x1A, 0x4C, 0xCE, 0x9E, 0xAC, 0x69, 0xBD, 0x29, 0xF7, 0xE8, 0x44, 0xC1, 0x2E, 0x3B, 0x33, 0xF8, 0xA7, 0x63,
+        0x23, 0x7F, 0x31, 0x39, 0xD4, 0x94, 0xFC, 0x1F, 0xF9, 0x02, 0x50, 0x4B, 0x03, 0x04, 0x14, 0x00, 0x00, 0x08,
+        0x08, 0x00
+      ]
+    );
+    assert_eq!(
+      zip_data[200..253],
+      [
+        0x2F, 0x83, 0xCB, 0xF1, 0x0B, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x73, 0x63,
+        0x6F, 0x72, 0x65, 0x2E, 0x6D, 0x75, 0x73, 0x69, 0x63, 0x78, 0x6D, 0x6C, 0x0B, 0x49, 0x2D, 0x2E, 0x51, 0x70,
+        0x49, 0x2C, 0x49, 0x04, 0x00, 0x50, 0x4B, 0x01, 0x02, 0x14, 0x00, 0x14, 0x00, 0x00, 0x08, 0x08, 0x00
+      ]
+    );
+    assert_eq!(
+      zip_data[257..321],
+      [
+        0x58, 0x11, 0xA4, 0x95, 0x86, 0x00, 0x00, 0x00, 0xBB, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4D, 0x45, 0x54, 0x41, 0x2D, 0x49,
+        0x4E, 0x46, 0x2F, 0x63, 0x6F, 0x6E, 0x74, 0x61, 0x69, 0x6E, 0x65, 0x72, 0x2E, 0x78, 0x6D, 0x6C, 0x50, 0x4B,
+        0x01, 0x02, 0x14, 0x00, 0x14, 0x00, 0x00, 0x08, 0x08, 0x00
+      ]
+    );
+    assert_eq!(
+      zip_data[325..],
+      [
+        0x2F, 0x83, 0xCB, 0xF1, 0x0B, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBA, 0x00, 0x00, 0x00, 0x73, 0x63, 0x6F, 0x72, 0x65, 0x2E,
+        0x6D, 0x75, 0x73, 0x69, 0x63, 0x78, 0x6D, 0x6C, 0x50, 0x4B, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
+        0x02, 0x00, 0x80, 0x00, 0x00, 0x00, 0xF1, 0x00, 0x00, 0x00, 0x00, 0x00
+      ]
+    );
   }
 }

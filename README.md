@@ -66,6 +66,3 @@ This library is licensed under the [MIT license](http://opensource.org/licenses/
 
 - [ ] Remove dependency on regex
 - [ ] Create WASM build
-
-- Finish ZIP writing
-- Test all new stuff

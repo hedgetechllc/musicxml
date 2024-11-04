@@ -74,25 +74,16 @@ fn put_musicxml_contents(xml: &XmlElement, pretty_print: bool) -> Vec<u8> {
   buffer
 }
 
-fn write_musicxml_contents(xml: &XmlElement, compressed: bool, pretty_print: bool) -> Result<Vec<u8>, String> {
+fn write_musicxml_contents(xml: &XmlElement, compressed: bool, pretty_print: bool) -> Vec<u8> {
   if compressed {
-    /*let options = zip::write::SimpleFileOptions::default()
-      .compression_method(zip::CompressionMethod::Deflated)
-      .compression_level(Some(9));
-    let mut archive = zip::ZipWriter::new(std::fs::File::create(path).map_err(|e| e.to_string())?);
-    archive
-      .start_file("META-INF/container.xml", options)
-      .map_err(|e| e.to_string())?;
-    archive.write_all(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<container>\n  <rootfiles>\n    <rootfile full-path=\"score.musicxml\" media-type=\"application/vnd.recordare.musicxml+xml\"/>\n  </rootfiles>\n</container>")
-      .map_err(|e| e.to_string())?;
-    archive
-      .start_file("score.musicxml", options)
-      .map_err(|e| e.to_string())?;
-    archive.write_data(put_musicxml_contents(xml, pretty_print))?;
-    archive.finish().map_err(|e| e.to_string())?;*/
-    Err(String::from("Bad"))
+    let mut archiver = zip_parser::ZipArchiver::new();
+    archiver.start_file("META-INF/container.xml");
+    archiver.write_data(b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<container>\n  <rootfiles>\n    <rootfile full-path=\"score.musicxml\" media-type=\"application/vnd.recordare.musicxml+xml\"/>\n  </rootfiles>\n</container>");
+    archiver.start_file("score.musicxml");
+    archiver.write_data(put_musicxml_contents(xml, pretty_print).as_slice());
+    archiver.finish()
   } else {
-    Ok(put_musicxml_contents(xml, pretty_print))
+    put_musicxml_contents(xml, pretty_print)
   }
 }
 
@@ -109,8 +100,9 @@ fn write_musicxml_contents_to_file(
     .truncate(true)
     .open(path)
     .map_err(|e| e.to_string())?;
-  write_musicxml_contents(xml, compressed, pretty_print)
-    .and_then(|result| file.write_all(result.as_slice()).map_err(|e| e.to_string()))
+  file
+    .write_all(&write_musicxml_contents(xml, compressed, pretty_print))
+    .map_err(|e| e.to_string())
 }
 
 #[cfg(not(feature = "std"))]
@@ -146,7 +138,7 @@ fn convert_xml_partwise_to_timewise(xml: XmlElement) -> Result<XmlElement, Strin
             .ok_or("Missing \"number\" attribute in <measure> element")?
             .1
             .parse()
-            .map_err(|err| format!("Invalid \"number\" attribute in <measure> element: {}", err))?;
+            .map_err(|err| format!("Invalid \"number\" attribute in <measure> element: {err}"))?;
           measures
             .entry(measure_number)
             .or_insert_with(|| XmlElement {
@@ -380,9 +372,9 @@ pub fn parse_score_partwise_to_data(
 ) -> Result<Vec<u8>, String> {
   let xml = ScorePartwise::serialize(score);
   if write_timewise {
-    convert_xml_partwise_to_timewise(xml).and_then(|xml| write_musicxml_contents(&xml, compressed, pretty_print))
+    convert_xml_partwise_to_timewise(xml).map(|xml| write_musicxml_contents(&xml, compressed, pretty_print))
   } else {
-    write_musicxml_contents(&xml, compressed, pretty_print)
+    Ok(write_musicxml_contents(&xml, compressed, pretty_print))
   }
 }
 
@@ -406,8 +398,8 @@ pub fn parse_score_timewise_to_data(
 ) -> Result<Vec<u8>, String> {
   let xml = ScoreTimewise::serialize(score);
   if write_partwise {
-    convert_xml_timewise_to_partwise(xml).and_then(|xml| write_musicxml_contents(&xml, compressed, pretty_print))
+    convert_xml_timewise_to_partwise(xml).map(|xml| write_musicxml_contents(&xml, compressed, pretty_print))
   } else {
-    write_musicxml_contents(&xml, compressed, pretty_print)
+    Ok(write_musicxml_contents(&xml, compressed, pretty_print))
   }
 }
