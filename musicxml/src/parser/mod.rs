@@ -45,7 +45,7 @@ fn get_musicxml_contents(data: Vec<u8>) -> Result<String, String> {
       Err(String::from("Cannot find MusicXML file in compressed archive"))?;
     }
   } else {
-    contents = String::from_utf8(data).map_err(|e| e.to_string())?;
+    contents = String::from_utf8(data).or_else(|_| Err(String::from("Invalid UTF-8 data in MusicXML content")))?;
   }
   Ok(contents)
 }

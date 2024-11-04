@@ -116,7 +116,7 @@
 #[macro_use]
 extern crate alloc;
 
-use alloc::string::String;
+use alloc::{string::String, vec::Vec};
 
 /// Contains the main data types used by the MusicXML format.
 ///
