@@ -1,6 +1,6 @@
 use crate::elements::{ScorePartwise, ScoreTimewise};
 use alloc::{collections::BTreeMap, string::String, vec::Vec};
-use musicxml_internal::{ElementDeserializer, ElementSerializer, XmlElement};
+use musicxml_internal::{bytes_to_string, ElementDeserializer, ElementSerializer, XmlElement};
 
 #[cfg(feature = "std")]
 extern crate std;
@@ -45,7 +45,7 @@ fn get_musicxml_contents(data: Vec<u8>) -> Result<String, String> {
       Err(String::from("Cannot find MusicXML file in compressed archive"))?;
     }
   } else {
-    contents = String::from_utf8(data).or_else(|_| Err(String::from("Invalid UTF-8 data in MusicXML content")))?;
+    contents = bytes_to_string(&data)?;
   }
   Ok(contents)
 }

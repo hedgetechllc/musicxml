@@ -4,6 +4,7 @@ use alloc::{collections::BTreeMap, vec::Vec};
 use crc32fast;
 use miniz_oxide::deflate::compress_to_vec;
 use miniz_oxide::inflate::decompress_to_vec;
+use musicxml_internal::bytes_to_string;
 
 #[cfg(feature = "std")]
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -247,7 +248,7 @@ impl<'a> ZipArchive<'a> {
     let decoded_data =
       decompress_to_vec(&self.zip_data.content[file.relative_offset..(file.relative_offset + file.compressed_size)])
         .map_err(|e| e.to_string())?;
-    String::from_utf8(decoded_data).map_err(|e| e.to_string())
+    bytes_to_string(&decoded_data).map_err(|e| e.to_string())
   }
 
   pub fn iter(&self) -> impl Iterator<Item = &String> {

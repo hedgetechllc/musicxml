@@ -2,8 +2,24 @@
 
 extern crate alloc;
 
+use alloc::borrow::ToOwned;
 use alloc::string::{String, ToString};
 use alloc::vec::Vec;
+
+pub fn bytes_to_string(bytes: &[u8]) -> Result<String, String> {
+  String::from_utf8(bytes.to_owned()).or_else(|_| {
+    let convert = if bytes[0] == 0xFF && bytes[1] == 0xFE {
+      u16::from_le_bytes
+    } else {
+      u16::from_be_bytes
+    };
+    let u16_bytes: Vec<u16> = bytes
+      .chunks_exact(2)
+      .map(|bytes| convert([bytes[0], bytes[1]]))
+      .collect();
+    String::from_utf16(&u16_bytes).map_err(|_| String::from("Invalid UTF-8 or UTF-16 data in MusicXML content"))
+  })
+}
 
 #[derive(Debug, Default, PartialEq, Eq)]
 pub struct XmlElement {
