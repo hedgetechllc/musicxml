@@ -15,9 +15,9 @@ pub struct GroupNameDisplayAttributes {
 #[derive(Debug, PartialEq, Eq, ContentDeserialize, ContentSerialize)]
 pub struct GroupNameDisplayContents {
   /// The [DisplayText] element specifies the text to display for the group name.
-  pub display_text: DisplayText,
+  pub display_text: Vec<DisplayText>,
   /// The [AccidentalText] element specifies the accidental to display for the group name.
-  pub accidental_text: AccidentalText,
+  pub accidental_text: Vec<AccidentalText>,
 }
 
 /// The [GroupNameDisplay] element is used for exact formatting of multi-font text in group names to the left of the system.
